@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/profile"
+        android:title="Profiles"
+        android:icon="@drawable/ic_per"/>
+    <item android:id="@+id/Settings"
+        android:title="Settings"
+        android:icon="@drawable/ic_baseline_settings_24"/>
+    <item android:id="@+id/help"
+        android:title="Help"
+        android:icon="@drawable/ic_help" />
+    <item android:id="@+id/share"
+        android:title="Share"
+        android:icon="@drawable/ic_share" />
+
+
+</menu>
