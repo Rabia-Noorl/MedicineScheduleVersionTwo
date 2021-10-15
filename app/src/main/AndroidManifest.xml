@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MedicineSchedule">
+        <activity android:name=".SplashScreen"></activity>
         <activity android:name=".AddMeasurements" />
         <activity android:name=".AddDose" />
         <activity android:name=".AddMedication" />

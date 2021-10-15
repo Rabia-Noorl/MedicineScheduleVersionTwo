@@ -6,6 +6,9 @@ plugins {
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
+    buildFeatures {
+        viewBinding = true
+    }
 
     defaultConfig {
         applicationId "com.example.medicineschedule"
@@ -56,5 +59,10 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
+    //firebase libraries
+    implementation platform('com.google.firebase:firebase-bom:28.4.2')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-auth-ktx'
 
     }
+apply plugin: 'com.google.gms.google-services'

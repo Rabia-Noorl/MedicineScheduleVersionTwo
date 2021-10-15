@@ -23,7 +23,7 @@
         app:layout_constraintVertical_bias="0.13999999" />
 
     <EditText
-        android:id="@+id/inputpassword"
+        android:id="@+id/userNameET"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -49,7 +49,7 @@
         app:layout_constraintVertical_bias="0.064" />
 
     <EditText
-        android:id="@+id/inputemail"
+        android:id="@+id/emailET"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -65,12 +65,12 @@
         android:paddingBottom="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/inputpassword"
-        app:layout_constraintStart_toStartOf="@+id/inputpassword"
-        app:layout_constraintTop_toBottomOf="@+id/inputpassword" />
+        app:layout_constraintEnd_toEndOf="@+id/userNameET"
+        app:layout_constraintStart_toStartOf="@+id/userNameET"
+        app:layout_constraintTop_toBottomOf="@+id/userNameET" />
 
     <EditText
-        android:id="@+id/inputPassword"
+        android:id="@+id/passwordET"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -86,12 +86,12 @@
         android:paddingBottom="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/inputemail"
-        app:layout_constraintStart_toStartOf="@+id/inputemail"
-        app:layout_constraintTop_toBottomOf="@+id/inputemail" />
+        app:layout_constraintEnd_toEndOf="@+id/emailET"
+        app:layout_constraintStart_toStartOf="@+id/emailET"
+        app:layout_constraintTop_toBottomOf="@+id/emailET" />
 
     <EditText
-        android:id="@+id/inputConfirmPasswrd"
+        android:id="@+id/confirmPasswrdET"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -107,12 +107,12 @@
         android:paddingBottom="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/inputPassword"
-        app:layout_constraintStart_toStartOf="@+id/inputPassword"
-        app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
+        app:layout_constraintEnd_toEndOf="@+id/passwordET"
+        app:layout_constraintStart_toStartOf="@+id/passwordET"
+        app:layout_constraintTop_toBottomOf="@+id/passwordET" />
 
     <Button
-        android:id="@+id/signUp"
+        android:id="@+id/signUpBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -122,9 +122,9 @@
         android:textColorHint="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/inputConfirmPasswrd"
-        app:layout_constraintStart_toStartOf="@+id/inputConfirmPasswrd"
-        app:layout_constraintTop_toBottomOf="@+id/inputConfirmPasswrd" />
+        app:layout_constraintEnd_toEndOf="@+id/confirmPasswrdET"
+        app:layout_constraintStart_toStartOf="@+id/confirmPasswrdET"
+        app:layout_constraintTop_toBottomOf="@+id/confirmPasswrdET" />
 
     <TextView
         android:id="@+id/txtalreadyAccount"
@@ -134,7 +134,7 @@
         android:text="Already Have an Account?"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/signUp"
-        app:layout_constraintStart_toStartOf="@+id/signUp"
-        app:layout_constraintTop_toBottomOf="@+id/signUp" />
+        app:layout_constraintEnd_toEndOf="@+id/signUpBtn"
+        app:layout_constraintStart_toStartOf="@+id/signUpBtn"
+        app:layout_constraintTop_toBottomOf="@+id/signUpBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

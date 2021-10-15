@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "47830765431",
+    "project_id": "medication-schedule-3975d",
+    "storage_bucket": "medication-schedule-3975d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:47830765431:android:eae84c1e9e060007c21b72",
+        "android_client_info": {
+          "package_name": "com.example.medicineschedule"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "47830765431-dhk72b77014j382pgqvp0au203placog.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtuOqWkGlQOdFDCgQdU9nE_qZhsOc_A9k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "47830765431-dhk72b77014j382pgqvp0au203placog.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
