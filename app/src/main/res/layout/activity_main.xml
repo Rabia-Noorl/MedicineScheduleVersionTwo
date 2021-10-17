@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:id="@+id/layout">
+    android:id="@+id/layout"
+    android:background="@drawable/bg_gradient">
 
 
     <com.airbnb.lottie.LottieAnimationView
@@ -34,7 +35,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
         android:text="Medicine Reminder"
-        android:textColor="#BD3F32"
+        android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

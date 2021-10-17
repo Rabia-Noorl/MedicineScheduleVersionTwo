@@ -8,6 +8,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
+import org.w3c.dom.Text
 
 
 class SignIn : AppCompatActivity() {
@@ -32,6 +33,12 @@ class SignIn : AppCompatActivity() {
          signIpBtn = findViewById<Button>(R.id.btnsignIn) as Button
          signUptextViewS = findViewById<TextView>(R.id.txtviewSignup) as TextView
          mProgressBar = findViewById<ProgressBar>(R.id.progressBar) as ProgressBar
+        var textViewSignUp=findViewById<TextView>(R.id.txtviewSignup)
+
+        textViewSignUp.setOnClickListener {
+            val Intent2 = Intent(this,SignUp::class.java)
+            startActivity(Intent2)
+        }
 
         authStateListener = FirebaseAuth.AuthStateListener()
         {
