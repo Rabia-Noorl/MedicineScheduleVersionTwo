@@ -118,7 +118,7 @@
         android:layout_marginTop="24dp"
         android:background="@drawable/btn_bg"
         android:text="Sign Up"
-        android:textColor="#551389"
+        android:textColor="@color/themecolor"
         android:textColorHint="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
