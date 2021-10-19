@@ -10,6 +10,6 @@
     <color name="ActionBarTitle">#7A0B37</color>
     <color name="StatusbarColor">#7A0B37</color>
     <color name="label">#bd3f32</color>
-    <color name="themecolor">#61298D</color>
+    <color name="themeColor">#61298D</color>
 
 </resources>

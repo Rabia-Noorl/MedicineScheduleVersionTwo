@@ -86,7 +86,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/btn_bg"
         android:text="Sign In"
-        android:textColor="@color/themecolor"
+        android:textColor="@color/themeColor"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/userNameET"
