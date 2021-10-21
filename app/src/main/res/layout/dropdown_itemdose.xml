@@ -1,0 +1,8 @@
+<androidx.appcompat.widget.AppCompatSpinner android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:entries="@array/doseOptions"
+    android:spinnerMode="dropdown"
+    android:layout_marginTop="16dp"
+    android:id="@+id/spinner01"
+    xmlns:android="http://schemas.android.com/apk/res/android" />
+
