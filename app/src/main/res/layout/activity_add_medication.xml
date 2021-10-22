@@ -4,29 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
     tools:context=".AddMedication">
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        app:title="ADD MEDICINE REMINDER"
         android:layout_marginBottom="5dp"
         android:background="@drawable/bg_gradient"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         android:title="Add Measurements"
-        app:navigationIcon="@drawable/ic_menu"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:titleTextColor="@color/white"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:gravity="center"
+        app:navigationIcon="@drawable/ic_reminderwhite">
+
+
+    </androidx.appcompat.widget.Toolbar>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:layout_below="@id/my_toolbar">
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtipmed"
         style="@style/TextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/my_toolbar"
         android:layout_marginBottom="3dp"
         android:textColorHint="@color/themeColor"
         app:hintTextAppearance="@style/HelperTextAppearance"
@@ -77,7 +85,7 @@
             android:id="@+id/txtipdose"
             style="@style/TextInputLayoutStyleDropDown"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_below="@+id/txtipmed"
             android:layout_marginBottom="3dp"
             android:hint="Dose Type"
@@ -98,7 +106,8 @@
                 android:textColor="@color/themeColor"
                 android:textColorHint="@color/themeColor"
                 android:textCursorDrawable="@drawable/cursor"
-                android:textSize="20dp"></AutoCompleteTextView>
+                android:textSize="20dp">
+            </AutoCompleteTextView>
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
@@ -371,8 +380,87 @@
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
             </HorizontalScrollView>
+            <LinearLayout
+                android:id="@+id/linearlayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtipmed"
+                android:orientation="horizontal"
+                android:layout_marginTop="220dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginLeft="2dp"
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtipstdate"
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:hint="Start Date"
+                    android:textColorHint="@color/themeColor"
+                    app:hintTextAppearance="@style/HelperTextAppearance"
+                    tools:layout_editor_absoluteX="187dp"
+                    tools:layout_editor_absoluteY="340dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="20dp"
+                        android:id="@+id/txtstdate"
+                        android:cursorVisible="true"
+                        android:text="Start"
+                        android:editable="false"
+                        android:textColor="@color/themeColor"
+                        android:textCursorDrawable="@drawable/cursor"
+                        android:textSize="20dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtipenddate"
+                    style="@style/TextInputLayoutStyleDropDown"
+                    android:layout_width="160dp"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/txtipmed"
+                    android:layout_marginBottom="3dp"
+                    android:hint="End Date"
+                    android:textColorHint="@color/themeColor"
+                    app:hintTextAppearance="@style/HelperTextAppearance"
+                    tools:layout_editor_absoluteX="187dp"
+                    tools:layout_editor_absoluteY="340dp">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/txtenddate"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:cursorVisible="true"
+                        android:editable="false"
+                        android:inputType="none"
+                        android:text="End Date"
+                        android:textColor="@color/themeColor"
+                        android:textColorHint="@color/themeColor"
+                        android:textCursorDrawable="@drawable/cursor"
+                        android:textSize="20dp">
+                    </AutoCompleteTextView>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
 
         </com.google.android.material.card.MaterialCardView>
-
-
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnReminder"
+        android:layout_below="@+id/cardView"
+        android:layout_centerInParent="true"
+        android:text="CONFIRM"
+        android:background="@drawable/btn_bg_colored"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:textSize="24sp"
+        android:padding="5dp"></Button>
+    </RelativeLayout>
 </RelativeLayout>

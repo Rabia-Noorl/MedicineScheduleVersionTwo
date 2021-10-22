@@ -1,5 +1,6 @@
 package com.example.medicineschedule
 
+import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
@@ -17,8 +18,9 @@ import java.sql.Time
 import java.text.SimpleDateFormat
 import java.util.*
 
-lateinit var binding:ActivityAddMedicationBinding
+
 class AddMedication : AppCompatActivity() {
+    lateinit var binding:ActivityAddMedicationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,12 +32,13 @@ class AddMedication : AppCompatActivity() {
         var  thour:Int
         var tmint:Int
         var timeFormat=SimpleDateFormat("hh:mm a",Locale.US)
+        var dateFormat=SimpleDateFormat("dd MMM YY",Locale.US)
         binding.txtvwdose.setOnClickListener(View.OnClickListener {
             var alertDialogDose=AlertDialog.Builder(this)
             alertDialogDose.setTitle("Select Dose")
             alertDialogDose.setSingleChoiceItems(doseChoice,0){dialogInterface:DialogInterface,position:Int->
                 binding.txtvwdose.setText(doseChoice[position])
-                binding.scrollView.visibility=View.VISIBLE
+
                 dialogInterface.dismiss()
 //                Toast.makeText(applicationContext,"You Selected:"+doseChoice[position],Toast.LENGTH_SHORT).show()
             }
@@ -60,7 +63,8 @@ class AddMedication : AppCompatActivity() {
             alertDialogtime.setTitle("How many times per day?")
             alertDialogtime.setSingleChoiceItems(timeChoice,0){dialogInterface:DialogInterface,position:Int->
                 binding.txtvwTime.setText(timeChoice[position])
-                binding.scrollView.visibility=View.VISIBLE
+//                binding.scrollView.visibility=View.VISIBLE
+//                binding.linearlayout2.visibility=View.VISIBLE
                 dialogInterface.dismiss()
 //                Toast.makeText(applicationContext,"You Selected:"+doseChoice[position],Toast.LENGTH_SHORT).show()
             }
@@ -71,10 +75,18 @@ class AddMedication : AppCompatActivity() {
             {
                 binding.txtipTime.visibility=View.VISIBLE
                 binding.scrollView.visibility=View.VISIBLE
+                binding.linearlayout2.visibility=View.VISIBLE
+//                binding.txtstdate.visibility=View.VISIBLE
+//                binding.txtenddate.visibility=View.VISIBLE
             }
             else{
                 binding.txtipTime.visibility=View.GONE
                 binding.scrollView.visibility=View.GONE
+                binding.linearlayout2.visibility=View.GONE
+
+//                binding.txtstdate.visibility=View.GONE
+//                binding.txtenddate.visibility=View.GONE
+
 
             }
         })
@@ -211,5 +223,42 @@ class AddMedication : AppCompatActivity() {
 
             timePicker.show()
 
+        })
+        //setting date format
+        binding.txtstdate.setOnClickListener(View.OnClickListener {
+            val now=Calendar.getInstance()
+            try{
+                var date=dateFormat.parse(binding.txtstdate.text.toString())
+                now.time=date}
+            catch (e:Exception){
+                e.printStackTrace()
+            }
+            val datePicker=DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+                var selectedDate=Calendar.getInstance()
+                selectedDate.set(Calendar.YEAR,year)
+                selectedDate.set(Calendar.MONTH,month)
+                selectedDate.set(Calendar.DAY_OF_MONTH,dayOfMonth)
+                binding.txtstdate.setText(dateFormat.format(selectedDate.time))
+            },
+            now.get(Calendar.YEAR),now.get(Calendar.MONTH),now.get(Calendar.DAY_OF_MONTH))
+            datePicker.show()
+        })
+        binding.txtenddate.setOnClickListener(View.OnClickListener {
+            val now=Calendar.getInstance()
+            try{
+                var date=dateFormat.parse(binding.txtenddate.text.toString())
+                now.time=date}
+            catch (e:Exception){
+                e.printStackTrace()
+            }
+            val datePicker=DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+                var selectedDate=Calendar.getInstance()
+                selectedDate.set(Calendar.YEAR,year)
+                selectedDate.set(Calendar.MONTH,month)
+                selectedDate.set(Calendar.DAY_OF_MONTH,dayOfMonth)
+                binding.txtenddate.setText(dateFormat.format(selectedDate.time))
+            },
+                now.get(Calendar.YEAR),now.get(Calendar.MONTH),now.get(Calendar.DAY_OF_MONTH))
+            datePicker.show()
         })
     }}
