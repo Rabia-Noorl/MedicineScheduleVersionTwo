@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val text = findViewById<TextView>(R.id.txtmedicine)
-        val lottieAnimationView = findViewById<LottieAnimationView>(R.id.animationView1)
+//        val lottieAnimationView = findViewById<LottieAnimationView>(R.id.animationView1)
         text.startAnimation(AnimationUtils.loadAnimation(this, R.anim.anim))
 //        lottieAnimationView.animate().translationY(1600.0F).setDuration(1000).setStartDelay(4000)
 //        text.animate().translationY(1600.0F).setDuration(1000).setStartDelay(4000)

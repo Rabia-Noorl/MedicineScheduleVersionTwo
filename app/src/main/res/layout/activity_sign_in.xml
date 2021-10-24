@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient"
+    android:background="@color/themeColor"
     tools:context=".SignIn">
 
     <TextView
@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign In"
-        android:textColor="@color/white"
+        android:textColor="@color/textColor"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -38,8 +38,8 @@
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,8 +60,8 @@
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/textColor"
         app:layout_constraintEnd_toEndOf="@+id/userNameET"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/userNameET"
@@ -73,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Forget Password?"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/textColor"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/userNameET"
@@ -110,14 +110,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Don't Have an Account?"
-            android:textColor="@color/white" />
+            android:textColor="@color/textColor" />
 
         <TextView
             android:id="@+id/txtviewSignup"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="SignUp"
-            android:textColor="#201818"
+            android:textColor="@color/textColor"
             android:textStyle="bold" />
     </LinearLayout>
 

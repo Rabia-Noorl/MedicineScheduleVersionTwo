@@ -4,463 +4,511 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddMedication">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/my_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:title="ADD MEDICINE REMINDER"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/bg_gradient"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        android:title="Add Measurements"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextColor="@color/white"
-        tools:ignore="MissingConstraints"
-        android:gravity="center"
-        app:navigationIcon="@drawable/ic_reminderwhite">
-
-
-    </androidx.appcompat.widget.Toolbar>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10dp"
-        android:layout_below="@id/my_toolbar">
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtipmed"
-        style="@style/TextInputLayoutStyle"
-        android:layout_width="match_parent"
+    tools:context=".AddMedication"
+    android:background="@color/themeColor">
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/my_toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        app:title="ADD MEDICINE REMINDER"-->
+<!--        android:layout_marginBottom="0dp"-->
+<!--        android:background="@drawable/bg_gradient"-->
+<!--        android:elevation="4dp"-->
+<!--        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"-->
+<!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+<!--        app:titleTextColor="@color/textColor"-->
+<!--        android:textAlignment="center"></androidx.appcompat.widget.Toolbar>-->
+    <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Save"
+       android:textStyle="bold"
+       android:textColor="@color/textColor"
+       android:layout_alignParentRight="true"
+       android:textSize="20dp"
+       android:layout_marginBottom="10dp"
+       android:layout_marginRight="20dp"
+       android:id="@+id/save"></TextView>
+    <EditText
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="3dp"
-        android:textColorHint="@color/themeColor"
-        app:hintTextAppearance="@style/HelperTextAppearance"
-        tools:layout_editor_absoluteX="187dp"
-        tools:layout_editor_absoluteY="340dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:cursorVisible="true"
-            android:hint="Medication Name"
-            android:textColor="@color/themeColor"
-            android:textCursorDrawable="@drawable/cursor"
-            android:textSize="20dp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
+        android:id="@+id/medName"
+        android:layout_below="@id/save"
+        android:cursorVisible="true"
+        android:textCursorDrawable="@drawable/cursor"
+        android:layout_marginBottom="10dp"
+        android:layout_centerInParent="true"
+        android:hint="Enter Name and Strength"
+        android:textColor="@color/textColor"
+        android:textSize="20dp"
+        android:backgroundTint="@color/design_default_color_primary_variant"
+        android:textColorHint="@color/design_default_color_primary_variant"></EditText>
+    <ImageView
+        android:layout_width="105dp"
+        android:layout_height="85dp"
+        android:layout_below="@+id/medName"
+        android:layout_centerInParent="true"
+        android:src="@drawable/pillbox"
+        android:id="@+id/imgView"
+        android:layout_marginBottom="10dp"/>
     <LinearLayout
-        android:id="@+id/linearlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtipmed"
-        android:orientation="horizontal">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtipdosequan"
-            style="@style/TextInputLayoutStyle"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="3dp"
-            android:hint="Dose Quantity"
-            android:textColorHint="@color/themeColor"
-            app:hintTextAppearance="@style/HelperTextAppearance"
-            tools:layout_editor_absoluteX="187dp"
-            tools:layout_editor_absoluteY="340dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="20dp"
-                android:cursorVisible="true"
-                android:text="1"
-                android:textColor="@color/themeColor"
-                android:textCursorDrawable="@drawable/cursor"
-                android:textSize="20dp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtipdose"
-            style="@style/TextInputLayoutStyleDropDown"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/txtipmed"
-            android:layout_marginBottom="3dp"
-            android:hint="Dose Type"
-            android:textColorHint="@color/themeColor"
-            app:hintTextAppearance="@style/HelperTextAppearance"
-            tools:layout_editor_absoluteX="187dp"
-            tools:layout_editor_absoluteY="340dp">
-
-            <AutoCompleteTextView
-                android:id="@+id/txtvwdose"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:cursorVisible="true"
-                android:editable="false"
-                android:inputType="none"
-                android:text="Pills"
-                android:textColor="@color/themeColor"
-                android:textColorHint="@color/themeColor"
-                android:textCursorDrawable="@drawable/cursor"
-                android:textSize="20dp">
-            </AutoCompleteTextView>
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtipInstructions"
-        style="@style/TextInputLayoutStyleDropDown"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearlayout"
-        android:layout_marginBottom="3dp"
-        android:hint="Instructions"
-        android:textColorHint="@color/themeColor"
-        app:hintTextAppearance="@style/HelperTextAppearance"
-        tools:layout_editor_absoluteX="187dp"
-        tools:layout_editor_absoluteY="340dp">
-
-        <AutoCompleteTextView
-            android:id="@+id/txtvwInstructions"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:cursorVisible="true"
-            android:editable="false"
-            android:inputType="none"
-            android:text="No Instructions"
-            android:textColor="@color/themeColor"
-            android:textColorHint="@color/themeColor"
-            android:textCursorDrawable="@drawable/cursor"
-            android:textSize="20dp"></AutoCompleteTextView>
-    </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardView"
+        android:orientation="vertical"
+        android:layout_below="@+id/imgView"
+        android:background="@color/bgColor"
+        android:layout_marginBottom="10dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/white"
-            app:strokeColor="@color/white"
-            app:strokeWidth="2dp"
-            android:layout_below="@+id/txtipInstructions"
-            tools:layout_editor_absoluteX="187dp"
-            tools:layout_editor_absoluteY="340dp">
-
-            <Switch
-                android:id="@+id/switchReminder"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardViewdose"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Reminder and Schedule"
-                android:textColor="@color/themeColor"
-                android:layout_marginRight="2dp"
-                android:layout_marginLeft="2dp"
-                android:textSize="20dp"
-                android:theme="@style/switchColor"
-                ></Switch>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtipTime"
-                style="@style/TextInputLayoutStyleDropDown"
-                android:layout_width="match_parent"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:layout_marginBottom="3dp"
-                android:hint="Reminder"
-                android:visibility="gone"
-                android:textColorHint="@color/themeColor"
-                app:hintTextAppearance="@style/HelperTextAppearance"
-                >
-                <AutoCompleteTextView
-                    android:id="@+id/txtvwTime"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                app:cardBackgroundColor="@color/bgColor"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="3dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:strokeColor="@color/cardStrokeColor"
+                app:strokeWidth="2dp">
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:cursorVisible="true"
-                    android:editable="false"
-                    android:inputType="none"
-                    android:text="Once a Day"
-                    android:textColor="@color/themeColor"
-                    android:textColorHint="@color/themeColor"
-                    android:textCursorDrawable="@drawable/cursor"
-                    android:textSize="20dp"></AutoCompleteTextView>
-            </com.google.android.material.textfield.TextInputLayout>
-                <HorizontalScrollView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtipTime"
-                android:fillViewport="true"
-                android:id="@+id/scrollView"
-                android:layout_marginTop="120dp"
-                    android:visibility="gone">
-                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                    android:id="@+id/tvdefaultDose"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                        android:layout_centerHorizontal="true"
+                    android:text="Default Dose"
+                    android:textColor="@color/textColor"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"/>
+                    <LinearLayout
+                    android:id="@+id/linLayoutdose"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvdefaultDose"
+                    android:gravity="center|center_horizontal|center_vertical"
                     android:orientation="horizontal">
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/txtiptime1"
-                        style="@style/TextInputLayoutStyle"
-                        android:layout_width="180dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="3dp"
-                        android:hint="Time"
-                        android:textColorHint="@color/themeColor"
-                        app:hintTextAppearance="@style/HelperTextAppearance"
-                        tools:layout_editor_absoluteX="187dp"
-                        tools:layout_editor_absoluteY="340dp"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginRight="2dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginRight="20dp"
-                            android:cursorVisible="true"
-                            android:id="@+id/txtTime1"
-                            android:text="9:00 AM"
-                            android:editable="false"
-                            android:textColor="@color/themeColor"
+                        <EditText
+                        android:id="@+id/dosequantity"
                             android:textCursorDrawable="@drawable/cursor"
-                            android:textSize="20dp" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:hint="Enter Quantity"
+                            android:cursorVisible="true"
+                        android:textColor="@color/textColor"
+                        android:textColorHint="@color/design_default_color_primary_variant"
+                        android:textColorLink="@color/design_default_color_primary_variant"
+                        android:textSize="20dp"
+                            android:backgroundTint="@color/design_default_color_primary_variant"></EditText>
+                        <AutoCompleteTextView
+                            android:id="@+id/dosequantityunit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:textCursorDrawable="@drawable/cursor"
+                            android:cursorVisible="true"
+                            android:hint="Tablets"
+                            android:textColor="@color/textColor"
+                            android:textColorHint="@color/design_default_color_primary_variant"
+                            android:textColorLink="@color/design_default_color_primary_variant"
+                            android:textSize="20dp"
+                            android:focusableInTouchMode="false"
+                            android:drawableRight="@drawable/ic_dropdown"
+                            android:backgroundTint="@color/design_default_color_primary_variant"/>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/txtiptime2"
-                        style="@style/TextInputLayoutStyle"
-                        android:layout_width="180dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="3dp"
-                        android:hint="Time"
-                        android:textColorHint="@color/themeColor"
-                        app:hintTextAppearance="@style/HelperTextAppearance"
-                        tools:layout_editor_absoluteX="187dp"
-                        tools:layout_editor_absoluteY="340dp"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginRight="2dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginRight="20dp"
-                            android:cursorVisible="true"
-                            android:id="@+id/txtTime2"
-                            android:text="9:00 AM"
-                            android:editable="false"
-                            android:textColor="@color/themeColor"
-                            android:textCursorDrawable="@drawable/cursor"
-                            android:textSize="20dp" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/txtiptime3"
-                        style="@style/TextInputLayoutStyle"
-                        android:layout_width="180dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="3dp"
-                        android:hint="Time"
-                        android:textColorHint="@color/themeColor"
-                        app:hintTextAppearance="@style/HelperTextAppearance"
-                        tools:layout_editor_absoluteX="187dp"
-                        tools:layout_editor_absoluteY="340dp"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginRight="2dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginRight="20dp"
-                            android:cursorVisible="true"
-                            android:id="@+id/txtTime3"
-                            android:text="9:00 AM"
-                            android:editable="false"
-                            android:textColor="@color/themeColor"
-                            android:textCursorDrawable="@drawable/cursor"
-                            android:textSize="20dp" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/txtiptime4"
-                        style="@style/TextInputLayoutStyle"
-                        android:layout_width="180dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="3dp"
-                        android:hint="Time"
-                        android:textColorHint="@color/themeColor"
-                        app:hintTextAppearance="@style/HelperTextAppearance"
-                        tools:layout_editor_absoluteX="187dp"
-                        tools:layout_editor_absoluteY="340dp"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginRight="2dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginRight="20dp"
-                            android:cursorVisible="true"
-                            android:id="@+id/txtTime4"
-                            android:text="9:00 AM"
-                            android:editable="false"
-                            android:textColor="@color/themeColor"
-                            android:textCursorDrawable="@drawable/cursor"
-                            android:textSize="20dp" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/txtiptime5"
-                        style="@style/TextInputLayoutStyle"
-                        android:layout_width="180dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="3dp"
-                        android:hint="Time"
-                        android:textColorHint="@color/themeColor"
-                        app:hintTextAppearance="@style/HelperTextAppearance"
-                        tools:layout_editor_absoluteX="187dp"
-                        tools:layout_editor_absoluteY="340dp"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginRight="2dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginRight="20dp"
-                            android:cursorVisible="true"
-                            android:id="@+id/txtTime5"
-                            android:text="9:00 AM"
-                            android:editable="false"
-                            android:textColor="@color/themeColor"
-                            android:textCursorDrawable="@drawable/cursor"
-                            android:textSize="20dp" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/txtiptime6"
-                        style="@style/TextInputLayoutStyle"
-                        android:layout_width="180dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="3dp"
-                        android:hint="Time"
-                        android:textColorHint="@color/themeColor"
-                        app:hintTextAppearance="@style/HelperTextAppearance"
-                        tools:layout_editor_absoluteX="187dp"
-                        tools:layout_editor_absoluteY="340dp"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginRight="2dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginRight="20dp"
-                            android:cursorVisible="true"
-                            android:id="@+id/txtTime6"
-                            android:text="9:00 AM"
-                            android:editable="false"
-                            android:textColor="@color/themeColor"
-                            android:textCursorDrawable="@drawable/cursor"
-                            android:textSize="20dp" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/txtiptime7"
-                        style="@style/TextInputLayoutStyle"
-                        android:layout_width="180dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="3dp"
-                        android:hint="Time"
-                        android:textColorHint="@color/themeColor"
-                        app:hintTextAppearance="@style/HelperTextAppearance"
-                        tools:layout_editor_absoluteX="187dp"
-                        tools:layout_editor_absoluteY="340dp"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginRight="2dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginRight="20dp"
-                            android:cursorVisible="true"
-                            android:id="@+id/txtTime7"
-                            android:text="9:00 AM"
-                            android:editable="false"
-                            android:textColor="@color/themeColor"
-                            android:textCursorDrawable="@drawable/cursor"
-                            android:textSize="20dp" />
-                    </com.google.android.material.textfield.TextInputLayout>
+
                 </LinearLayout>
-            </HorizontalScrollView>
-            <LinearLayout
-                android:id="@+id/linearlayout2"
+                    <EditText
+                        android:id="@+id/customdose"
+                        android:textCursorDrawable="@drawable/cursor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:hint="Enter Dose Type"
+                        android:layout_below="@+id/linLayoutdose"
+                        android:layout_centerInParent="true"
+                        android:visibility="gone"
+                        android:cursorVisible="true"
+                        android:textColor="@color/textColor"
+                        android:textColorHint="@color/design_default_color_primary_variant"
+                        android:textColorLink="@color/design_default_color_primary_variant"
+                        android:textSize="20dp"
+                        android:backgroundTint="@color/design_default_color_primary_variant"></EditText></RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardViewIns"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txtipmed"
-                android:orientation="horizontal"
-                android:layout_marginTop="220dp"
-                android:layout_marginRight="2dp"
-                android:layout_marginLeft="2dp"
-                android:visibility="gone">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtipstdate"
-                    style="@style/TextInputLayoutStyle"
-                    android:layout_width="160dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                app:cardBackgroundColor="@color/bgColor"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="3dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:strokeColor="@color/cardStrokeColor"
+                app:strokeWidth="2dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginRight="2dp"
-                    android:layout_marginLeft="2dp"
-                    android:hint="Start Date"
-                    android:textColorHint="@color/themeColor"
-                    app:hintTextAppearance="@style/HelperTextAppearance"
-                    tools:layout_editor_absoluteX="187dp"
-                    tools:layout_editor_absoluteY="340dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                        android:id="@+id/tvInstructions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_centerHorizontal="true"
+                        android:text="Instructions"
+                        android:textColor="@color/textColor"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"/>
+                    <LinearLayout
+                        android:id="@+id/linLayoutInstructions"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginRight="20dp"
-                        android:id="@+id/txtstdate"
-                        android:cursorVisible="true"
-                        android:text="Start"
-                        android:editable="false"
-                        android:textColor="@color/themeColor"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvInstructions"
+                        android:gravity="center|center_horizontal|center_vertical"
+                        android:orientation="horizontal">
+                        <AutoCompleteTextView
+                            android:id="@+id/Instructions"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:textCursorDrawable="@drawable/cursor"
+                            android:cursorVisible="true"
+                            android:hint="Instructions"
+                            android:textColor="@color/textColor"
+                            android:textColorHint="@color/design_default_color_primary_variant"
+                            android:textColorLink="@color/design_default_color_primary_variant"
+                            android:textSize="20dp"
+                            android:focusableInTouchMode="false"
+                            android:drawableRight="@drawable/ic_dropdown"
+                            android:backgroundTint="@color/design_default_color_primary_variant"/>
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/custominstruction"
                         android:textCursorDrawable="@drawable/cursor"
-                        android:textSize="20dp" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:hint="Enter Instructions"
+                        android:layout_below="@+id/linLayoutInstructions"
+                        android:layout_centerInParent="true"
+                        android:visibility="gone"
+                        android:cursorVisible="true"
+                        android:textColor="@color/textColor"
+                        android:textColorHint="@color/design_default_color_primary_variant"
+                        android:textColorLink="@color/design_default_color_primary_variant"
+                        android:textSize="20dp"
+                        android:backgroundTint="@color/design_default_color_primary_variant"></EditText>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtipenddate"
-                    style="@style/TextInputLayoutStyleDropDown"
-                    android:layout_width="160dp"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/txtipmed"
-                    android:layout_marginBottom="3dp"
-                    android:hint="End Date"
-                    android:textColorHint="@color/themeColor"
-                    app:hintTextAppearance="@style/HelperTextAppearance"
-                    tools:layout_editor_absoluteX="187dp"
-                    tools:layout_editor_absoluteY="340dp">
-
-                    <AutoCompleteTextView
-                        android:id="@+id/txtenddate"
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardViewReminder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                app:cardBackgroundColor="@color/bgColor"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="3dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:strokeColor="@color/cardStrokeColor"
+                app:strokeWidth="2dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                        android:id="@+id/tvReminder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_centerHorizontal="true"
+                        android:text="Schedule and reminder"
+                        android:textColor="@color/textColor"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"/>
+                    <LinearLayout
+                        android:id="@+id/linLayoutReminder"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:cursorVisible="true"
-                        android:editable="false"
-                        android:inputType="none"
-                        android:text="End Date"
-                        android:textColor="@color/themeColor"
-                        android:textColorHint="@color/themeColor"
-                        android:textCursorDrawable="@drawable/cursor"
-                        android:textSize="20dp">
-                    </AutoCompleteTextView>
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvReminder"
+                        android:gravity="center|center_horizontal|center_vertical"
+                        android:orientation="horizontal">
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Set Reminder"
+                            android:background="@drawable/btn_bg"
+                            android:textColor="@color/bgColor"
+                            android:textSize="20dp"
+                            android:textStyle="bold"></Button>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_below="@+id/linLayoutReminder">
+                    <HorizontalScrollView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtipTime"
+                        android:fillViewport="true"
+                        android:id="@+id/scrollView"
+                        >
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/txtiptime1"
+                                style="@style/TextInputLayoutStyle"
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="3dp"
+                                android:hint="Time"
+                                android:textColorHint="@color/themeColor"
+                                app:hintTextAppearance="@style/HelperTextAppearance"
+                                tools:layout_editor_absoluteX="187dp"
+                                tools:layout_editor_absoluteY="340dp"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginRight="2dp">
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="20dp"
+                                    android:cursorVisible="true"
+                                    android:id="@+id/txtTime1"
+                                    android:text="9:00 AM"
+                                    android:editable="false"
+                                    android:textColor="@color/themeColor"
+                                    android:textCursorDrawable="@drawable/cursor"
+                                    android:textSize="20dp" />
+                            </com.google.android.material.textfield.TextInputLayout>
 
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/txtiptime2"
+                                style="@style/TextInputLayoutStyle"
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="3dp"
+                                android:hint="Time"
+                                android:textColorHint="@color/themeColor"
+                                app:hintTextAppearance="@style/HelperTextAppearance"
+                                tools:layout_editor_absoluteX="187dp"
+                                tools:layout_editor_absoluteY="340dp"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginRight="2dp">
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="20dp"
+                                    android:cursorVisible="true"
+                                    android:id="@+id/txtTime2"
+                                    android:text="9:00 AM"
+                                    android:editable="false"
+                                    android:textColor="@color/themeColor"
+                                    android:textCursorDrawable="@drawable/cursor"
+                                    android:textSize="20dp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/txtiptime3"
+                                style="@style/TextInputLayoutStyle"
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="3dp"
+                                android:hint="Time"
+                                android:textColorHint="@color/themeColor"
+                                app:hintTextAppearance="@style/HelperTextAppearance"
+                                tools:layout_editor_absoluteX="187dp"
+                                tools:layout_editor_absoluteY="340dp"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginRight="2dp">
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="20dp"
+                                    android:cursorVisible="true"
+                                    android:id="@+id/txtTime3"
+                                    android:text="9:00 AM"
+                                    android:editable="false"
+                                    android:textColor="@color/themeColor"
+                                    android:textCursorDrawable="@drawable/cursor"
+                                    android:textSize="20dp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/txtiptime4"
+                                style="@style/TextInputLayoutStyle"
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="3dp"
+                                android:hint="Time"
+                                android:textColorHint="@color/themeColor"
+                                app:hintTextAppearance="@style/HelperTextAppearance"
+                                tools:layout_editor_absoluteX="187dp"
+                                tools:layout_editor_absoluteY="340dp"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginRight="2dp">
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="20dp"
+                                    android:cursorVisible="true"
+                                    android:id="@+id/txtTime4"
+                                    android:text="9:00 AM"
+                                    android:editable="false"
+                                    android:textColor="@color/themeColor"
+                                    android:textCursorDrawable="@drawable/cursor"
+                                    android:textSize="20dp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/txtiptime5"
+                                style="@style/TextInputLayoutStyle"
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="3dp"
+                                android:hint="Time"
+                                android:textColorHint="@color/themeColor"
+                                app:hintTextAppearance="@style/HelperTextAppearance"
+                                tools:layout_editor_absoluteX="187dp"
+                                tools:layout_editor_absoluteY="340dp"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginRight="2dp">
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="20dp"
+                                    android:cursorVisible="true"
+                                    android:id="@+id/txtTime5"
+                                    android:text="9:00 AM"
+                                    android:editable="false"
+                                    android:textColor="@color/themeColor"
+                                    android:textCursorDrawable="@drawable/cursor"
+                                    android:textSize="20dp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/txtiptime6"
+                                style="@style/TextInputLayoutStyle"
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="3dp"
+                                android:hint="Time"
+                                android:textColorHint="@color/themeColor"
+                                app:hintTextAppearance="@style/HelperTextAppearance"
+                                tools:layout_editor_absoluteX="187dp"
+                                tools:layout_editor_absoluteY="340dp"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginRight="2dp">
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="20dp"
+                                    android:cursorVisible="true"
+                                    android:id="@+id/txtTime6"
+                                    android:text="9:00 AM"
+                                    android:editable="false"
+                                    android:textColor="@color/themeColor"
+                                    android:textCursorDrawable="@drawable/cursor"
+                                    android:textSize="20dp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/txtiptime7"
+                                style="@style/TextInputLayoutStyle"
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="3dp"
+                                android:hint="Time"
+                                android:textColorHint="@color/themeColor"
+                                app:hintTextAppearance="@style/HelperTextAppearance"
+                                tools:layout_editor_absoluteX="187dp"
+                                tools:layout_editor_absoluteY="340dp"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginRight="2dp">
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="20dp"
+                                    android:cursorVisible="true"
+                                    android:id="@+id/txtTime7"
+                                    android:text="9:00 AM"
+                                    android:editable="false"
+                                    android:textColor="@color/themeColor"
+                                    android:textCursorDrawable="@drawable/cursor"
+                                    android:textSize="20dp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                    </HorizontalScrollView>
+                    </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
-    <Button
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnReminder"
-        android:layout_below="@+id/cardView"
-        android:layout_centerInParent="true"
-        android:text="CONFIRM"
-        android:background="@drawable/btn_bg_colored"
-        android:textColor="@color/white"
-        android:layout_marginTop="10dp"
-        android:textSize="24sp"
-        android:padding="5dp"></Button>
-    </RelativeLayout>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
 </RelativeLayout>

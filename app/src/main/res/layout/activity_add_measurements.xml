@@ -16,7 +16,7 @@
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextColor="@color/white"
+        app:titleTextColor="@color/textColor"
         tools:ignore="MissingConstraints"
         android:gravity="center"
         app:navigationIcon="@drawable/ic_measurementwhite">

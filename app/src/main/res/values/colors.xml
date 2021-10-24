@@ -10,7 +10,11 @@
     <color name="ActionBarTitle">#7A0B37</color>
     <color name="StatusbarColor">#7A0B37</color>
     <color name="label">#bd3f32</color>
-    <color name="themeColor">#61298D</color>
+    <color name="themeColor">#F9CAA7</color>
     <color name="hintColor">#52635E5E</color>
+    <color name="textColor">#211003</color>
+    <color name="bgColor">#FEF8F3</color>
+    <color name="cardStrokeColor">#848884</color>
+    <color name="toolbarColor"></color>
 
 </resources>

@@ -5,14 +5,14 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.home.HomeFragment"
-    android:background="@color/white">
+    android:background="@color/bgColor">
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="18dp"
         app:fab_expandDirection="up"
         app:fab_labelsPosition="left"
-       app:fab_addButtonColorNormal="#551389"
+       app:fab_addButtonColorNormal="@color/themeColor"
         app:fab_addButtonColorPressed="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,28 +21,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/addReminder"
-            app:fab_colorNormal="#FFFFFF"
+            app:fab_colorNormal="@color/bgColor"
             app:fabSize="mini"
             app:fab_title="Add Medicine Reminder"
-            app:fab_colorPressed="#61298D"
+            app:fab_colorPressed="@color/themeColor"
             app:fab_icon="@drawable/ic_reminder"></com.getbase.floatingactionbutton.FloatingActionButton>
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_colorNormal="#FFFFFF"
+            app:fab_colorNormal="@color/bgColor"
             app:fabSize="mini"
             android:id="@+id/addDose"
             app:fab_title="Add Dose"
-            app:fab_colorPressed="#61298D"
+            app:fab_colorPressed="@color/themeColor"
             app:fab_icon="@drawable/ic_adddrug"></com.getbase.floatingactionbutton.FloatingActionButton>
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/addMeasurement"
-            app:fab_colorNormal="#FFFFFF"
+            app:fab_colorNormal="@color/bgColor"
             app:fabSize="mini"
             app:fab_title="Add Measurements"
-            app:fab_colorPressed="#61298D"
+            app:fab_colorPressed="@color/themeColor"
             app:fab_icon="@drawable/ic_addmeasurement"></com.getbase.floatingactionbutton.FloatingActionButton>
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

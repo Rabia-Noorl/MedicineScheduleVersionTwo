@@ -21,7 +21,7 @@
             app:navigationIcon="@drawable/ic_menu"
             tools:ignore="MissingConstraints"
             app:title="@string/app_name"
-            app:titleTextColor="@color/white"/>
+            app:titleTextColor="@color/textColor"/>
     <fragment
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -58,8 +58,8 @@
         android:id="@+id/navigation_view"
         app:headerLayout="@layout/nav_headrer_layout"
         android:background="@color/white"
-        app:itemTextColor="@color/black"
-        app:itemIconTint="@color/black"/>
+        app:itemTextColor="@color/textColor"
+        app:itemIconTint="@color/textColor"/>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

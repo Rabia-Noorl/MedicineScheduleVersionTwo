@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="@color/themeColor"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".ui.more.MoreFragment">
 
@@ -36,20 +36,21 @@
                         android:orientation="vertical"
                         android:padding="16dp"
                         android:gravity="center"
-                        android:background="@color/themeColor"
+                        android:background="@color/bgColor"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:src="@drawable/ic_medication"
+                            android:src="@drawable/pills"
                             android:layout_width="100dp"
                             android:layout_height="100dp" />
 
                         <TextView
                             android:layout_marginTop="12dp"
-                            android:textColor="@color/white"
+                            android:textColor="@color/textColor"
                             android:textSize="18sp"
                             android:text="Drugs"
+                            android:textStyle="bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
@@ -73,7 +74,7 @@
                         android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/themeColor">
+                        android:background="@color/bgColor">
 
                         <ImageView
                             android:layout_width="100dp"
@@ -82,11 +83,12 @@
 
                         <TextView
                             android:layout_marginTop="12dp"
-                            android:textColor="@color/white"
+                            android:textColor="@color/textColor"
                             android:textSize="18sp"
                             android:text="Refill"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"/>
 
                     </LinearLayout>
 
@@ -108,7 +110,7 @@
                         android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/themeColor">
+                        android:background="@color/bgColor">
 
                         <ImageView
                             android:src="@drawable/ic_measurementwhite"
@@ -117,11 +119,12 @@
 
                         <TextView
                             android:layout_marginTop="12dp"
-                            android:textColor="@color/white"
+                            android:textColor="@color/textColor"
                             android:textSize="18sp"
                             android:text="Measurements"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"/>
 
                     </LinearLayout>
 
@@ -143,20 +146,21 @@
                         android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/themeColor">
+                        android:background="@color/bgColor">
 
                         <ImageView
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:src="@drawable/ic_doctorappointment"/>
+                            android:src="@drawable/doctor"/>
 
                         <TextView
                             android:layout_marginTop="12dp"
-                            android:textColor="@color/white"
+                            android:textColor="@color/textColor"
                             android:textSize="18sp"
                             android:text="Appointments"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"/>
 
                     </LinearLayout>
 
@@ -178,7 +182,7 @@
                         android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/themeColor">
+                        android:background="@color/bgColor">
 
                         <ImageView
                             android:src="@drawable/ic_notes"
@@ -187,11 +191,12 @@
 
                         <TextView
                             android:layout_marginTop="12dp"
-                            android:textColor="@color/white"
+                            android:textColor="@color/textColor"
                             android:textSize="18sp"
                             android:text="Notes"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"/>
 
                     </LinearLayout>
 
@@ -213,20 +218,21 @@
                         android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/themeColor">
+                        android:background="@color/bgColor">
 
                         <ImageView
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:src="@drawable/ic_medicalreports"/>
+                            android:src="@drawable/medicalfile"/>
 
                         <TextView
                             android:layout_marginTop="12dp"
-                            android:textColor="@color/white"
+                            android:textColor="@color/textColor"
                             android:textSize="18sp"
                             android:text="Reports"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"/>
 
                     </LinearLayout>
 
