@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drug_navigation"
+    app:startDestination="@id/aavailable_Form_Fragment">
+
+    <fragment
+        android:id="@+id/aavailable_Form_Fragment"
+        android:name="com.example.medicineschedule.dictionary.Aavailable_Form_Fragment"
+        android:label="fragment_aavailable__form_"
+        tools:layout="@layout/fragment_aavailable__form_" >
+        <action
+            android:id="@+id/action_aavailable_Form_Fragment_to_included_Drugs_Fragment"
+            app:destination="@id/included_Drugs_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/included_Drugs_Fragment"
+        android:name="com.example.medicineschedule.dictionary.Included_Drugs_Fragment"
+        android:label="fragment_included__drugs_"
+        tools:layout="@layout/fragment_included__drugs_" >
+        <action
+            android:id="@+id/action_included_Drugs_Fragment_to_aavailable_Form_Fragment"
+            app:destination="@id/aavailable_Form_Fragment" />
+    </fragment>
+</navigation>

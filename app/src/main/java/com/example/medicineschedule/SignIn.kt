@@ -38,6 +38,7 @@ class SignIn : AppCompatActivity() {
         textViewSignUp.setOnClickListener {
             val Intent2 = Intent(this,SignUp::class.java)
             startActivity(Intent2)
+            this.finish();
         }
 
         authStateListener = FirebaseAuth.AuthStateListener()

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dictionary_navigation"
+    app:startDestination="@id/medicationSearchFragment">
+
+    <fragment
+        android:id="@+id/medicationSearchFragment"
+        android:name="com.example.medicineschedule.dictionary.MedicationSearchFragment"
+        android:label="fragment_medication"
+        tools:layout="@layout/fragment_medication_search" >
+        <action
+            android:id="@+id/action_medicationSearchFragment_to_drug_Info_Fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_medicationSearchFragment_to_detailed_Info_Fragment"
+            app:destination="@id/detailed_Info_Fragment" />
+        <action
+            android:id="@+id/action_medicationSearchFragment_to_drug_Info_Fragment2"
+            app:destination="@id/drug_Info_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailed_Info_Fragment"
+        android:name="com.example.medicineschedule.dictionary.Detailed_Info_Fragment"
+        android:label="fragment_detailed__info_"
+        tools:layout="@layout/fragment_detailed__info_" >
+        <action
+            android:id="@+id/action_detailed_Info_Fragment_to_medicationSearchFragment2"
+            app:destination="@id/medicationSearchFragment" />
+        <action
+            android:id="@+id/action_detailed_Info_Fragment_to_alternate_Brands_Fragment"
+            app:destination="@id/alternate_Brands_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/drug_Info_Fragment"
+        android:name="com.example.medicineschedule.dictionary.Drug_Info_Fragment"
+        android:label="fragment_drug__info_"
+        tools:layout="@layout/fragment_drug__info_">
+        <action
+            android:id="@+id/action_drug_Info_Fragment_to_medicationSearchFragment"
+            app:destination="@id/medicationSearchFragment" />
+        <action
+            android:id="@+id/action_drug_Info_Fragment_to_alternate_Brands_Fragment"
+            app:destination="@id/alternate_Brands_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aavailable_Form_Fragment2"
+        android:name="com.example.medicineschedule.dictionary.Aavailable_Form_Fragment"
+        android:label="fragment_aavailable__form_"
+        tools:layout="@layout/fragment_aavailable__form_" >
+        <action
+            android:id="@+id/action_aavailable_Form_Fragment2_to_included_Drugs_Fragment2"
+            app:destination="@id/included_Drugs_Fragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/included_Drugs_Fragment2"
+        android:name="com.example.medicineschedule.dictionary.Included_Drugs_Fragment"
+        android:label="fragment_included__drugs_"
+        tools:layout="@layout/fragment_included__drugs_" >
+        <action
+            android:id="@+id/action_included_Drugs_Fragment2_to_aavailable_Form_Fragment2"
+            app:destination="@id/aavailable_Form_Fragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/alternate_Brands_Fragment"
+        android:name="com.example.medicineschedule.dictionary.Alternate_Brands_Fragment"
+        android:label="fragment_alternate__brands_"
+        tools:layout="@layout/fragment_alternate__brands_" >
+        <action
+            android:id="@+id/action_alternate_Brands_Fragment_to_drug_Info_Fragment"
+            app:destination="@id/drug_Info_Fragment" />
+        <action
+            android:id="@+id/action_alternate_Brands_Fragment_to_detailed_Info_Fragment"
+            app:destination="@id/detailed_Info_Fragment" />
+    </fragment>
+</navigation>

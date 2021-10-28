@@ -44,6 +44,7 @@ class SignUp : AppCompatActivity() {
         alreadyHaveAcc?.setOnClickListener(fun(it: View) {
          val Intent1 = Intent(this, SignIn::class.java)
          startActivity(Intent1)
+            this.finish();
         })
    }
 

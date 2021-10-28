@@ -3,7 +3,7 @@ package com.example.medicineschedule
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 class HomeScreen : AppCompatActivity() {
 
 
+    private var searcBtn: Button? = null
     private var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
     lateinit var actionBarDrawerToggle:ActionBarDrawerToggle
     val authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
@@ -26,12 +27,18 @@ class HomeScreen : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
-        setSupportActionBar(findViewById(R.id.my_toolbar))
+
+//        searcBtn = findViewById<Button>(R.id.searcBtn) as Button
 
         val bottomNavigationView=findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         val navController= Navigation.findNavController(this, R.id.frag_layout)
         val drawerLayout=findViewById<DrawerLayout>(R.id.drawer_layout)
         val navigationView=findViewById<NavigationView>(R.id.navigation_view)
+
+//        searcBtn?.setOnClickListener {
+//            val intent = Intent(this, DictionaryActivity::class.java)
+//            startActivity(intent)
+//        }
         actionBarDrawerToggle=ActionBarDrawerToggle(
             this,
             drawerLayout,

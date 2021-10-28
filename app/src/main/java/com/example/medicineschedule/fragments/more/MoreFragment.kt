@@ -1,4 +1,4 @@
-package com.example.medicineschedule.ui.more
+package com.example.medicineschedule.fragments.more
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -17,4 +17,12 @@
     <color name="cardStrokeColor">#848884</color>
     <color name="toolbarColor"></color>
 
+    <!--New theme colors can be changed later-->
+    <color name="darkPeach">#f98365</color>
+    <color name="lightPeach">#F9CAA7</color>
+    <color name="whiteText">#FFFFFF</color>
+    <color name="blackText">#000000</color>
+    <color name="greyColr">#0f3443</color>
+    <color name="backGroundColour">#FEF8F3</color>
+
 </resources>
