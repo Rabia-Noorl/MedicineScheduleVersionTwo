@@ -98,11 +98,6 @@ dependencies {
 
 
 
-
-    //room database components
-    implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
-    implementation "androidx.activity:activity-ktx:$rootProject.activityVersion"
-
     // Dependencies for working with Architecture components
     // You'll probably have to update the version numbers in build.gradle (Project)
 

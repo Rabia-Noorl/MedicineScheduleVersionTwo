@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase
 @Database(entities = arrayOf(ReminderTracker::class), version =1, exportSchema = false)
 abstract class ReminderDatabase: RoomDatabase() {
 
-    abstract fun getReminderDatabase(): ReminderDao
+    abstract fun getReminderDao(): ReminderDao
 
     companion object {
         // Singleton prevents multiple instances of database opening at the

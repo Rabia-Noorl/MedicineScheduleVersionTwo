@@ -13,5 +13,4 @@ interface ReminderDao {
 
     @Query(value = "Select * from reminder_table order by id ASC")
     fun  getAllRemiders(): LiveData<List<ReminderTracker>>
-
 }

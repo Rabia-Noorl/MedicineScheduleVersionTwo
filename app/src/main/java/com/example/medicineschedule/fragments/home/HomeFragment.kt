@@ -9,13 +9,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.medicineschedule.*
-import com.example.medicineschedule.databinding.FragmentAavailableFormBinding
+import com.example.medicineschedule.database.ReminderTracker
 import com.example.medicineschedule.databinding.FragmentHomeBinding
-import com.example.medicineschedule.viewModels.HomeRecVieeModel
+import com.example.medicineschedule.viewModels.HomeRecViewModel
 
 class HomeFragment : Fragment(){
 
-    lateinit var viewModel: HomeRecVieeModel
+    lateinit var viewModel: HomeRecViewModel
 
     private lateinit var binding: FragmentHomeBinding
 
@@ -38,7 +38,7 @@ class HomeFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
         uiViews()
         viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)).get(
-            HomeRecVieeModel::class.java)
+            HomeRecViewModel::class.java)
         binding.viewModel = viewModel
         binding.let {
             it.lifecycleOwner = this
@@ -46,14 +46,17 @@ class HomeFragment : Fragment(){
         }
         viewModel.toastMessage.observe(viewLifecycleOwner) { message ->
             Toast.makeText(context, message, Toast.LENGTH_LONG).show()
-            val intent = Intent(context, AddDose::class.java)
-            startActivity(intent)
+//            val intent = Intent(context, AddDose::class.java)
+//            startActivity(intent)
         }
 
         binding.searchView2.setOnClickListener {
 
-            val intent = Intent(context, DictionaryActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(context, DictionaryActivity::class.java)
+//            startActivity(intent)
+            var reminder = ReminderTracker("New","name","4:00","nottaken","3","before meal")
+            viewModel.insertNode(reminder)
+            viewModel.sdasd()
 
         }
     }
