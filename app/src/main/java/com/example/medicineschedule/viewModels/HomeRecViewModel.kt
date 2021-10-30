@@ -21,6 +21,9 @@ class HomeRecViewModel(application: Application) : AndroidViewModel(application)
     val allRemiders: LiveData<List<ReminderTracker>>
     val dao = ReminderDatabase.getDatabase(application).getReminderDao()
 
+    val allRec = ArrayList<ReminderTracker>()
+
+
     private val _recyclerItems = MutableLiveData<List<RecyclerItem>>()
     val recyclerItems: LiveData<List<RecyclerItem>> = _recyclerItems
 
@@ -31,76 +34,64 @@ class HomeRecViewModel(application: Application) : AndroidViewModel(application)
 
 
     init {
-        val dao = ReminderDatabase.getDatabase(application).getReminderDao()
         repository = Repository(dao)
         allRemiders = repository.allReminder
-    }
-    fun deletNote(note: ReminderTracker) = viewModelScope.launch(Dispatchers.IO) {
-        repository.delete(note)
-    }
-    fun insertNode(note: ReminderTracker) = viewModelScope.launch(Dispatchers.IO) {
-        repository.insert(note)
+
+        _recyclerItems.value = allRemiders.value
+            ?.map { creatReminderItemViewModel(it) }
+            ?.map { it.toRecyclerItem() }
     }
 
-
-//    init {
-//        repository = Repository(dao)
-//        allRemiders = repository.allReminder
-//
-//        _recyclerItems.value = allRemiders.value
-//            ?.map { creatReminderItemViewModel(it) }
-//            ?.map { it.toRecyclerItem() }
-//    }
-
-//     private fun creatReminderItemViewModel(remineder:ReminderTracker): ReminderItemViewModel {
-//        return ReminderItemViewModel(remineder).apply {
-//            itemClickHandler = { remineder -> showClickMessage(remineder) }
-//            deleteBtnClickHandler = { remineder -> deletDrug(remineder) }
-//            addDrugClickHandler = { remineder -> onAddClick(remineder)}
-//        }
-//    }
-//    private fun showClickMessage(remineder: ReminderTracker) {
-//        _toastMessage.postValue(
-//            "${remineder.names} is clicked"
-//        )
-//    }
-//    private fun deletDrug(remineder: ReminderTracker) {
-//        val items = recyclerItems.value.orEmpty()
-//        val index = items.map { it.data }
-//            .filterIsInstance<ReminderItemViewModel>()
-//            .indexOfFirst { it.reminderTracker == remineder }
-//        if (index != -1) {
-//            _recyclerItems.value = items.toMutableList().apply { removeAt(index) }
-//        }
-//
-//    }
-//
-    fun sdasd(){
+    fun creatReminderItemViewModel(remineder:ReminderTracker): ReminderItemViewModel {
+        return ReminderItemViewModel(remineder).apply {
+            itemClickHandler = { remineder -> showClickMessage(remineder) }
+            deleteBtnClickHandler = { remineder -> deletDrug(remineder) }
+            addDrugClickHandler = { remineder -> onAddClick(remineder)}
+        }
+    }
+    private fun showClickMessage(remineder: ReminderTracker) {
         _toastMessage.postValue(
-////            "${remineder.names} is clicked"
-            dao.getAllRemiders().value?.size.toString() + " reminders "
+            "${remineder.names} is clicked"
         )
     }
-//
-//    fun onAddClick(remineder: ReminderTracker) = viewModelScope.launch(Dispatchers.IO) {
-//        repository.insert(remineder)
-////        val newItem = CreatDrugItemViewModel(remineder).toRecyclerItem()
-////        _recyclerItems.value = recyclerItems.value.orEmpty() + newItem
-//    }
-//    fun addFun(remineder: ReminderTracker){
-//        val newItem = creatReminderItemViewModel(remineder).toRecyclerItem()
-//        _recyclerItems.value = recyclerItems.value.orEmpty() + newItem
-//        onAddClick(remineder)
-//    }
-//
-//    fun onShuffleClick() {
-//        _recyclerItems.value = recyclerItems.value.orEmpty().shuffled()
-//    }
-//
-//    private fun ReminderItemViewModel.toRecyclerItem() = RecyclerItem(
-//        data = this,
-//        layoutId = R.layout.view_of_dashboard_rv,
-//        variableId = BR.dashBmodel
-//    )
+    private fun deletDrug(remineder: ReminderTracker) {
+        val items = recyclerItems.value.orEmpty()
+        val index = items.map { it.data }
+            .filterIsInstance<ReminderItemViewModel>()
+            .indexOfFirst { it.reminderTracker == remineder }
+        if (index != -1) {
+            _recyclerItems.value = items.toMutableList().apply { removeAt(index) }
+        }
+
+    }
+
+     fun sdasd(){
+        _toastMessage.postValue(
+          "Total recod in database"
+
+            //dao.getAllRemiders().value?.size.toString() + " reminders "
+        )
+    }
+
+    fun onAddClick(remineder: ReminderTracker) = viewModelScope.launch(Dispatchers.IO) {
+        repository.insert(remineder)
+    }
+
+    fun addFun(remineder: ReminderTracker){
+        val newItem = creatReminderItemViewModel(remineder).toRecyclerItem()
+        _recyclerItems.value = recyclerItems.value.orEmpty() + newItem
+    }
+
+    fun onShuffleClick() {
+        _recyclerItems.value = recyclerItems.value.orEmpty().shuffled()
+    }
+
+
+
+    private fun ReminderItemViewModel.toRecyclerItem() = RecyclerItem(
+        data = this,
+        layoutId = R.layout.view_of_dashboard_rv,
+        variableId = BR.dashBmodel
+    )
 }
 

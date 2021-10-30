@@ -49,14 +49,19 @@ class HomeFragment : Fragment(){
 //            val intent = Intent(context, AddDose::class.java)
 //            startActivity(intent)
         }
+        viewModel.allRemiders.observe(viewLifecycleOwner){
+            it?.let {
+                Toast.makeText(context, "${it.size} are total records", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         binding.searchView2.setOnClickListener {
 
 //            val intent = Intent(context, DictionaryActivity::class.java)
 //            startActivity(intent)
             var reminder = ReminderTracker("New","name","4:00","nottaken","3","before meal")
-            viewModel.insertNode(reminder)
-            viewModel.sdasd()
+            viewModel.addFun(reminder)
+        //    viewModel.sdasd()
 
         }
     }
