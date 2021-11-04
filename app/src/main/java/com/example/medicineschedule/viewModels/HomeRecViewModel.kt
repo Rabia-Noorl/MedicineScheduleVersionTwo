@@ -62,28 +62,30 @@ class HomeRecViewModel(application: Application) : AndroidViewModel(application)
         if (index != -1) {
             _recyclerItems.value = items.toMutableList().apply { removeAt(index) }
         }
+        onDeletClick(remineder)
 
-    }
-
-     fun sdasd(){
-        _toastMessage.postValue(
-          "Total recod in database"
-
-            //dao.getAllRemiders().value?.size.toString() + " reminders "
-        )
     }
 
     fun onAddClick(remineder: ReminderTracker) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(remineder)
     }
 
-    fun addFun(remineder: ReminderTracker){
-        val newItem = creatReminderItemViewModel(remineder).toRecyclerItem()
-        _recyclerItems.value = recyclerItems.value.orEmpty() + newItem
+    fun addFun(remineder: List<ReminderTracker>){
+        allRec.clear()
+        allRec.addAll(remineder)
+        _recyclerItems.value = ArrayList()
+        val itr = allRec.iterator()
+        while (itr.hasNext()){
+            val newItem = creatReminderItemViewModel(itr.next()).toRecyclerItem()
+            _recyclerItems.value = recyclerItems.value.orEmpty() + newItem
+        }
     }
 
     fun onShuffleClick() {
         _recyclerItems.value = recyclerItems.value.orEmpty().shuffled()
+    }
+    fun onDeletClick(remineder: ReminderTracker) = viewModelScope.launch(Dispatchers.IO){
+        repository.delete(remineder)
     }
 
 

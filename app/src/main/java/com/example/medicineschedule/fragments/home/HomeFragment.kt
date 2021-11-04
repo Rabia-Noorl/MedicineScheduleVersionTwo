@@ -46,22 +46,22 @@ class HomeFragment : Fragment(){
         }
         viewModel.toastMessage.observe(viewLifecycleOwner) { message ->
             Toast.makeText(context, message, Toast.LENGTH_LONG).show()
-//            val intent = Intent(context, AddDose::class.java)
-//            startActivity(intent)
+            val intent = Intent(context, AddDose::class.java)
+            startActivity(intent)
         }
         viewModel.allRemiders.observe(viewLifecycleOwner){
             it?.let {
+                viewModel.addFun(it)
                 Toast.makeText(context, "${it.size} are total records", Toast.LENGTH_SHORT).show()
             }
         }
 
         binding.searchView2.setOnClickListener {
 
-//            val intent = Intent(context, DictionaryActivity::class.java)
-//            startActivity(intent)
-            var reminder = ReminderTracker("New","name","4:00","nottaken","3","before meal")
-            viewModel.addFun(reminder)
-        //    viewModel.sdasd()
+            val intent = Intent(context, DictionaryActivity::class.java)
+            startActivity(intent)
+//            var reminder = ReminderTracker("New","name","4:00","nottaken","3","before meal")
+//            viewModel.onAddClick(reminder)
 
         }
     }
@@ -92,7 +92,6 @@ class HomeFragment : Fragment(){
             R.id.addReminder->{
                 val reminderIntent = Intent(getActivity(), AddMedication::class.java)
                 startActivity(reminderIntent)
-
             }
     }
 }}
