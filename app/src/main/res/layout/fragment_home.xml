@@ -17,9 +17,9 @@
     tools:context=".fragments.home.HomeFragment">
 
 
-    <View
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/view8"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="550dp"
         android:background="@drawable/bottom_rounder"
