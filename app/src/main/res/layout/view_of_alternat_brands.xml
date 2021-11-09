@@ -5,7 +5,7 @@
  <data>
   <variable
     name="model"
-    type="com.example.medicineschedule.models.AlterBrandModel" />
+    type="com.example.medicineschedule.viewModels.DrugItemViewModel" />
  </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,7 +34,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:text="@{model.alterBrand}"
+            android:text="@{model.drug.name}"
             android:textColor="@color/greyColr"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"

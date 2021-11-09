@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "418428302030",
+    "project_id": "drug-dictionary-ac06e",
+    "storage_bucket": "drug-dictionary-ac06e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418428302030:android:a7ea308c65ef1bfd1c169f",
+        "android_client_info": {
+          "package_name": "com.gamingpine.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418428302030-v1afsqdmgl8s2elvcgsqpniajnpga8tb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdtL0gDjf18Nfv9PWIK5W6cIWxTdwQoJ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "418428302030-v1afsqdmgl8s2elvcgsqpniajnpga8tb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

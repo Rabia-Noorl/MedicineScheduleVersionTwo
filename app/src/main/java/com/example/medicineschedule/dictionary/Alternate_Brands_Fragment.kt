@@ -35,6 +35,7 @@ class Alternate_Brands_Fragment : Fragment(R.layout.fragment_alternate__brands_)
         binding.aBviewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)).get(
             AlternateBrand_ViewModel::class.java)
 
+
     }
 
 }
