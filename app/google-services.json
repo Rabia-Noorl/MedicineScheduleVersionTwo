@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "47830765431-h1prf0sul14dj5p1vdop0a6r315qt1kt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.medicineschedule",
+            "certificate_hash": "32355f806671549ad159282d82a24635403ef2e9"
+          }
+        },
+        {
           "client_id": "47830765431-dhk72b77014j382pgqvp0au203placog.apps.googleusercontent.com",
           "client_type": 3
         }

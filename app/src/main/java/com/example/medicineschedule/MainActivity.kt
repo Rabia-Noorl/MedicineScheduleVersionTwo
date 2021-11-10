@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             run() {
                 // TODO: Your application init goes here.
 
-                val intent = Intent(this, SignIn::class.java);
+                val intent = Intent(this, SignInWithGoogle::class.java);
                 this.startActivity(intent);
                 this.finish();
             }

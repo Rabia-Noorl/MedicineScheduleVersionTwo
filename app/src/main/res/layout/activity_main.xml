@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:id="@+id/layout"
-    android:background="@color/themeColor">
+    android:background="@drawable/image">
 
 
 <!--    <com.airbnb.lottie.LottieAnimationView-->
@@ -29,17 +29,17 @@
 <!--        app:lottie_fileName="animation.json"-->
 <!--        app:lottie_loop="true" />-->
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="133dp"
-        android:layout_height="98dp"
-        android:src="@drawable/medicine"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.347"></ImageView>
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView2"-->
+<!--        android:layout_width="133dp"-->
+<!--        android:layout_height="98dp"-->
+<!--        android:src="@drawable/medicine"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.347"></ImageView>-->
 
     <TextView
         android:id="@+id/txtmedicine"
@@ -47,11 +47,11 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
         android:text="Medicine Reminder"
-        android:textColor="@color/textColor"
+        android:textColor="@color/darkPeach"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

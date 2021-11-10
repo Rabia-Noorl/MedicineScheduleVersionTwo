@@ -183,6 +183,9 @@ class AddMedication : AppCompatActivity() {
 
             timePicker.show()
 
+
+
+
         })
         binding.txtvwtime2.setOnClickListener(View.OnClickListener {
             var calendar= Calendar.getInstance()

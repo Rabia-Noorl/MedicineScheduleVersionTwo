@@ -8,6 +8,11 @@ import android.view.View
 import android.widget.*
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
+import kotlin.collections.HashMap
+import kotlin.jvm.internal.Intrinsics
 
 class SignUp : AppCompatActivity() {
 
@@ -18,6 +23,7 @@ class SignUp : AppCompatActivity() {
     private var signIUpBtn : Button? = null
     private var alreadyHaveAcc: TextView? = null
     private var mProgressBar: ProgressBar? = null
+    private var db:FirebaseFirestore?=null
     private var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
     var authStateListener: FirebaseAuth.AuthStateListener? = null
 
@@ -30,6 +36,7 @@ class SignUp : AppCompatActivity() {
         passwordEditText  = findViewById<EditText>(R.id.passwordET) as EditText
         confirmPasswrdEditText  = findViewById<EditText>(R.id.confirmPasswrdET) as EditText
         signIUpBtn  = findViewById<Button>(R.id.signUpBtn) as Button
+
         alreadyHaveAcc =findViewById<TextView>(R.id.txtalreadyAccount) as TextView
 
         authStateListener = FirebaseAuth.AuthStateListener()
@@ -39,6 +46,7 @@ class SignUp : AppCompatActivity() {
 
         signIUpBtn!!.setOnClickListener{
             creatUser()
+            getData()
         }
 
         alreadyHaveAcc?.setOnClickListener(fun(it: View) {
@@ -48,6 +56,10 @@ class SignUp : AppCompatActivity() {
         })
    }
 
+    private fun getData() {
+
+    }
+
     private fun creatUser() {
         if( !validateEmail() || !validatePasword())
         {
@@ -55,7 +67,22 @@ class SignUp : AppCompatActivity() {
         }
         var email:String = emailEditText?.text.toString().trim()
         var password:String = passwordEditText?.text.toString().trim()
-        var userNaame:String = passwordEditText?.text.toString().trim()
+        var userName:String = userNameEditText?.text.toString().trim()
+        var confirmPassword= confirmPasswrdEditText?.text.toString().trim()
+//        db= FirebaseFirestore.getInstance()
+//        val user:MutableMap<String,Any> = HashMap()
+//        user["Username"]=userName
+//        user["Email"]=email
+//        user["Password"]=password
+//        user["Confirm Password"]=confirmPassword
+//        db!!.collection("users")
+//            .add(user).addOnSuccessListener {
+//                Toast.makeText(this,"Successfully Added",Toast.LENGTH_SHORT).show()
+//            }
+//            .addOnFailureListener{
+//                Toast.makeText(this,"Failed",Toast.LENGTH_SHORT).show()
+
+   //         }
 
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener{ task ->
             if(task.isSuccessful){

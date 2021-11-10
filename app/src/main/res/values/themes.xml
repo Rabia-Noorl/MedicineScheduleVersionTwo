@@ -31,7 +31,7 @@
     <style name="Theme.MedicineSchedule.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="Floatstyle">
-        <item name="android:background">@color/lightPeach</item>
+        <item name="android:background">@drawable/bg_label</item>
         <item name="android:textColor">@color/textColor</item>
         <item name="android:textStyle">bold</item>
     </style>

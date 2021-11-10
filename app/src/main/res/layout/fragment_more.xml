@@ -6,7 +6,7 @@
         android:layout_height="match_parent"
         android:background="@color/themeColor"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".ui.more.MoreFragment">
+        tools:context=".fragments.more.MoreFragment">
 
     <LinearLayout
             android:orientation="vertical"

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.medicineschedule">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,21 +11,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MedicineSchedule">
-        <activity android:name=".DictionaryActivity"></activity>
+        <activity android:name=".SignInWithGoogle"></activity>
+        <activity android:name=".DictionaryActivity" />
         <activity android:name=".SplashScreen" />
         <activity android:name=".AddMeasurements" />
         <activity android:name=".AddDose" />
         <activity android:name=".AddMedication" />
-        <activity android:name=".HomeScreen">
+        <activity android:name=".HomeScreen"></activity>
+        <activity android:name=".SignUp" />
+        <activity android:name=".SignIn"></activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUp"/>
-        <activity android:name=".SignIn">
-        </activity>
-        <activity android:name=".MainActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
