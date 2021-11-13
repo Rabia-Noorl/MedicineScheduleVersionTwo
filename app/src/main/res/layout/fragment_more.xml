@@ -1,242 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/themeColor"
+        android:background="@color/white"
+      android:layout_gravity="center_horizontal"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".fragments.more.MoreFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linLayoutDrugs"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/pills"></ImageView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Drugs"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:textColor="@color/textColor"></TextView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linLayoutMeasurements"
+        android:layout_below="@+id/linLayoutDrugs"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_measurementwhite"></ImageView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Measurements"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:textColor="@color/textColor"></TextView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linLayoutLRefill"
+        android:layout_below="@+id/linLayoutMeasurements"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_refill"></ImageView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Refill"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:textColor="@color/textColor"></TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linLayoutAppointments"
+        android:layout_below="@+id/linLayoutLRefill"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/doctor"></ImageView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Appointments"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:textColor="@color/textColor"></TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linLayoutNotes"
+        android:layout_below="@+id/linLayoutAppointments"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_notes"></ImageView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notes"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:textColor="@color/textColor"></TextView>
+
+    </LinearLayout>
 
     <LinearLayout
-            android:orientation="vertical"
-        android:layout_marginTop="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linLayoutReport"
+        android:layout_below="@+id/linLayoutNotes"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_medicalreports"></ImageView>
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:text="Report"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:textColor="@color/textColor"></TextView>
 
-            <GridLayout
-                android:columnCount="2"
-                android:rowCount="3"
-                android:alignmentMode="alignMargins"
-                android:columnOrderPreserved="false"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="1dp"
+        android:layout_below="@+id/linLayoutReport"
+        android:background="#D5DDE1"></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linLayoutSettings"
+        android:layout_below="@+id/linLayoutReport"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card_view1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"
-                    app:cardElevation="6dp"
-                    app:cardCornerRadius="12dp"
-                    android:layout_margin="12dp">
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_settings_24"></ImageView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:textColor="@color/textColor"></TextView>
 
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:gravity="center"
-                        android:background="@color/bgColor"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linLayoutHelp"
+        android:layout_below="@+id/linLayoutSettings"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
 
-                        <ImageView
-                            android:src="@drawable/pills"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp" />
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_help"></ImageView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Help"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:textColor="@color/textColor"></TextView>
 
-                        <TextView
-                            android:layout_marginTop="12dp"
-                            android:textColor="@color/textColor"
-                            android:textSize="18sp"
-                            android:text="Drugs"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+    </LinearLayout>
 
-                    </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card_view2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"
-                    app:cardElevation="6dp"
-                    app:cardCornerRadius="12dp"
-                    android:layout_margin="12dp">
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/bgColor">
-
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/ic_refill"/>
-
-                        <TextView
-                            android:layout_marginTop="12dp"
-                            android:textColor="@color/textColor"
-                            android:textSize="18sp"
-                            android:text="Refill"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"/>
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card_view3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"
-                    app:cardElevation="6dp"
-                    app:cardCornerRadius="12dp"
-                    android:layout_margin="12dp">
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/bgColor">
-
-                        <ImageView
-                            android:src="@drawable/ic_measurementwhite"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp" />
-
-                        <TextView
-                            android:layout_marginTop="12dp"
-                            android:textColor="@color/textColor"
-                            android:textSize="18sp"
-                            android:text="Measurements"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"/>
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card_view4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"
-                    app:cardElevation="6dp"
-                    app:cardCornerRadius="12dp"
-                    android:layout_margin="12dp">
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/bgColor">
-
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/doctor"/>
-
-                        <TextView
-                            android:layout_marginTop="12dp"
-                            android:textColor="@color/textColor"
-                            android:textSize="18sp"
-                            android:text="Appointments"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"/>
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card_view5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"
-                    app:cardElevation="6dp"
-                    app:cardCornerRadius="12dp"
-                    android:layout_margin="12dp">
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/bgColor">
-
-                        <ImageView
-                            android:src="@drawable/ic_notes"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp" />
-
-                        <TextView
-                            android:layout_marginTop="12dp"
-                            android:textColor="@color/textColor"
-                            android:textSize="18sp"
-                            android:text="Notes"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"/>
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card_view6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"
-                    app:cardElevation="6dp"
-                    app:cardCornerRadius="12dp"
-                    android:layout_margin="12dp">
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/bgColor">
-
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/medicalfile"/>
-
-                        <TextView
-                            android:layout_marginTop="12dp"
-                            android:textColor="@color/textColor"
-                            android:textSize="18sp"
-                            android:text="Reports"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"/>
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-            </GridLayout>
-        </LinearLayout>
-</ScrollView>
+</RelativeLayout>

@@ -4,7 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toolbar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
@@ -14,12 +17,11 @@ import com.bumptech.glide.Glide
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import kotlinx.android.synthetic.main.nav_headrer_layout.*
+import kotlinx.android.synthetic.main.activity_adapter_.*
 
 
 class HomeScreen : AppCompatActivity() {
@@ -30,6 +32,7 @@ class HomeScreen : AppCompatActivity() {
     lateinit var actionBarDrawerToggle:ActionBarDrawerToggle
     var textEmail:TextView?=null
     var textUserName:TextView?=null
+    val toolbar:Toolbar?=null
    private  var currentUser: FirebaseUser? =mAuth.currentUser
     private lateinit var googleSignInClient: GoogleSignInClient
     val authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
@@ -43,14 +46,23 @@ class HomeScreen : AppCompatActivity() {
 
 //        searcBtn = findViewById<Button>(R.id.searcBtn) as Button
 
+        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar()?.setHomeButtonEnabled(true);
+
         val bottomNavigationView=findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         val navController= Navigation.findNavController(this, R.id.frag_layout)
         val drawerLayout=findViewById<DrawerLayout>(R.id.drawer_layout)
         val navigationView=findViewById<NavigationView>(R.id.navigation_view)
     textUserName=findViewById<TextView>(R.id.userNameTV)
         textEmail=findViewById<TextView>(R.id.userEmailTV)
-        var googleSignInOptions= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
+        var googleSignInOptions= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(
+            getString(
+                R.string.default_web_client_id
+            )
+        ).requestEmail().build()
         googleSignInClient= GoogleSignIn.getClient(this, googleSignInOptions)
+//        toolbar = findViewById(R.id.my_toolbar) as Toolbar
+//        setSupportActionBar(toolbar)
 
 //requestIdToken(
 //            getString(R.string.default_web_client_id)

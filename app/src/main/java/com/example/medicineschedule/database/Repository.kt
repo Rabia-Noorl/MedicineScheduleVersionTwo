@@ -6,6 +6,7 @@ class Repository(private val reminderDao: ReminderDao) {
 
     val allReminder: LiveData<List<ReminderTracker>> = reminderDao.getAllRemiders()
 
+
     suspend fun insert(reminder: ReminderTracker){
         reminderDao.insert(reminder)
     }
