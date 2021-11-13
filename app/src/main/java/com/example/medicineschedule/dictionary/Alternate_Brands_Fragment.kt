@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
@@ -16,6 +17,7 @@ class Alternate_Brands_Fragment : Fragment(R.layout.fragment_alternate__brands_)
 
     private lateinit var binding: FragmentAlternateBrandsBinding
     var naController: NavController? =null
+    lateinit var viewModel: AlternateBrand_ViewModel
 
 
     override fun onCreateView(
@@ -32,8 +34,19 @@ class Alternate_Brands_Fragment : Fragment(R.layout.fragment_alternate__brands_)
         super.onViewCreated(view, savedInstanceState)
         naController =  findNavController()
 
-        binding.aBviewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)).get(
-            AlternateBrand_ViewModel::class.java)
+        viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)).get(
+           AlternateBrand_ViewModel::class.java)
+        binding.aBviewModel = viewModel
+        binding.let {
+            it.lifecycleOwner = this
+            it.aBviewModel= viewModel
+        }
+        viewModel.drugRecord.observe(viewLifecycleOwner){
+            it?.let {
+                Toast.makeText(context, "${it.size} are total records", Toast.LENGTH_SHORT).show()
+                viewModel.ResValue(it)
+            }
+        }
 
 
     }

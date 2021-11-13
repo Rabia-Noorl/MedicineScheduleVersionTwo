@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:418428302030:android:a7ea308c65ef1bfd1c169f",
         "android_client_info": {
-          "package_name": "com.gamingpine.myapplication"
+          "package_name": "com.example.medicineschedule"
         }
       },
       "oauth_client": [
