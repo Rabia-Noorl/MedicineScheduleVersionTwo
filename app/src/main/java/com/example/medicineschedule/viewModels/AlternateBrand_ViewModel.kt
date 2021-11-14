@@ -1,36 +1,64 @@
 package com.example.medicineschedule.viewModels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
 import com.example.medicineschedule.BR
 import com.example.medicineschedule.R
-import com.example.medicineschedule.models.AlterBrandModel
-import com.example.medicineschedule.models.DummyRecModel
+import com.example.medicineschedule.database.FirebaseServiceDrug
+import com.example.medicineschedule.models.Drug
 import com.fraggjkee.recycleradapter.RecyclerItem
+import kotlinx.coroutines.launch
 import java.util.ArrayList
 
-class AlternateBrand_ViewModel: ViewModel() {
+class AlternateBrand_ViewModel(application: Application) : AndroidViewModel(application)  {
+
+    var list = ArrayList<Drug>()
+        private var _drugRecode = MutableLiveData<List<Drug>?>()
+        val drugRecord: MutableLiveData<List<Drug>?> = _drugRecode
 
     private val _recyclerItems = MutableLiveData<List<RecyclerItem>>()
     val recyclerItems: LiveData<List<RecyclerItem>> = _recyclerItems
 
-    init {
-        _recyclerItems.value = dataGenerter().map { it.toRecyclerItem() }
+    // Real-world apps should use SingleLiveData instead. RxJava / Coroutines could also work
+    // better for one-time event streams.
+    private val _toastMessage = MutableLiveData<String>()
+    val toastMessage: LiveData<String> = _toastMessage
+
+   init {
+       viewModelScope.launch {
+           var drug:Drug? = FirebaseServiceDrug.FirebaseProfileService.getDrugeData("Drug")
+           if (drug != null) {
+               list.add(drug)
+               _drugRecode.postValue(listOf(drug))
+           }
+       }
     }
 
+    fun ResValue(list: List<Drug>) {
+        _recyclerItems.value = list
+            ?.map {
+                createUserItemViewModel(it)
+            }
+            ?.map {
+                it.toRecyclerItem()
+            }
 
-    private fun AlterBrandModel.toRecyclerItem() = RecyclerItem(
+    }
+
+    private fun createUserItemViewModel(drug: Drug): DrugItemViewModel {
+        return DrugItemViewModel(drug).apply {
+            itemClickHandler = { drug -> showClickMessage(drug) }
+        }
+    }
+
+    private fun showClickMessage(drug: Drug) {
+        _toastMessage.postValue(
+            "${drug.name}  is clicked"
+        )
+    }
+        fun DrugItemViewModel.toRecyclerItem() = RecyclerItem(
         data = this,
         layoutId = R.layout.view_of_alternat_brands,
         variableId = BR.model
     )
-    fun dataGenerter():ArrayList<AlterBrandModel>{
-        val list: ArrayList<AlterBrandModel> = ArrayList()
-        list.add(AlterBrandModel("ZEGESIC 250mg Tablet 200s"))
-        list.add(AlterBrandModel("ZOPAN 250mg Tablet 10x10s"))
-        list.add(AlterBrandModel("WENAMIC 250mg Tablet 10x10s"))
-        list.add(AlterBrandModel("WILSTAN 250mg Tablet 20x10s"))
-        return list
-    }
 }

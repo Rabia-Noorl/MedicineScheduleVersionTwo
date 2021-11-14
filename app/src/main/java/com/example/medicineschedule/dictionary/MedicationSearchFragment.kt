@@ -6,15 +6,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
+import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.medicineschedule.R
 import com.example.medicineschedule.databinding.FragmentMedicationSearchBinding
+import com.example.medicineschedule.models.Drug
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_medication_search.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 class MedicationSearchFragment : Fragment(R.layout.fragment_medication_search) {
 
     private lateinit var binding: FragmentMedicationSearchBinding
+
 
     var naController: NavController? =null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
