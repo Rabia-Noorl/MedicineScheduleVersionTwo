@@ -23,8 +23,9 @@
             android:layout_height="wrap_content"
             android:text="Drugs"
             android:layout_marginLeft="20dp"
-            android:textSize="20dp"
-            android:textColor="@color/textColor"></TextView>
+            android:textSize="15dp"
+            android:textColor="@color/textColor"
+            android:textStyle="bold"></TextView>
 
     </LinearLayout>
     <LinearLayout
@@ -44,8 +45,9 @@
             android:layout_height="wrap_content"
             android:text="Measurements"
             android:layout_marginLeft="20dp"
-            android:textSize="20dp"
-            android:textColor="@color/textColor"></TextView>
+            android:textSize="15dp"
+            android:textColor="@color/textColor"
+            android:textStyle="bold"></TextView>
 
     </LinearLayout>
     <LinearLayout
@@ -63,10 +65,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Refill"
+            android:text="Refills"
             android:layout_marginLeft="20dp"
-            android:textSize="20dp"
-            android:textColor="@color/textColor"></TextView>
+            android:textSize="15dp"
+            android:textColor="@color/textColor"
+            android:textStyle="bold"></TextView>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -85,8 +88,9 @@
             android:layout_height="wrap_content"
             android:text="Appointments"
             android:layout_marginLeft="20dp"
-            android:textSize="20dp"
-            android:textColor="@color/textColor"></TextView>
+            android:textSize="15dp"
+            android:textColor="@color/textColor"
+            android:textStyle="bold"></TextView>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -105,8 +109,9 @@
             android:layout_height="wrap_content"
             android:text="Notes"
             android:layout_marginLeft="20dp"
-            android:textSize="20dp"
-            android:textColor="@color/textColor"></TextView>
+            android:textSize="15dp"
+            android:textColor="@color/textColor"
+            android:textStyle="bold"></TextView>
 
     </LinearLayout>
 
@@ -127,8 +132,9 @@
             android:layout_height="wrap_content"
             android:text="Report"
             android:layout_marginLeft="20dp"
-            android:textSize="20dp"
-            android:textColor="@color/textColor"></TextView>
+            android:textSize="15dp"
+            android:textColor="@color/textColor"
+            android:textStyle="bold"></TextView>
 
     </LinearLayout>
     <LinearLayout
@@ -154,8 +160,9 @@
             android:layout_height="wrap_content"
             android:text="Settings"
             android:layout_marginLeft="20dp"
-            android:textSize="20dp"
-            android:textColor="@color/textColor"></TextView>
+            android:textSize="15dp"
+            android:textColor="@color/textColor"
+            android:textStyle="bold"></TextView>
 
     </LinearLayout>
     <LinearLayout
@@ -175,8 +182,9 @@
             android:layout_height="wrap_content"
             android:text="Help"
             android:layout_marginLeft="20dp"
-            android:textSize="20dp"
-            android:textColor="@color/textColor"></TextView>
+            android:textSize="15dp"
+            android:textColor="@color/textColor"
+            android:textStyle="bold"></TextView>
 
     </LinearLayout>
 
