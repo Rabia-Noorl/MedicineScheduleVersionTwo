@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.medicineschedule.*
@@ -60,10 +61,18 @@ class MoreFragment : Fragment() {
                 val doseIntent = Intent(getActivity(), NotesActivity::class.java)
                 startActivity(doseIntent)
             }
-//            R.id.linLayoutReport -> {
-//                val reportIntent = Intent(activity,MedicationFragment::class.java)
-//                startActivity(reportIntent)
-//            }
+            R.id.linLayoutReport -> {
+//                fun FragmentActivity.replaceFragment(fragment: Fragment, frameId: Int = R.id.fragment_container, addToStack: Boolean) {
+//val doesFragmentAlreadyExists = supportFragmentManager.findFragmentByTag(fragment.javaClass.simpleName) != null
+//if (!doesFragmentAlreadyExists) {
+//    supportFragmentManager.inTransaction {
+//        if (addToStack) replace(frameId, fragment, fragment.javaClass.simpleName)
+//            .addToBackStack(fragment.javaClass.simpleName)
+//        else
+//            replace(frameId, fragment, fragment.javaClass.simpleName)
+//    }
+//}}
+            }
     }
 
         }
