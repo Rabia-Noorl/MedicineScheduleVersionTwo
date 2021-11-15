@@ -12,9 +12,11 @@ import com.bumptech.glide.Glide
 import com.example.medicineschedule.*
 import com.example.medicineschedule.databinding.FragmentHomeBinding
 import com.example.medicineschedule.databinding.FragmentMoreBinding
+import com.example.medicineschedule.fragments.medication.MedicationFragment
 import com.example.medicineschedule.viewModels.HomeRecViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import kotlinx.android.synthetic.main.activity_dictionary.*
 
 class MoreFragment : Fragment() {
 
@@ -46,6 +48,10 @@ class MoreFragment : Fragment() {
         binding.linLayoutNotes.setOnClickListener {
             onClick(it)
         }
+        binding.linLayoutReport.setOnClickListener {
+            onClick(it)
+        }
+
     }
     fun onClick(v: View?) {
         when (v?.id) {
@@ -54,6 +60,10 @@ class MoreFragment : Fragment() {
                 val doseIntent = Intent(getActivity(), NotesActivity::class.java)
                 startActivity(doseIntent)
             }
+//            R.id.linLayoutReport -> {
+//                val reportIntent = Intent(activity,MedicationFragment::class.java)
+//                startActivity(reportIntent)
+//            }
     }
 
         }

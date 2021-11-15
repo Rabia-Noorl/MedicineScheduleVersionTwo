@@ -3,12 +3,14 @@
     <item android:id="@+id/navigation_home"
         android:title="Home"
         android:icon="@drawable/ic_home"></item>
-    <item android:id="@+id/navigation_medication"
-        android:title="Medication"
-        android:icon="@drawable/ic_medication"></item>
-    <item android:id="@+id/navigation_pharmacy"
-        android:title="Pharmacy"
-        android:icon="@drawable/ic_pharmacy"></item>
+    <item
+        android:id="@+id/navigation_medication"
+        android:icon="@drawable/ic_adddrugwhite"
+        android:title="Medication"></item>
+    <item
+        android:id="@+id/navigation_pharmacy"
+        android:icon="@drawable/ic_medicalreports"
+        android:title="Track"></item>
     <item android:id="@+id/navigation_more"
         android:title="More"
         android:icon="@drawable/ic_more"></item>

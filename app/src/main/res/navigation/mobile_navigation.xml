@@ -17,7 +17,8 @@
         android:label="More"
         tools:layout="@layout/fragment_more"/>
     <fragment
-        android:id="@+id/medicationFragment"
+        android:id="@+id/navigation_medication"
         android:name="com.example.medicineschedule.fragments.medication.MedicationFragment"
-        android:label="MedicationFragment" />
+        android:label="Medication"
+        tools:layout="@layout/fragment_medication2"/>
 </navigation>
