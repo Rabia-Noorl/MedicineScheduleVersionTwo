@@ -4,20 +4,33 @@ package com.example.medicineschedule
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.View.VISIBLE
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.accessibility.AccessibilityViewCommand
+import androidx.lifecycle.ViewModelProvider
+import com.example.medicineschedule.database.ReminderTracker
 import com.example.medicineschedule.databinding.ActivityAddDoseBinding
 import com.example.medicineschedule.databinding.ActivityAddMedicationBinding
+import com.example.medicineschedule.viewModels.HomeRecViewModel
+import com.example.medicineschedule.viewModels.MedicineRecViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
 class AddDose : AppCompatActivity() {
+
+    lateinit var viewModel: HomeRecViewModel
+    lateinit var medViewModel: MedicineRecViewModel
+
+
+
     lateinit var binding: ActivityAddDoseBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddDoseBinding.inflate(layoutInflater)
@@ -29,6 +42,22 @@ class AddDose : AppCompatActivity() {
         var dateFormat=SimpleDateFormat("dd MMM YY",Locale.US)
         var  thour:Int
         var tmint:Int
+
+
+        viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(
+            HomeRecViewModel::class.java)
+        medViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(
+            MedicineRecViewModel::class.java)
+
+        binding.doseSave.setOnClickListener {
+            addDoseReminder()
+        }
+        binding.backArrowAddDose.setOnClickListener{
+            val intent = Intent(this, HomeScreen::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         binding.Instructions.setOnClickListener(View.OnClickListener {
             var alertDialogIns = AlertDialog.Builder(this)
             alertDialogIns.setTitle("Select Instruction")
@@ -314,6 +343,28 @@ class AddDose : AppCompatActivity() {
 
 
 //        })
+
+    }
+    private fun addDoseReminder() {
+        var name = binding.medicationName.text.toString()
+        var type = binding.medTypeTV.text.toString()
+        var quantity = binding.adddosequantity.text.toString()
+        var instructions = binding.Instructions.text.toString()
+        var time = binding.txtvwdosetime1.text.toString()
+
+        if ( name.length >  0 && type.length >  0 && quantity.length > 0 && time.length > 0 ){
+
+            var remider = ReminderTracker("$type", "$name" ,"Take medicines at: $time" ,"No", "$quantity", "$instructions")
+            viewModel.onAddClick(remider)
+            medViewModel.addFun(remider)
+
+            val intent = Intent(this, HomeScreen::class.java)
+            startActivity(intent)
+            finish()
+
+        }else{
+            Toast.makeText(this, "Manadatory fields are missing" , Toast.LENGTH_SHORT).show()
+        }
 
     }
 }

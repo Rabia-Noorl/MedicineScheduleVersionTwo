@@ -4,20 +4,28 @@ package com.example.medicineschedule
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.View.VISIBLE
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.accessibility.AccessibilityViewCommand
+import androidx.lifecycle.ViewModelProvider
+import com.example.medicineschedule.database.ReminderTracker
 import com.example.medicineschedule.databinding.ActivityAddMeasurementsBinding
 import com.example.medicineschedule.databinding.ActivityAddMedicationBinding
+import com.example.medicineschedule.viewModels.HomeRecViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
 class AddMeasurements : AppCompatActivity() {
+    lateinit var viewModel: HomeRecViewModel
     lateinit var binding: ActivityAddMeasurementsBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddMeasurementsBinding.inflate(layoutInflater)
@@ -30,6 +38,20 @@ class AddMeasurements : AppCompatActivity() {
         var dateFormat=SimpleDateFormat("dd MMM YY",Locale.US)
         var  mthour:Int
         var mtmint:Int
+
+
+        viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(
+            HomeRecViewModel::class.java)
+
+        binding.saveMeasurement.setOnClickListener{
+            addMeasrementReminder()
+        }
+        binding.backArrowMeasurment.setOnClickListener{
+            val intent = Intent(this, HomeScreen::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         binding.measurement.setOnClickListener(View.OnClickListener {
             var alertDialogDose = AlertDialog.Builder(this)
             alertDialogDose.setTitle("Select Measurement")
@@ -327,6 +349,26 @@ class AddMeasurements : AppCompatActivity() {
 
 
 //        })
+
+    }
+    private fun addMeasrementReminder() {
+        var name = binding.measurement.text.toString()
+        //   var type = binding.tvMeasureValue .text.toString()
+        var quantity = binding.tvMeasureValue .text.toString()
+        var instructions = binding.MInstructions.text.toString()
+        var time = binding.txtvwMtime1.text.toString()
+
+        if ( name.length >  0 && quantity.length > 0 && time.length > 0 ){
+
+            var remider = ReminderTracker("", "$name" ,"Measurement at: $time" ,"No", "$quantity", "$instructions")
+            viewModel.onAddClick(remider)
+            val intent = Intent(this, HomeScreen::class.java)
+            startActivity(intent)
+            finish()
+
+        }else{
+            Toast.makeText(this, "Manadatory fields are missing" , Toast.LENGTH_SHORT).show()
+        }
 
     }
 }

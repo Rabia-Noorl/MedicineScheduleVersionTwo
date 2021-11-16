@@ -7,13 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.medicineschedule.*
 import com.example.medicineschedule.databinding.FragmentHomeBinding
 import com.example.medicineschedule.databinding.FragmentMoreBinding
 import com.example.medicineschedule.fragments.medication.MedicationFragment
+import com.example.medicineschedule.fragments.pharmacy.PharmacyFragment
 import com.example.medicineschedule.viewModels.HomeRecViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -52,7 +52,16 @@ class MoreFragment : Fragment() {
         binding.linLayoutReport.setOnClickListener {
             onClick(it)
         }
+        binding.linLayoutDrugs.setOnClickListener {
+            onClick(it)
+        }
 
+        binding.linLayoutMeasurements.setOnClickListener {
+            onClick(it)
+        }
+        binding.linLayoutAppointments.setOnClickListener {
+            onClick(it)
+        }
     }
     fun onClick(v: View?) {
         when (v?.id) {
@@ -61,17 +70,20 @@ class MoreFragment : Fragment() {
                 val doseIntent = Intent(getActivity(), NotesActivity::class.java)
                 startActivity(doseIntent)
             }
+            R.id.linLayoutDrugs -> {
+                val reportIntent = Intent(activity, DictionaryActivity::class.java)
+                startActivity(reportIntent)
+            }
+            R.id.linLayoutMeasurement -> {
+                val reportIntent = Intent(activity, DictionaryActivity::class.java)
+                startActivity(reportIntent)
+            }
+            R.id.linLayoutAppointments -> {
+                val reportIntent = Intent(activity, DictionaryActivity::class.java)
+                startActivity(reportIntent)
+            }
             R.id.linLayoutReport -> {
-//                fun FragmentActivity.replaceFragment(fragment: Fragment, frameId: Int = R.id.fragment_container, addToStack: Boolean) {
-//val doesFragmentAlreadyExists = supportFragmentManager.findFragmentByTag(fragment.javaClass.simpleName) != null
-//if (!doesFragmentAlreadyExists) {
-//    supportFragmentManager.inTransaction {
-//        if (addToStack) replace(frameId, fragment, fragment.javaClass.simpleName)
-//            .addToBackStack(fragment.javaClass.simpleName)
-//        else
-//            replace(frameId, fragment, fragment.javaClass.simpleName)
-//    }
-//}}
+                
             }
     }
 

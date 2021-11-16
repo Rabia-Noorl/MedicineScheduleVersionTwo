@@ -33,10 +33,10 @@ class HomeScreen : AppCompatActivity() {
     var textEmail:TextView?=null
     var textUserName:TextView?=null
     val toolbar:Toolbar?=null
-   private  var currentUser: FirebaseUser? =mAuth.currentUser
+    private  var currentUser: FirebaseUser? =mAuth.currentUser
     private lateinit var googleSignInClient: GoogleSignInClient
     val authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
-       // updateUI()
+        // updateUI()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +53,7 @@ class HomeScreen : AppCompatActivity() {
         val navController= Navigation.findNavController(this, R.id.frag_layout)
         val drawerLayout=findViewById<DrawerLayout>(R.id.drawer_layout)
         val navigationView=findViewById<NavigationView>(R.id.navigation_view)
-    textUserName=findViewById<TextView>(R.id.userNameTV)
+        textUserName=findViewById<TextView>(R.id.userNameTV)
         textEmail=findViewById<TextView>(R.id.userEmailTV)
         var googleSignInOptions= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(
             getString(
@@ -120,7 +120,7 @@ class HomeScreen : AppCompatActivity() {
         FirebaseAuth.getInstance().signOut()
         googleSignInClient.signOut().addOnCompleteListener {
             updateUI()
-             }
+        }
 
     }
 
@@ -133,8 +133,6 @@ class HomeScreen : AppCompatActivity() {
             finish()
         }
     }
-
-
     override fun onResume() {
         super.onResume()
         mAuth!!.addAuthStateListener(this.authStateListener!!)

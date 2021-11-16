@@ -8,182 +8,209 @@
       android:layout_gravity="center_horizontal"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".fragments.more.MoreFragment">
+
     <LinearLayout
+        android:id="@+id/linLayoutDrugs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linLayoutDrugs"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
+
         <ImageView
-            android:layout_width="64dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@drawable/pills"></ImageView>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Drugs"
             android:layout_marginLeft="20dp"
-            android:textSize="15dp"
+            android:text="Drugs"
             android:textColor="@color/textColor"
+            android:textSize="18sp"
             android:textStyle="bold"></TextView>
 
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/linLayoutMeasurements"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linLayoutMeasurements"
         android:layout_below="@+id/linLayoutDrugs"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <ImageView
             android:layout_width="64dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_measurementwhite"></ImageView>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Measurements"
             android:layout_marginLeft="20dp"
-            android:textSize="15dp"
+            android:text="Measurements"
             android:textColor="@color/textColor"
+            android:textSize="18sp"
             android:textStyle="bold"></TextView>
 
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/linLayoutLRefill"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linLayoutLRefill"
         android:layout_below="@+id/linLayoutMeasurements"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <ImageView
             android:layout_width="64dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_refill"></ImageView>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Refills"
             android:layout_marginLeft="20dp"
-            android:textSize="15dp"
+            android:text="Refills"
             android:textColor="@color/textColor"
+            android:textSize="18sp"
             android:textStyle="bold"></TextView>
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/linLayoutAppointments"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linLayoutAppointments"
         android:layout_below="@+id/linLayoutLRefill"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <ImageView
             android:layout_width="64dp"
             android:layout_height="match_parent"
             android:src="@drawable/doctor"></ImageView>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Appointments"
             android:layout_marginLeft="20dp"
-            android:textSize="15dp"
+            android:text="Appointments"
             android:textColor="@color/textColor"
+            android:textSize="18sp"
             android:textStyle="bold"></TextView>
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/linLayoutNotes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linLayoutNotes"
         android:layout_below="@+id/linLayoutAppointments"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <ImageView
             android:layout_width="64dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_notes"></ImageView>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Notes"
             android:layout_marginLeft="20dp"
-            android:textSize="15dp"
+            android:text="Notes"
             android:textColor="@color/textColor"
+            android:textSize="18sp"
             android:textStyle="bold"></TextView>
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linLayoutReport"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linLayoutReport"
         android:layout_below="@+id/linLayoutNotes"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <ImageView
             android:layout_width="64dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_medicalreports"></ImageView>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Report"
             android:layout_marginLeft="20dp"
-            android:textSize="15dp"
+            android:text="Report"
             android:textColor="@color/textColor"
+            android:textSize="18sp"
             android:textStyle="bold"></TextView>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
-        android:layout_height="1dp"
+        android:layout_height="3dp"
         android:layout_below="@+id/linLayoutReport"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
         android:background="#D5DDE1"></LinearLayout>
+
     <LinearLayout
+        android:id="@+id/linLayoutSettings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linLayoutSettings"
         android:layout_below="@+id/linLayoutReport"
         android:layout_marginTop="40dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <ImageView
             android:layout_width="64dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_baseline_settings_24"></ImageView>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Settings"
             android:layout_marginLeft="20dp"
-            android:textSize="15dp"
+            android:text="Settings"
             android:textColor="@color/textColor"
+            android:textSize="18sp"
             android:textStyle="bold"></TextView>
 
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/linLayoutHelp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linLayoutHelp"
         android:layout_below="@+id/linLayoutSettings"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <ImageView
             android:layout_width="64dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_help"></ImageView>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Help"
             android:layout_marginLeft="20dp"
-            android:textSize="15dp"
+            android:text="Help"
             android:textColor="@color/textColor"
+            android:textSize="18sp"
             android:textStyle="bold"></TextView>
 
     </LinearLayout>

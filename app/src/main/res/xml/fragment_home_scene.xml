@@ -16,11 +16,11 @@
                android:alpha="0.3" />
 
            <KeyAttribute
-               motion:motionTarget="@+id/profile_image"
+               motion:motionTarget="@+id/imageProfile"
                motion:framePosition="100"
                android:alpha="0" />
            <KeyAttribute
-               motion:motionTarget="@+id/profile_image"
+               motion:motionTarget="@+id/imageProfile"
                motion:framePosition="50"
                android:alpha="0" />
 
@@ -48,17 +48,17 @@
             motion:layout_constraintHorizontal_bias="1.0"
             motion:layout_constraintEnd_toEndOf="@id/view8"
             android:layout_width="70dp"
-            android:id="@+id/profile_image"
+            android:id="@+id/imageProfile"
             android:layout_marginTop="50dp"
             android:layout_marginStart="0dp" />
         <Constraint
             android:layout_height="wrap_content"
-            motion:layout_constraintStart_toStartOf="@+id/profile_image"
+            motion:layout_constraintStart_toStartOf="@+id/imageProfile"
             motion:layout_constraintHorizontal_bias="0.0"
-            motion:layout_constraintEnd_toEndOf="@+id/profile_image"
+            motion:layout_constraintEnd_toEndOf="@+id/imageProfile"
             android:layout_width="wrap_content"
             android:id="@+id/textView6"
-            motion:layout_constraintTop_toBottomOf="@+id/profile_image"
+            motion:layout_constraintTop_toBottomOf="@+id/imageProfile"
             android:layout_marginTop="10dp" />
         <Constraint
             android:layout_height="wrap_content"

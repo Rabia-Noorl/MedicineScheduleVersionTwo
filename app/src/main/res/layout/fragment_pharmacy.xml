@@ -1,15 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.pharmacy.PharmacyFragment"
-    android:background="@color/bgColor">
+    android:background="@color/white">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        android:id="@+id/RelLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="pharmacy" />
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_rounder"
+        android:elevation="5dp">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/imglog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_track"></ImageView>
+
+        <TextView
+            android:id="@+id/mdlog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Track by Time Period"
+            android:textColor="@color/greyColr"
+            android:textSize="20dp"></TextView>
+
+        <AutoCompleteTextView
+            android:id="@+id/mdlogTrack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mdlog"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="150dp"
+            android:background="@color/themeColor"
+            android:cursorVisible="true"
+            android:drawableRight="@drawable/ic_dropdown"
+            android:focusableInTouchMode="false"
+            android:hint="Track Filters"
+            android:textAlignment="center"
+            android:textColor="@color/greyColr"
+            android:textColorHint="@color/textColor"
+            android:textColorLink="@color/textColor"
+            android:textCursorDrawable="@drawable/cursor"
+            android:textSize="18dp" />
+    </RelativeLayout>
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/homeLottieanim"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:alpha="0.5"
+        android:visibility="visible"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/repotanim" />
+
+    <TextView
+        android:id="@+id/initialTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/RelLayout"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="375dp"
+        android:paddingLeft="40dp"
+        android:paddingTop="10dp"
+        android:paddingRight="40dp"
+        android:text="No Medications Log\n Try changing the filtered medications or log period from above"
+        android:textAlignment="center" />
+
+
+</RelativeLayout>

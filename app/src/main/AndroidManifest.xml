@@ -20,6 +20,7 @@
         <activity android:name=".AddMeasurements" />
         <activity android:name=".AddDose" />
         <activity android:name=".AddMedication" />
+        <activity android:name=".AddDoctorActivity" />
         <activity android:name=".HomeScreen" />
         <activity android:name=".SignUp" />
         <activity android:name=".SignIn" />
