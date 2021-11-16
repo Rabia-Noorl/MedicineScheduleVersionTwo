@@ -228,8 +228,7 @@
                                 android:text="Set Alert"
                                 android:textColor="@color/design_default_color_primary_variant"
                                 android:textSize="16sp"
-                                android:theme="@style/switchColor"
-                                tools:ignore="UseSwitchCompatOrMaterialXml" />
+                                android:theme="@style/switchColor"/>
 
                             <EditText
                                 android:id="@+id/appointmentTime"

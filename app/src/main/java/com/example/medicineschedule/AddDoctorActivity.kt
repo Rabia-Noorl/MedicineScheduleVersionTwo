@@ -95,7 +95,6 @@ class AddDoctorActivity : AppCompatActivity() {
     }
 
     private fun showTimePicker() {
-        binding.appointmentTime.setOnClickListener(View.OnClickListener {
 
             var calendar= Calendar.getInstance()
             try{
@@ -115,8 +114,8 @@ class AddDoctorActivity : AppCompatActivity() {
 
             timePicker.show()
 
-        })
-    }
+        }
+
 //
 //    private fun creatNotificationChannel() {
 //        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O)
