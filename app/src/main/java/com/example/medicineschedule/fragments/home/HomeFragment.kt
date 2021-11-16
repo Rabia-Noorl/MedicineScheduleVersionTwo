@@ -116,9 +116,9 @@ class HomeFragment : Fragment(){
         binding.addMeasurement.setOnClickListener{
             onClick(it)
         }
-        binding.addReminder.setOnClickListener{
-            onClick(it)
-        }
+//        binding.addReminder.setOnClickListener{
+//            onClick(it)
+//        }
         binding.addDoctor.setOnClickListener{
             onClick(it)
         }
@@ -136,10 +136,10 @@ class HomeFragment : Fragment(){
                 val measurementIntent = Intent(getActivity(), AddMeasurements::class.java)
                 startActivity(measurementIntent)
             }
-            R.id.addReminder -> {
-                val reminderIntent = Intent(getActivity(), AddMedication::class.java)
-                startActivity(reminderIntent)
-            }
+//            R.id.addReminder -> {
+//                val reminderIntent = Intent(getActivity(), AddMedication::class.java)
+//                startActivity(reminderIntent)
+//            }
             R.id.addDoctor -> {
                 val reminderIntent = Intent(getActivity(), AddDoctorActivity::class.java)
                 startActivity(reminderIntent)
