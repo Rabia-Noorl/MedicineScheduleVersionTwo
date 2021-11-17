@@ -14,7 +14,6 @@ class AlarmReceiver: BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
 
         alarmOnly(context)
-
         var i = Intent(context, HomeScreen::class.java)
         intent!!.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         var pendingIntent = PendingIntent.getActivity(context,0,i,0)

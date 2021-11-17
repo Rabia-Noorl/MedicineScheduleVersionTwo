@@ -22,6 +22,7 @@ import com.bumptech.glide.Glide
 import com.example.medicineschedule.*
 import com.example.medicineschedule.R
 import com.example.medicineschedule.classes.AlarmReceiver
+import com.example.medicineschedule.database.ReminderTracker
 import com.example.medicineschedule.databinding.FragmentHomeBinding
 import com.example.medicineschedule.viewModels.HomeRecViewModel
 import com.example.medicineschedule.viewModels.MedicineRecViewModel
@@ -31,6 +32,7 @@ import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.nav_headrer_layout.view.*
 import java.sql.Time
+import java.text.SimpleDateFormat
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -90,22 +92,20 @@ class HomeFragment : Fragment(){
         viewModel.allRemiders.observe(viewLifecycleOwner){
             it?.let {
                 viewModel.addFun(it)
-                Toast.makeText(context, "Alarm and notification on  ${it.size}  records", Toast.LENGTH_SHORT).show()
+               // Toast.makeText(context, "Alarm and notification on  ${it.size}  records", Toast.LENGTH_SHORT).show()
                 var anim  = binding.homeLottieanim
                 var getStarted  = binding.textView9
                 var initialText  = binding.initialTV
                 anim.isVisible = it.isEmpty()
                 getStarted.isVisible = it.isEmpty()
                 initialText.isVisible = it.isEmpty()
+                setAlarm(it)
             }
         }
 
         binding.searchView2.setOnClickListener {
-
-            setAlarm()
             val intent = Intent(context, DictionaryActivity::class.java)
             startActivity(intent)
-
         }
     }
     private fun uiViews() {
@@ -168,23 +168,30 @@ class HomeFragment : Fragment(){
 
     }
 
-    private fun setAlarm() {
-  //      var t:Time =  Time(1637)
+    private fun setAlarm(list:List<ReminderTracker>) {
+        var m = 0
+        list.forEach() {
+            m++
+            var str = it.dateTimes.toString()
+            Toast.makeText(context, "$str", Toast.LENGTH_SHORT).show()
+            val sdf = SimpleDateFormat("HH:mm", Locale.ENGLISH)
+            calendar = Calendar.getInstance()
+            calendar.time = sdf.parse(str)
+            calendar[Calendar.HOUR_OF_DAY] = calendar.time.hours
+            calendar[Calendar.MINUTE] = calendar.time.minutes
+            calendar[Calendar.SECOND] = 0
+            calendar[Calendar.MILLISECOND] = 0
 
-        calendar = Calendar.getInstance()
-        calendar[Calendar.HOUR_OF_DAY] = calendar.time.hours
-        calendar[Calendar.MINUTE] = calendar.time.minutes
-        calendar[Calendar.SECOND] = 0+5
-        calendar[Calendar.MILLISECOND] = 0
-
-        alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val intent = Intent(context, AlarmReceiver::class.java)
-        pendingIntent = PendingIntent.getBroadcast(context,0,intent, 0)
-        alarmManager.setRepeating(
-            AlarmManager.RTC_WAKEUP, calendar.timeInMillis,
-            AlarmManager.INTERVAL_DAY,pendingIntent
-        )
-        Toast.makeText(context,"Alarm set successfully ${calendar.time}" , Toast.LENGTH_LONG).show()
+            alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val intent = Intent(context, AlarmReceiver::class.java)
+            pendingIntent = PendingIntent.getBroadcast(context, m, intent, 0)
+            alarmManager.setRepeating(
+                AlarmManager.RTC_WAKEUP, calendar.timeInMillis,
+                AlarmManager.INTERVAL_DAY, pendingIntent
+            )
+            Toast.makeText(context, "Alarm set successfully ${calendar.time}", Toast.LENGTH_LONG)
+                .show()
+        }
     }
     private fun cancelAlarm() {
 
