@@ -36,7 +36,6 @@
             android:layout_height="70dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="20dp"
-            android:elevation="10dp"
             android:src="@mipmap/ic_launcher"
             app:civ_border_color="@color/darkPeach"
             app:civ_border_width="5dp"
@@ -161,15 +160,17 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/dashboardRecyclerView"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="20dp"
             app:items="@{viewModel.recyclerItems}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textToday"
+            tools:itemCount="3"
             tools:listitem="@layout/view_of_dashboard_rv" />
 
         <com.getbase.floatingactionbutton.FloatingActionsMenu
@@ -177,23 +178,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="18dp"
+            android:elevation="5dp"
             app:fab_addButtonColorNormal="#1a6b5f"
             app:fab_addButtonColorPressed="@color/white"
             app:fab_expandDirection="up"
             app:fab_labelStyle="@style/Floatstyle"
             app:fab_labelsPosition="left"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"
+            >
 
-<!--            <com.getbase.floatingactionbutton.FloatingActionButton-->
-<!--                android:id="@+id/addReminder"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                app:fabSize="mini"-->
-<!--                app:fab_colorNormal="@color/bgColor"-->
-<!--                app:fab_colorPressed="@color/themeColor"-->
-<!--                app:fab_icon="@drawable/ic_reminder"-->
-<!--                app:fab_title="Add Medicine Reminder"></com.getbase.floatingactionbutton.FloatingActionButton>-->
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/addReminder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fabSize="mini"
+                app:fab_colorNormal="@color/bgColor"
+                app:fab_colorPressed="@color/themeColor"
+                app:fab_icon="@drawable/ic_reminder"
+                app:fab_title="Add Medicine Reminder"></com.getbase.floatingactionbutton.FloatingActionButton>
 
             <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/addDose"
@@ -225,6 +228,19 @@
                 app:fab_icon="@drawable/ic_addmeasurement"
                 app:fab_title="Add Measurements"></com.getbase.floatingactionbutton.FloatingActionButton>
         </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+        <LinearLayout
+            android:id="@+id/blureLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.8"
+            android:background="#000000"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

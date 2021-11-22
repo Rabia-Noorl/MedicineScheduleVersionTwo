@@ -9,14 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.View.VISIBLE
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.accessibility.AccessibilityViewCommand
 import androidx.lifecycle.ViewModelProvider
 import com.example.medicineschedule.database.ReminderTracker
 import com.example.medicineschedule.databinding.ActivityAddDoseBinding
-import com.example.medicineschedule.databinding.ActivityAddMedicationBinding
 import com.example.medicineschedule.viewModels.HomeRecViewModel
 import com.example.medicineschedule.viewModels.MedicineRecViewModel
 import java.text.SimpleDateFormat
@@ -354,16 +351,15 @@ class AddDose : AppCompatActivity() {
 
         if ( name.length >  0 && type.length >  0 && quantity.length > 0 && time.length > 0 ){
 
-            var remider = ReminderTracker("$type", "$name" ,"Take medicines at: $time" ,"No", "$quantity", "$instructions")
+            var remider = ReminderTracker("med", "$name" ,"$time" ,"Take", "$quantity", "Instructions: $instructions", "","","", false)
             viewModel.onAddClick(remider)
-            medViewModel.addFun(remider)
 
             val intent = Intent(this, HomeScreen::class.java)
             startActivity(intent)
             finish()
 
         }else{
-            Toast.makeText(this, "Manadatory fields are missing" , Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Mandatory fields are missing" , Toast.LENGTH_SHORT).show()
         }
 
     }

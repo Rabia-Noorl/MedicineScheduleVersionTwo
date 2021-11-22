@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 // Annotates class to be a Room Database with a table (entity) of the Word class
-@Database(entities = arrayOf(ReminderTracker::class), version =1, exportSchema = false)
+@Database(entities = arrayOf(ReminderTracker::class), version =2, exportSchema = false)
 abstract class ReminderDatabase: RoomDatabase() {
 
     abstract fun getReminderDao(): ReminderDao
@@ -25,7 +25,7 @@ abstract class ReminderDatabase: RoomDatabase() {
                     context.applicationContext,
                     ReminderDatabase::class.java,
                     "ReminderDatabase"
-                ).build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 // return instance
                 instance
