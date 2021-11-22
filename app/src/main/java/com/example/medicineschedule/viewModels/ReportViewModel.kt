@@ -1,8 +1,6 @@
 package com.example.medicineschedule.viewModels
 
 import android.app.Application
-import android.util.Range
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -16,8 +14,7 @@ import com.fraggjkee.recycleradapter.RecyclerItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MedicineRecViewModel(application: Application) : AndroidViewModel(application) {
-
+class ReportViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: Repository
     val allRemiders: LiveData<List<ReminderTracker>>
     val dao = ReminderDatabase.getDatabase(application).getReminderDao()
@@ -43,7 +40,7 @@ class MedicineRecViewModel(application: Application) : AndroidViewModel(applicat
             ?.map { it.toRecyclerItem() }
     }
 
-    fun creatReminderItemViewModel(remineder:ReminderTracker): ReminderItemViewModel {
+    fun creatReminderItemViewModel(remineder: ReminderTracker): ReminderItemViewModel {
         return ReminderItemViewModel(remineder).apply {
             itemClickHandler = { remineder -> showClickMessage(remineder) }
             deleteBtnClickHandler = { remineder -> deletDrug(remineder) }
@@ -63,7 +60,6 @@ class MedicineRecViewModel(application: Application) : AndroidViewModel(applicat
         if (index != -1) {
             _recyclerItems.value = items.toMutableList().apply { removeAt(index) }
         }
-      //  onDeletClick(remineder)
 
     }
 
@@ -91,9 +87,8 @@ class MedicineRecViewModel(application: Application) : AndroidViewModel(applicat
 
     private fun ReminderItemViewModel.toRecyclerItem() = RecyclerItem(
         data = this,
-        layoutId = R.layout.view_of_medicines_rv,
-        variableId = BR.medicinesModel
+        layoutId = R.layout.view_of_report,
+        variableId = BR.reportModel
 
     )
-
 }

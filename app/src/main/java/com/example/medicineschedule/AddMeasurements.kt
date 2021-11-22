@@ -416,22 +416,24 @@ class AddMeasurements : AppCompatActivity() {
     }
     private fun addMeasrementReminder() {
         var name = binding.measurement.text.toString()
-        //   var type = binding.tvMeasureValue .text.toString()
-        var quantity = binding.tvMeasureValue .text.toString()
+        var quantity = binding.measureQuantity.text.toString()
         var instructions = binding.MInstructions.text.toString()
         var time = binding.txtvwMtime1.text.toString()
 
         if ( name.length >  0 && quantity.length > 0 && time.length > 0 ){
 
-            var remider = ReminderTracker("", "$name" ,"Measurement at: $time" ,"No", "$quantity", "$instructions")
+            var remider = ReminderTracker("mes",
+                "$name" ,"$time" ,
+                "Take", "$quantity ",
+                "Instruction: $instructions",
+                "","","", "${Calendar.getInstance().time}",false)
             viewModel.onAddClick(remider)
             val intent = Intent(this, HomeScreen::class.java)
             startActivity(intent)
             finish()
 
         }else{
-            Toast.makeText(this, "Manadatory fields are missing" , Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Mandatory fields are missing" , Toast.LENGTH_SHORT).show()
         }
-
     }
 }

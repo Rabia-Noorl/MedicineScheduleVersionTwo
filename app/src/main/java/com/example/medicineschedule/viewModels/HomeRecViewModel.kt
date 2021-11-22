@@ -29,8 +29,8 @@ class HomeRecViewModel(application: Application) : AndroidViewModel(application)
 
     // Real-world apps should use SingleLiveData instead. RxJava / Coroutines could also work
     // better for one-time event streams.
-    private val _toastMessage = MutableLiveData<String>()
-    val toastMessage: LiveData<String> = _toastMessage
+    private val _reminder = MutableLiveData<ReminderTracker>()
+    val reminder: LiveData<ReminderTracker> = _reminder
 
 
     init {
@@ -44,17 +44,17 @@ class HomeRecViewModel(application: Application) : AndroidViewModel(application)
 
     fun creatReminderItemViewModel(remineder:ReminderTracker): ReminderItemViewModel {
         return ReminderItemViewModel(remineder).apply {
-            itemClickHandler = { remineder -> showClickMessage(remineder) }
+            itemClickHandler = { remineder -> getReminderRecord(remineder) }
             deleteBtnClickHandler = { remineder -> deletDrug(remineder) }
             addDrugClickHandler = { remineder -> onAddClick(remineder)}
         }
     }
-    private fun showClickMessage(remineder: ReminderTracker) {
-        _toastMessage.postValue(
-            "${remineder.names} is clicked"
+    private fun getReminderRecord(remineder: ReminderTracker) {
+        _reminder.postValue(
+            remineder
         )
     }
-    private fun deletDrug(remineder: ReminderTracker) {
+    fun deletDrug(remineder: ReminderTracker) {
         val items = recyclerItems.value.orEmpty()
         val index = items.map { it.data }
             .filterIsInstance<ReminderItemViewModel>()
@@ -62,12 +62,13 @@ class HomeRecViewModel(application: Application) : AndroidViewModel(application)
         if (index != -1) {
             _recyclerItems.value = items.toMutableList().apply { removeAt(index) }
         }
-        onDeletClick(remineder)
-
     }
 
     fun onAddClick(remineder: ReminderTracker) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(remineder)
+    }
+    fun onEditClick(remineder: ReminderTracker) = viewModelScope.launch(Dispatchers.IO) {
+        repository.update(remineder)
     }
 
     fun addFun(remineder: List<ReminderTracker>){
@@ -87,8 +88,6 @@ class HomeRecViewModel(application: Application) : AndroidViewModel(application)
     fun onDeletClick(remineder: ReminderTracker) = viewModelScope.launch(Dispatchers.IO){
         repository.delete(remineder)
     }
-
-
 
     private fun ReminderItemViewModel.toRecyclerItem() = RecyclerItem(
         data = this,

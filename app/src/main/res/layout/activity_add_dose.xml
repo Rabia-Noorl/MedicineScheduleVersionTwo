@@ -50,7 +50,7 @@
             android:textAlignment="center"
             android:textColor="@color/textColor"
             android:textColorHint="@color/purple_700"
-            android:textSize="16sp"></EditText>
+            android:textSize="16sp"/>
 
         <ImageView
             android:id="@+id/doseimgView"
@@ -504,7 +504,7 @@
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
                                         android:textSize="20dp"
-                                        android:visibility="gone"></EditText>
+                                        android:visibility="gone"/>
 
                                     <EditText
                                         android:id="@+id/txtvwdosetime5"
@@ -538,7 +538,7 @@
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
                                         android:textSize="20dp"
-                                        android:visibility="gone"></EditText>
+                                        android:visibility="gone"/>
 
                                     <EditText
                                         android:id="@+id/txtvwdosetime7"
@@ -555,7 +555,7 @@
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
                                         android:textSize="20dp"
-                                        android:visibility="gone"></EditText>
+                                        android:visibility="gone"/>
                                 </LinearLayout>
                             </HorizontalScrollView>
                         </LinearLayout>
