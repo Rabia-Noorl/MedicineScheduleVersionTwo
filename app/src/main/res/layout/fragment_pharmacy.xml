@@ -1,74 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.pharmacy.PharmacyFragment"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".fragments.pharmacy.PharmacyFragment">
 
-    <RelativeLayout
-        android:id="@+id/RelLayout"
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/takeCircularProgressBar"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="10dp"
+        app:cpb_background_progressbar_color="#a3b8a3"
+        app:cpb_background_progressbar_width="5dp"
+        app:cpb_progress_direction="to_right"
+        app:cpb_progressbar_color="#6bbf6b"
+        app:cpb_progressbar_width="10dp"
+        app:cpb_round_border="true"
+        app:layout_constraintEnd_toStartOf="@+id/missedCircularProgressBar"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/takenPercentTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="70% Taken"
+        app:layout_constraintBottom_toBottomOf="@+id/takeCircularProgressBar"
+        app:layout_constraintEnd_toEndOf="@+id/takeCircularProgressBar"
+        app:layout_constraintStart_toStartOf="@+id/takeCircularProgressBar"
+        app:layout_constraintTop_toTopOf="@+id/takeCircularProgressBar" />
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/missedCircularProgressBar"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="10dp"
+        app:cpb_background_progressbar_color="#fad4d4"
+        app:cpb_background_progressbar_width="5dp"
+        app:cpb_progress_direction="to_right"
+        app:cpb_progressbar_color="#f57676"
+        app:cpb_progressbar_width="10dp"
+        app:cpb_round_border="true"
+        app:layout_constraintEnd_toStartOf="@+id/skippedCircularProgressBar"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/takeCircularProgressBar"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/missedPercentTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20% Missed"
+        app:layout_constraintBottom_toBottomOf="@+id/missedCircularProgressBar"
+        app:layout_constraintEnd_toEndOf="@+id/missedCircularProgressBar"
+        app:layout_constraintStart_toStartOf="@+id/missedCircularProgressBar"
+        app:layout_constraintTop_toTopOf="@+id/missedCircularProgressBar" />
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/skippedCircularProgressBar"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="10dp"
+        app:cpb_background_progressbar_color="#bdbfbd"
+        app:cpb_background_progressbar_width="5dp"
+        app:cpb_progress_direction="to_right"
+        app:cpb_progressbar_color="#5b5c5b"
+        app:cpb_progressbar_width="10dp"
+        app:cpb_round_border="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/missedCircularProgressBar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/skippedPercentTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10% Skipped"
+        app:layout_constraintBottom_toBottomOf="@+id/skippedCircularProgressBar"
+        app:layout_constraintEnd_toEndOf="@+id/skippedCircularProgressBar"
+        app:layout_constraintStart_toStartOf="@+id/skippedCircularProgressBar"
+        app:layout_constraintTop_toTopOf="@+id/skippedCircularProgressBar" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/consLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bottom_rounder"
-        android:elevation="5dp">
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:elevation="5dp"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/takeCircularProgressBar">
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/darkPeach"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imglog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginBottom="10dp"
-            android:src="@drawable/ic_track"></ImageView>
-
-        <TextView
-            android:id="@+id/mdlog"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:text="Track by Time Period"
-            android:textColor="@color/greyColr"
-            android:textSize="20dp"></TextView>
+            android:src="@drawable/clock"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <AutoCompleteTextView
             android:id="@+id/mdlogTrack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/mdlog"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="150dp"
-            android:background="@color/themeColor"
+            android:layout_alignParentStart="false"
             android:cursorVisible="true"
-            android:drawableRight="@drawable/ic_dropdown"
+            android:drawableEnd="@drawable/ic_dropdown"
             android:focusableInTouchMode="false"
             android:hint="Track Filters"
+            android:minHeight="48dp"
             android:textAlignment="center"
             android:textColor="@color/greyColr"
-            android:textColorHint="@color/textColor"
+            android:textColorHint="@color/cardStrokeColor"
             android:textColorLink="@color/textColor"
             android:textCursorDrawable="@drawable/cursor"
-            android:textSize="18dp" />
-    </RelativeLayout>
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/darkPeach"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/homeLottieanim"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:alpha="0.5"
         android:visibility="visible"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/consLayout"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/repotanim" />
@@ -77,15 +172,18 @@
         android:id="@+id/initialTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/RelLayout"
+        android:layout_below="@+id/consLayout"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="375dp"
+        android:layout_marginTop="10dp"
         android:paddingLeft="40dp"
         android:paddingTop="10dp"
         android:paddingRight="40dp"
-        android:text="No Medications Log\n Try changing the filtered medications or log period from above"
-        android:textAlignment="center" />
+        android:text="@string/report_initiale_text"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeLottieanim" />
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

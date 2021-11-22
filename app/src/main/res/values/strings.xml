@@ -24,5 +24,6 @@
     </string-array>
 
     <string name="prompt">Select Mode</string>
+    <string name="report_initiale_text">No Medications Log\n Try changing the filtered medications or log period from above</string>
 
 </resources>
