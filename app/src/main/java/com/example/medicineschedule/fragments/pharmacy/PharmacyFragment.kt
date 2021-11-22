@@ -15,6 +15,7 @@ import androidx.core.view.isEmpty
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.example.medicineschedule.database.ReminderTracker
+import com.example.medicineschedule.databinding.ActivityAddDoseBinding
 
 import com.example.medicineschedule.databinding.FragmentPharmacyBinding
 import com.example.medicineschedule.viewModels.MedicineRecViewModel
@@ -27,6 +28,7 @@ class PharmacyFragment : Fragment() {
 
     lateinit var viewModel: ReportViewModel
     private lateinit var binding: FragmentPharmacyBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +51,13 @@ class PharmacyFragment : Fragment() {
                 0
             ) { dialogInterface: DialogInterface, position: Int ->
                 binding.mdlogTrack.setText(filterChoice[position])
-
+                if (position == 0){
+                    Toast.makeText(context,"Active", Toast.LENGTH_SHORT).show()
+                }
+                else if(position == 1)
+                {
+                    Toast.makeText(context,"All medications", Toast.LENGTH_SHORT).show()
+                }
                 dialogInterface.dismiss()
             }
             alertfilterDialog?.show()
@@ -94,6 +102,7 @@ class PharmacyFragment : Fragment() {
             viewModel.allRemiders.observe(viewLifecycleOwner){
                 it?.let {
                     viewModel.addFun(it)
+                    getFillters(it)
                     var anim  = binding.reportLottieanim
                     var initialText  = binding.initialTV
                     anim.isVisible = it.isEmpty()
@@ -101,6 +110,10 @@ class PharmacyFragment : Fragment() {
                 }
             }
         }
+
+    }
+
+    private fun getFillters(list:List<ReminderTracker>){
 
     }
 }

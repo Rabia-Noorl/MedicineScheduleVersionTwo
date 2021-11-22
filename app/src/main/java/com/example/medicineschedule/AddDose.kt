@@ -582,23 +582,15 @@ class AddDose : AppCompatActivity() {
 
         if ( name.length >  0 && type.length >  0 && quantity.length > 0 && time.length > 0 ){
 
-            var remider = ReminderTracker(
-                "$type",
-                "$name",
-                "Take medicines at: $time",
-                "No",
-                "$quantity",
-                "$instructions"
-            )
+            var remider = ReminderTracker("med", "$name" ,"$time" ,"Take", "$quantity", "Instructions: $instructions", "","","", "${Calendar.getInstance().time}",false)
             viewModel.onAddClick(remider)
-            medViewModel.addFun(remider)
 
             val intent = Intent(this, HomeScreen::class.java)
             startActivity(intent)
             finish()
 
         }else{
-            Toast.makeText(this, "Manadatory fields are missing", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Mandatory fields are missing" , Toast.LENGTH_SHORT).show()
         }
 
     }
