@@ -185,18 +185,7 @@
             app:fab_labelStyle="@style/Floatstyle"
             app:fab_labelsPosition="left"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            >
-
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/addReminder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:fabSize="mini"
-                app:fab_colorNormal="@color/bgColor"
-                app:fab_colorPressed="@color/themeColor"
-                app:fab_icon="@drawable/ic_reminder"
-                app:fab_title="Add Medicine Reminder"></com.getbase.floatingactionbutton.FloatingActionButton>
+            app:layout_constraintEnd_toEndOf="parent">
 
             <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/addDose"

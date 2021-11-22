@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.example.medicineschedule.*
 import com.example.medicineschedule.R
 import com.example.medicineschedule.classes.AlarmReceiver
@@ -37,12 +38,14 @@ class HomeFragment : Fragment(){
     lateinit var calendar: Calendar
     lateinit var pendingIntent: PendingIntent
 
+
     companion object{
         var statusFlag: Boolean = false
     }
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var currentUser: FirebaseUser
     var timeFormat= SimpleDateFormat("hh:mm a", Locale.US)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,9 +61,9 @@ class HomeFragment : Fragment(){
         mAuth=FirebaseAuth.getInstance()
         creatNotificationChannel()
 
-//        currentUser = mAuth.currentUser!!
-//        binding.userNametextView.setText(currentUser?.displayName)
-//        Glide.with(this).load(currentUser?.photoUrl).into(binding.imageProfile)
+        currentUser = mAuth.currentUser!!
+        binding.userNametextView.setText(currentUser?.displayName)
+        Glide.with(this).load(currentUser?.photoUrl).into(binding.imageProfile)
 
 
 //        val db=FirebaseFirestore.getInstance()
@@ -137,9 +140,9 @@ class HomeFragment : Fragment(){
         binding.addMeasurement.setOnClickListener{
             onClick(it)
         }
-        binding.addReminder.setOnClickListener{
-            onClick(it)
-        }
+//        binding.addReminder.setOnClickListener{
+//            onClick(it)
+//        }
         binding.addDoctor.setOnClickListener{
             onClick(it)
         }
@@ -157,10 +160,10 @@ class HomeFragment : Fragment(){
                 val measurementIntent = Intent(getActivity(), AddMeasurements::class.java)
                 startActivity(measurementIntent)
             }
-            R.id.addReminder -> {
-                val reminderIntent = Intent(getActivity(), AddMedication::class.java)
-                startActivity(reminderIntent)
-            }
+//            R.id.addReminder -> {
+//                val reminderIntent = Intent(getActivity(), AddMedication::class.java)
+//                startActivity(reminderIntent)
+//            }
             R.id.addDoctor -> {
                 val reminderIntent = Intent(getActivity(), AddDoctorActivity::class.java)
                 startActivity(reminderIntent)
