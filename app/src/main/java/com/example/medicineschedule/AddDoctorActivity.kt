@@ -1,12 +1,14 @@
 package com.example.medicineschedule
 
 import android.app.*
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.example.medicineschedule.classes.AlarmReceiver
@@ -31,6 +33,28 @@ class AddDoctorActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddDoctorBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //create speciality dropdown
+        var speciality=arrayOf("Anesthesiologist","Child Specialist","Dermatologist","ENT Specialist","Gynecologist","Neurologist","Ophthalmologist","Pathologist","Psychiatrist","Radiation Oncologist","Urologist","Other")
+        binding.docTypeTV.setOnClickListener(View.OnClickListener {
+            var alertDialogDocType = AlertDialog.Builder(this)
+            alertDialogDocType.setTitle("Select Speciality")
+            alertDialogDocType.setSingleChoiceItems(
+                speciality,
+                0
+            ) { dialogInterface: DialogInterface, position: Int ->
+                binding.docTypeTV.setText(speciality[position])
+                if(position==11)
+                {
+                    binding.customDocType.visibility=View.VISIBLE
+                }
+                else{
+                    binding.customDocType.visibility=View.GONE
+                }
+                dialogInterface.dismiss()
+//                Toast.makeText(applicationContext,"You Selected:"+doseChoice[position],Toast.LENGTH_SHORT).show()
+            }
+            alertDialogDocType.show()
+        })
 
    //     creatNotificationChannel()
 

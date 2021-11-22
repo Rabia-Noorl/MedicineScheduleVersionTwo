@@ -40,7 +40,8 @@
         android:layout_alignParentBottom="true"
         android:textAllCaps="false"
         android:text="Button"
-        android:background="@drawable/btn_bg_colored"
+        android:textColor="@color/white"
+        android:background="@drawable/clickable_btn_bg"
         android:textSize="20dp"
         android:textStyle="bold"
         ></Button>

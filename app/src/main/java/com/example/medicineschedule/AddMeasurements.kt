@@ -36,8 +36,28 @@ class AddMeasurements : AppCompatActivity() {
         var mtimeChoice= arrayOf("Once a day","2 times a day","3 times a day","4 times a day","5 times a day","6 times a day","7 times a day")
         var mtimeFormat= SimpleDateFormat("hh:mm a", Locale.US)
         var dateFormat=SimpleDateFormat("dd MMM YY",Locale.US)
-        var  mthour:Int
-        var mtmint:Int
+       //set spinners
+        var units=arrayOf("units")
+        val adap=ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, units)
+        adap.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.mspinner.adapter=adap
+
+        var unitsChoice = arrayOf("sys/dia/pulse")
+        val adapter=ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, unitsChoice)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        var unitsChoice1=arrayOf("mg/dL","mmol/L")
+        val adapter1=ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, unitsChoice1)
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        var unitsChoice2=arrayOf("kg","lbs")
+        val adapter2=ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, unitsChoice2)
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        var unitsChoice3=arrayOf("celsius","fahrenheit")
+        val adapter3=ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, unitsChoice3)
+        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        var unitsChoice4=arrayOf("bpm")
+        val adapter4=ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, unitsChoice4)
+        adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
 
         viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(
@@ -60,7 +80,28 @@ class AddMeasurements : AppCompatActivity() {
                 0
             ) { dialogInterface: DialogInterface, position: Int ->
                 binding.measurement.setText(measurementsChoice[position])
+                if(position==0)
+                {
+                    binding.mspinner.adapter=adapter
+                }
+                if(position==1)
+                {
+                    binding.mspinner.adapter=adapter1
+                }
+                if(position==2)
+                {
+                    binding.mspinner.adapter=adapter2
+                }
+                if(position==3)
+                {
+                    binding.mspinner.adapter=adapter3
+                }
+                if(position==4)
+                {
+                    binding.mspinner.adapter=adapter4
+                }
                 if (position == 5) {
+                    binding.mspinner.adapter=adap
                     binding.measurementName.visibility = View.VISIBLE
                 }
                 else{
@@ -114,19 +155,38 @@ class AddMeasurements : AppCompatActivity() {
                 binding.txtvwMtime.setText(mtimeChoice[position])
 
                 when(position){
-                    0 -> { binding.txtvwMtime1.visibility= View.VISIBLE}
+                    0 -> { binding.txtvwMtime1.visibility= View.VISIBLE
+                        binding.txtvwMtime2.visibility = View.GONE
+                        binding.txtvwMtime3.visibility = View.GONE
+                        binding.txtvwMtime4.visibility = View.GONE
+                        binding.txtvwMtime5.visibility=View.GONE
+                        binding.txtvwMtime6.visibility=View.GONE
+                        binding.txtvwMtime7.visibility=View.GONE
+                    }
                     1 -> {binding.txtvwMtime1.visibility= View.VISIBLE
-                        binding.txtvwMtime2.visibility=View.VISIBLE}
+                        binding.txtvwMtime2.visibility=View.VISIBLE
+                        binding.txtvwMtime3.visibility = View.GONE
+                        binding.txtvwMtime4.visibility = View.GONE
+                        binding.txtvwMtime5.visibility=View.GONE
+                        binding.txtvwMtime6.visibility=View.GONE
+                        binding.txtvwMtime7.visibility=View.GONE}
                     2 -> {
                         binding.txtvwMtime1.visibility = View.VISIBLE
                         binding.txtvwMtime2.visibility=View.VISIBLE
                         binding.txtvwMtime3.visibility=View.VISIBLE
+                        binding.txtvwMtime4.visibility = View.GONE
+                        binding.txtvwMtime5.visibility=View.GONE
+                        binding.txtvwMtime6.visibility=View.GONE
+                        binding.txtvwMtime7.visibility=View.GONE
                     }
                     3 -> {
                         binding.txtvwMtime1.visibility = View.VISIBLE
                         binding.txtvwMtime2.visibility=View.VISIBLE
                         binding.txtvwMtime3.visibility=View.VISIBLE
                         binding.txtvwMtime4.visibility=View.VISIBLE
+                        binding.txtvwMtime5.visibility=View.GONE
+                        binding.txtvwMtime6.visibility=View.GONE
+                        binding.txtvwMtime7.visibility=View.GONE
                     }
                     4->{
                         binding.txtvwMtime1.visibility = View.VISIBLE
@@ -134,6 +194,8 @@ class AddMeasurements : AppCompatActivity() {
                         binding.txtvwMtime3.visibility=View.VISIBLE
                         binding.txtvwMtime4.visibility=View.VISIBLE
                         binding.txtvwMtime5.visibility=View.VISIBLE
+                        binding.txtvwMtime6.visibility=View.GONE
+                        binding.txtvwMtime7.visibility=View.GONE
 
                     }
                     5->{
@@ -143,6 +205,7 @@ class AddMeasurements : AppCompatActivity() {
                         binding.txtvwMtime4.visibility=VISIBLE
                         binding.txtvwMtime5.visibility=VISIBLE
                         binding.txtvwMtime6.visibility= VISIBLE
+                        binding.txtvwMtime7.visibility=View.GONE
                     }
                     6->{
                         binding.txtvwMtime1.visibility =VISIBLE

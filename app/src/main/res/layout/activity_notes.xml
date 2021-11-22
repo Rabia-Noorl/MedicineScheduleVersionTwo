@@ -19,7 +19,9 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/idFBAddNote"
-        android:backgroundTint="@color/darkPeach"
+        app:fab_colorPressed="@color/whiteText"
+        app:fab_colorNormal="#1a6b5f"
+        android:backgroundTint="#1a6b5f"
         android:layout_margin="20dp"
         android:src="@drawable/ic_add"
         app:tint="@color/textColor"></com.getbase.floatingactionbutton.FloatingActionButton>

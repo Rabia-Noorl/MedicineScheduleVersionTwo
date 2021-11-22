@@ -33,7 +33,8 @@
             android:text="Save"
             android:textColor="@color/textColor"
             android:textSize="20dp"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold"
+            android:textCursorDrawable="@drawable/cursor"></TextView>
 
         <EditText
             android:id="@+id/medicationName"
@@ -45,6 +46,7 @@
             android:backgroundTint="@color/design_default_color_primary_variant"
             android:cursorVisible="true"
             android:hint="Medication Name"
+            android:textCursorDrawable="@drawable/cursor"
             android:textAlignment="center"
             android:textColor="@color/textColor"
             android:textColorHint="@color/purple_700"
@@ -57,7 +59,7 @@
             android:layout_below="@+id/medicationName"
             android:layout_centerInParent="true"
             android:layout_marginBottom="10dp"
-            android:src="@drawable/capsol"
+            android:src="@drawable/drugs"
             app:civ_border_color="@color/darkPeach"
             app:civ_border_width="5dp"
             tools:ignore="MissingPrefix" />
@@ -69,8 +71,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
-
-        <TextView
+        <AutoCompleteTextView
             android:id="@+id/medTypeTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,27 +79,44 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:text="Caps"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textAlignment="center"
+            android:focusableInTouchMode="false"
+            android:cursorVisible="false"
+            android:drawableRight="@drawable/ic_dropdown_pink"
+           android:hint="Medication Type"
+            android:textColor="@color/textColor"
+            android:backgroundTint="#E22A61"
+            android:textColorHint="#E22A61"
+            android:textSize="20sp" />
 
-        <ImageView
-            android:id="@+id/leftScroll"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_below="@id/doseimgView"
-            android:layout_marginRight="60dp"
-            android:layout_toLeftOf="@+id/medTypeTV"
-            app:srcCompat="@drawable/ic_baseline_keyboard_arrow_left_24" />
+<!--        <TextView-->
+<!--            android:id="@+id/medTypeTV"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/doseimgView"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:text="Caps"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold" />-->
+<!--        <ImageView-->
+<!--            android:id="@+id/leftScroll"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_below="@id/doseimgView"-->
+<!--            android:layout_marginRight="60dp"-->
+<!--            android:layout_toLeftOf="@+id/medTypeTV"-->
+<!--            app:srcCompat="@drawable/ic_baseline_keyboard_arrow_left_24" />-->
 
-        <ImageView
-            android:id="@+id/rightScroll"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_below="@id/doseimgView"
-            android:layout_marginLeft="60dp"
-            android:layout_toRightOf="@+id/medTypeTV"
-            app:srcCompat="@drawable/ic_baseline_chevron_right_24" />
+<!--        <ImageView-->
+<!--            android:id="@+id/rightScroll"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_below="@id/doseimgView"-->
+<!--            android:layout_marginLeft="60dp"-->
+<!--            android:layout_toRightOf="@+id/medTypeTV"-->
+<!--            app:srcCompat="@drawable/ic_baseline_chevron_right_24" />-->
     </RelativeLayout>
 
     <ScrollView
@@ -173,17 +191,34 @@
                                 android:id="@+id/adddosequantity"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
+                                android:layout_gravity="bottom"
                                 android:backgroundTint="@color/design_default_color_primary_variant"
                                 android:cursorVisible="true"
                                 android:hint="Enter Quantity"
                                 android:inputType="number"
                                 android:textAlignment="center"
+                                android:paddingBottom="25dp"
                                 android:textColor="@color/textColor"
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
                                 android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="16sp"></EditText>
+                                android:textSize="16sp"
+                                ></EditText>
+                            <FrameLayout
+                                android:id="@+id/unitTV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                >
+                                <Spinner
+                                    android:id="@+id/spinner"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:textAlignment="center"
+                                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                                    android:backgroundTint="@color/design_default_color_primary_variant"
+                                    ></Spinner></FrameLayout>
+
 
                         </LinearLayout>
                     </RelativeLayout>
@@ -252,11 +287,11 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:backgroundTint="@color/design_default_color_primary_variant"
-                                android:cursorVisible="true"
-                                android:drawableRight="@drawable/ic_dropdown"
+                                android:drawableRight="@drawable/ic_dropdown_blue"
                                 android:focusableInTouchMode="false"
                                 android:hint="Instructions"
                                 android:textAlignment="center"
+                                android:cursorVisible="false"
                                 android:textColor="@color/textColor"
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
@@ -370,8 +405,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:backgroundTint="@color/design_default_color_primary_variant"
-                                android:cursorVisible="true"
-                                android:drawableRight="@drawable/ic_dropdown"
+                                android:cursorVisible="false"
+                                android:drawableRight="@drawable/ic_dropdown_blue"
                                 android:focusableInTouchMode="false"
                                 android:hint="Once a day"
                                 android:textAlignment="center"

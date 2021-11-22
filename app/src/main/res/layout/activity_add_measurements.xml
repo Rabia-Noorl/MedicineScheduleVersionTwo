@@ -43,8 +43,8 @@
             android:layout_centerInParent="true"
             android:layout_gravity="center_horizontal"
             android:backgroundTint="@color/design_default_color_primary_variant"
-            android:cursorVisible="true"
-            android:drawableRight="@drawable/ic_dropdown"
+            android:cursorVisible="false"
+            android:drawableRight="@drawable/ic_dropdown_blue"
             android:focusableInTouchMode="false"
             android:hint="Enter Measurement Name"
             android:textAlignment="center"
@@ -163,17 +163,33 @@
                                 android:id="@+id/measureQuantity"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
+                                android:layout_gravity="bottom"
                                 android:backgroundTint="@color/design_default_color_primary_variant"
                                 android:cursorVisible="true"
-                                android:hint="Enter Measurement Value"
-                                android:inputType="number"
+                                android:hint="Enter Value"
+                                android:inputType="numberSigned"
                                 android:textAlignment="center"
+                                android:paddingBottom="25dp"
                                 android:textColor="@color/textColor"
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
                                 android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="16dp"></EditText>
+                                android:textSize="16sp"></EditText>
+                            <FrameLayout
+                                android:id="@+id/measureUnitTV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                >
+                                <Spinner
+                                    android:id="@+id/mspinner"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:autofillHints="units"
+                                    android:textAlignment="center"
+                                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                                    android:backgroundTint="@color/design_default_color_primary_variant"
+                                    ></Spinner></FrameLayout>
 
                         </LinearLayout>
                     </RelativeLayout>
@@ -241,8 +257,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:backgroundTint="@color/design_default_color_primary_variant"
-                                android:cursorVisible="true"
-                                android:drawableRight="@drawable/ic_dropdown"
+                                android:cursorVisible="false"
+                                android:drawableRight="@drawable/ic_dropdown_blue"
                                 android:focusableInTouchMode="false"
                                 android:hint="Instructions"
                                 android:textAlignment="center"
@@ -360,7 +376,7 @@
                                 android:layout_gravity="center_horizontal"
                                 android:backgroundTint="@color/design_default_color_primary_variant"
                                 android:cursorVisible="true"
-                                android:drawableRight="@drawable/ic_dropdown"
+                                android:drawableRight="@drawable/ic_dropdown_blue"
                                 android:focusableInTouchMode="false"
                                 android:hint="Once a day"
                                 android:textAlignment="center"

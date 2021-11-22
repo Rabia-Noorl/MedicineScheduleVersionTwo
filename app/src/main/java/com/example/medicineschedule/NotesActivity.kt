@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +20,7 @@ class NotesActivity : AppCompatActivity(), NoteClickDeleteInterface, NoteClickIn
     lateinit var notesRV:RecyclerView
     lateinit var addFAB:FloatingActionButton
     lateinit var noteViewModel: NoteViewModel
+    lateinit var alertdialogbuilder:AlertDialog.Builder
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notes)
@@ -37,8 +39,15 @@ class NotesActivity : AppCompatActivity(), NoteClickDeleteInterface, NoteClickIn
             startActivity(nIntent)
             this.finish() }}
     override fun onDeleteIconClick(note: Note) {
-       noteViewModel.deleteNote(note)
-        Toast.makeText(this,"${note.noteTitle} Deleted",Toast.LENGTH_SHORT).show()
+        alertdialogbuilder=AlertDialog.Builder(this)
+        alertdialogbuilder.setTitle("Delete").setIcon(android.R.drawable.ic_delete)
+            .setMessage("Do you want to delete?").setCancelable(true).setPositiveButton("Yes"){dialogInterface,it->
+                noteViewModel.deleteNote(note)
+                Toast.makeText(this,"${note.noteTitle} Deleted",Toast.LENGTH_SHORT).show()
+            }
+            .setNegativeButton("No"){dialogInterface,it->
+                dialogInterface.cancel()
+            }.show()
     }
 
     override fun onNoteClick(note: Note) {

@@ -31,7 +31,7 @@ class PharmacyFragment : Fragment() {
         binding = FragmentPharmacyBinding.inflate(inflater, container, false)
         val view = binding.root
         var filterChoice = arrayOf("All Medications","Active Medications")
-        var trackChoice = arrayOf("Yesterday","Last 7 days","Last 30 days","Last 60 days","Last 90 days","Last 180 days")
+        var trackChoice = arrayOf("Yesterday","Last 7 days","Last 30 days","Last 60 days","Last 90 days","Last 180 days","All")
         binding.mdlogTrack.setOnClickListener(View.OnClickListener {
             var alertfilterDialog = getActivity()?.let { it1 -> AlertDialog.Builder(it1) }
             alertfilterDialog?.setTitle("Select Track Filter")
@@ -52,7 +52,6 @@ class PharmacyFragment : Fragment() {
                 trackChoice,
                 0
             ) { dialogInterface: DialogInterface, position: Int ->
-
                 dialogInterface.dismiss()
             }
             alerttrackDialog?.show()
