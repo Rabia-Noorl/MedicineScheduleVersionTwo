@@ -363,7 +363,7 @@ class AddMeasurements : AppCompatActivity() {
                 "$name" ,"$time" ,
                 "Take", "$quantity ",
                 "Instruction: $instructions",
-                "","","", false)
+                "","","", "${Calendar.getInstance().time}",false)
             viewModel.onAddClick(remider)
             val intent = Intent(this, HomeScreen::class.java)
             startActivity(intent)

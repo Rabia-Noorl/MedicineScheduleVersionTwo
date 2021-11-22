@@ -351,7 +351,7 @@ class AddDose : AppCompatActivity() {
 
         if ( name.length >  0 && type.length >  0 && quantity.length > 0 && time.length > 0 ){
 
-            var remider = ReminderTracker("med", "$name" ,"$time" ,"Take", "$quantity", "Instructions: $instructions", "","","", false)
+            var remider = ReminderTracker("med", "$name" ,"$time" ,"Take", "$quantity", "Instructions: $instructions", "","","", "${Calendar.getInstance().time}",false)
             viewModel.onAddClick(remider)
 
             val intent = Intent(this, HomeScreen::class.java)

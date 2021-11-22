@@ -19,7 +19,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class AddDoctorActivity : AppCompatActivity() {
-    var timeFormat= SimpleDateFormat("HH:mm")
+    var timeFormat= SimpleDateFormat("HH:mm a")
     lateinit var binding: ActivityAddDoctorBinding
     lateinit  var viewModel: HomeRecViewModel
 
@@ -79,7 +79,7 @@ class AddDoctorActivity : AppCompatActivity() {
         var time = binding.appointmentTime.text
         //  var docName = binding..text.toString()
         if ( docName.isNotEmpty() && time.isNotEmpty()){
-            var reminder = ReminderTracker("Appointment", "$docName", "$time","", "","","","","", false)
+            var reminder = ReminderTracker("Appointment", "$docName", "$time","", "","","","","", "${Calendar.getInstance().time}",false)
             viewModel.onAddClick(reminder)
             val intent = Intent(this, HomeScreen::class.java)
             startActivity(intent)

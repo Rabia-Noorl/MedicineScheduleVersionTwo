@@ -36,6 +36,7 @@ class HomeFragment : Fragment(){
     lateinit var alarmManager: AlarmManager
     lateinit var calendar: Calendar
     lateinit var pendingIntent: PendingIntent
+
     companion object{
         var statusFlag: Boolean = false
     }
@@ -235,9 +236,7 @@ class HomeFragment : Fragment(){
         }
     }
     private fun dialogeBuild(reminderTracker: ReminderTracker){
-        var remId= reminderTracker.id
         val width = (resources.displayMetrics.widthPixels * 0.85).toInt()
-        val height = (resources.displayMetrics.heightPixels * 0.40).toInt()
         var d : Dialog? = context?.let { Dialog(it) }
         d?.setContentView(R.layout.dialog_frag_layout)
         d!!.window?.setBackgroundDrawableResource(R.drawable.edit_text_design);
@@ -284,7 +283,7 @@ class HomeFragment : Fragment(){
             unTakeBtn.setTextColor(Color.parseColor("#f98365"))
             takeBtn.setTextColor(Color.parseColor("#FFFFFF"))
             reschedualBtn.setTextColor(Color.parseColor("#FFFFFF"))
-            if (!HomeFragment.statusFlag) {
+            if (!statusFlag) {
                 unTakeBtn.setText("TAKEN")
                 var rem = ReminderTracker(
                     reminderTracker.types,
@@ -296,14 +295,15 @@ class HomeFragment : Fragment(){
                     reminderTracker.strenght,
                     reminderTracker.startDate,
                     reminderTracker.endDate,
+                    reminderTracker.recodeCreationDate,
                     reminderTracker.deleteFlage
                 )
                 rem.id = reminderTracker.id
                 viewModel.onEditClick(rem)
-                HomeFragment.statusFlag = true
+                statusFlag = true
                 statusTV.setText("${rem.status}")
                 return@setOnClickListener
-            } else if(HomeFragment.statusFlag) {
+            } else if(statusFlag) {
                 var rem = ReminderTracker(
                     "${reminderTracker.types}",
                     "${reminderTracker.names}",
@@ -314,10 +314,11 @@ class HomeFragment : Fragment(){
                     "${reminderTracker.strenght}",
                     "${reminderTracker.startDate}",
                     "${reminderTracker.endDate}",
+                    reminderTracker.recodeCreationDate,
                     reminderTracker.deleteFlage)
                 rem.id = reminderTracker.id
                 viewModel.onEditClick(rem)
-                HomeFragment.statusFlag = false
+                statusFlag = false
                 statusTV.setText("${rem.status}")
                 unTakeBtn.setText("UN_TAKE")
                 return@setOnClickListener
@@ -328,7 +329,7 @@ class HomeFragment : Fragment(){
             unTakeBtn.setTextColor(Color.parseColor("#FFFFFF"))
             takeBtn.setTextColor(Color.parseColor("#f98365"))
             reschedualBtn.setTextColor(Color.parseColor("#FFFFFF"))
-            if (!HomeFragment.statusFlag) {
+            if (!statusFlag) {
                 val rem = ReminderTracker(
                     reminderTracker.types,
                     "${reminderTracker.names}",
@@ -339,14 +340,15 @@ class HomeFragment : Fragment(){
                     "${reminderTracker.strenght}",
                     "${reminderTracker.startDate}",
                     "${reminderTracker.endDate}",
+                    reminderTracker.recodeCreationDate,
                     reminderTracker.deleteFlage)
                 rem.id = reminderTracker.id
                 viewModel.onEditClick(rem)
-                HomeFragment.statusFlag = true
+                statusFlag = true
                 statusTV.setText("${rem.status}")
                 takeBtn.setText("TAKEN")
                 return@setOnClickListener
-            } else if(HomeFragment.statusFlag) {
+            } else if(statusFlag) {
                 var rem = ReminderTracker(
                     "${reminderTracker.types}",
                     "${reminderTracker.names}",
@@ -357,10 +359,11 @@ class HomeFragment : Fragment(){
                     "${reminderTracker.strenght}",
                     "${reminderTracker.startDate}",
                     "${reminderTracker.endDate}",
+                    reminderTracker.recodeCreationDate,
                     reminderTracker.deleteFlage)
                 rem.id = reminderTracker.id
                 viewModel.onEditClick(rem)
-                HomeFragment.statusFlag = false
+                statusFlag = false
                 statusTV.setText("${rem.status}")
                 takeBtn.setText("SKIPED")
                 return@setOnClickListener
@@ -401,11 +404,12 @@ class HomeFragment : Fragment(){
                 reminderTracker.strenght,
                 reminderTracker.startDate,
                 reminderTracker.endDate,
+                reminderTracker.recodeCreationDate,
                 true
             )
             rem.id = reminderTracker.id
             viewModel.onEditClick(rem)
-            viewModel.deletDrug(reminderTracker)
+            viewModel.deletDrug(rem)
             d?.cancel()
         }
         editBtn.setOnClickListener {

@@ -11,12 +11,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isEmpty
+import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModelProvider
+import com.example.medicineschedule.database.ReminderTracker
 
 import com.example.medicineschedule.databinding.FragmentPharmacyBinding
+import com.example.medicineschedule.viewModels.MedicineRecViewModel
+import com.example.medicineschedule.viewModels.ReportViewModel
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
+import kotlinx.android.synthetic.main.fragment_pharmacy.*
 
 
 class PharmacyFragment : Fragment() {
+
+    lateinit var viewModel: ReportViewModel
     private lateinit var binding: FragmentPharmacyBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +40,7 @@ class PharmacyFragment : Fragment() {
         binding = FragmentPharmacyBinding.inflate(inflater, container, false)
         val view = binding.root
         var filterChoice = arrayOf("All Medications","Active Medications")
-        var trackChoice = arrayOf("Yesterday","Last 7 days","Last 30 days","Last 60 days","Last 90 days","Last 180 days")
+        var trackChoice = arrayOf("All","Yesterday","Last 7 days","Last 30 days","Last 60 days","Last 90 days","Last 180 days")
         binding.mdlogTrack.setOnClickListener(View.OnClickListener {
             var alertfilterDialog = getActivity()?.let { it1 -> AlertDialog.Builder(it1) }
             alertfilterDialog?.setTitle("Select Track Filter")
@@ -75,14 +84,23 @@ class PharmacyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        uiViews()
+
+        viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)).get(
+            ReportViewModel::class.java)
+        binding.reportViewModek = viewModel
+        binding.let {
+            it.lifecycleOwner = this
+            it.reportViewModek= viewModel
+            viewModel.allRemiders.observe(viewLifecycleOwner){
+                it?.let {
+                    viewModel.addFun(it)
+                    var anim  = binding.reportLottieanim
+                    var initialText  = binding.initialTV
+                    anim.isVisible = it.isEmpty()
+                    initialText.isVisible = it.isEmpty()
+                }
+            }
+        }
 
     }
-
-    private fun uiViews() {
-
-
-
-    }
-
 }

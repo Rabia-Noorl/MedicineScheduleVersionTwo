@@ -15,6 +15,7 @@ class ReminderTracker(@ColumnInfo(name = "Rem")
                       val strenght: String,
                       val startDate: String,
                       val endDate: String,
+                      val recodeCreationDate: String,
                       val deleteFlage: Boolean)
 {
     @PrimaryKey(autoGenerate = true) var id: Int = 0
