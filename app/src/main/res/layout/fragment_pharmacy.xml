@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="reportViewModek"
+            type="com.example.medicineschedule.viewModels.MedicineRecViewModel" />
+    </data>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -126,17 +135,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="false"
+            android:backgroundTint="#FFFFFF"
             android:cursorVisible="true"
             android:drawableEnd="@drawable/ic_dropdown"
             android:focusableInTouchMode="false"
             android:hint="Track Filters"
             android:minHeight="48dp"
             android:textAlignment="center"
-            android:textColor="@color/greyColr"
+            android:textColor="@color/cardStrokeColor"
             android:textColorHint="@color/cardStrokeColor"
             android:textColorLink="@color/textColor"
             android:textCursorDrawable="@drawable/cursor"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -152,6 +162,20 @@
             app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/medicines_RecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/consLayout"
+        tools:listitem="@layout/view_of_report">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/homeLottieanim"
         android:layout_width="300dp"
@@ -159,7 +183,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:alpha="0.5"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -181,9 +205,10 @@
         android:paddingRight="40dp"
         android:text="@string/report_initiale_text"
         android:textAlignment="center"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/homeLottieanim" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
