@@ -15,10 +15,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ReportViewModel(application: Application) : AndroidViewModel(application) {
+
     private val repository: Repository
     val allRemiders: LiveData<List<ReminderTracker>>
     val dao = ReminderDatabase.getDatabase(application).getReminderDao()
-
     val allRec = ArrayList<ReminderTracker>()
 
 

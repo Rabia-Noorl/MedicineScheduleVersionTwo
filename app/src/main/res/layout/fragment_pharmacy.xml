@@ -36,7 +36,7 @@
         android:id="@+id/takenPercentTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="70% Taken"
+        android:text="0%"
         app:layout_constraintBottom_toBottomOf="@+id/takeCircularProgressBar"
         app:layout_constraintEnd_toEndOf="@+id/takeCircularProgressBar"
         app:layout_constraintStart_toStartOf="@+id/takeCircularProgressBar"
@@ -57,11 +57,12 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/takeCircularProgressBar"
         app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/missedPercentTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="20% Missed"
+        android:text="0%"
         app:layout_constraintBottom_toBottomOf="@+id/missedCircularProgressBar"
         app:layout_constraintEnd_toEndOf="@+id/missedCircularProgressBar"
         app:layout_constraintStart_toStartOf="@+id/missedCircularProgressBar"
@@ -88,7 +89,7 @@
         android:id="@+id/skippedPercentTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="10% Skipped"
+        android:text="0%"
         app:layout_constraintBottom_toBottomOf="@+id/skippedCircularProgressBar"
         app:layout_constraintEnd_toEndOf="@+id/skippedCircularProgressBar"
         app:layout_constraintStart_toStartOf="@+id/skippedCircularProgressBar"

@@ -55,11 +55,10 @@ class HomeScreen : AppCompatActivity() {
         val navigationView=findViewById<NavigationView>(R.id.navigation_view)
         textUserName=findViewById<TextView>(R.id.userNameTV)
         textEmail=findViewById<TextView>(R.id.userEmailTV)
-        var googleSignInOptions= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(
-            getString(
-                R.string.default_web_client_id
-            )
-        ).requestEmail().build()
+        var googleSignInOptions= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(
+           "47830765431-h1prf0sul14dj5p1vdop0a6r315qt1kt.apps.googleusercontent.com")
+            .requestEmail().build()
         googleSignInClient= GoogleSignIn.getClient(this, googleSignInOptions)
 //        toolbar = findViewById(R.id.my_toolbar) as Toolbar
 //        setSupportActionBar(toolbar)

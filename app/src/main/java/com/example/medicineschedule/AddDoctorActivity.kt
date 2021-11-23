@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
@@ -47,7 +48,7 @@ class AddDoctorActivity : AppCompatActivity() {
                     binding.customDocType.visibility=View.GONE
                 }
                 dialogInterface.dismiss()
-//                Toast.makeText(applicationContext,"You Selected:"+doseChoice[position],Toast.LENGTH_SHORT).show()
+
             }
             alertDialogDocType.show()
         })
@@ -98,10 +99,10 @@ class AddDoctorActivity : AppCompatActivity() {
         timePicker.show()
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun addDocReminder() {
         var docName = binding.medicationName.text.toString()
         var time = binding.appointmentTime.text
-        //  var docName = binding..text.toString()
         if ( docName.isNotEmpty() && time.isNotEmpty()){
             var reminder = ReminderTracker("Appointment", "$docName", "$time","", "","","","","", "${Calendar.getInstance().time}",false)
             viewModel.onAddClick(reminder)
