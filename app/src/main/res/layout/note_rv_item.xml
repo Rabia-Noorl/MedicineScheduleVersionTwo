@@ -6,13 +6,14 @@
     android:layout_marginLeft="15dp"
     android:layout_marginTop="10dp"
     android:layout_marginRight="15dp"
-    android:background="@drawable/recview_item_design"
+    android:background="@drawable/bg_gradient"
     app:cardCornerRadius="5dp"
     app:cardElevation="4dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_gradient"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
 
@@ -24,7 +25,7 @@
             android:layout_toLeftOf="@+id/idIVDelete"
             android:padding="4dp"
             android:text="Note Title"
-            android:textColor="@color/blackText"
+            android:textColor="@color/whiteText"
             android:textSize="18sp"></TextView>
 
         <TextView
@@ -36,7 +37,7 @@
             android:layout_toLeftOf="@+id/idIVDelete"
             android:padding="4dp"
             android:text="TimeStamp"
-            android:textColor="@color/textColor"></TextView>
+            android:textColor="@color/whiteText"></TextView>
 
         <ImageView
             android:id="@+id/idIVDelete"

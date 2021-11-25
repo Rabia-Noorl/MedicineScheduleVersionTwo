@@ -12,25 +12,39 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MedicineSchedule">
-        <activity android:name=".AddEditNoteActivity"></activity>
-        <activity android:name=".NotesActivity" />
-        <activity android:name=".SignInWithGoogle" />
-        <activity android:name=".DictionaryActivity" />
-        <activity android:name=".SplashScreen" />
-        <activity android:name=".AddMeasurements" />
-        <activity android:name=".AddDose" />
-        <activity android:name=".AddMedication" />
-        <activity android:name=".AddDoctorActivity" />
-        <activity android:name=".HomeScreen">
+        <activity android:name=".AddEditNoteActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".NotesActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SignInWithGoogle"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".DictionaryActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SplashScreen"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AddMeasurements"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AddDose"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AddMedication"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AddDoctorActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".HomeScreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUp" />
-        <activity android:name=".SignIn" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".SignUp"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SignIn"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
         </activity>
 
         <meta-data

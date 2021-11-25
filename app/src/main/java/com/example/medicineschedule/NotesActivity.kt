@@ -3,6 +3,7 @@ package com.example.medicineschedule
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
@@ -18,7 +19,7 @@ import com.getbase.floatingactionbutton.FloatingActionButton
 
 class NotesActivity : AppCompatActivity(), NoteClickDeleteInterface, NoteClickInterface {
     lateinit var notesRV:RecyclerView
-    lateinit var addFAB:FloatingActionButton
+    lateinit var addFAB: Button
     lateinit var noteViewModel: NoteViewModel
     lateinit var alertdialogbuilder:AlertDialog.Builder
     override fun onCreate(savedInstanceState: Bundle?) {

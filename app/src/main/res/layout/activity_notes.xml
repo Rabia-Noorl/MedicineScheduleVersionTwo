@@ -10,20 +10,48 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:id="@+id/idRVNotes"
         tools:listitem="@layout/note_rv_item"
         ></androidx.recyclerview.widget.RecyclerView>
-    <com.getbase.floatingactionbutton.FloatingActionButton
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/noteAnim"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="150dp"
+        android:alpha="0.5"
+        app:lottie_rawRes="@raw/notes"
+        android:visibility="visible"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_centerInParent="true"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true" />
+
+    <TextView
+        android:id="@+id/initialTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
+        android:paddingLeft="40dp"
+        android:paddingTop="10dp"
+        android:paddingRight="40dp"
+        android:layout_centerInParent="true"
+        android:text="Check and track your all notes here. To add new notes click on ADD NOTE button."
+        android:textAlignment="center"
+        android:visibility="visible"
+
+       android:layout_below="@+id/noteAnim" />
+    <Button
         android:id="@+id/idFBAddNote"
-        app:fab_colorPressed="@color/whiteText"
-        app:fab_colorNormal="#1a6b5f"
-        android:backgroundTint="#1a6b5f"
-        android:layout_margin="20dp"
-        android:src="@drawable/ic_add"
-        app:tint="@color/textColor"></com.getbase.floatingactionbutton.FloatingActionButton>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/clickable_btn_bg"
+        android:text="ADD NOTE"
+        android:textColor="@color/whiteText" />
+
 
 </RelativeLayout>

@@ -57,7 +57,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/view_of_medicines_rv">
-
         </androidx.recyclerview.widget.RecyclerView>
 
         <Button

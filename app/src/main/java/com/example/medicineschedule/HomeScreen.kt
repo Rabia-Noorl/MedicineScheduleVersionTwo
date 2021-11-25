@@ -11,6 +11,7 @@ import android.widget.Toolbar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.bumptech.glide.Glide
@@ -22,6 +23,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_adapter_.*
+import kotlinx.android.synthetic.main.activity_home_screen.*
 
 
 class HomeScreen : AppCompatActivity() {
@@ -29,7 +31,11 @@ class HomeScreen : AppCompatActivity() {
 
     private var searchBtn: Button? = null
     private var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
-    lateinit var actionBarDrawerToggle:ActionBarDrawerToggle
+    private lateinit var drawerLayout:DrawerLayout
+    private lateinit var actionBarDrawerToggle:ActionBarDrawerToggle
+    private lateinit var navigationView:NavigationView
+    private lateinit var navController:NavController
+    private lateinit var bottomNavigationView:BottomNavigationView
     var textEmail:TextView?=null
     var textUserName:TextView?=null
     val toolbar:Toolbar?=null
@@ -44,15 +50,16 @@ class HomeScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
 
+
 //        searcBtn = findViewById<Button>(R.id.searcBtn) as Button
 
-        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar()?.setHomeButtonEnabled(true);
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.setHomeButtonEnabled(true);
 
-        val bottomNavigationView=findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        val navController= Navigation.findNavController(this, R.id.frag_layout)
-        val drawerLayout=findViewById<DrawerLayout>(R.id.drawer_layout)
-        val navigationView=findViewById<NavigationView>(R.id.navigation_view)
+        bottomNavigationView=findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        navController= Navigation.findNavController(this, R.id.frag_layout)
+        drawerLayout=findViewById<DrawerLayout>(R.id.drawer_layout)
+        navigationView=findViewById<NavigationView>(R.id.navigation_view)
         textUserName=findViewById<TextView>(R.id.userNameTV)
         textEmail=findViewById<TextView>(R.id.userEmailTV)
         var googleSignInOptions= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -60,8 +67,6 @@ class HomeScreen : AppCompatActivity() {
            "47830765431-h1prf0sul14dj5p1vdop0a6r315qt1kt.apps.googleusercontent.com")
             .requestEmail().build()
         googleSignInClient= GoogleSignIn.getClient(this, googleSignInOptions)
-//        toolbar = findViewById(R.id.my_toolbar) as Toolbar
-//        setSupportActionBar(toolbar)
 
 //requestIdToken(
 //            getString(R.string.default_web_client_id)
@@ -70,17 +75,14 @@ class HomeScreen : AppCompatActivity() {
 //            val intent = Intent(this, DictionaryActivity::class.java)
 //            startActivity(intent)
 //        }
-        actionBarDrawerToggle=ActionBarDrawerToggle(
-            this,
-            drawerLayout,
-            R.string.open,
-            R.string.close
-        )
-
-        setupDrawerContent(navigationView)
-        updateNavheader()
+        setSupportActionBar(my_toolbar)
+        actionBarDrawerToggle=ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close)
         drawerLayout.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
+        setupDrawerContent(navigationView)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        updateNavheader()
+
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

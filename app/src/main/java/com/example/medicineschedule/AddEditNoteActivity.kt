@@ -3,12 +3,14 @@ package com.example.medicineschedule
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.medicineschedule.database.Note
 import com.example.medicineschedule.viewModels.NoteViewModel
+import kotlinx.android.synthetic.main.activity_notes.*
 import java.text.SimpleDateFormat
 import java.util.*
 
