@@ -204,7 +204,7 @@
                 app:fabSize="mini"
                 app:fab_colorNormal="@color/bgColor"
                 app:fab_colorPressed="@color/themeColor"
-                app:fab_icon="@drawable/ic_adddrug"
+                app:fab_icon="@drawable/ic_doctorappointment"
                 app:fab_title="Add Doctor's apointment"></com.getbase.floatingactionbutton.FloatingActionButton>
 
             <com.getbase.floatingactionbutton.FloatingActionButton

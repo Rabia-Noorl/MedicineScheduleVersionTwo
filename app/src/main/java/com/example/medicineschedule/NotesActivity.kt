@@ -3,19 +3,24 @@ package com.example.medicineschedule
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieAnimationView
 import com.example.medicineschedule.adaptors.NoteClickDeleteInterface
 import com.example.medicineschedule.adaptors.NoteClickInterface
 import com.example.medicineschedule.adaptors.NotesRVAdapter
 import com.example.medicineschedule.database.Note
 import com.example.medicineschedule.viewModels.NoteViewModel
 import com.getbase.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class NotesActivity : AppCompatActivity(), NoteClickDeleteInterface, NoteClickInterface {
     lateinit var notesRV:RecyclerView
@@ -31,10 +36,25 @@ class NotesActivity : AppCompatActivity(), NoteClickDeleteInterface, NoteClickIn
         val noteRVAdapter=NotesRVAdapter(this,this,this)
         notesRV.adapter=noteRVAdapter
         noteViewModel=ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(NoteViewModel::class.java)
-   noteViewModel.allNotes.observe(this, Observer { list->
-       list?.let{
+   noteViewModel.allNotes.observe(this, Observer { list ->
+       list?.let {
+
            noteRVAdapter.updateList(it)
-       }})
+           var anim  = findViewById<LottieAnimationView>(R.id.noteAnim)
+       var initialText  = findViewById<TextView>(R.id.initialTV)
+     if(noteRVAdapter.itemCount==0){
+         anim.visibility=View.VISIBLE
+         initialTV.visibility=View.VISIBLE
+
+     }
+           else{
+         anim.visibility=View.GONE
+         initialTV.visibility=View.GONE
+     }
+       }
+//
+   }
+   )
         addFAB.setOnClickListener{
             val nIntent= Intent(this@NotesActivity,AddEditNoteActivity::class.java)
             startActivity(nIntent)

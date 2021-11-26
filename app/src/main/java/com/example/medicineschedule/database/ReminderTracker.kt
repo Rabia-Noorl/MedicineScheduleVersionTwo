@@ -6,7 +6,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "Reminder_Table" )
 class ReminderTracker(@ColumnInfo(name = "Rem")
-                      val types: String,
+
+                      val reminderType: String,
+                      val types:String,
                       val names: String,
                       val dateTimes: String,
                       val status: String,

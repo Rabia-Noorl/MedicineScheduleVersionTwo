@@ -573,25 +573,58 @@ class AddDose : AppCompatActivity() {
 //        })
 
     }
-    private fun addDoseReminder() {
-        var name = binding.medicationName.text.toString()
-        var type = binding.medTypeTV.text.toString()
-        var quantity = binding.adddosequantity.text.toString()
-        var instructions = binding.Instructions.text.toString()
-        var time = binding.txtvwdosetime1.text.toString()
+//    private fun addDoseReminder() {
+//        var name = binding.medicationName.text.toString()
+//        var type = binding.medTypeTV.text.toString()
+//        var quantity = binding.adddosequantity.text.toString()
+//        var instructions = binding.Instructions.text.toString()
+//        var time = binding.txtvwdosetime1.text.toString()
+//
+//        if ( name.length >  0 && type.length >  0 && quantity.length > 0 && time.length > 0 ){
+//
+//            var remider = ReminderTracker("med", "$name" ,"$time" ,"Take", "$quantity", "Instructions: $instructions", "","","", "${Calendar.getInstance().time}",false)
+//            viewModel.onAddClick(remider)
+//
+//            val intent = Intent(this, HomeScreen::class.java)
+//            startActivity(intent)
+//            finish()
+//
+//        }else{
+//            Toast.makeText(this, "Mandatory fields are missing" , Toast.LENGTH_SHORT).show()
+//        }
+//
+//    }
+private fun addDoseReminder() {
+    var name = binding.medicationName.text.toString()
+    var type = binding.medTypeTV.text.toString()
+    var quantity = binding.adddosequantity.text.toString()
+    var instructions = binding.Instructions.text.toString()
+    var time = binding.txtvwdosetime1.text.toString()
+    var measurmentUnits = binding.spinner.selectedItem.toString()
 
-        if ( name.length >  0 && type.length >  0 && quantity.length > 0 && time.length > 0 ){
+    if ( name.length >  0 && type.length >  0 && quantity.length > 0 && time.length > 0 ){
 
-            var remider = ReminderTracker("med", "$name" ,"$time" ,"Take", "$quantity", "Instructions: $instructions", "","","", "${Calendar.getInstance().time}",false)
-            viewModel.onAddClick(remider)
+        var remider = ReminderTracker("med",
+            " $type",
+            "$name" ,
+            "$time" ,
+            "",
+            "$quantity $measurmentUnits",
+            "Instructions: $instructions",
+            "",
+            "",
+            "",
+            "${Calendar.getInstance().time}",
+            false)
+        viewModel.onAddClick(remider)
 
-            val intent = Intent(this, HomeScreen::class.java)
-            startActivity(intent)
-            finish()
+        val intent = Intent(this, HomeScreen::class.java)
+        startActivity(intent)
+        finish()
 
-        }else{
-            Toast.makeText(this, "Mandatory fields are missing" , Toast.LENGTH_SHORT).show()
-        }
-
+    }else{
+        Toast.makeText(this, "Mandatory fields are missing" , Toast.LENGTH_SHORT).show()
     }
+
+}
 }

@@ -24,6 +24,7 @@ val noteClickDeleteInterface: NoteClickDeleteInterface):RecyclerView.Adapter<Not
         return ViewHolder(itemView)
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         holder.noteTV.setText(allNotes.get(position).noteTitle)
         holder.timeTV.setText(allNotes.get(position).timestamp)
         holder.deleteTV.setOnClickListener{

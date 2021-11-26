@@ -27,6 +27,8 @@
     <color name="blackText">#000000</color>
     <color name="greyColr">#0f3443</color>
     <color name="backGroundColour">#FEF8F3</color>
+    <color name="errorColor">#FF0000</color>
+    <color name="doneColor">#00A300</color>
 
 
 </resources>
