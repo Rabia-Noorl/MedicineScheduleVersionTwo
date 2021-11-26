@@ -1,8 +1,6 @@
 package com.example.medicineschedule.viewModels
 
-import com.example.medicineschedule.database.ReminderDao
 import com.example.medicineschedule.database.ReminderTracker
-import com.example.medicineschedule.models.Drug
 
 class ReminderItemViewModel(val reminderTracker: ReminderTracker) {
     lateinit var itemClickHandler: (reminderTracker: ReminderTracker) -> Unit

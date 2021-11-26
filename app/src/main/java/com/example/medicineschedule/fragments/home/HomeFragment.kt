@@ -62,9 +62,9 @@ class HomeFragment : Fragment(){
         mAuth=FirebaseAuth.getInstance()
         creatNotificationChannel()
 
-        currentUser = mAuth.currentUser!!
-        binding.userNametextView.setText(currentUser?.displayName)
-        Glide.with(this).load(currentUser?.photoUrl).into(binding.imageProfile)
+//        currentUser = mAuth.currentUser!!
+//        binding.userNametextView.setText(currentUser?.displayName)
+//        Glide.with(this).load(currentUser?.photoUrl).into(binding.imageProfile)
 
 
 //        val db=FirebaseFirestore.getInstance()

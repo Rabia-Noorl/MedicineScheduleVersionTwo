@@ -79,7 +79,7 @@ class MoreFragment : Fragment() {
                 startActivity(reportIntent)
             }
             R.id.linLayoutAppointments -> {
-                val reportIntent = Intent(activity, DictionaryActivity::class.java)
+                val reportIntent = Intent(activity, AppointmentsActivity::class.java)
                 startActivity(reportIntent)
             }
             R.id.linLayoutReport -> {

@@ -47,6 +47,7 @@
             android:drawableRight="@drawable/ic_dropdown_blue"
             android:focusableInTouchMode="false"
             android:hint="Enter Measurement Name"
+            android:minHeight="48dp"
             android:textAlignment="center"
             android:textColor="@color/textColor"
             android:textColorHint="@color/design_default_color_primary_variant"

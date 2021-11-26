@@ -22,7 +22,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class AddDoctorActivity : AppCompatActivity() {
-    var timeFormat= SimpleDateFormat("HH:mm a")
+    var timeFormat= SimpleDateFormat("hh:mm a", Locale.US)
     lateinit var binding: ActivityAddDoctorBinding
     lateinit  var viewModel: HomeRecViewModel
 
@@ -114,7 +114,6 @@ class AddDoctorActivity : AppCompatActivity() {
 //        }
 //
 //    }
-@RequiresApi(Build.VERSION_CODES.N)
 private fun addDocReminder() {
     var docName = binding.medicationName.text.toString()
     var time = binding.appointmentTime.text

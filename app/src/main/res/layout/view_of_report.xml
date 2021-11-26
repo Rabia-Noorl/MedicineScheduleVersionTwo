@@ -22,7 +22,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:maxLength="10"
-            android:text="@{reportModel.reminderTracker.names}"
+            android:text="@{reportModel.reminderTracker.names + reportModel.reminderTracker.instructions}"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/rep_linearLayout2"
