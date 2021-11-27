@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.medicineschedule.*
@@ -74,8 +76,8 @@ class MoreFragment : Fragment() {
                 val reportIntent = Intent(activity, DictionaryActivity::class.java)
                 startActivity(reportIntent)
             }
-            R.id.linLayoutMeasurement -> {
-                val reportIntent = Intent(activity, DictionaryActivity::class.java)
+            R.id.linLayoutMeasurements -> {
+                val reportIntent = Intent(activity, MeasurmentsMainActivity::class.java)
                 startActivity(reportIntent)
             }
             R.id.linLayoutAppointments -> {
@@ -83,6 +85,12 @@ class MoreFragment : Fragment() {
                 startActivity(reportIntent)
             }
             R.id.linLayoutReport -> {
+//                val fragment: Fragment = PharmacyFragment()
+//                val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+//                val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+//                fragmentTransaction.replace(MoreFragment, fragment)
+//                fragmentTransaction.addToBackStack(null)
+//                fragmentTransaction.commit()
                 
             }
     }

@@ -51,7 +51,7 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
                 it?.let {
                     var recViewList = ArrayList<ReminderTracker>()
                     it.forEach{
-                        if(it.types == "med" && !it.deleteFlage)
+                        if(it.reminderType == "med" && !it.deleteFlage)
                         {
                             recViewList.add(it)
                         }

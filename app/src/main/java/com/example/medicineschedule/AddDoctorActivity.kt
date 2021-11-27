@@ -98,22 +98,6 @@ class AddDoctorActivity : AppCompatActivity() {
 
         timePicker.show()
     }
-
-//    @RequiresApi(Build.VERSION_CODES.N)
-//    private fun addDocReminder() {
-//        var docName = binding.medicationName.text.toString()
-//        var time = binding.appointmentTime.text
-//        if ( docName.isNotEmpty() && time.isNotEmpty()){
-//            var reminder = ReminderTracker("Appointment", "$docName", "$time","", "","","","","", "${Calendar.getInstance().time}",false)
-//            viewModel.onAddClick(reminder)
-//            val intent = Intent(this, HomeScreen::class.java)
-//            startActivity(intent)
-//            finish()
-//        }else{
-//            Toast.makeText(this, "Mandatory fields are missing", Toast.LENGTH_SHORT).show()
-//        }
-//
-//    }
 private fun addDocReminder() {
     var docName = binding.medicationName.text.toString()
     var time = binding.appointmentTime.text

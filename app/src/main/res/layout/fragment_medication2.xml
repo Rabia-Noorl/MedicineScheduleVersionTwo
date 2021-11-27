@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/meddocanim" />
+            app:lottie_rawRes="@raw/medanim" />
 
         <TextView
             android:id="@+id/initialTV"

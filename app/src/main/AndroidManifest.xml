@@ -13,11 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MedicineSchedule">
         <activity
+            android:name=".MeasurmentsMainActivity"
+            android:exported="true" />
+        <activity
             android:name=".AppointmentsActivity"
             android:exported="true" />
         <activity
             android:name=".AddEditNoteActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".NotesActivity"
             android:screenOrientation="portrait" />
@@ -59,7 +62,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
 
         <receiver
             android:name=".classes.AlarmReceiver"
