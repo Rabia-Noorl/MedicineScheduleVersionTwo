@@ -30,12 +30,19 @@ class AddMeasurements : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddMeasurementsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val intent = getIntent()
+        val record: ReminderTracker? = intent.getSerializableExtra("rem") as ReminderTracker?
+        binding.measurement.setText(record?.names)
+        binding.measureQuantity.setText(record?.quantity)
+        binding.txtvwMtime1.setText(record?.dateTimes)
+
         var measurementsChoice= arrayOf("Blood Pressure", "Blood Sugar", "Weight","Temperature","Heart Rate", "Other")
         var instructionChoice =
             arrayOf("Before Eating", "After Eating", "While Eating", "Doesn't Matter", "Other")
         var mtimeChoice= arrayOf("Once a day","2 times a day","3 times a day","4 times a day","5 times a day","6 times a day","7 times a day")
         var mtimeFormat= SimpleDateFormat("hh:mm a", Locale.US)
-        var dateFormat=SimpleDateFormat("dd MMM YY",Locale.US)
+        var dateFormat=SimpleDateFormat("dd MMM yyyy",Locale.US)
        //set spinners
         var units=arrayOf("units")
         val adap=ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, units)
@@ -64,7 +71,26 @@ class AddMeasurements : AppCompatActivity() {
             HomeRecViewModel::class.java)
 
         binding.saveMeasurement.setOnClickListener{
-            addMeasrementReminder()
+            if(record == null){
+
+
+                addMeasrementReminder()
+
+            }else{
+                var Name = binding.measurement.text.toString()
+                var time = binding.txtvwMtime1.text
+                if ( Name.isNotEmpty() && time.isNotEmpty()){
+                    var reminder = ReminderTracker("mes","$time", "$Name", "$time","${record.status}", "${record.quantity}","${record.instructions}","${record.strenght}","${record.startDate}","${record.endDate}", "${record.recodeCreationDate}", record.deleteFlage)
+                    reminder.id = record.id
+                    viewModel.onEditClick(reminder)
+                    val intent = Intent(this, HomeScreen::class.java)
+                    startActivity(intent)
+                    finish()
+                }else{
+                    Toast.makeText(this, "Mandatory fields are missing", Toast.LENGTH_SHORT).show()
+                }
+
+            }
         }
         binding.backArrowMeasurment.setOnClickListener{
             val intent = Intent(this, HomeScreen::class.java)

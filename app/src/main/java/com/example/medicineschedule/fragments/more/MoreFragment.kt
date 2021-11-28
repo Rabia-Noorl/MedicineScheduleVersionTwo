@@ -85,13 +85,9 @@ class MoreFragment : Fragment() {
                 startActivity(reportIntent)
             }
             R.id.linLayoutReport -> {
-//                val fragment: Fragment = PharmacyFragment()
-//                val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
-//                val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-//                fragmentTransaction.replace(MoreFragment, fragment)
-//                fragmentTransaction.addToBackStack(null)
-//                fragmentTransaction.commit()
-                
+//                val fragment = PharmacyFragment()
+//                requireActivity().supportFragmentManager.beginTransaction().replace(R.id.frag_layout, fragment, fragment.javaClass.getSimpleName())
+//                    .commit()
             }
     }
 

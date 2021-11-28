@@ -68,16 +68,15 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:textAlignment="center"
-            android:cursorVisible="false"
-            android:focusableInTouchMode="false"
-            android:drawableRight="@drawable/ic_dropdown_pink"
-            android:hint="Speciality"
-            android:textColor="@color/textColor"
             android:backgroundTint="#E22A61"
+            android:cursorVisible="false"
+            android:drawableRight="@drawable/ic_dropdown_pink"
+            android:focusableInTouchMode="false"
+            android:hint="Speciality"
+            android:textAlignment="center"
+            android:textColor="@color/textColor"
             android:textColorHint="#E22A61"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
         <EditText
             android:id="@+id/customDocType"
             android:layout_width="wrap_content"
@@ -94,7 +93,7 @@
             android:textColorLink="#E22A61"
             android:textSize="20sp"
             android:textCursorDrawable="@drawable/cursor"
-            android:visibility="gone"></EditText>
+            android:visibility="gone"/>
 
 <!--        <EditText-->
 <!--            android:id="@+id/medTypeTV"-->

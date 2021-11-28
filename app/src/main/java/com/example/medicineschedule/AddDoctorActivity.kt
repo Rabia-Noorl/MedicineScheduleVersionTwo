@@ -21,7 +21,8 @@ import com.google.android.material.timepicker.TimeFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AddDoctorActivity : AppCompatActivity() {
+class AddDoctorActivity : AppCompatActivity(){
+
     var timeFormat= SimpleDateFormat("hh:mm a", Locale.US)
     lateinit var binding: ActivityAddDoctorBinding
     lateinit  var viewModel: HomeRecViewModel
@@ -30,6 +31,13 @@ class AddDoctorActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddDoctorBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val intent = getIntent()
+        val record: ReminderTracker? = intent.getSerializableExtra("rem") as ReminderTracker?
+        binding.medicationName.setText(record?.names)
+        binding.docTypeTV.setText(record?.instructions)
+        binding.appointmentTime.setText(record?.dateTimes)
+
         //create speciality dropdown
         var speciality=arrayOf("Anesthesiologist","Child Specialist","Dermatologist","ENT Specialist","Gynecologist","Neurologist","Ophthalmologist","Pathologist","Psychiatrist","Radiation Oncologist","Urologist","Other")
         binding.docTypeTV.setOnClickListener(View.OnClickListener {
@@ -61,8 +69,26 @@ class AddDoctorActivity : AppCompatActivity() {
         }
 
         binding.saveTextView.setOnClickListener{
-            addDocReminder()
+            if(record == null){
 
+                addDocReminder()
+
+        }else{
+                var docName = binding.medicationName.text.toString()
+                var time = binding.appointmentTime.text
+                var type = binding.docTypeTV.text
+                if ( docName.isNotEmpty() && time.isNotEmpty()){
+                    var reminder = ReminderTracker("doc","Appointment:", "$docName", "$time","", "","$type","","","", "${Calendar.getInstance().time}",false)
+                   reminder.id = record.id
+                    viewModel.onEditClick(reminder)
+                    val intent = Intent(this, HomeScreen::class.java)
+                    startActivity(intent)
+                    finish()
+                }else{
+                    Toast.makeText(this, "Mandatory fields are missing", Toast.LENGTH_SHORT).show()
+                }
+
+        }
         }
         binding.backArrow.setOnClickListener{
             val intent = Intent(this, HomeScreen::class.java)

@@ -52,6 +52,9 @@ class MeasurmentViewModel (application: Application) : AndroidViewModel(applicat
             remineder
         )
     }
+    fun onEditClick(remineder: ReminderTracker) = viewModelScope.launch(Dispatchers.IO) {
+        repository.update(remineder)
+    }
     private fun deletDrug(remineder: ReminderTracker) {
         val items = recyclerItems.value.orEmpty()
         val index = items.map { it.data }

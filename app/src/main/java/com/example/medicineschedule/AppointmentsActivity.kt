@@ -5,17 +5,16 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.example.medicineschedule.database.ReminderTracker
 import com.example.medicineschedule.databinding.ActivityAppointmentsBinding
 import com.example.medicineschedule.viewModels.AppointmentViewModel
+import java.io.Serializable
 
-class AppointmentsActivity : AppCompatActivity() {
+class AppointmentsActivity : AppCompatActivity(){
 
     lateinit var viewModel: AppointmentViewModel
     private lateinit var binding: ActivityAppointmentsBinding
@@ -74,20 +73,23 @@ class AppointmentsActivity : AppCompatActivity() {
         d?.show()
 
         var name = d?.findViewById<TextView>(R.id.nameEditTV)
+        var img = d?.findViewById<ImageView>(R.id.dialogeImgView)
 
         var updateBtn = d?.findViewById<Button>(R.id.updatebutton2)
         var deleteBtn = d?.findViewById<Button>(R.id.deletebutton3)
 
-        var type = d?.findViewById<EditText>(R.id.typeETdialge)
-        var status = d?.findViewById<EditText>(R.id.editTextStatusDialog)
-        var dateTime = d?.findViewById<EditText>(R.id.editTextTimedialoge)
-        var instructions = d?.findViewById<EditText>(R.id.editTextInstructiondialoge)
-
-        name.setText(reminderTracker.names)
-        status.setText(reminderTracker.status)
-        dateTime.setText(reminderTracker.dateTimes)
-        instructions.setText(reminderTracker.instructions)
-
+        img.setImageDrawable(
+            ContextCompat.getDrawable(
+                applicationContext, // Context
+                R.drawable.doctor // Drawable
+            )
+        )
+        name.setText(reminderTracker.names + reminderTracker.instructions)
+        updateBtn.setOnClickListener {
+            val intent = Intent(this, AddDoctorActivity::class.java)
+            intent.putExtra("rem", reminderTracker)
+            startActivity(intent)
+        }
         deleteBtn.setOnClickListener{
             var rem = ReminderTracker(
                 reminderTracker.reminderType,
