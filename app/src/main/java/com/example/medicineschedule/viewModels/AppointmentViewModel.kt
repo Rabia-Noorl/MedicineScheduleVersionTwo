@@ -27,8 +27,8 @@ class AppointmentViewModel (application: Application) : AndroidViewModel(applica
 
     // Real-world apps should use SingleLiveData instead. RxJava / Coroutines could also work
     // better for one-time event streams.
-    private val _toastMessage = MutableLiveData<String>()
-    val toastMessage: LiveData<String> = _toastMessage
+    private val _reminder = MutableLiveData<ReminderTracker>()
+    val reminder: LiveData<ReminderTracker> = _reminder
 
 
     init {
@@ -40,16 +40,16 @@ class AppointmentViewModel (application: Application) : AndroidViewModel(applica
             ?.map { it.toRecyclerItem() }
     }
 
-    fun creatReminderItemViewModel(remineder: ReminderTracker): ReminderItemViewModel {
+    fun creatReminderItemViewModel(remineder:ReminderTracker): ReminderItemViewModel {
         return ReminderItemViewModel(remineder).apply {
-            itemClickHandler = { remineder -> showClickMessage(remineder) }
+            itemClickHandler = { remineder -> getReminderRecord(remineder) }
             deleteBtnClickHandler = { remineder -> deletDrug(remineder) }
             addDrugClickHandler = { remineder -> onAddClick(remineder)}
         }
     }
-    private fun showClickMessage(remineder: ReminderTracker) {
-        _toastMessage.postValue(
-            "${remineder.names} is clicked"
+    private fun getReminderRecord(remineder: ReminderTracker) {
+        _reminder.postValue(
+            remineder
         )
     }
     private fun deletDrug(remineder: ReminderTracker) {
@@ -81,8 +81,8 @@ class AppointmentViewModel (application: Application) : AndroidViewModel(applica
     fun onShuffleClick() {
         _recyclerItems.value = recyclerItems.value.orEmpty().shuffled()
     }
-    fun onDeletClick(remineder: ReminderTracker) = viewModelScope.launch(Dispatchers.IO){
-        repository.delete(remineder)
+    fun onDeletClick(reminder: ReminderTracker) = viewModelScope.launch(Dispatchers.IO){
+        repository.delete(reminder)
     }
 
     private fun ReminderItemViewModel.toRecyclerItem() = RecyclerItem(

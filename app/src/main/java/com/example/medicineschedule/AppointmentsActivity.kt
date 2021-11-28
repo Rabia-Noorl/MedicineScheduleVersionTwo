@@ -1,22 +1,16 @@
 package com.example.medicineschedule
 
-import android.app.PendingIntent.getActivity
-import android.content.Context
+import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.AttributeSet
-import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.example.medicineschedule.database.ReminderTracker
-import com.example.medicineschedule.databinding.ActivityAddDoctorBinding
 import com.example.medicineschedule.databinding.ActivityAppointmentsBinding
-import com.example.medicineschedule.databinding.FragmentPharmacyBinding
-import com.example.medicineschedule.fragments.pharmacy.PharmacyFragment
 import com.example.medicineschedule.viewModels.AppointmentViewModel
-import com.example.medicineschedule.viewModels.HomeRecViewModel
-import com.example.medicineschedule.viewModels.ReportViewModel
 
 class AppointmentsActivity : AppCompatActivity() {
 
@@ -43,6 +37,11 @@ class AppointmentsActivity : AppCompatActivity() {
             it.lifecycleOwner = this
             it.appointmentViewModel = viewModel
         }
+
+        viewModel.reminder.observe(this) {reminder ->
+            dialogueHandler(reminder)
+        }
+
         viewModel.allRemiders.observe(this){
             it?.let {
                 var recViewList = ArrayList<ReminderTracker>()
@@ -60,5 +59,15 @@ class AppointmentsActivity : AppCompatActivity() {
             }
         }
 
+
+
+    }
+    private fun dialogueHandler(reminderTracker: ReminderTracker){
+        val width = (resources.displayMetrics.widthPixels * 0.85).toInt()
+        var d : Dialog? = this.let { Dialog(it) }
+        d?.setContentView(R.layout.edit_record_dialoge)
+        d!!.window?.setBackgroundDrawableResource(R.drawable.edit_text_design);
+        d!!.window?.setLayout(width, ViewGroup.LayoutParams.MATCH_PARENT)
+        d?.show()
     }
 }

@@ -239,188 +239,6 @@ class HomeFragment : Fragment(){
             notificationManager.createNotificationChannel(channel)
         }
     }
-//    private fun dialogeBuild(reminderTracker: ReminderTracker){
-//        val width = (resources.displayMetrics.widthPixels * 0.85).toInt()
-//        var d : Dialog? = context?.let { Dialog(it) }
-//        d?.setContentView(R.layout.dialog_frag_layout)
-//        d!!.window?.setBackgroundDrawableResource(R.drawable.edit_text_design);
-//        d!!.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
-//        d?.show()
-//
-//        var unTakeBtn = d?.findViewById<TextView>(R.id.unTakeBtn)
-//        var takeBtn = d?.findViewById<TextView>(R.id.takeBtn)
-//        var reschedualBtn = d?.findViewById<TextView>(R.id.reschedualBtn)
-//        var tyeQuantityV = d?.findViewById<TextView>(R.id.tyeQuantityV)
-//
-//
-//        var deletBtn = d?.findViewById<ImageView>(R.id.deleteImg)
-//        var editBtn = d?.findViewById<ImageView>(R.id.editImg)
-//        var medImg = d?.findViewById<ImageView>(R.id.medImg)
-//
-//        var nameTv = d?.findViewById<TextView>(R.id.nameTV)
-//        var statusTV = d?.findViewById<TextView>(R.id.statusTV)
-//
-//        var sTimeTV = d?.findViewById<TextView>(R.id.sTimeTV)
-//        var sdayTV = d?.findViewById<TextView>(R.id.sdayTV)
-//        var strenghtTV = d?.findViewById<TextView>(R.id.strenghtTV)
-//        var infoTimeTV = d?.findViewById<TextView>(R.id.infoTimeTV)
-//
-//        nameTv.setText("${reminderTracker.names}")
-//        sTimeTV.setText("${reminderTracker.dateTimes}")
-//        statusTV.setText("${reminderTracker.status}")
-//
-//        if (reminderTracker.types.toString() == "med"){
-//            strenghtTV.setText("${reminderTracker.strenght},")
-//            tyeQuantityV.setText("take 5mg ${reminderTracker.quantity} at ${reminderTracker.dateTimes} ")
-//            sdayTV.setText("Thursday")
-//        }else if(reminderTracker.types == "mes")
-//        {
-//            tyeQuantityV.setText("Measurement at ${reminderTracker.dateTimes} ")
-//            sdayTV.setText("Thursday")
-//        }else if(reminderTracker.types == "Appointment")
-//        {
-//            tyeQuantityV.setText("Apointment at ${reminderTracker.dateTimes} ")
-//            sdayTV.setText("Thursday")
-//        }
-//
-//        unTakeBtn.setOnClickListener {
-//            unTakeBtn.setTextColor(Color.parseColor("#f98365"))
-//            takeBtn.setTextColor(Color.parseColor("#FFFFFF"))
-//            reschedualBtn.setTextColor(Color.parseColor("#FFFFFF"))
-//            if (!statusFlag) {
-//                unTakeBtn.setText("TAKEN")
-//                var rem = ReminderTracker(
-//                    reminderTracker.types,
-//                    reminderTracker.names,
-//                    reminderTracker.dateTimes,
-//                    "Taken at ",
-//                    reminderTracker.quantity,
-//                    reminderTracker.instructions,
-//                    reminderTracker.strenght,
-//                    reminderTracker.startDate,
-//                    reminderTracker.endDate,
-//                    reminderTracker.recodeCreationDate,
-//                    reminderTracker.deleteFlage
-//                )
-//                rem.id = reminderTracker.id
-//                viewModel.onEditClick(rem)
-//                statusFlag = true
-//                statusTV.setText("${rem.status}")
-//                return@setOnClickListener
-//            } else if(statusFlag) {
-//                var rem = ReminderTracker(
-//                    "${reminderTracker.types}",
-//                    "${reminderTracker.names}",
-//                    "${reminderTracker.dateTimes}",
-//                    "Take at",
-//                    "${reminderTracker.quantity}",
-//                    "${reminderTracker.instructions}",
-//                    "${reminderTracker.strenght}",
-//                    "${reminderTracker.startDate}",
-//                    "${reminderTracker.endDate}",
-//                    reminderTracker.recodeCreationDate,
-//                    reminderTracker.deleteFlage)
-//                rem.id = reminderTracker.id
-//                viewModel.onEditClick(rem)
-//                statusFlag = false
-//                statusTV.setText("${rem.status}")
-//                unTakeBtn.setText("UN_TAKE")
-//                return@setOnClickListener
-//            }
-//        }
-//
-//        takeBtn.setOnClickListener {
-//            unTakeBtn.setTextColor(Color.parseColor("#FFFFFF"))
-//            takeBtn.setTextColor(Color.parseColor("#f98365"))
-//            reschedualBtn.setTextColor(Color.parseColor("#FFFFFF"))
-//            if (!statusFlag) {
-//                val rem = ReminderTracker(
-//                    reminderTracker.types,
-//                    "${reminderTracker.names}",
-//                    "${reminderTracker.dateTimes}",
-//                    "Missed at ${reminderTracker.quantity}",
-//                    "${reminderTracker.quantity}",
-//                    "${reminderTracker.instructions}",
-//                    "${reminderTracker.strenght}",
-//                    "${reminderTracker.startDate}",
-//                    "${reminderTracker.endDate}",
-//                    reminderTracker.recodeCreationDate,
-//                    reminderTracker.deleteFlage)
-//                rem.id = reminderTracker.id
-//                viewModel.onEditClick(rem)
-//                statusFlag = true
-//                statusTV.setText("${rem.status}")
-//                takeBtn.setText("TAKEN")
-//                return@setOnClickListener
-//            } else if(statusFlag) {
-//                var rem = ReminderTracker(
-//                    "${reminderTracker.types}",
-//                    "${reminderTracker.names}",
-//                    "${reminderTracker.dateTimes}",
-//                    "Skipped at ${reminderTracker.quantity}",
-//                    "${reminderTracker.quantity}",
-//                    "${reminderTracker.instructions}",
-//                    "${reminderTracker.strenght}",
-//                    "${reminderTracker.startDate}",
-//                    "${reminderTracker.endDate}",
-//                    reminderTracker.recodeCreationDate,
-//                    reminderTracker.deleteFlage)
-//                rem.id = reminderTracker.id
-//                viewModel.onEditClick(rem)
-//                statusFlag = false
-//                statusTV.setText("${rem.status}")
-//                takeBtn.setText("SKIPED")
-//                return@setOnClickListener
-//            }
-//        }
-//        reschedualBtn.setOnClickListener {
-//            unTakeBtn.setTextColor(Color.parseColor("#FFFFFF"))
-//            takeBtn.setTextColor(Color.parseColor("#FFFFFF"))
-//            reschedualBtn.setTextColor(Color.parseColor("#f98365"))
-//
-//            var calendar= Calendar.getInstance()
-//            try{
-//                var date=timeFormat.parse(reminderTracker.dateTimes.toString())
-//                calendar.time=date}
-//            catch (e:Exception){
-//                e.printStackTrace()
-//            }
-//            var timePicker=
-//                TimePickerDialog(context, TimePickerDialog.OnTimeSetListener{ view, hourOfDay, minute ->
-//                    var selectedTime=Calendar.getInstance()
-//                    selectedTime.set(Calendar.HOUR_OF_DAY,hourOfDay)
-//                    selectedTime.set(Calendar.MINUTE,minute)
-//                },
-//                    calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),false)
-//            timePicker.show()
-//
-//        }
-//
-//
-//        deletBtn.setOnClickListener {
-//            var rem = ReminderTracker(
-//                reminderTracker.types,
-//                reminderTracker.names,
-//                reminderTracker.dateTimes,
-//                reminderTracker.status,
-//                reminderTracker.quantity,
-//                reminderTracker.instructions,
-//                reminderTracker.strenght,
-//                reminderTracker.startDate,
-//                reminderTracker.endDate,
-//                reminderTracker.recodeCreationDate,
-//                true
-//            )
-//            rem.id = reminderTracker.id
-//            viewModel.onEditClick(rem)
-//            viewModel.deletDrug(rem)
-//            d?.cancel()
-//        }
-//        editBtn.setOnClickListener {
-//            val medicineIntent = Intent(getActivity(), AddDose::class.java)
-//            startActivity(medicineIntent)
-//        }
-//    }
 @SuppressLint("ResourceAsColor")
 private fun dialogeBuild(reminderTracker: ReminderTracker){
     val width = (resources.displayMetrics.widthPixels * 0.85).toInt()
@@ -448,14 +266,14 @@ private fun dialogeBuild(reminderTracker: ReminderTracker){
     var strenghtTV = d?.findViewById<TextView>(R.id.strenghtTV)
     var infoTimeTV = d?.findViewById<TextView>(R.id.infoTimeTV)
 
-    nameTv.setText("${reminderTracker.names}")
-    sTimeTV.setText("${reminderTracker.dateTimes}")
-    statusTV.setText("${reminderTracker.status}")
+    nameTv.setText(reminderTracker.names)
+    sTimeTV.setText(reminderTracker.dateTimes)
+    statusTV.setText(reminderTracker.status)
 
     val calendar = Calendar.getInstance()
     val date = calendar.time
     val day = SimpleDateFormat("EEEE", Locale.ENGLISH).format(date.time)
-    sdayTV.setText("$day")
+    sdayTV.setText(day)
 
     if (reminderTracker.reminderType.toString() == "med"){
         strenghtTV.setText("${reminderTracker.quantity} ${reminderTracker.types}${reminderTracker.strenght}")

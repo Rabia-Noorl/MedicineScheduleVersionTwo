@@ -12,6 +12,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MeasurmentsMainActivity">
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/appointment_RecyclerView"
         android:layout_width="0dp"
@@ -24,7 +25,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/view_of_appointments">
+        tools:listitem="@layout/view_of_mesurments_rv">
 
     </androidx.recyclerview.widget.RecyclerView>
 

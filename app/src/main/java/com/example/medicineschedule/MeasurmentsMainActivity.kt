@@ -1,8 +1,11 @@
 package com.example.medicineschedule
 
+import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.example.medicineschedule.database.ReminderTracker
@@ -37,6 +40,13 @@ class MeasurmentsMainActivity : AppCompatActivity() {
             it.lifecycleOwner = this
             it.measurmentViewModel = viewModel
         }
+
+
+        viewModel.recodeCliked.observe(this){
+            dialogueHandler(it)
+        }
+
+
         viewModel.allRemiders.observe(this){
             it?.let {
                 var recViewList = ArrayList<ReminderTracker>()
@@ -54,5 +64,15 @@ class MeasurmentsMainActivity : AppCompatActivity() {
             }
         }
 
+
+    }
+
+    private fun dialogueHandler(reminderTracker: ReminderTracker){
+        val width = (resources.displayMetrics.widthPixels * 0.85).toInt()
+        var d : Dialog? = this.let { Dialog(it) }
+        d?.setContentView(R.layout.edit_record_dialoge)
+        d!!.window?.setBackgroundDrawableResource(R.drawable.edit_text_design);
+        d!!.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
+        d?.show()
     }
 }

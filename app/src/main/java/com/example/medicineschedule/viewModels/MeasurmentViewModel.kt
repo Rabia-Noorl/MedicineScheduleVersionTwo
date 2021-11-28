@@ -27,8 +27,8 @@ class MeasurmentViewModel (application: Application) : AndroidViewModel(applicat
 
     // Real-world apps should use SingleLiveData instead. RxJava / Coroutines could also work
     // better for one-time event streams.
-    private val _toastMessage = MutableLiveData<String>()
-    val toastMessage: LiveData<String> = _toastMessage
+    private val _recodeCliked = MutableLiveData<ReminderTracker>()
+    val recodeCliked: LiveData<ReminderTracker> = _recodeCliked
 
 
     init {
@@ -48,8 +48,8 @@ class MeasurmentViewModel (application: Application) : AndroidViewModel(applicat
         }
     }
     private fun showClickMessage(remineder: ReminderTracker) {
-        _toastMessage.postValue(
-            "${remineder.names} is clicked"
+        _recodeCliked.postValue(
+            remineder
         )
     }
     private fun deletDrug(remineder: ReminderTracker) {
@@ -87,8 +87,8 @@ class MeasurmentViewModel (application: Application) : AndroidViewModel(applicat
 
     private fun ReminderItemViewModel.toRecyclerItem() = RecyclerItem(
         data = this,
-        layoutId = R.layout.view_of_report,
-        variableId = BR.reportModel
+        layoutId = R.layout.view_of_mesurments_rv,
+        variableId = BR.measurmenttModel
 
     )
 }

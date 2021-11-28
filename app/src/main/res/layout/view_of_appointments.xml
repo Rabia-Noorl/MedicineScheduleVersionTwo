@@ -17,7 +17,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/recview_item_design"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:onClick="@{() -> appointmentModel.onItemClick()}">
 
         <ImageView
             android:id="@+id/imageView5"
