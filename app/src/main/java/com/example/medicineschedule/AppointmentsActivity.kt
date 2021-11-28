@@ -5,6 +5,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
@@ -67,7 +70,23 @@ class AppointmentsActivity : AppCompatActivity() {
         var d : Dialog? = this.let { Dialog(it) }
         d?.setContentView(R.layout.edit_record_dialoge)
         d!!.window?.setBackgroundDrawableResource(R.drawable.edit_text_design);
-        d!!.window?.setLayout(width, ViewGroup.LayoutParams.MATCH_PARENT)
+        d!!.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
         d?.show()
+
+        var name = d?.findViewById<TextView>(R.id.nameEditTV)
+
+        var updateBtn = d?.findViewById<Button>(R.id.updatebutton2)
+        var deleteBtn = d?.findViewById<Button>(R.id.deletebutton3)
+
+        var type = d?.findViewById<EditText>(R.id.typeETdialge)
+        var status = d?.findViewById<EditText>(R.id.editTextStatusDialog)
+        var dateTime = d?.findViewById<EditText>(R.id.editTextTimedialoge)
+        var instructions = d?.findViewById<EditText>(R.id.editTextInstructiondialoge)
+
+        name.setText(reminderTracker.names)
+        type.setText(reminderTracker.types)
+        status.setText(reminderTracker.status)
+        dateTime.setText(reminderTracker.dateTimes)
+        instructions.setText(reminderTracker.instructions)
     }
 }

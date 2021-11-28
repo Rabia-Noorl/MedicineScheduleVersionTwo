@@ -28,30 +28,81 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
     <LinearLayout
+        android:id="@+id/linearLayout8"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:background="@drawable/edit_text_design"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/recview_item_design"
         android:elevation="5dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
+        android:padding="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/updatebutton2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameEditTV">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/typeETdialge"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:inputType="textPersonName"
+            android:text="Type" />
+
+        <EditText
+            android:id="@+id/editTextStatusDialog"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:inputType="textPersonName"
+            android:text="status" />
+
+        <EditText
+            android:id="@+id/editTextTimedialoge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/recview_item_design"
             android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:padding="5dp"
-            android:text="Type"
-            android:textSize="16sp" />
+            android:text="Time" />
+
+        <EditText
+            android:id="@+id/editTextInstructiondialoge"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:inputType="textPersonName"
+            android:text="Instructions" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/updatebutton2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/clickable_btn_bg"
+        android:text="UPDATE"
+        android:textColor="@color/whiteText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/deletebutton3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/deletebutton3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/clickable_btn_bg"
+        android:text="DELETE"
+        android:textColor="@color/whiteText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/updatebutton2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
