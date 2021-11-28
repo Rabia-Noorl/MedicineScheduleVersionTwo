@@ -84,7 +84,6 @@ class AppointmentsActivity : AppCompatActivity() {
         var instructions = d?.findViewById<EditText>(R.id.editTextInstructiondialoge)
 
         name.setText(reminderTracker.names)
-        type.setText(reminderTracker.types)
         status.setText(reminderTracker.status)
         dateTime.setText(reminderTracker.dateTimes)
         instructions.setText(reminderTracker.instructions)
