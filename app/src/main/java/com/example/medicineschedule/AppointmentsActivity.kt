@@ -87,5 +87,25 @@ class AppointmentsActivity : AppCompatActivity() {
         status.setText(reminderTracker.status)
         dateTime.setText(reminderTracker.dateTimes)
         instructions.setText(reminderTracker.instructions)
+
+        deleteBtn.setOnClickListener{
+            var rem = ReminderTracker(
+                reminderTracker.reminderType,
+                reminderTracker.types,
+                reminderTracker.names,
+                reminderTracker.dateTimes,
+                reminderTracker.status,
+                reminderTracker.quantity,
+                reminderTracker.instructions,
+                reminderTracker.strenght,
+                reminderTracker.startDate,
+                reminderTracker.endDate,
+                reminderTracker.recodeCreationDate,
+                true
+            )
+            rem.id = reminderTracker.id
+            viewModel.onEditClick(rem)
+            d?.cancel()
+        }
     }
 }

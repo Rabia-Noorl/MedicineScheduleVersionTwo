@@ -84,6 +84,9 @@ class AppointmentViewModel (application: Application) : AndroidViewModel(applica
     fun onDeletClick(reminder: ReminderTracker) = viewModelScope.launch(Dispatchers.IO){
         repository.delete(reminder)
     }
+    fun onEditClick(remineder: ReminderTracker) = viewModelScope.launch(Dispatchers.IO) {
+        repository.update(remineder)
+    }
 
     private fun ReminderItemViewModel.toRecyclerItem() = RecyclerItem(
         data = this,
