@@ -25,6 +25,10 @@ class AddMeasurements : AppCompatActivity() {
     lateinit var viewModel: HomeRecViewModel
     lateinit var binding: ActivityAddMeasurementsBinding
 
+    companion object{
+        val timeListMeasurement = ArrayList<String>()
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -463,27 +467,44 @@ class AddMeasurements : AppCompatActivity() {
 //        }
 //    }
 private fun addMeasrementReminder() {
+
+    var time = binding.txtvwMtime1.text.toString()
+    var time1 = binding.txtvwMtime2.text.toString()
+    var time2 = binding.txtvwMtime3.text.toString()
+    var time3 = binding.txtvwMtime4.text.toString()
+    var time4 = binding.txtvwMtime5.text.toString()
+    var time5 = binding.txtvwMtime6.text.toString()
+    var time6 = binding.txtvwMtime7.text.toString()
+    timeListMeasurement.add(time)
+    timeListMeasurement.add(time1)
+    timeListMeasurement.add(time2)
+    timeListMeasurement.add(time3)
+    timeListMeasurement.add(time4)
+    timeListMeasurement.add(time5)
+    timeListMeasurement.add(time6)
+
     var name = binding.measurement.text.toString()
     var quantity = binding.measureQuantity.text.toString()
     var instructions = binding.MInstructions.text.toString()
-    var time = binding.txtvwMtime1.text.toString()
     var type = binding.tvMeasureValue.text.toString()
     var measurmentUnit  = binding.mspinner.selectedItem.toString()
 
-    if ( name.length >  0 && quantity.length > 0 && time.length > 0 ){
+    timeListMeasurement.forEach {
+        if ( name.length >  0 && quantity.length > 0 && it.length > 0 ){
 
-        var remider = ReminderTracker("mes","",
-            "$name" ,"$time" ,
-            "", "$quantity $measurmentUnit",
-            "Instruction: $instructions",
-            "","","", "${Calendar.getInstance().time}",false)
-        viewModel.onAddClick(remider)
-        val intent = Intent(this, HomeScreen::class.java)
-        startActivity(intent)
-        finish()
-
-    }else{
-        Toast.makeText(this, "Mandatory fields are missing" , Toast.LENGTH_SHORT).show()
+            var remider = ReminderTracker("mes","",
+                "$name" ,"$it" ,
+                "", "$quantity $measurmentUnit",
+                "Instruction: $instructions",
+                "","","", "${Calendar.getInstance().time}",false)
+            viewModel.onAddClick(remider)
+        }
+        else{
+            Toast.makeText(this, "Mandatory fields are missing" , Toast.LENGTH_SHORT).show()
+        }
     }
+    val intent = Intent(this, HomeScreen::class.java)
+    startActivity(intent)
+    finish()
 }
 }
