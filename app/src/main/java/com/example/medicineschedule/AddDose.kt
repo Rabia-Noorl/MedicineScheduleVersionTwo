@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.activity_add_doctor.*
 import kotlinx.android.synthetic.main.activity_add_dose.*
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class AddDose : AppCompatActivity() {
 
@@ -28,6 +29,10 @@ class AddDose : AppCompatActivity() {
     lateinit var medViewModel: MedicineRecViewModel
 
     lateinit var binding: ActivityAddDoseBinding
+
+    companion object{
+        val timeList = ArrayList<Any>()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +45,7 @@ class AddDose : AppCompatActivity() {
         ,"Physiotherapy","Treatment Session","Other")
             arrayOf("Before Eating", "After Eating", "While Eating", "Doesn't Matter", "Other")
         var timeFormat= SimpleDateFormat("hh:mm a", Locale.US)
-        var dateFormat=SimpleDateFormat("dd MMM YY", Locale.US)
+        var dateFormat=SimpleDateFormat("dd MMM yyyy", Locale.US)
         viewModel = ViewModelProvider(
             this, ViewModelProvider.AndroidViewModelFactory.getInstance(
                 application
@@ -258,6 +263,8 @@ class AddDose : AppCompatActivity() {
                 binding.linLayoutTime.visibility = View.VISIBLE
                 binding.txtvwdosetime1.visibility = View.VISIBLE
                 binding.linLayoutdosedate.visibility = View.VISIBLE
+                timeList.clear()
+                timeList.add(binding.txtvwdosetime1.text)
             } else {
                 binding.linLayoutTime.visibility = View.GONE
                 binding.txtvwdosetime1.visibility = View.GONE
@@ -295,7 +302,8 @@ class AddDose : AppCompatActivity() {
                         binding.txtvwdosetime5.visibility = View.GONE
                         binding.txtvwdosetime6.visibility = View.GONE
                         binding.txtvwdosetime7.visibility = View.GONE
-
+                        timeList.clear()
+                        timeList.add( binding.txtvwdosetime1.text)
                     }
                     1 -> {
                         binding.txtvwdosetime1.visibility = View.VISIBLE
@@ -305,6 +313,9 @@ class AddDose : AppCompatActivity() {
                         binding.txtvwdosetime5.visibility = View.GONE
                         binding.txtvwdosetime6.visibility = View.GONE
                         binding.txtvwdosetime7.visibility = View.GONE
+                        timeList.clear()
+                        timeList.add( binding.txtvwdosetime1.text)
+                        timeList.add( binding.txtvwdosetime2.text)
 
                     }
                     2 -> {
@@ -315,6 +326,11 @@ class AddDose : AppCompatActivity() {
                         binding.txtvwdosetime5.visibility = View.GONE
                         binding.txtvwdosetime6.visibility = View.GONE
                         binding.txtvwdosetime7.visibility = View.GONE
+                        timeList.clear()
+                        timeList.add( binding.txtvwdosetime1.text)
+                        timeList.add( binding.txtvwdosetime2.text)
+                        timeList.add( binding.txtvwdosetime3.text)
+
 
                     }
                     3 -> {
@@ -325,6 +341,12 @@ class AddDose : AppCompatActivity() {
                         binding.txtvwdosetime5.visibility = View.GONE
                         binding.txtvwdosetime6.visibility = View.GONE
                         binding.txtvwdosetime7.visibility = View.GONE
+                        timeList.clear()
+                        timeList.add( binding.txtvwdosetime1.text)
+                        timeList.add( binding.txtvwdosetime2.text)
+                        timeList.add( binding.txtvwdosetime3.text)
+                        timeList.add( binding.txtvwdosetime4.text)
+
 
                     }
                     4 -> {
@@ -335,8 +357,12 @@ class AddDose : AppCompatActivity() {
                         binding.txtvwdosetime5.visibility = View.VISIBLE
                         binding.txtvwdosetime6.visibility = View.GONE
                         binding.txtvwdosetime7.visibility = View.GONE
-
-
+                        timeList.clear()
+                        timeList.add( binding.txtvwdosetime1.text)
+                        timeList.add( binding.txtvwdosetime2.text)
+                        timeList.add( binding.txtvwdosetime3.text)
+                        timeList.add( binding.txtvwdosetime4.text)
+                        timeList.add( binding.txtvwdosetime5.text)
                     }
                     5 -> {
                         binding.txtvwdosetime1.visibility = VISIBLE
@@ -346,6 +372,13 @@ class AddDose : AppCompatActivity() {
                         binding.txtvwdosetime5.visibility = VISIBLE
                         binding.txtvwdosetime6.visibility = VISIBLE
                         binding.txtvwdosetime7.visibility = View.GONE
+                        timeList.clear()
+                        timeList.add( binding.txtvwdosetime1.text)
+                        timeList.add( binding.txtvwdosetime2.text)
+                        timeList.add( binding.txtvwdosetime3.text)
+                        timeList.add( binding.txtvwdosetime4.text)
+                        timeList.add( binding.txtvwdosetime5.text)
+                        timeList.add( binding.txtvwdosetime6.text)
 
                     }
                     6 -> {
@@ -356,6 +389,14 @@ class AddDose : AppCompatActivity() {
                         binding.txtvwdosetime5.visibility = VISIBLE
                         binding.txtvwdosetime6.visibility = VISIBLE
                         binding.txtvwdosetime7.visibility = VISIBLE
+                        timeList.clear()
+                        timeList.add( binding.txtvwdosetime1.text)
+                        timeList.add( binding.txtvwdosetime2.text)
+                        timeList.add( binding.txtvwdosetime3.text)
+                        timeList.add( binding.txtvwdosetime4.text)
+                        timeList.add( binding.txtvwdosetime5.text)
+                        timeList.add( binding.txtvwdosetime6.text)
+                        timeList.add( binding.txtvwdosetime7.text)
 
                     }
                     else -> {
@@ -365,7 +406,7 @@ class AddDose : AppCompatActivity() {
                         binding.txtvwdosetime5.visibility = View.GONE
                         binding.txtvwdosetime6.visibility = View.GONE
                         binding.txtvwdosetime7.visibility = View.GONE
-
+                        timeList.clear()
                     }
                 }
 
@@ -573,58 +614,41 @@ class AddDose : AppCompatActivity() {
 //        })
 
     }
-//    private fun addDoseReminder() {
-//        var name = binding.medicationName.text.toString()
-//        var type = binding.medTypeTV.text.toString()
-//        var quantity = binding.adddosequantity.text.toString()
-//        var instructions = binding.Instructions.text.toString()
-//        var time = binding.txtvwdosetime1.text.toString()
-//
-//        if ( name.length >  0 && type.length >  0 && quantity.length > 0 && time.length > 0 ){
-//
-//            var remider = ReminderTracker("med", "$name" ,"$time" ,"Take", "$quantity", "Instructions: $instructions", "","","", "${Calendar.getInstance().time}",false)
-//            viewModel.onAddClick(remider)
-//
-//            val intent = Intent(this, HomeScreen::class.java)
-//            startActivity(intent)
-//            finish()
-//
-//        }else{
-//            Toast.makeText(this, "Mandatory fields are missing" , Toast.LENGTH_SHORT).show()
-//        }
-//
-//    }
 private fun addDoseReminder() {
     var name = binding.medicationName.text.toString()
     var type = binding.medTypeTV.text.toString()
     var quantity = binding.adddosequantity.text.toString()
     var instructions = binding.Instructions.text.toString()
-    var time = binding.txtvwdosetime1.text.toString()
     var measurmentUnits = binding.spinner.selectedItem.toString()
+    if (!(timeList.isEmpty())){
+        timeList.forEach{
+            var time = it.toString()
+            if ( name.isNotEmpty() && type.isNotEmpty() && quantity.isNotEmpty() && time.isNotEmpty()){
 
-    if ( name.length >  0 && type.length >  0 && quantity.length > 0 && time.length > 0 ){
+                var remider = ReminderTracker("med",
+                    " $type",
+                    "$name" ,
+                    "$time" ,
+                    "",
+                    "$quantity $measurmentUnits",
+                    "Instructions: $instructions",
+                    "",
+                    "",
+                    "",
+                    "${Calendar.getInstance().time}",
+                    false)
+                viewModel.onAddClick(remider)
 
-        var remider = ReminderTracker("med",
-            " $type",
-            "$name" ,
-            "$time" ,
-            "",
-            "$quantity $measurmentUnits",
-            "Instructions: $instructions",
-            "",
-            "",
-            "",
-            "${Calendar.getInstance().time}",
-            false)
-        viewModel.onAddClick(remider)
+                val intent = Intent(this, HomeScreen::class.java)
+                startActivity(intent)
+                finish()
 
-        val intent = Intent(this, HomeScreen::class.java)
-        startActivity(intent)
-        finish()
+            }else{
+                Toast.makeText(this, "Mandatory fields are missing" , Toast.LENGTH_SHORT).show()
+            }
 
-    }else{
-        Toast.makeText(this, "Mandatory fields are missing" , Toast.LENGTH_SHORT).show()
+        }
+
     }
-
 }
 }

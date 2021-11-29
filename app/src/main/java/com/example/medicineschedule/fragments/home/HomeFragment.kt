@@ -210,15 +210,31 @@ class HomeFragment : Fragment(){
             calendar[Calendar.SECOND] = 0
             calendar[Calendar.MILLISECOND] = 0
             val date =  Date()
-            if(calendar.time.after(date)){
-                alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
-                val intent = Intent(context, AlarmReceiver::class.java)
-                pendingIntent = PendingIntent.getBroadcast(context, it.id ,intent, 0)
-                alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis,pendingIntent)
-                Toast.makeText(context,"Alarm will ring", Toast.LENGTH_LONG).show()
-            }else{
-                Toast.makeText(context,"Alarm will not ring", Toast.LENGTH_LONG).show()
-            }
+                if(calendar.time.after(date)){
+                    alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                    val intent = Intent(context, AlarmReceiver::class.java)
+                    pendingIntent = PendingIntent.getBroadcast(context, it.id ,intent, 0)
+                    alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis,AlarmManager.INTERVAL_DAY,pendingIntent)
+
+                }else if (calendar.time.before(date)){
+                    if (it.status == ""){
+                        var reminder = ReminderTracker("${it.reminderType}",
+                            "${it.types}",
+                            "${it.names}",
+                            "${it.dateTimes}",
+                            "Missed", "${it.quantity}",
+                            "${it.instructions}",
+                            "${it.strenght}",
+                            "${it.startDate}",
+                            "${it.endDate}",
+                            "${it.recodeCreationDate}",
+                            it.deleteFlage)
+                        reminder.id = it.id
+                        viewModel.onEditClick(reminder)
+                        Toast.makeText(context,"Alarm will not ring", Toast.LENGTH_LONG).show()
+                    }
+                }
+
         }
     }
     private fun cancelAlarm(list: List<ReminderTracker>) {
