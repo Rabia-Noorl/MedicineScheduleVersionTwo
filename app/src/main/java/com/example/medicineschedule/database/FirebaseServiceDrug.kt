@@ -9,7 +9,6 @@ import kotlinx.coroutines.tasks.await
 class FirebaseServiceDrug {
 
 
-
     object FirebaseProfileService {
         private const val TAG = "FirebaseProfileService"
          suspend fun getDrugeData(userId: String): Drug? {

@@ -28,6 +28,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.dialog_frag_layout.*
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
 import java.util.*
 
 @Suppress("DEPRECATION")
@@ -113,7 +114,8 @@ class HomeFragment : Fragment(){
                 anim.isVisible = recViewList.isEmpty()
                 getStarted.isVisible = recViewList.isEmpty()
                 initialText.isVisible = recViewList.isEmpty()
-                setAlarm(it)
+                setAlarm(recViewList)
+                cancelAlarm(recViewList)
             }
         }
 
@@ -194,36 +196,41 @@ class HomeFragment : Fragment(){
     }
 
     private fun setAlarm(list: List<ReminderTracker>) {
-        var m = 0
+
         list.forEach(){
-            m++
             var str = it.dateTimes.toString()
-            val sdf = SimpleDateFormat("HH:mm", Locale.ENGLISH)
+            val sdf = SimpleDateFormat("hh:mm a", Locale.ENGLISH)
             calendar = Calendar.getInstance()
             calendar.time = sdf.parse(str)
+            calendar[Calendar.YEAR] = Calendar.getInstance().get(Calendar.YEAR)
+            calendar[Calendar.MONTH] = Calendar.getInstance().get(Calendar.MONTH)
+            calendar[Calendar.DAY_OF_MONTH] = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
             calendar[Calendar.HOUR_OF_DAY] = calendar.time.hours
             calendar[Calendar.MINUTE] = calendar.time.minutes
             calendar[Calendar.SECOND] = 0
             calendar[Calendar.MILLISECOND] = 0
-
-            alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            val intent = Intent(context, AlarmReceiver::class.java)
-            pendingIntent = PendingIntent.getBroadcast(context,m,intent, 0)
-            alarmManager.setRepeating(
-                AlarmManager.RTC_WAKEUP, calendar.timeInMillis,
-                AlarmManager.INTERVAL_DAY,pendingIntent
-            )
+            val date =  Date()
+            if(calendar.time.after(date)){
+                alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                val intent = Intent(context, AlarmReceiver::class.java)
+                pendingIntent = PendingIntent.getBroadcast(context, it.id ,intent, 0)
+                alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis,pendingIntent)
+                Toast.makeText(context,"Alarm will ring", Toast.LENGTH_LONG).show()
+            }else{
+                Toast.makeText(context,"Alarm will not ring", Toast.LENGTH_LONG).show()
+            }
         }
-
     }
-    private fun cancelAlarm() {
-
-        alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val intent = Intent(context, AlarmReceiver::class.java)
-        pendingIntent = PendingIntent.getBroadcast(context,0,intent, 0)
-        alarmManager.cancel(pendingIntent)
-
-        Toast.makeText(context,"Alarm remove successfully" , Toast.LENGTH_SHORT).show()
+    private fun cancelAlarm(list: List<ReminderTracker>) {
+        list.forEach(){
+            if (it.deleteFlage == true){
+                alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                val intent = Intent(context, AlarmReceiver::class.java)
+                pendingIntent = PendingIntent.getBroadcast(context,it.id,intent, 0)
+                alarmManager.cancel(pendingIntent)
+                Toast.makeText(context,"Alarm remove successfully" , Toast.LENGTH_SHORT).show()
+            }
+        }
     }
     private fun creatNotificationChannel() {
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O)

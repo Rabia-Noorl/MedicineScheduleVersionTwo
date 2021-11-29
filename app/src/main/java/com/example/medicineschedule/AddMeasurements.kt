@@ -80,7 +80,7 @@ class AddMeasurements : AppCompatActivity() {
                 var Name = binding.measurement.text.toString()
                 var time = binding.txtvwMtime1.text
                 if ( Name.isNotEmpty() && time.isNotEmpty()){
-                    var reminder = ReminderTracker("mes","$time", "$Name", "$time","${record.status}", "${record.quantity}","${record.instructions}","${record.strenght}","${record.startDate}","${record.endDate}", "${record.recodeCreationDate}", record.deleteFlage)
+                    var reminder = ReminderTracker("mes","${record.types}", "$Name", "$time","${record.status}", "${record.quantity}","${record.instructions}","${record.strenght}","${record.startDate}","${record.endDate}", "${record.recodeCreationDate}", record.deleteFlage)
                     reminder.id = record.id
                     viewModel.onEditClick(reminder)
                     val intent = Intent(this, HomeScreen::class.java)
