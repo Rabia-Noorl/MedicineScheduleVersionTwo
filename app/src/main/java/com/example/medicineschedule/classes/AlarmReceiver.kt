@@ -12,14 +12,14 @@ import com.example.medicineschedule.R
 
 class AlarmReceiver(): BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
-//        alarmOnly(context)
+       // alarmOnly(context)
         var i = Intent(context, HomeScreen::class.java)
         intent!!.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         var pendingIntent = PendingIntent.getActivity(context,0,i,0)
         val builder = NotificationCompat.Builder(context!!, "AlarmId")
             .setSmallIcon(R.drawable.pills)
             .setContentTitle("Your Daily Medication")
-            .setContentText("Its time for your medication for good health.")
+            .setContentText("Marked reminder that are labeled Missed.")
             .setAutoCancel(true)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
             .setPriority(NotificationCompat.PRIORITY_HIGH)

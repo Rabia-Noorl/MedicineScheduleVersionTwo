@@ -21,14 +21,18 @@ import kotlinx.android.synthetic.main.activity_add_doctor.*
 import kotlinx.android.synthetic.main.activity_add_dose.*
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class AddDose : AppCompatActivity() {
 
     lateinit var viewModel: HomeRecViewModel
     lateinit var medViewModel: MedicineRecViewModel
-    lateinit var alertdialogbuilder:AlertDialog.Builder
 
     lateinit var binding: ActivityAddDoseBinding
+
+    companion object{
+        val timeList = ArrayList<String>()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +45,7 @@ class AddDose : AppCompatActivity() {
         ,"Physiotherapy","Treatment Session","Other")
             arrayOf("Before Eating", "After Eating", "While Eating", "Doesn't Matter", "Other")
         var timeFormat= SimpleDateFormat("hh:mm a", Locale.US)
-        var dateFormat=SimpleDateFormat("dd MMM YY", Locale.US)
+        var dateFormat=SimpleDateFormat("dd MMM yyyy", Locale.US)
         viewModel = ViewModelProvider(
             this, ViewModelProvider.AndroidViewModelFactory.getInstance(
                 application
@@ -58,7 +62,6 @@ class AddDose : AppCompatActivity() {
         )
         //spinners
         //set spinners
-
         var unitsChoice = resources.getStringArray(R.array.unitOptions)
         val adapter=ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, unitsChoice)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -297,7 +300,6 @@ class AddDose : AppCompatActivity() {
                         binding.txtvwdosetime5.visibility = View.GONE
                         binding.txtvwdosetime6.visibility = View.GONE
                         binding.txtvwdosetime7.visibility = View.GONE
-
                     }
                     1 -> {
                         binding.txtvwdosetime1.visibility = View.VISIBLE
@@ -317,7 +319,6 @@ class AddDose : AppCompatActivity() {
                         binding.txtvwdosetime5.visibility = View.GONE
                         binding.txtvwdosetime6.visibility = View.GONE
                         binding.txtvwdosetime7.visibility = View.GONE
-
                     }
                     3 -> {
                         binding.txtvwdosetime1.visibility = View.VISIBLE
@@ -327,7 +328,6 @@ class AddDose : AppCompatActivity() {
                         binding.txtvwdosetime5.visibility = View.GONE
                         binding.txtvwdosetime6.visibility = View.GONE
                         binding.txtvwdosetime7.visibility = View.GONE
-
                     }
                     4 -> {
                         binding.txtvwdosetime1.visibility = View.VISIBLE
@@ -337,8 +337,6 @@ class AddDose : AppCompatActivity() {
                         binding.txtvwdosetime5.visibility = View.VISIBLE
                         binding.txtvwdosetime6.visibility = View.GONE
                         binding.txtvwdosetime7.visibility = View.GONE
-
-
                     }
                     5 -> {
                         binding.txtvwdosetime1.visibility = VISIBLE
@@ -367,7 +365,6 @@ class AddDose : AppCompatActivity() {
                         binding.txtvwdosetime5.visibility = View.GONE
                         binding.txtvwdosetime6.visibility = View.GONE
                         binding.txtvwdosetime7.visibility = View.GONE
-
                     }
                 }
 
@@ -575,71 +572,52 @@ class AddDose : AppCompatActivity() {
 //        })
 
     }
-
-    override fun onBackPressed() {
-        alertdialogbuilder=AlertDialog.Builder(this)
-        alertdialogbuilder.setCancelable(false)
-        alertdialogbuilder.setTitle("Confirm Exit!!!").setIcon(R.drawable.exitapp)
-            .setMessage("Are you sure you want to Exit?").setCancelable(true).setPositiveButton("Yes"){dialogInterface,it->
-                this.finish()
-            }
-            .setNegativeButton("No"){dialogInterface,it->
-                dialogInterface.cancel()
-            }.show()
-    }
-
-    //    private fun addDoseReminder() {
-//        var name = binding.medicationName.text.toString()
-//        var type = binding.medTypeTV.text.toString()
-//        var quantity = binding.adddosequantity.text.toString()
-//        var instructions = binding.Instructions.text.toString()
-//        var time = binding.txtvwdosetime1.text.toString()
-//
-//        if ( name.length >  0 && type.length >  0 && quantity.length > 0 && time.length > 0 ){
-//
-//            var remider = ReminderTracker("med", "$name" ,"$time" ,"Take", "$quantity", "Instructions: $instructions", "","","", "${Calendar.getInstance().time}",false)
-//            viewModel.onAddClick(remider)
-//
-//            val intent = Intent(this, HomeScreen::class.java)
-//            startActivity(intent)
-//            finish()
-//
-//        }else{
-//            Toast.makeText(this, "Mandatory fields are missing" , Toast.LENGTH_SHORT).show()
-//        }
-//
-//    }
 private fun addDoseReminder() {
+
+    var time = binding.txtvwdosetime1.text.toString()
+    var time1 = binding.txtvwdosetime2.text.toString()
+    var time2 = binding.txtvwdosetime3.text.toString()
+    var time3 = binding.txtvwdosetime4.text.toString()
+    var time4 = binding.txtvwdosetime5.text.toString()
+    var time5 = binding.txtvwdosetime6.text.toString()
+    var time6 = binding.txtvwdosetime7.text.toString()
+
+    timeList.add(time)
+    timeList.add(time1)
+    timeList.add(time2)
+    timeList.add(time3)
+    timeList.add(time4)
+    timeList.add(time5)
+    timeList.add(time6)
+
     var name = binding.medicationName.text.toString()
     var type = binding.medTypeTV.text.toString()
     var quantity = binding.adddosequantity.text.toString()
     var instructions = binding.Instructions.text.toString()
-    var time = binding.txtvwdosetime1.text.toString()
     var measurmentUnits = binding.spinner.selectedItem.toString()
-
-    if ( name.length >  0 && type.length >  0 && quantity.length > 0 && time.length > 0 ){
-
-        var remider = ReminderTracker("med",
-            " $type",
-            "$name" ,
-            "$time" ,
-            "",
-            "$quantity $measurmentUnits",
-            "Instructions: $instructions",
-            "",
-            "",
-            "",
-            "${Calendar.getInstance().time}",
-            false)
-        viewModel.onAddClick(remider)
-
-        val intent = Intent(this, HomeScreen::class.java)
-        startActivity(intent)
-        finish()
-
-    }else{
-        Toast.makeText(this, "Mandatory fields are missing" , Toast.LENGTH_SHORT).show()
+    timeList.forEach {
+        if ( name.length > 0 && type.length > 0 && quantity.length > 0 && it.length > 0){
+            var remider = ReminderTracker("med",
+                " $type",
+                "$name" ,
+                "$it" ,
+                "",
+                "$quantity $measurmentUnits",
+                "Instructions: $instructions",
+                "",
+                "",
+                "",
+                "${Calendar.getInstance().time}",
+                false)
+            viewModel.onAddClick(remider)
+        }else{
+            Toast.makeText(this, "Mandatory fields are missing" , Toast.LENGTH_SHORT).show()
+        }
     }
+    val intent = Intent(this, HomeScreen::class.java)
+    startActivity(intent)
+    finish()
 
+    }
 }
-}
+
