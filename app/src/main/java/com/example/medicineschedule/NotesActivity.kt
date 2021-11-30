@@ -61,8 +61,8 @@ class NotesActivity : AppCompatActivity(), NoteClickDeleteInterface, NoteClickIn
             this.finish() }}
     override fun onDeleteIconClick(note: Note) {
         alertdialogbuilder=AlertDialog.Builder(this)
-        alertdialogbuilder.setTitle("Delete").setIcon(android.R.drawable.ic_delete)
-            .setMessage("Do you want to delete?").setCancelable(true).setPositiveButton("Yes"){dialogInterface,it->
+        alertdialogbuilder.setTitle("Delete").setIcon(R.drawable.ic_delete)
+            .setMessage("Are you sure you want to delete it?").setCancelable(true).setPositiveButton("Yes"){dialogInterface,it->
                 noteViewModel.deleteNote(note)
                 Toast.makeText(this,"${note.noteTitle} Deleted",Toast.LENGTH_SHORT).show()
             }
