@@ -26,6 +26,7 @@ class AddDoctorActivity : AppCompatActivity(){
     var timeFormat= SimpleDateFormat("hh:mm a", Locale.US)
     lateinit var binding: ActivityAddDoctorBinding
     lateinit  var viewModel: HomeRecViewModel
+    lateinit var alertdialogbuilder:AlertDialog.Builder
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -123,6 +124,18 @@ class AddDoctorActivity : AppCompatActivity(){
                 calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),false)
 
         timePicker.show()
+    }
+
+    override fun onBackPressed() {
+        alertdialogbuilder=AlertDialog.Builder(this)
+        alertdialogbuilder.setCancelable(false)
+        alertdialogbuilder.setTitle("Confirm Exit!!!").setIcon(R.drawable.exitapp)
+            .setMessage("Are you sure you want to Exit?").setCancelable(true).setPositiveButton("Yes"){dialogInterface,it->
+                this.finish()
+            }
+            .setNegativeButton("No"){dialogInterface,it->
+                dialogInterface.cancel()
+            }.show()
     }
 private fun addDocReminder() {
     var docName = binding.medicationName.text.toString()

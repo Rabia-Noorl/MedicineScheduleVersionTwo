@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
@@ -19,6 +20,7 @@ class MeasurmentsMainActivity : AppCompatActivity() {
 
     lateinit var viewModel: MeasurmentViewModel
     private lateinit var binding: ActivityMeasurmentsMainBinding
+    lateinit var alertdialogbuilder: AlertDialog.Builder
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,23 +96,33 @@ class MeasurmentsMainActivity : AppCompatActivity() {
         }
 
         deleteBtn.setOnClickListener{
-            var rem = ReminderTracker(
-                reminderTracker.reminderType,
-                reminderTracker.types,
-                reminderTracker.names,
-                reminderTracker.dateTimes,
-                reminderTracker.status,
-                reminderTracker.quantity,
-                reminderTracker.instructions,
-                reminderTracker.strenght,
-                reminderTracker.startDate,
-                reminderTracker.endDate,
-                reminderTracker.recodeCreationDate,
-                true
-            )
-            rem.id = reminderTracker.id
-            viewModel.onEditClick(rem)
-            d?.cancel()
+            alertdialogbuilder=AlertDialog.Builder(this)
+            alertdialogbuilder.setCancelable(false)
+            alertdialogbuilder.setTitle("Delete").setIcon(R.drawable.ic_delete)
+                .setMessage("Are you sure you want to Delete it?").setCancelable(true).setPositiveButton("Yes"){dialogInterface,it->
+//                    this.finish()
+                    var rem = ReminderTracker(
+                        reminderTracker.reminderType,
+                        reminderTracker.types,
+                        reminderTracker.names,
+                        reminderTracker.dateTimes,
+                        reminderTracker.status,
+                        reminderTracker.quantity,
+                        reminderTracker.instructions,
+                        reminderTracker.strenght,
+                        reminderTracker.startDate,
+                        reminderTracker.endDate,
+                        reminderTracker.recodeCreationDate,
+                        true
+                    )
+                    rem.id = reminderTracker.id
+                    viewModel.onEditClick(rem)
+                    d?.cancel()
+                }
+                .setNegativeButton("No"){dialogInterface,it->
+                    dialogInterface.cancel()
+                }.show()
+
         }
     }
 }

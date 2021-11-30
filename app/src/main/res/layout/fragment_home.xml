@@ -195,7 +195,7 @@
                 app:fab_colorNormal="@color/bgColor"
                 app:fab_colorPressed="@color/themeColor"
                 app:fab_icon="@drawable/ic_adddrug"
-                app:fab_title="Add Dose"></com.getbase.floatingactionbutton.FloatingActionButton>
+                app:fab_title="Add Medicine"></com.getbase.floatingactionbutton.FloatingActionButton>
 
             <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/addDoctor"
@@ -205,7 +205,7 @@
                 app:fab_colorNormal="@color/bgColor"
                 app:fab_colorPressed="@color/themeColor"
                 app:fab_icon="@drawable/ic_doctorappointment"
-                app:fab_title="Add Doctor's apointment"></com.getbase.floatingactionbutton.FloatingActionButton>
+                app:fab_title="Add Doctor's Appointment"></com.getbase.floatingactionbutton.FloatingActionButton>
 
             <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/addMeasurement"
@@ -215,7 +215,7 @@
                 app:fab_colorNormal="@color/bgColor"
                 app:fab_colorPressed="@color/themeColor"
                 app:fab_icon="@drawable/ic_addmeasurement"
-                app:fab_title="Add Measurements"></com.getbase.floatingactionbutton.FloatingActionButton>
+                app:fab_title="Add Measurement"></com.getbase.floatingactionbutton.FloatingActionButton>
         </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
         <LinearLayout

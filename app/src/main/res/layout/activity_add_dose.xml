@@ -422,6 +422,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/linLayoutTime"
+                            android:layout_centerInParent="true"
                             android:orientation="vertical">
 
                             <HorizontalScrollView
@@ -429,7 +430,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/txtipTime"
-                                android:layout_gravity="center_horizontal"
+                                android:layout_gravity="center|center_horizontal|center_vertical"
                                 android:fillViewport="true">
 
                                 <LinearLayout
@@ -504,7 +505,7 @@
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
                                         android:textSize="20dp"
-                                        android:visibility="gone"/>
+                                        android:visibility="gone" />
 
                                     <EditText
                                         android:id="@+id/txtvwdosetime5"
@@ -538,7 +539,7 @@
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
                                         android:textSize="20dp"
-                                        android:visibility="gone"/>
+                                        android:visibility="gone" />
 
                                     <EditText
                                         android:id="@+id/txtvwdosetime7"
@@ -555,7 +556,7 @@
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
                                         android:textSize="20dp"
-                                        android:visibility="gone"/>
+                                        android:visibility="gone" />
                                 </LinearLayout>
                             </HorizontalScrollView>
                         </LinearLayout>

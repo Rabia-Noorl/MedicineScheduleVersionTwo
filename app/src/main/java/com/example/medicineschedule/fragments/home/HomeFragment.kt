@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -20,6 +21,7 @@ import com.bumptech.glide.Glide
 import com.example.medicineschedule.*
 import com.example.medicineschedule.R
 import com.example.medicineschedule.classes.AlarmReceiver
+import com.example.medicineschedule.database.Note
 import com.example.medicineschedule.database.ReminderTracker
 import com.example.medicineschedule.databinding.FragmentHomeBinding
 import com.example.medicineschedule.viewModels.HomeRecViewModel
@@ -39,6 +41,7 @@ class HomeFragment : Fragment(){
     lateinit var alarmManager: AlarmManager
     lateinit var calendar: Calendar
     lateinit var pendingIntent: PendingIntent
+    lateinit var alertdialogbuilder: AlertDialog.Builder
 
 
     companion object{
@@ -81,6 +84,7 @@ class HomeFragment : Fragment(){
 //        }
 //        checkUser()
         return view
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -247,9 +251,9 @@ class HomeFragment : Fragment(){
         }
     }
 @SuppressLint("ResourceAsColor")
-private fun dialogeBuild(reminderTracker: ReminderTracker){
+private fun dialogeBuild(reminderTracker: ReminderTracker) {
     val width = (resources.displayMetrics.widthPixels * 0.85).toInt()
-    var d : Dialog? = context?.let { Dialog(it) }
+    var d: Dialog? = context?.let { Dialog(it) }
     d?.setContentView(R.layout.dialog_frag_layout)
     d!!.window?.setBackgroundDrawableResource(R.drawable.edit_text_design);
     d!!.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
@@ -282,14 +286,12 @@ private fun dialogeBuild(reminderTracker: ReminderTracker){
     val day = SimpleDateFormat("EEEE", Locale.ENGLISH).format(date.time)
     sdayTV.setText(day)
 
-    if (reminderTracker.reminderType.toString() == "med"){
+    if (reminderTracker.reminderType.toString() == "med") {
         strenghtTV.setText("${reminderTracker.quantity} ${reminderTracker.types}${reminderTracker.strenght}")
         tyeQuantityV.setText("at ${reminderTracker.dateTimes} ")
-    }else if(reminderTracker.reminderType == "mes")
-    {
+    } else if (reminderTracker.reminderType == "mes") {
         tyeQuantityV.setText("Measurement at ${reminderTracker.dateTimes}")
-    }else if(reminderTracker.reminderType == "doc")
-    {
+    } else if (reminderTracker.reminderType == "doc") {
         tyeQuantityV.setText("Apointment at ${reminderTracker.dateTimes} ${reminderTracker.status} ")
     }
 
@@ -318,7 +320,7 @@ private fun dialogeBuild(reminderTracker: ReminderTracker){
             statusFlag = true
             statusTV.setText("${rem.status}")
             return@setOnClickListener
-        } else if(statusFlag) {
+        } else if (statusFlag) {
             var rem = ReminderTracker(
                 reminderTracker.reminderType,
                 "${reminderTracker.types}",
@@ -331,7 +333,8 @@ private fun dialogeBuild(reminderTracker: ReminderTracker){
                 "${reminderTracker.startDate}",
                 "${reminderTracker.endDate}",
                 reminderTracker.recodeCreationDate,
-                reminderTracker.deleteFlage)
+                reminderTracker.deleteFlage
+            )
             //statusTV.setTextColor(R.color.doneColor)
             statusTV.setTextColor(getResources().getColor(R.color.doneColor, null))
 
@@ -362,7 +365,8 @@ private fun dialogeBuild(reminderTracker: ReminderTracker){
                 "${reminderTracker.startDate}",
                 "${reminderTracker.endDate}",
                 reminderTracker.recodeCreationDate,
-                reminderTracker.deleteFlage)
+                reminderTracker.deleteFlage
+            )
             rem.id = reminderTracker.id
             viewModel.onEditClick(rem)
             statusFlag = true
@@ -370,7 +374,7 @@ private fun dialogeBuild(reminderTracker: ReminderTracker){
             takeBtn.setText("SKIPPED")
             statusTV.setTextColor(getResources().getColor(R.color.errorColor, null))
             return@setOnClickListener
-        } else if(statusFlag) {
+        } else if (statusFlag) {
             var rem = ReminderTracker(
                 reminderTracker.reminderType,
                 "${reminderTracker.types}",
@@ -383,7 +387,8 @@ private fun dialogeBuild(reminderTracker: ReminderTracker){
                 "${reminderTracker.startDate}",
                 "${reminderTracker.endDate}",
                 reminderTracker.recodeCreationDate,
-                reminderTracker.deleteFlage)
+                reminderTracker.deleteFlage
+            )
             rem.id = reminderTracker.id
             viewModel.onEditClick(rem)
             statusFlag = false
@@ -398,50 +403,59 @@ private fun dialogeBuild(reminderTracker: ReminderTracker){
         takeBtn.setTextColor(Color.parseColor("#FFFFFF"))
         reschedualBtn.setTextColor(Color.parseColor("#f98365"))
 
-        var calendar= Calendar.getInstance()
-        try{
-            var date=timeFormat.parse(reminderTracker.dateTimes.toString())
-            calendar.time=date}
-        catch (e:Exception){
+        var calendar = Calendar.getInstance()
+        try {
+            var date = timeFormat.parse(reminderTracker.dateTimes.toString())
+            calendar.time = date
+        } catch (e: Exception) {
             e.printStackTrace()
         }
-        var timePicker=
-            TimePickerDialog(context, TimePickerDialog.OnTimeSetListener{ view, hourOfDay, minute ->
-                var selectedTime=Calendar.getInstance()
-                selectedTime.set(Calendar.HOUR_OF_DAY,hourOfDay)
-                selectedTime.set(Calendar.MINUTE,minute)
-            },
-                calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),false)
+        var timePicker =
+            TimePickerDialog(
+                context, TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
+                    var selectedTime = Calendar.getInstance()
+                    selectedTime.set(Calendar.HOUR_OF_DAY, hourOfDay)
+                    selectedTime.set(Calendar.MINUTE, minute)
+                },
+                calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false
+            )
         timePicker.show()
 
     }
 
 
     deletBtn.setOnClickListener {
-        var rem = ReminderTracker(
-            reminderTracker.reminderType,
-            reminderTracker.types,
-            reminderTracker.names,
-            reminderTracker.dateTimes,
-            reminderTracker.status,
-            reminderTracker.quantity,
-            reminderTracker.instructions,
-            reminderTracker.strenght,
-            reminderTracker.startDate,
-            reminderTracker.endDate,
-            reminderTracker.recodeCreationDate,
-            true
-        )
-        rem.id = reminderTracker.id
-        viewModel.onEditClick(rem)
-        viewModel.deletDrug(rem)
-        d?.cancel()
+        alertdialogbuilder = AlertDialog.Builder(requireActivity())
+        alertdialogbuilder.setCancelable(false)
+        alertdialogbuilder.setTitle("Delete").setIcon(R.drawable.ic_delete)
+            .setMessage("Are you sure you want to Delete it?").setCancelable(true)
+            .setPositiveButton("Yes") { dialogInterface, it ->
+//                    this.finish()
+                var rem = ReminderTracker(
+                    reminderTracker.reminderType,
+                    reminderTracker.types,
+                    reminderTracker.names,
+                    reminderTracker.dateTimes,
+                    reminderTracker.status,
+                    reminderTracker.quantity,
+                    reminderTracker.instructions,
+                    reminderTracker.strenght,
+                    reminderTracker.startDate,
+                    reminderTracker.endDate,
+                    reminderTracker.recodeCreationDate,
+                    true
+                )
+                rem.id = reminderTracker.id
+                viewModel.onEditClick(rem)
+                viewModel.deletDrug(rem)
+                d?.cancel()
+            }
+            .setNegativeButton("No") { dialogInterface, it ->
+                dialogInterface.cancel()
+            }.show()
+        editBtn.setOnClickListener {
+            val medicineIntent = Intent(getActivity(), AddDose::class.java)
+            startActivity(medicineIntent)
+        }
     }
-    editBtn.setOnClickListener {
-        val medicineIntent = Intent(getActivity(), AddDose::class.java)
-        startActivity(medicineIntent)
-    }
-}
-
-
-}
+}}

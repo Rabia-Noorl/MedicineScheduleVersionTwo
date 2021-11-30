@@ -24,6 +24,7 @@ import java.util.*
 class AddMeasurements : AppCompatActivity() {
     lateinit var viewModel: HomeRecViewModel
     lateinit var binding: ActivityAddMeasurementsBinding
+    lateinit var alertdialogbuilder:AlertDialog.Builder
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -462,6 +463,17 @@ class AddMeasurements : AppCompatActivity() {
 //            Toast.makeText(this, "Mandatory fields are missing" , Toast.LENGTH_SHORT).show()
 //        }
 //    }
+override fun onBackPressed() {
+    alertdialogbuilder=AlertDialog.Builder(this)
+    alertdialogbuilder.setCancelable(false)
+    alertdialogbuilder.setTitle("Confirm Exit!!!").setIcon(R.drawable.exitapp)
+        .setMessage("Are you sure you want to Exit?").setCancelable(true).setPositiveButton("Yes"){dialogInterface,it->
+            this.finish()
+        }
+        .setNegativeButton("No"){dialogInterface,it->
+            dialogInterface.cancel()
+        }.show()
+}
 private fun addMeasrementReminder() {
     var name = binding.measurement.text.toString()
     var quantity = binding.measureQuantity.text.toString()
@@ -485,5 +497,6 @@ private fun addMeasrementReminder() {
     }else{
         Toast.makeText(this, "Mandatory fields are missing" , Toast.LENGTH_SHORT).show()
     }
+
 }
 }

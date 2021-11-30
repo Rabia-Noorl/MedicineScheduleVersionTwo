@@ -26,6 +26,7 @@ class AddDose : AppCompatActivity() {
 
     lateinit var viewModel: HomeRecViewModel
     lateinit var medViewModel: MedicineRecViewModel
+    lateinit var alertdialogbuilder:AlertDialog.Builder
 
     lateinit var binding: ActivityAddDoseBinding
 
@@ -57,6 +58,7 @@ class AddDose : AppCompatActivity() {
         )
         //spinners
         //set spinners
+
         var unitsChoice = resources.getStringArray(R.array.unitOptions)
         val adapter=ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, unitsChoice)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -573,7 +575,20 @@ class AddDose : AppCompatActivity() {
 //        })
 
     }
-//    private fun addDoseReminder() {
+
+    override fun onBackPressed() {
+        alertdialogbuilder=AlertDialog.Builder(this)
+        alertdialogbuilder.setCancelable(false)
+        alertdialogbuilder.setTitle("Confirm Exit!!!").setIcon(R.drawable.exitapp)
+            .setMessage("Are you sure you want to Exit?").setCancelable(true).setPositiveButton("Yes"){dialogInterface,it->
+                this.finish()
+            }
+            .setNegativeButton("No"){dialogInterface,it->
+                dialogInterface.cancel()
+            }.show()
+    }
+
+    //    private fun addDoseReminder() {
 //        var name = binding.medicationName.text.toString()
 //        var type = binding.medTypeTV.text.toString()
 //        var quantity = binding.adddosequantity.text.toString()
