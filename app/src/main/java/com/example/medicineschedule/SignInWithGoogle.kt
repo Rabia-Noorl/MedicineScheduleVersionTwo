@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import com.example.medicineschedule.databinding.ActivitySignInWithGoogleBinding
 import com.google.android.gms.auth.api.signin.*
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
@@ -19,20 +20,25 @@ import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlinx.android.synthetic.main.activity_sign_in_with_google.*
 
 class SignInWithGoogle : AppCompatActivity() {
+    private lateinit var binding:ActivitySignInWithGoogleBinding
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private val TAG="GOOGLE_SIGN_IN_TAG"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in_with_google)
+        binding= ActivitySignInWithGoogleBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        //configure google sign in
         var googleSignInOptions= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(
             getString(R.string.default_web_client_id)
         ).requestEmail().build()
         googleSignInClient= GoogleSignIn.getClient(this, googleSignInOptions)
+        //init firebaseauth
         firebaseAuth= FirebaseAuth.getInstance()
         checkUser()
-       googleSignInButton.setOnClickListener{
+        //google signin button click
+     binding.googleSignInButton.setOnClickListener{
             Log.d(TAG,"onCreate: Begin google signIn")
             signInWithGoogle()
         }

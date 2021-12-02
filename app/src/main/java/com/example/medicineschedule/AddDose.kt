@@ -29,6 +29,7 @@ class AddDose : AppCompatActivity() {
     lateinit var medViewModel: MedicineRecViewModel
 
     lateinit var binding: ActivityAddDoseBinding
+    lateinit var alertdialogbuilder:AlertDialog.Builder
 
     companion object{
         val timeList = ArrayList<String>()
@@ -571,6 +572,17 @@ class AddDose : AppCompatActivity() {
 
 //        })
 
+    }
+    override fun onBackPressed() {
+        alertdialogbuilder=AlertDialog.Builder(this)
+        alertdialogbuilder.setCancelable(false)
+        alertdialogbuilder.setTitle("Confirm Exit!!!").setIcon(R.drawable.exitapp)
+            .setMessage("Are you sure you want to Exit?").setCancelable(true).setPositiveButton("Yes"){dialogInterface,it->
+                this.finish()
+            }
+            .setNegativeButton("No"){dialogInterface,it->
+                dialogInterface.cancel()
+            }.show()
     }
 private fun addDoseReminder() {
 

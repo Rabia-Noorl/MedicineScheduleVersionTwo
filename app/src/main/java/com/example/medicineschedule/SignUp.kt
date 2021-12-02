@@ -1,18 +1,14 @@
 package com.example.medicineschedule
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
-import kotlin.collections.HashMap
-import kotlin.jvm.internal.Intrinsics
 
 class SignUp : AppCompatActivity() {
 
@@ -23,7 +19,6 @@ class SignUp : AppCompatActivity() {
     private var signIUpBtn : Button? = null
     private var alreadyHaveAcc: TextView? = null
     private var mProgressBar: ProgressBar? = null
-    private var db:FirebaseFirestore?=null
     private var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
     var authStateListener: FirebaseAuth.AuthStateListener? = null
 

@@ -66,9 +66,9 @@ class HomeFragment : Fragment(){
         mAuth=FirebaseAuth.getInstance()
         creatNotificationChannel()
 
-//        currentUser = mAuth.currentUser!!
-//        binding.userNametextView.setText(currentUser?.displayName)
-//        Glide.with(this).load(currentUser?.photoUrl).into(binding.imageProfile)
+        currentUser = mAuth.currentUser!!
+        binding.userNametextView.setText(currentUser?.displayName)
+        Glide.with(this).load(currentUser?.photoUrl).into(binding.imageProfile)
 
 
 //        val db=FirebaseFirestore.getInstance()
@@ -218,10 +218,11 @@ class HomeFragment : Fragment(){
                     alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
                     val intent = Intent(context, AlarmReceiver::class.java)
                     pendingIntent = PendingIntent.getBroadcast(context, it.id ,intent, 0)
-                    alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis,AlarmManager.INTERVAL_DAY,pendingIntent)
+                    alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis,pendingIntent)
 
                 }else if (calendar.time.before(date)){
                     if (it.status == ""){
+
                         var reminder = ReminderTracker("${it.reminderType}",
                             "${it.types}",
                             "${it.names}",
@@ -446,7 +447,6 @@ private fun dialogeBuild(reminderTracker: ReminderTracker) {
         alertdialogbuilder.setTitle("Delete").setIcon(R.drawable.ic_delete)
             .setMessage("Are you sure you want to Delete it?").setCancelable(true)
             .setPositiveButton("Yes") { dialogInterface, it ->
-//                    this.finish()
                 var rem = ReminderTracker(
                     reminderTracker.reminderType,
                     reminderTracker.types,

@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "47830765431",
-    "project_id": "medication-schedule-3975d",
-    "storage_bucket": "medication-schedule-3975d.appspot.com"
+    "project_number": "106976939882",
+    "project_id": "medicineschedule-e92ab",
+    "storage_bucket": "medicineschedule-e92ab.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:47830765431:android:69652c4c474a24f4c21b72",
+        "mobilesdk_app_id": "1:106976939882:android:92ffdc3afa7c4ba7fe9f13",
         "android_client_info": {
           "package_name": "com.example.medicineschedule"
         }
       },
       "oauth_client": [
         {
-          "client_id": "47830765431-dhk72b77014j382pgqvp0au203placog.apps.googleusercontent.com",
+          "client_id": "106976939882-plf9p5q09jri7jcdjma7c09ielrpjh4d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.medicineschedule",
+            "certificate_hash": "32355f806671549ad159282d82a24635403ef2e9"
+          }
+        },
+        {
+          "client_id": "106976939882-vj7pikgjlnrq9llfdmbi337ni9pc6db8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCtuOqWkGlQOdFDCgQdU9nE_qZhsOc_A9k"
+          "current_key": "AIzaSyDXxDEkGLRWVrdil04x8WeV28kspqQ0aC4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "47830765431-dhk72b77014j382pgqvp0au203placog.apps.googleusercontent.com",
+              "client_id": "106976939882-vj7pikgjlnrq9llfdmbi337ni9pc6db8.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
