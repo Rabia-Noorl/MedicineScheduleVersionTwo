@@ -5,17 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.example.medicineschedule.R
 import com.example.medicineschedule.databinding.FragmentDetailedInfoBinding
-import com.example.medicineschedule.viewModels.MyviewModel
+import com.example.medicineschedule.viewModels.DetailInfoViewModel
 
 class Detailed_Info_Fragment : Fragment() {
 
-    lateinit var viewModel: MyviewModel
+    lateinit var viewModel: DetailInfoViewModel
 
     private lateinit var binding: FragmentDetailedInfoBinding
     var naController: NavController? =null
@@ -34,7 +32,7 @@ class Detailed_Info_Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         naController =  findNavController()
         viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)).get(
-            MyviewModel::class.java)
+            DetailInfoViewModel::class.java)
         binding.viewModel = viewModel
     }
 

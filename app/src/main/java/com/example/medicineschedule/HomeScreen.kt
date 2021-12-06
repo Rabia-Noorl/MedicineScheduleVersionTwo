@@ -28,7 +28,6 @@ import kotlinx.android.synthetic.main.activity_home_screen.*
 
 class HomeScreen : AppCompatActivity() {
 
-
     private var searchBtn: Button? = null
     private var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
     private lateinit var drawerLayout:DrawerLayout

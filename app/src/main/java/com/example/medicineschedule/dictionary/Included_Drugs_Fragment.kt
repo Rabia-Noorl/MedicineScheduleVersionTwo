@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
@@ -27,6 +28,16 @@ class Included_Drugs_Fragment : Fragment(R.layout.fragment_included__drugs_) {
         viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)).get(
             IncludedDrugView_Model::class.java)
         binding.includeDrigViewmodel = viewModel
+        binding.let {
+            it.lifecycleOwner = this
+            it.includeDrigViewmodel= viewModel
+        }
+        viewModel.drugRecord.observe(viewLifecycleOwner){
+            it?.let {
+                Toast.makeText(context, "${it.size} are total records", Toast.LENGTH_SHORT).show()
+                viewModel.ResValue(it)
+            }
+        }
     }
     override fun onCreateView(
         inflater: LayoutInflater,

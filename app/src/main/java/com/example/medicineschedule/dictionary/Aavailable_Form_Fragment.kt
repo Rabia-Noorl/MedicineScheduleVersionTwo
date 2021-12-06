@@ -5,14 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.medicineschedule.R
+import com.example.medicineschedule.database.ReminderTracker
 import com.example.medicineschedule.databinding.FragmentAavailableFormBinding
-import com.example.medicineschedule.viewModels.AlternateBrand_ViewModel
 import com.example.medicineschedule.viewModels.Forms_ViewModel
-import com.example.medicineschedule.viewModels.MyviewModel
+import java.util.ArrayList
 
 class Aavailable_Form_Fragment : Fragment(R.layout.fragment_aavailable__form_) {
 
@@ -20,7 +21,6 @@ class Aavailable_Form_Fragment : Fragment(R.layout.fragment_aavailable__form_) {
 
     private lateinit var binding: FragmentAavailableFormBinding
     var naController: NavController? =null
-
 
 
     override fun onCreateView(
@@ -38,5 +38,16 @@ class Aavailable_Form_Fragment : Fragment(R.layout.fragment_aavailable__form_) {
         viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)).get(
             Forms_ViewModel::class.java)
         binding.viewModel = viewModel
+        binding.viewModel = viewModel
+        binding.let {
+            it.lifecycleOwner = this
+            it.viewModel= viewModel
+        }
+        viewModel.drugRecord.observe(viewLifecycleOwner){
+            if (it != null) {
+                viewModel.ResValue(it)
+            }
+        }
+
     }
 }

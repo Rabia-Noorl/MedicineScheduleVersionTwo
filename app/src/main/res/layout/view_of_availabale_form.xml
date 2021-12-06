@@ -7,7 +7,7 @@
     <data>
         <variable
             name="formModel"
-            type="com.example.medicineschedule.models.FormModel" />
+            type="com.example.medicineschedule.viewModels.DrugItemViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +23,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:text="@{formModel.formBrand}"
+            android:text="@{formModel.drug.type}"
             android:textColor="@color/greyColr"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -80,7 +80,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="@{formModel.packing}"
+            android:text="@{formModel.drug.quantity}"
             android:textColor="@color/greyColr"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/textViewDrug"
@@ -97,7 +97,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:text="@{formModel.drud}"
+            android:text="@{formModel.drug.name}"
             android:textColor="@color/greyColr"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/textViewCost"
@@ -112,7 +112,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:text="@{formModel.price}"
+            android:text="@{formModel.drug.price}"
             android:textColor="@color/greyColr"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

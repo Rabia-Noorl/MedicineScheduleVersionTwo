@@ -1,45 +1,64 @@
 package com.example.medicineschedule.viewModels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
 import com.example.medicineschedule.BR
 import com.example.medicineschedule.R
-import com.example.medicineschedule.models.IncludedDrudModel
+import com.example.medicineschedule.database.FirebaseServiceDrug
+import com.example.medicineschedule.models.Drug
 import com.fraggjkee.recycleradapter.RecyclerItem
+import kotlinx.coroutines.launch
 import java.util.ArrayList
 
-class IncludedDrugView_Model:  ViewModel()  {
+class IncludedDrugView_Model(application: Application) : AndroidViewModel(application)  {
 
-    private val _toastMessage = MutableLiveData<String>()
-    val toastMessage: LiveData<String> = _toastMessage
-
+    var list = ArrayList<String>()
+    private var _drugRecode = MutableLiveData<List<Drug>?>()
+    val drugRecord: MutableLiveData<List<Drug>?> = _drugRecode
 
     private val _recyclerItems = MutableLiveData<List<RecyclerItem>>()
     val recyclerItems: LiveData<List<RecyclerItem>> = _recyclerItems
 
+    // Real-world apps should use SingleLiveData instead. RxJava / Coroutines could also work
+    // better for one-time event streams.
+    private val _toastMessage = MutableLiveData<String>()
+    val toastMessage: LiveData<String> = _toastMessage
+
     init {
-        _recyclerItems.value = dataGenerter().map { it.toRecyclerItem() }
-    }
-    private fun createUserItemViewModel(incdudedDrug:IncludedDrudModel): DrugRecode_Viewmode {
-        return DrugRecode_Viewmode(incdudedDrug).apply {
-            itemClickHandler = { incdudedDrug -> showClickMessage(incdudedDrug) }
+        viewModelScope.launch {
+            var drug: Drug? = FirebaseServiceDrug.FirebaseProfileService.getDrugeData("XYLOCAINE 5% Ointment 20g")
+            if (drug != null) {
+                _drugRecode.postValue(listOf(drug))
+            }
         }
     }
-    private fun showClickMessage(user: IncludedDrudModel) {
+
+    fun ResValue(list: List<Drug>) {
+        _recyclerItems.value = list
+            ?.map {
+                createUserItemViewModel(it)
+            }
+            ?.map {
+                it.toRecyclerItem()
+            }
+
+    }
+
+    private fun createUserItemViewModel(drug: Drug): DrugItemViewModel {
+        return DrugItemViewModel(drug).apply {
+            itemClickHandler = { drug -> showClickMessage(drug) }
+        }
+    }
+
+    private fun showClickMessage(drug: Drug) {
         _toastMessage.postValue(
-            "$user is clicked"
+            "${drug.name}  is clicked"
         )
     }
     
-    private fun IncludedDrudModel.toRecyclerItem() = RecyclerItem(
+    private fun DrugItemViewModel.toRecyclerItem() = RecyclerItem(
         data = this,
         layoutId = R.layout.view_included_drugs,
         variableId = BR.includedDrugModel
     )
-    fun dataGenerter(): ArrayList<IncludedDrudModel> {
-        val list: ArrayList<IncludedDrudModel> = ArrayList()
-        list.add(IncludedDrudModel("ZEGESIC 250mg Tablet 200s"))
-        return list
-    }
 }

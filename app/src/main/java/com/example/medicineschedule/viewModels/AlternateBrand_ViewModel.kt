@@ -12,9 +12,9 @@ import java.util.ArrayList
 
 class AlternateBrand_ViewModel(application: Application) : AndroidViewModel(application)  {
 
-    var list = ArrayList<Drug>()
-        private var _drugRecode = MutableLiveData<List<Drug>?>()
-        val drugRecord: MutableLiveData<List<Drug>?> = _drugRecode
+    var list = ArrayList<String>()
+        private var _drugRecode = MutableLiveData<List<String>?>()
+        val drugRecord: MutableLiveData<List<String>?> = _drugRecode
 
     private val _recyclerItems = MutableLiveData<List<RecyclerItem>>()
     val recyclerItems: LiveData<List<RecyclerItem>> = _recyclerItems
@@ -26,15 +26,15 @@ class AlternateBrand_ViewModel(application: Application) : AndroidViewModel(appl
 
    init {
        viewModelScope.launch {
-           var drug:Drug? = FirebaseServiceDrug.FirebaseProfileService.getDrugeData("Drug")
+           var drug:Drug? = FirebaseServiceDrug.FirebaseProfileService.getDrugeData("XYLOCAINE 5% Ointment 20g")
            if (drug != null) {
-               list.add(drug)
-               _drugRecode.postValue(listOf(drug))
+               var list = drug.alterBrand
+               _drugRecode.postValue(list)
            }
        }
     }
 
-    fun ResValue(list: List<Drug>) {
+    fun ResValue(list: List<String>) {
         _recyclerItems.value = list
             ?.map {
                 createUserItemViewModel(it)
@@ -45,18 +45,18 @@ class AlternateBrand_ViewModel(application: Application) : AndroidViewModel(appl
 
     }
 
-    private fun createUserItemViewModel(drug: Drug): DrugItemViewModel {
-        return DrugItemViewModel(drug).apply {
-            itemClickHandler = { drug -> showClickMessage(drug) }
+    private fun createUserItemViewModel(alterBrand:String): AlterBrandItemViewModel {
+        return AlterBrandItemViewModel(alterBrand).apply {
+            itemClickHandler = { drug -> showClickMessage(alterBrand) }
         }
     }
 
-    private fun showClickMessage(drug: Drug) {
+    private fun showClickMessage(alterBrand:String) {
         _toastMessage.postValue(
-            "${drug.name}  is clicked"
+            "${alterBrand}  is clicked"
         )
     }
-        fun DrugItemViewModel.toRecyclerItem() = RecyclerItem(
+        fun AlterBrandItemViewModel.toRecyclerItem() = RecyclerItem(
         data = this,
         layoutId = R.layout.view_of_alternat_brands,
         variableId = BR.model

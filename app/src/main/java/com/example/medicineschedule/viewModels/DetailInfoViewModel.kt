@@ -11,7 +11,7 @@ import com.example.medicineschedule.models.DummyRecModel
 import com.fraggjkee.recycleradapter.RecyclerItem
 import java.util.*
 
-open class MyviewModel:  ViewModel() {
+open class DetailInfoViewModel:  ViewModel() {
 
     // public val recData: MutableLiveData<List<DummyRecModel>> = MutableLiveData()
     private val _recyclerItems = MutableLiveData<List<RecyclerItem>>()

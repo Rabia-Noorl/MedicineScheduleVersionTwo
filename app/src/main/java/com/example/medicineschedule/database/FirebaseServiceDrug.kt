@@ -7,7 +7,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 
 class FirebaseServiceDrug {
+
     object FirebaseProfileService {
+        var list = ArrayList<String>()
         private const val TAG = "FirebaseProfileService"
          suspend fun getDrugeData(userId: String): Drug? {
             val db = FirebaseFirestore.getInstance()
@@ -19,7 +21,7 @@ class FirebaseServiceDrug {
 //                FirebaseCrashlytics.getInstance().log("Error getting user details")
 //                FirebaseCrashlytics.getInstance().setCustomKey("name", "Medicines")
 //                FirebaseCrashlytics.getInstance().recordException(e)
-                return Drug("Null","in Catch","","","","","","","")
+                return Drug("Null","in Catch","","","","","","","",list,list,list, list, list)
           //  null
             }
         }

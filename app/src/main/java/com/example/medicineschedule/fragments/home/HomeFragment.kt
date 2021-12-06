@@ -420,6 +420,8 @@ private fun dialogeBuild(reminderTracker: ReminderTracker) {
         takeBtn.setTextColor(Color.parseColor("#FFFFFF"))
         reschedualBtn.setTextColor(Color.parseColor("#f98365"))
 
+
+
         var calendar = Calendar.getInstance()
         try {
             var date = timeFormat.parse(reminderTracker.dateTimes.toString())
@@ -433,6 +435,23 @@ private fun dialogeBuild(reminderTracker: ReminderTracker) {
                     var selectedTime = Calendar.getInstance()
                     selectedTime.set(Calendar.HOUR_OF_DAY, hourOfDay)
                     selectedTime.set(Calendar.MINUTE, minute)
+                    var time = timeFormat.format(selectedTime.time)
+                    var rem = ReminderTracker(
+                        reminderTracker.reminderType,
+                        "${reminderTracker.types}",
+                        "${reminderTracker.names}",
+                        "$time",
+                        "",
+                        "${reminderTracker.quantity}",
+                        "${reminderTracker.instructions}",
+                        "${reminderTracker.strenght}",
+                        "${reminderTracker.startDate}",
+                        "${reminderTracker.endDate}",
+                        reminderTracker.recodeCreationDate,
+                        reminderTracker.deleteFlage
+                    )
+                    rem.id = reminderTracker.id
+                    viewModel.onEditClick(rem)
                 },
                 calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false
             )

@@ -615,7 +615,7 @@ private fun addDoseReminder() {
                 "$it" ,
                 "",
                 "$quantity $measurmentUnits",
-                "Instructions: $instructions",
+                "$instructions",
                 "",
                 "",
                 "",

@@ -48,7 +48,7 @@
             android:gravity="center"
             android:padding="5dp"
             android:text="@{dashBmodel.reminderTracker.quantity + dashBmodel.reminderTracker.types}"
-            android:textColor="#8A8A8A"
+            android:textColor='@{dashBmodel.reminderTracker.status.equals(String.valueOf(`Taken`)) ? @color/doneColor : dashBmodel.reminderTracker.status.equals(String.valueOf(`Missed`)) ? @color/errorColor : @color/cardStrokeColor}'
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,8 +62,8 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:gravity="center"
-            android:text="@{dashBmodel.reminderTracker.status}"
-            android:textColor="@color/textColor"
+            android:text="@{dashBmodel.reminderTracker.status + ' '}"
+            android:textColor='@{dashBmodel.reminderTracker.status.equals(String.valueOf(`Taken`)) ? @color/doneColor : dashBmodel.reminderTracker.status.equals(String.valueOf(`Missed`)) ? @color/errorColor : @color/cardStrokeColor}'
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/quantityTV"
             app:layout_constraintStart_toEndOf="@+id/quantityTV"
@@ -78,7 +78,7 @@
             android:layout_marginBottom="5dp"
             android:gravity="center"
             android:text="@{dashBmodel.reminderTracker.dateTimes}"
-            android:textColor="#8A8A8A"
+            android:textColor='@{dashBmodel.reminderTracker.status.equals(String.valueOf(`Taken`)) ? @color/doneColor : dashBmodel.reminderTracker.status.equals(String.valueOf(`Missed`)) ? @color/errorColor : @color/cardStrokeColor}'
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/statusTv"
             app:layout_constraintStart_toEndOf="@+id/statusTv"
@@ -86,13 +86,13 @@
 
         <ImageView
             android:id="@+id/imageView11"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginEnd="10dp"
+            android:src="@{dashBmodel.reminderTracker.reminderType.equals(String.valueOf(`doc`)) ? @drawable/doctor : dashBmodel.reminderTracker.reminderType.equals(String.valueOf(`mes`)) ? @drawable/measuring : @drawable/pills}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/pills" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/view10"
