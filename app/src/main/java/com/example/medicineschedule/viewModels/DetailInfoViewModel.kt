@@ -1,26 +1,62 @@
 package com.example.medicineschedule.viewModels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.map
+import android.app.Application
+import androidx.lifecycle.*
 import com.example.medicineschedule.BR
 import com.example.medicineschedule.R
+import com.example.medicineschedule.database.FirebaseServiceDrug
 import com.example.medicineschedule.models.Drug
 import com.example.medicineschedule.models.DummyRecModel
 import com.fraggjkee.recycleradapter.RecyclerItem
+import kotlinx.coroutines.launch
 import java.util.*
 
-open class DetailInfoViewModel:  ViewModel() {
+open class DetailInfoViewModel(application: Application) : AndroidViewModel(application)  {
 
-    // public val recData: MutableLiveData<List<DummyRecModel>> = MutableLiveData()
+    var list = ArrayList<String>()
+    private var _drugRecode = MutableLiveData<List<String>?>()
+    val drugRecord: MutableLiveData<List<String>?> = _drugRecode
+
     private val _recyclerItems = MutableLiveData<List<RecyclerItem>>()
     val recyclerItems: LiveData<List<RecyclerItem>> = _recyclerItems
 
+    // Real-world apps should use SingleLiveData instead. RxJava / Coroutines could also work
+    // better for one-time event streams.
+    private val _toastMessage = MutableLiveData<String>()
+    val toastMessage: LiveData<String> = _toastMessage
+
     init {
-        _recyclerItems.value = dataGenerter().map { it.toRecyclerItem() }
+        viewModelScope.launch {
+            var drug:Drug? = FirebaseServiceDrug.FirebaseProfileService.getDrugeData("XYLOCAINE 5% Ointment 20g")
+            if (drug != null) {
+                list.addAll(drug.sideEffects)
+                list.addAll(drug.warnings)
+               // var list = drug.alterBrand
+                _drugRecode.postValue(list)
+            }
+        }
     }
 
+    fun ResValue(list: List<String>) {
+        _recyclerItems.value = list
+            ?.map {
+                createUserItemViewModel(it, "Warnings")
+            }
+            ?.map {
+                it.toRecyclerItem()
+            }
+
+    }
+
+    private fun createUserItemViewModel(alterBrand:String, strengh:String): DummyRecModel {
+        return DummyRecModel(alterBrand,strengh)
+    }
+
+    private fun showClickMessage(alterBrand:String) {
+        _toastMessage.postValue(
+            "${alterBrand}  is clicked"
+        )
+    }
     private fun DummyRecModel.toRecyclerItem() = RecyclerItem(
         data = this,
         layoutId = R.layout.detail_info_recyclerview_view,
