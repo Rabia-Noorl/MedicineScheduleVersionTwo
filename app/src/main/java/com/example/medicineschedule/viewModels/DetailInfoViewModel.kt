@@ -3,6 +3,7 @@ package com.example.medicineschedule.viewModels
 import android.app.Application
 import androidx.lifecycle.*
 import com.example.medicineschedule.BR
+import com.example.medicineschedule.DictionaryActivity
 import com.example.medicineschedule.R
 import com.example.medicineschedule.database.FirebaseServiceDrug
 import com.example.medicineschedule.models.Drug
@@ -27,7 +28,11 @@ open class DetailInfoViewModel(application: Application) : AndroidViewModel(appl
 
     init {
         viewModelScope.launch {
-            var drug: Drug? = FirebaseServiceDrug.FirebaseProfileService.getDrugeData("ACTIFEN")
+            var drug: Drug? = DictionaryActivity.drugName?.let {
+                FirebaseServiceDrug.FirebaseProfileService.getDrugeData(
+                    it
+                )
+            }
             if (drug != null) {
                 _drugRecode.postValue(listOf(drug))
             }

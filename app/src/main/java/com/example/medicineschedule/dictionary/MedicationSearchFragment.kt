@@ -4,17 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.RadioButton
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.example.medicineschedule.DictionaryActivity
 import com.example.medicineschedule.R
 import com.example.medicineschedule.databinding.FragmentMedicationSearchBinding
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_medication_search.*
 
 class MedicationSearchFragment : Fragment(R.layout.fragment_medication_search) {
 
+    val db = FirebaseFirestore.getInstance()
+    val brandsHints: MutableList<String> = mutableListOf()
     val hints: List<String> = listOf("KANOX 10mg|ml Injection 1s","BITOL SODIUM 500mg Injection 2 Vials","Brufen Plus tablet 200/20 mg 2x10's","NAPA 125mg Suppositories 1x5s","QONZA 10mg Tablet 30s")
 
     private lateinit var binding: FragmentMedicationSearchBinding
@@ -25,15 +31,28 @@ class MedicationSearchFragment : Fragment(R.layout.fragment_medication_search) {
         super.onViewCreated(view, savedInstanceState)
         naController = findNavController()
 
-        val hintAdaper =
-            context?.let { ArrayAdapter<String>(it, R.layout.custom_list_item, R.id.text_view_list_item, hints) }
-        binding.actv.setAdapter(hintAdaper)
-
         radioButtonBrand.setOnClickListener {
             onRadioButtonClicked(it)
         }
         radioButtonGeneric.setOnClickListener{
             onRadioButtonClicked(it)
+        }
+
+        db.collection("Medicines").get().addOnSuccessListener {
+            it.forEach{
+                brandsHints.add(it.id)
+            }
+            val hintAdaper =
+                context?.let { ArrayAdapter<String>(it, R.layout.custom_list_item, R.id.text_view_list_item, brandsHints) }
+            binding.actv.setAdapter(hintAdaper)
+        }
+
+        binding.actv.onItemClickListener = AdapterView.OnItemClickListener{
+                parent,view,position,id->
+            val selectedItem = parent.getItemAtPosition(position).toString()
+            // Display the clicked item using toast
+            DictionaryActivity.drugName = selectedItem
+            binding.actv.setText("")
         }
     }
 

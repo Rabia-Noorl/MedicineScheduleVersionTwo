@@ -13,7 +13,6 @@ import kotlinx.coroutines.tasks.await
 
 
 class FirebaseServiceDrug {
-
     object FirebaseProfileService {
         var list = ArrayList<String>()
         private const val TAG = "FirebaseProfileService"

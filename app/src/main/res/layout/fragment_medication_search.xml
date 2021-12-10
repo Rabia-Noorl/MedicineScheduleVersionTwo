@@ -8,15 +8,31 @@
     android:padding="16dp"
     tools:context=".dictionary.MedicationSearchFragment">
 
-    <AutoCompleteTextView
-        android:id="@+id/actv"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/searchbardesign"
-        android:completionThreshold="1"
-        android:hint="Search Drug here"
-        android:minHeight="48dp"
-        android:padding="10dp" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_search" />
+
+        <AutoCompleteTextView
+            android:id="@+id/actv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/screen_background_light_transparent"
+            android:completionThreshold="1"
+            android:hint="Search Drug here"
+            android:maxLines="1"
+            android:minHeight="48dp"
+            android:padding="10dp" />
+    </LinearLayout>
 
     <View
         android:id="@+id/view6"
