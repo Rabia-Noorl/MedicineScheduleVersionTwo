@@ -34,7 +34,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:text="@{includedDrugModel.drug.activePharIngar}"
+        android:text="@{includedDrugModel.drug.pharmaIngr}"
         android:textColor="@color/greyColr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -83,12 +83,16 @@
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVOne/app/src/main/res/drawable/clickable_btn_bg.xml" value="0.2169230769230769" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVOne/app/src/main/res/layout/activity_dictionary.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVOne/app/src/main/res/layout/activity_sign_in_with_google.xml" value="0.22" />
-        <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVOne/app/src/main/res/layout/detail_info_recyclerview_view.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVOne/app/src/main/res/layout/custom_list_item.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVOne/app/src/main/res/layout/detail_info_recyclerview_view.xml" value="0.33" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVOne/app/src/main/res/layout/fragment_aavailable__form_.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVOne/app/src/main/res/layout/fragment_alternate__brands_.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVOne/app/src/main/res/layout/fragment_detailed__info_.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVOne/app/src/main/res/layout/fragment_drug__info_.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVOne/app/src/main/res/layout/fragment_dosage_.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVOne/app/src/main/res/layout/fragment_drug__info_.xml" value="0.33" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVOne/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVOne/app/src/main/res/layout/fragment_included__drugs_.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVOne/app/src/main/res/layout/fragment_medication_search.xml" value="0.22" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVOne/app/src/main/res/layout/fragment_pharmacy.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVOne/app/src/main/res/layout/fragment_search.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVOne/app/src/main/res/layout/view_included_drugs.xml" value="0.25" />

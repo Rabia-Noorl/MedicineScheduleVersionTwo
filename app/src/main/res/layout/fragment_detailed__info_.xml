@@ -34,7 +34,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/clickable_btn_bg"
                 android:text="Alternate Brands"
-                android:textColor="@color/darkPeach" />
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView

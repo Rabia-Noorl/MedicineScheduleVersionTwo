@@ -26,7 +26,7 @@ class Forms_ViewModel(application: Application) : AndroidViewModel(application) 
 
     init {
         viewModelScope.launch {
-            var drug: Drug? = FirebaseServiceDrug.FirebaseProfileService.getDrugeData("XYLOCAINE 5% Ointment 20g")
+            var drug: Drug? = FirebaseServiceDrug.FirebaseProfileService.getDrugeData("ACTIFEN")
             if (drug != null) {
                 _drugRecode.postValue(listOf(drug))
             }

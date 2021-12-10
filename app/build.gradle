@@ -58,6 +58,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.1'
     implementation 'com.google.firebase:firebase-firestore:24.0.0'
     implementation 'com.google.firebase:firebase-firestore-ktx:24.0.0'
+    implementation 'com.google.firebase:firebase-database:20.0.3'
+    implementation 'com.google.firebase:firebase-database-ktx:20.0.3'
     annotationProcessor 'com.github.bumptech.glide:glide:4.8.0'
 
 
@@ -146,6 +148,8 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$rootProject.androidxJunitVersion"
     //courotine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.4.1"
+
+    implementation "com.google.firebase:firebase-database:20.0.3"
 
 }
 

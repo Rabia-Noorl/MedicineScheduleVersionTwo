@@ -26,9 +26,13 @@ class AlternateBrand_ViewModel(application: Application) : AndroidViewModel(appl
 
    init {
        viewModelScope.launch {
-           var drug:Drug? = FirebaseServiceDrug.FirebaseProfileService.getDrugeData("XYLOCAINE 5% Ointment 20g")
+           var drug:Drug? = FirebaseServiceDrug.FirebaseProfileService.getDrugeData("ACTIFEN")
            if (drug != null) {
-               var list = drug.alterBrand
+               list.add(drug.ab1)
+               list.add(drug.ab2)
+               list.add(drug.ab3)
+               list.add(drug.ab4)
+               list.add(drug.ab5)
                _drugRecode.postValue(list)
            }
        }

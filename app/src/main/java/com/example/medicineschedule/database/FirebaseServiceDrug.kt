@@ -3,8 +3,14 @@ package com.example.medicineschedule.database
 import android.util.Log
 import com.example.medicineschedule.models.Drug
 import com.example.medicineschedule.models.Drug.Companion.toDrug
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
+
 
 class FirebaseServiceDrug {
 
@@ -21,7 +27,7 @@ class FirebaseServiceDrug {
 //                FirebaseCrashlytics.getInstance().log("Error getting user details")
 //                FirebaseCrashlytics.getInstance().setCustomKey("name", "Medicines")
 //                FirebaseCrashlytics.getInstance().recordException(e)
-                return Drug("Null","in Catch","","","","","","","",list,list,list, list, list)
+                return Drug("Null","in Catch","","","","","","","","","","","","","","","","","")
           //  null
             }
         }
