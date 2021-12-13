@@ -19,9 +19,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.medicineschedule.*
-import com.example.medicineschedule.R
 import com.example.medicineschedule.classes.AlarmReceiver
-import com.example.medicineschedule.database.Note
 import com.example.medicineschedule.database.ReminderTracker
 import com.example.medicineschedule.databinding.FragmentHomeBinding
 import com.example.medicineschedule.viewModels.HomeRecViewModel
@@ -30,7 +28,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.dialog_frag_layout.*
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 import java.util.*
 
 @Suppress("DEPRECATION")
@@ -67,7 +64,9 @@ class HomeFragment : Fragment(){
         creatNotificationChannel()
 
         currentUser = mAuth.currentUser!!
-        binding.userNametextView.setText(currentUser?.displayName)
+        val parts = currentUser.displayName?.split(" ")
+        val firstName= parts?.get(0)
+        binding.userNametextView.setText(firstName)
         Glide.with(this).load(currentUser?.photoUrl).into(binding.imageProfile)
 
 
@@ -91,8 +90,13 @@ class HomeFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
         uiViews()
 
-        viewModel= ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)).get(
-            HomeRecViewModel::class.java)
+        viewModel= ViewModelProvider(
+            this, ViewModelProvider.AndroidViewModelFactory.getInstance(
+                requireActivity().application
+            )
+        ).get(
+            HomeRecViewModel::class.java
+        )
 
         binding.viewModel = viewModel
         binding.let {
@@ -128,53 +132,54 @@ class HomeFragment : Fragment(){
             startActivity(intent)
         }
 
-        binding.floatingActionsMenu.setOnFloatingActionsMenuUpdateListener(object :
-            FloatingActionsMenu.OnFloatingActionsMenuUpdateListener {
-            override fun onMenuExpanded() {
-                binding.blureLayout.isVisible = true
-            }
-            override fun onMenuCollapsed() {
-                binding.blureLayout.isVisible = false
-            }
-        })
+//        binding.floatingActionsMenu.setOnFloatingActionsMenuUpdateListener(object :
+//            FloatingActionsMenu.OnFloatingActionsMenuUpdateListener {
+//            override fun onMenuExpanded() {
+//                binding.blureLayout.isVisible = true
+//            }
+
+//            override fun onMenuCollapsed() {
+//                binding.blureLayout.isVisible = false
+//            }
+//        })
 
     }
     private fun uiViews() {
 
-        binding.addDose.setOnClickListener{
+        binding.addMedicine.setOnClickListener{
             onClick(it)
         }
-        binding.addMeasurement.setOnClickListener{
-            onClick(it)
-        }
-//        binding.addReminder.setOnClickListener{
+//        binding.addMeasurement.setOnClickListener{
 //            onClick(it)
 //        }
-        binding.addDoctor.setOnClickListener{
-            onClick(it)
-        }
+////        binding.addReminder.setOnClickListener{
+////            onClick(it)
+////        }
+//        binding.addDoctor.setOnClickListener{
+//            onClick(it)
+//        }
 
     }
     fun onClick(v: View?) {
         when (v?.id) {
 
-            R.id.addDose -> {
+            R.id.addMedicine -> {
                 val doseIntent = Intent(getActivity(), AddDose::class.java)
                 startActivity(doseIntent)
             }
 
-            R.id.addMeasurement -> {
-                val measurementIntent = Intent(getActivity(), AddMeasurements::class.java)
-                startActivity(measurementIntent)
-            }
-//            R.id.addReminder -> {
-//                val reminderIntent = Intent(getActivity(), AddMedication::class.java)
+//            R.id.addMeasurement -> {
+//                val measurementIntent = Intent(getActivity(), AddMeasurements::class.java)
+//                startActivity(measurementIntent)
+//            }
+////            R.id.addReminder -> {
+////                val reminderIntent = Intent(getActivity(), AddMedication::class.java)
+////                startActivity(reminderIntent)
+////            }
+//            R.id.addDoctor -> {
+//                val reminderIntent = Intent(getActivity(), AddDoctorActivity::class.java)
 //                startActivity(reminderIntent)
 //            }
-            R.id.addDoctor -> {
-                val reminderIntent = Intent(getActivity(), AddDoctorActivity::class.java)
-                startActivity(reminderIntent)
-            }
         }
     }
     private fun checkUser() {
@@ -189,12 +194,12 @@ class HomeFragment : Fragment(){
         {
             //user logged in.. Get user Info
             val email=firebaseUser.email
-            val userName=firebaseUser.displayName
+            val userName= firebaseUser.displayName
             val profilePhoto=firebaseUser.photoUrl
             //set Email
 //            binding.userNametextView.text=email
-            binding.userNametextView.text=userName
-            binding.imageProfile.setImageURI(profilePhoto)
+            binding.userNametextView.text= userName
+            binding.imageProfile.setImageURI(profilePhoto )
         }
 
     }
@@ -217,13 +222,18 @@ class HomeFragment : Fragment(){
                 if(calendar.time.after(date)){
                     alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
                     val intent = Intent(context, AlarmReceiver::class.java)
-                    pendingIntent = PendingIntent.getBroadcast(context, it.id ,intent, 0)
-                    alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis,pendingIntent)
+                    pendingIntent = PendingIntent.getBroadcast(context, it.id, intent, 0)
+                    alarmManager.setExact(
+                        AlarmManager.RTC_WAKEUP,
+                        calendar.timeInMillis,
+                        pendingIntent
+                    )
 
                 }else if (calendar.time.before(date)){
                     if (it.status == ""){
 
-                        var reminder = ReminderTracker("${it.reminderType}",
+                        var reminder = ReminderTracker(
+                            "${it.reminderType}",
                             "${it.types}",
                             "${it.names}",
                             "${it.dateTimes}",
@@ -233,10 +243,11 @@ class HomeFragment : Fragment(){
                             "${it.startDate}",
                             "${it.endDate}",
                             "${it.recodeCreationDate}",
-                            it.deleteFlage)
+                            it.deleteFlage
+                        )
                         reminder.id = it.id
                         viewModel.onEditClick(reminder)
-                        Toast.makeText(context,"Alarm will not ring", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, "Alarm will not ring", Toast.LENGTH_LONG).show()
                     }
                 }
 
@@ -247,9 +258,9 @@ class HomeFragment : Fragment(){
             if (it.deleteFlage == true){
                 alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
                 val intent = Intent(context, AlarmReceiver::class.java)
-                pendingIntent = PendingIntent.getBroadcast(context,it.id,intent, 0)
+                pendingIntent = PendingIntent.getBroadcast(context, it.id, intent, 0)
                 alarmManager.cancel(pendingIntent)
-                Toast.makeText(context,"Alarm remove successfully" , Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Alarm remove successfully", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -259,7 +270,7 @@ class HomeFragment : Fragment(){
             val name = "ReminderChannel"
             val description = "Channel for Alarm Manager"
             val importance  = NotificationManager.IMPORTANCE_HIGH
-            val channel = NotificationChannel("AlarmId",name,importance)
+            val channel = NotificationChannel("AlarmId", name, importance)
             channel.description = description
             val notificationManager = requireContext().getSystemService(
                 NotificationManager::class.java

@@ -9,15 +9,15 @@
             type="com.example.medicineschedule.viewModels.AppointmentViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".AppointmentsActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/appointment_RecyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_margin="10dp"
             app:items="@{appointmentViewModel.recyclerItems}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -37,6 +37,7 @@
             android:layout_marginTop="150dp"
             android:alpha="0.5"
             android:visibility="invisible"
+            android:layout_centerInParent="true"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,23 +56,23 @@
             android:text="Check and track your all appointments here. To add new Appointment click on ADD APPOINTMENT button."
             android:textAlignment="center"
             android:visibility="invisible"
+            android:layout_centerInParent="true"
+            android:layout_below="@+id/appoimtmentLottieanim"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appoimtmentLottieanim" />
 
         <Button
             android:id="@+id/button"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/clickable_btn_bg"
             android:text="Add appointment"
             android:textColor="@color/whiteText"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_alignParentBottom="true" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 </layout>

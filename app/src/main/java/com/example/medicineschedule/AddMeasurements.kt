@@ -98,9 +98,16 @@ class AddMeasurements : AppCompatActivity() {
             }
         }
         binding.backArrowMeasurment.setOnClickListener{
-            val intent = Intent(this, HomeScreen::class.java)
-            startActivity(intent)
-            finish()
+            alertdialogbuilder=AlertDialog.Builder(this)
+            alertdialogbuilder.setCancelable(false)
+            alertdialogbuilder.setTitle("Confirm Exit!!!").setIcon(R.drawable.exitapp)
+                .setMessage("Are you sure you want to Exit?").setCancelable(true).setPositiveButton("Yes"){dialogInterface,it->
+                    this.finish()
+                }
+                .setNegativeButton("No"){dialogInterface,it->
+                    dialogInterface.cancel()
+                }.show()
+
         }
 
         binding.measurement.setOnClickListener(View.OnClickListener {
@@ -161,23 +168,23 @@ class AddMeasurements : AppCompatActivity() {
             }
             alertDialogIns.show()
         })
-        binding.btnMReminder.setOnClickListener(View.OnClickListener {
-            if(binding.btnMReminder.isChecked)
-            {binding.linLayoutMTime.visibility=View.VISIBLE
-                binding.txtvwMtime1.visibility=View.VISIBLE
-                binding.linLayoutMdate.visibility=View.VISIBLE
-            }
-            else{
-                binding.linLayoutMTime.visibility=View.GONE
-                binding.txtvwMtime1.visibility=View.GONE
-                binding.linLayoutMdate.visibility=View.GONE
-                binding.txtvwMtime2.visibility = View.GONE
-                binding.txtvwMtime3.visibility = View.GONE
-                binding.txtvwMtime4.visibility = View.GONE
-                binding.txtvwMtime5.visibility=View.GONE
-                binding.txtvwMtime6.visibility=View.GONE
-                binding.txtvwMtime7.visibility=View.GONE
-            }})
+//        binding.btnMReminder.setOnClickListener(View.OnClickListener {
+//            if(binding.btnMReminder.isChecked)
+//            {binding.linLayoutMTime.visibility=View.VISIBLE
+//                binding.txtvwMtime1.visibility=View.VISIBLE
+//                binding.linLayoutMdate.visibility=View.VISIBLE
+//            }
+//            else{
+//                binding.linLayoutMTime.visibility=View.GONE
+//                binding.txtvwMtime1.visibility=View.GONE
+//                binding.linLayoutMdate.visibility=View.GONE
+//                binding.txtvwMtime2.visibility = View.GONE
+//                binding.txtvwMtime3.visibility = View.GONE
+//                binding.txtvwMtime4.visibility = View.GONE
+//                binding.txtvwMtime5.visibility=View.GONE
+//                binding.txtvwMtime6.visibility=View.GONE
+//                binding.txtvwMtime7.visibility=View.GONE
+//            }})
 
         binding.txtvwMtime.setOnClickListener(View.OnClickListener {
             var alertDialogtime=AlertDialog.Builder(this)
@@ -187,6 +194,7 @@ class AddMeasurements : AppCompatActivity() {
 
                 when(position){
                     0 -> { binding.txtvwMtime1.visibility= View.VISIBLE
+                        binding.linLayoutMdate.visibility=View.VISIBLE
                         binding.txtvwMtime2.visibility = View.GONE
                         binding.txtvwMtime3.visibility = View.GONE
                         binding.txtvwMtime4.visibility = View.GONE
@@ -196,6 +204,7 @@ class AddMeasurements : AppCompatActivity() {
                     }
                     1 -> {binding.txtvwMtime1.visibility= View.VISIBLE
                         binding.txtvwMtime2.visibility=View.VISIBLE
+                        binding.linLayoutMdate.visibility=View.VISIBLE
                         binding.txtvwMtime3.visibility = View.GONE
                         binding.txtvwMtime4.visibility = View.GONE
                         binding.txtvwMtime5.visibility=View.GONE
@@ -205,6 +214,7 @@ class AddMeasurements : AppCompatActivity() {
                         binding.txtvwMtime1.visibility = View.VISIBLE
                         binding.txtvwMtime2.visibility=View.VISIBLE
                         binding.txtvwMtime3.visibility=View.VISIBLE
+                        binding.linLayoutMdate.visibility=View.VISIBLE
                         binding.txtvwMtime4.visibility = View.GONE
                         binding.txtvwMtime5.visibility=View.GONE
                         binding.txtvwMtime6.visibility=View.GONE
@@ -215,6 +225,7 @@ class AddMeasurements : AppCompatActivity() {
                         binding.txtvwMtime2.visibility=View.VISIBLE
                         binding.txtvwMtime3.visibility=View.VISIBLE
                         binding.txtvwMtime4.visibility=View.VISIBLE
+                        binding.linLayoutMdate.visibility=View.VISIBLE
                         binding.txtvwMtime5.visibility=View.GONE
                         binding.txtvwMtime6.visibility=View.GONE
                         binding.txtvwMtime7.visibility=View.GONE
@@ -225,6 +236,7 @@ class AddMeasurements : AppCompatActivity() {
                         binding.txtvwMtime3.visibility=View.VISIBLE
                         binding.txtvwMtime4.visibility=View.VISIBLE
                         binding.txtvwMtime5.visibility=View.VISIBLE
+                        binding.linLayoutMdate.visibility=View.VISIBLE
                         binding.txtvwMtime6.visibility=View.GONE
                         binding.txtvwMtime7.visibility=View.GONE
 
@@ -236,6 +248,7 @@ class AddMeasurements : AppCompatActivity() {
                         binding.txtvwMtime4.visibility=VISIBLE
                         binding.txtvwMtime5.visibility=VISIBLE
                         binding.txtvwMtime6.visibility= VISIBLE
+                        binding.linLayoutMdate.visibility=View.VISIBLE
                         binding.txtvwMtime7.visibility=View.GONE
                     }
                     6->{
@@ -246,6 +259,7 @@ class AddMeasurements : AppCompatActivity() {
                         binding.txtvwMtime5.visibility=VISIBLE
                         binding.txtvwMtime6.visibility= VISIBLE
                         binding.txtvwMtime7.visibility= VISIBLE
+                        binding.linLayoutMdate.visibility=View.VISIBLE
 
                     }
                     else -> {
@@ -255,6 +269,7 @@ class AddMeasurements : AppCompatActivity() {
                         binding.txtvwMtime5.visibility=View.GONE
                         binding.txtvwMtime6.visibility=View.GONE
                         binding.txtvwMtime7.visibility=View.GONE
+                        binding.linLayoutMdate.visibility=View.GONE
 
                     }
                 }

@@ -62,6 +62,7 @@ class AddDoctorActivity : AppCompatActivity(){
             alertDialogDocType.show()
         })
 
+
         viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(
             HomeRecViewModel::class.java)
 
@@ -92,19 +93,26 @@ class AddDoctorActivity : AppCompatActivity(){
         }
         }
         binding.backArrow.setOnClickListener{
-            val intent = Intent(this, HomeScreen::class.java)
-            startActivity(intent)
-            finish()
+            alertdialogbuilder=AlertDialog.Builder(this)
+            alertdialogbuilder.setCancelable(false)
+            alertdialogbuilder.setTitle("Confirm Exit!!!").setIcon(R.drawable.exitapp)
+                .setMessage("Are you sure you want to Exit?").setCancelable(true).setPositiveButton("Yes"){dialogInterface,it->
+                    this.finish()
+                }
+                .setNegativeButton("No"){dialogInterface,it->
+                    dialogInterface.cancel()
+                }.show()
         }
-        binding.btndoctorReminder.setOnClickListener {
-            var timetext =  binding.appointmentTime
-            var state  = binding.btndoctorReminder.isChecked
-            timetext.isVisible = state == true
-            if (state){
-                Toast.makeText(this,"Alarm set successfully", Toast.LENGTH_SHORT).show()
-            }
-        }
+//        binding.btndoctorReminder.setOnClickListener {
+//            var timetext =  binding.appointmentTime
+//            var state  = binding.btndoctorReminder.isChecked
+//            timetext.isVisible = state == true
+//            if (state){
+//                Toast.makeText(this,"Alarm set successfully", Toast.LENGTH_SHORT).show()
+//            }
+      //  }f
     }
+
 
     private fun showTimePicker() {
         var calendar= Calendar.getInstance()

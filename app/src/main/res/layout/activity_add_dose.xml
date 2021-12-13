@@ -36,29 +36,16 @@
             android:textStyle="bold"
             android:textCursorDrawable="@drawable/cursor"></TextView>
 
-        <EditText
-            android:id="@+id/medicationName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/doseSave"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/design_default_color_primary_variant"
-            android:cursorVisible="true"
-            android:hint="Medication Name"
-            android:textCursorDrawable="@drawable/cursor"
-            android:textAlignment="center"
-            android:textColor="@color/textColor"
-            android:textColorHint="@color/purple_700"
-            android:textSize="16sp"/>
+
 
         <ImageView
             android:id="@+id/doseimgView"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_below="@+id/medicationName"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+           android:layout_below="@id/doseSave"
             android:layout_centerInParent="true"
             android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:src="@drawable/drugs"
             app:civ_border_color="@color/darkPeach"
             app:civ_border_width="5dp"
@@ -71,23 +58,6 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
-        <AutoCompleteTextView
-            android:id="@+id/medTypeTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/doseimgView"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"
-            android:textAlignment="center"
-            android:focusableInTouchMode="false"
-            android:cursorVisible="false"
-            android:drawableRight="@drawable/ic_dropdown_pink"
-           android:hint="Medication Type"
-            android:textColor="@color/textColor"
-            android:backgroundTint="#E22A61"
-            android:textColorHint="#E22A61"
-            android:textSize="20sp" />
 
 <!--        <TextView-->
 <!--            android:id="@+id/medTypeTV"-->
@@ -140,7 +110,134 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardViewmedName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="5dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:strokeColor="@color/backGroundColour"
+                    app:strokeWidth="1dp">
 
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvmedName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:text="Medication Name"
+                            android:textColor="@color/textColor"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        <EditText
+                            android:id="@+id/medicationName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tvmedName"
+                            android:layout_centerInParent="true"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/design_default_color_primary_variant"
+                            android:cursorVisible="true"
+                            android:hint="Medication Name"
+                            android:textCursorDrawable="@drawable/cursor"
+                            android:textAlignment="center"
+                            android:textColor="@color/textColor"
+                            android:textColorHint="@color/purple_700"
+                            android:textSize="18sp"/>
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView></androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardViewmedType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="5dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:strokeColor="@color/backGroundColour"
+                    app:strokeWidth="1dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvmedType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:text="Medication Type"
+                            android:textColor="@color/textColor"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        <AutoCompleteTextView
+                            android:id="@+id/medTypeTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:textAlignment="center"
+                            android:focusableInTouchMode="false"
+                            android:cursorVisible="false"
+                            android:drawableRight="@drawable/ic_dropdown_blue"
+                            android:hint="Medication Type"
+                            android:textColor="@color/textColor"
+                            android:layout_below="@+id/tvmedType"
+                            android:backgroundTint="@color/design_default_color_primary_variant"
+                            android:textColorHint="@color/design_default_color_primary_variant"
+                            android:textSize="18sp" />
+
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView></androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardViewdose"
                     android:layout_width="match_parent"
@@ -202,7 +299,7 @@
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
                                 android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="16sp"
+                                android:textSize="18sp"
                                 />
                             <FrameLayout
                                 android:id="@+id/unitTV"
@@ -222,12 +319,10 @@
 
                         </LinearLayout>
                     </RelativeLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView></androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout2"
+                android:id="@+id/constraintLayout4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -289,14 +384,14 @@
                                 android:backgroundTint="@color/design_default_color_primary_variant"
                                 android:drawableRight="@drawable/ic_dropdown_blue"
                                 android:focusableInTouchMode="false"
-                                android:hint="Instructions"
                                 android:textAlignment="center"
+                                android:hint="Instructions"
                                 android:cursorVisible="false"
                                 android:textColor="@color/textColor"
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
                                 android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="16sp" />
+                                android:textSize="18sp" />
                         </LinearLayout>
 
                         <EditText
@@ -314,7 +409,7 @@
                             android:textColorHint="@color/design_default_color_primary_variant"
                             android:textColorLink="@color/design_default_color_primary_variant"
                             android:textCursorDrawable="@drawable/cursor"
-                            android:textSize="20dp"
+                            android:textSize="18sp"
                             android:visibility="gone"></EditText>
                     </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -322,7 +417,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout3"
+                android:id="@+id/constraintLayout5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -363,58 +458,58 @@
                             android:layout_centerHorizontal="true"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="10dp"
-                            android:text="Schedule and reminder"
+                            android:text="Schedule and Reminder"
                             android:textColor="@color/textColor"
                             android:textSize="20dp"
                             android:textStyle="bold" />
 
-                        <LinearLayout
-                            android:id="@+id/linLayoutReminder"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/tvdoseReminder"
-                            android:layout_marginTop="10dp"
-                            android:gravity="center|center_horizontal|center_vertical"
-                            android:orientation="horizontal">
+<!--                        <LinearLayout-->
+<!--                            android:id="@+id/linLayoutReminder"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_below="@id/tvdoseReminder"-->
+<!--                            android:layout_marginTop="10dp"-->
+<!--                            android:gravity="center|center_horizontal|center_vertical"-->
+<!--                            android:orientation="horizontal">-->
 
-                            <Switch
-                                android:id="@+id/btndoseReminder"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginLeft="2dp"
-                                android:layout_marginRight="2dp"
-                                android:text="Reminder and Schedule"
-                                android:textColor="@color/design_default_color_primary_variant"
-                                android:textSize="16sp"
-                                android:theme="@style/switchColor"></Switch>
-                        </LinearLayout>
+<!--                            <Switch-->
+<!--                                android:id="@+id/btndoseReminder"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_gravity="center_horizontal"-->
+<!--                                android:layout_marginLeft="2dp"-->
+<!--                                android:layout_marginRight="2dp"-->
+<!--                                android:text="Reminder and Schedule"-->
+<!--                                android:textColor="@color/design_default_color_primary_variant"-->
+<!--                                android:textSize="18sp"-->
+<!--                                android:theme="@style/switchColor"></Switch>-->
+<!--                        </LinearLayout>-->
 
                         <LinearLayout
                             android:id="@+id/linLayoutTime"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/linLayoutReminder"
                             android:gravity="center|center_horizontal|center_vertical"
                             android:orientation="horizontal"
-                            android:visibility="gone">
+                            android:layout_below="@+id/tvdoseReminder"
+                            android:visibility="visible">
 
                             <AutoCompleteTextView
                                 android:id="@+id/txtvwdosetime"
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:backgroundTint="@color/design_default_color_primary_variant"
                                 android:cursorVisible="false"
                                 android:drawableRight="@drawable/ic_dropdown_blue"
                                 android:focusableInTouchMode="false"
-                                android:hint="Once a day"
+                                android:hint="Times per day"
                                 android:textAlignment="center"
                                 android:textColor="@color/textColor"
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
                                 android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="20dp" />
+                                android:textSize="18sp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -453,7 +548,7 @@
                                         android:textColorHint="@color/design_default_color_primary_variant"
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
-                                        android:textSize="20dp"
+                                        android:textSize="18sp"
                                         android:visibility="gone"></EditText>
 
                                     <EditText
@@ -470,7 +565,7 @@
                                         android:textColorHint="@color/design_default_color_primary_variant"
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
-                                        android:textSize="20dp"
+                                        android:textSize="18sp"
                                         android:visibility="gone"></EditText>
 
                                     <EditText
@@ -487,7 +582,7 @@
                                         android:textColorHint="@color/design_default_color_primary_variant"
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
-                                        android:textSize="20dp"
+                                        android:textSize="18sp"
                                         android:visibility="gone"></EditText>
 
                                     <EditText
@@ -504,7 +599,7 @@
                                         android:textColorHint="@color/design_default_color_primary_variant"
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
-                                        android:textSize="20dp"
+                                        android:textSize="18sp"
                                         android:visibility="gone" />
 
                                     <EditText
@@ -521,7 +616,7 @@
                                         android:textColorHint="@color/design_default_color_primary_variant"
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
-                                        android:textSize="20dp"
+                                        android:textSize="18sp"
                                         android:visibility="gone"></EditText>
 
                                     <EditText
@@ -538,7 +633,7 @@
                                         android:textColorHint="@color/design_default_color_primary_variant"
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
-                                        android:textSize="20dp"
+                                        android:textSize="18sp"
                                         android:visibility="gone" />
 
                                     <EditText
@@ -555,7 +650,7 @@
                                         android:textColorHint="@color/design_default_color_primary_variant"
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
-                                        android:textSize="20dp"
+                                        android:textSize="18sp"
                                         android:visibility="gone" />
                                 </LinearLayout>
                             </HorizontalScrollView>
@@ -586,7 +681,7 @@
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
                                 android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="20dp"></EditText>
+                                android:textSize="18sp"></EditText>
 
                             <EditText
                                 android:id="@+id/doseendDate"
@@ -603,7 +698,7 @@
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
                                 android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="20dp" />
+                                android:textSize="18sp" />
                         </LinearLayout>
 
                     </RelativeLayout>
@@ -612,7 +707,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout4"
+                android:id="@+id/constraintLayout6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -657,20 +752,44 @@
                             android:textColor="@color/textColor"
                             android:textSize="20dp"
                             android:textStyle="bold" />
+                        <LinearLayout
+                            android:id="@+id/linLayoutRefillReminder"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tvdoseRefill"
+                            android:gravity="center|center_horizontal|center_vertical"
+                            android:orientation="vertical">
+
+                            <Switch
+                                android:id="@+id/btndoseRefill"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="2dp"
+                                android:text="Refill"
+                                android:textColor="@color/design_default_color_primary_variant"
+                                android:textSize="18sp"
+                                android:theme="@style/switchColor"></Switch>
+
+
+                        </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/linLayoutdoseRefill"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/tvdoseRefill"
+                            android:layout_below="@id/linLayoutRefillReminder"
                             android:gravity="center|center_horizontal|center_vertical"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:visibility="gone">
 
                             <LinearLayout
                                 android:id="@+id/linLayoutCurrentStock"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/tvdoseRefill"
+                                android:layout_below="@id/linLayoutRefillReminder"
                                 android:gravity="center|center_horizontal|center_vertical"
                                 android:orientation="horizontal">
 
@@ -688,41 +807,18 @@
                                     android:textColorHint="@color/design_default_color_primary_variant"
                                     android:textColorLink="@color/design_default_color_primary_variant"
                                     android:textCursorDrawable="@drawable/cursor"
-                                    android:textSize="20dp"></EditText>
+                                    android:textSize="18sp"></EditText>
                             </LinearLayout>
 
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:id="@+id/linLayoutRefillReminder"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/linLayoutdoseRefill"
-                            android:gravity="center|center_horizontal|center_vertical"
-                            android:orientation="vertical">
 
-                            <Switch
-                                android:id="@+id/btndoseRefill"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginLeft="2dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginRight="2dp"
-                                android:text="Refill"
-                                android:textColor="@color/design_default_color_primary_variant"
-                                android:textSize="20dp"
-                                android:theme="@style/switchColor"></Switch>
-
-
-                        </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/linLayoutsetRefill"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/linLayoutdoseRefill"
-                            android:layout_marginTop="40dp"
                             android:gravity="center|center_horizontal|center_vertical"
                             android:orientation="horizontal"
                             android:visibility="gone">
@@ -744,7 +840,7 @@
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
                                 android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="20dp"></EditText>
+                                android:textSize="18sp"></EditText>
                         </LinearLayout>
                     </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>

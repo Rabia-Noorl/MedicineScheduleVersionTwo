@@ -1,4 +1,3 @@
-
 package com.example.medicineschedule
 
 import android.app.DatePickerDialog
@@ -236,17 +235,23 @@ class AddDose : AppCompatActivity() {
             addDoseReminder()
         }
         binding.backArrowAddDose.setOnClickListener{
-            val intent = Intent(this, HomeScreen::class.java)
-            startActivity(intent)
-            finish()
+            alertdialogbuilder=AlertDialog.Builder(this)
+            alertdialogbuilder.setCancelable(false)
+            alertdialogbuilder.setTitle("Confirm Exit!!!").setIcon(R.drawable.exitapp)
+                .setMessage("Are you sure you want to Exit?").setCancelable(true).setPositiveButton("Yes"){dialogInterface,it->
+                    this.finish()
+                }
+                .setNegativeButton("No"){dialogInterface,it->
+                    dialogInterface.cancel()
+                }.show()
+
         }
 
         binding.Instructions.setOnClickListener(View.OnClickListener {
             var alertDialogIns = AlertDialog.Builder(this)
             alertDialogIns.setTitle("Select Instruction")
             alertDialogIns.setSingleChoiceItems(
-                instructionChoice,
-                0
+                instructionChoice,0
             ) { dialogInterface: DialogInterface, position: Int ->
                 binding.Instructions.setText(instructionChoice[position])
                 if (position == 4) {
@@ -259,27 +264,29 @@ class AddDose : AppCompatActivity() {
             }
             alertDialogIns.show()
         })
-        binding.btndoseReminder.setOnClickListener(View.OnClickListener {
-            if (binding.btndoseReminder.isChecked) {
-                binding.linLayoutTime.visibility = View.VISIBLE
-                binding.txtvwdosetime1.visibility = View.VISIBLE
-                binding.linLayoutdosedate.visibility = View.VISIBLE
-            } else {
-                binding.linLayoutTime.visibility = View.GONE
-                binding.txtvwdosetime1.visibility = View.GONE
-                binding.linLayoutdosedate.visibility = View.GONE
-                binding.txtvwdosetime2.visibility = View.GONE
-                binding.txtvwdosetime3.visibility = View.GONE
-                binding.txtvwdosetime4.visibility = View.GONE
-                binding.txtvwdosetime5.visibility = View.GONE
-                binding.txtvwdosetime6.visibility = View.GONE
-                binding.txtvwdosetime7.visibility = View.GONE
-            }
-        })
+//        binding.btndoseReminder.setOnClickListener(View.OnClickListener {
+//            if (binding.btndoseReminder.isChecked) {
+//                binding.linLayoutTime.visibility = View.VISIBLE
+//                binding.txtvwdosetime1.visibility = View.VISIBLE
+//                binding.linLayoutdosedate.visibility = View.VISIBLE
+//            } else {
+//                binding.linLayoutTime.visibility = View.GONE
+//                binding.txtvwdosetime1.visibility = View.GONE
+//                binding.linLayoutdosedate.visibility = View.GONE
+//                binding.txtvwdosetime2.visibility = View.GONE
+//                binding.txtvwdosetime3.visibility = View.GONE
+//                binding.txtvwdosetime4.visibility = View.GONE
+//                binding.txtvwdosetime5.visibility = View.GONE
+//                binding.txtvwdosetime6.visibility = View.GONE
+//                binding.txtvwdosetime7.visibility = View.GONE
+//            }
+//        })
         binding.btndoseRefill.setOnClickListener(View.OnClickListener {
             if (binding.btndoseRefill.isChecked) {
+                binding.linLayoutdoseRefill.visibility= VISIBLE
                 binding.linLayoutsetRefill.visibility = View.VISIBLE
             } else {
+                binding.linLayoutdoseRefill.visibility= View.GONE
                 binding.linLayoutsetRefill.visibility = View.GONE
             }
         })
@@ -295,6 +302,7 @@ class AddDose : AppCompatActivity() {
                 when (position) {
                     0 -> {
                         binding.txtvwdosetime1.visibility = View.VISIBLE
+                        binding.linLayoutdosedate.visibility = View.VISIBLE
                         binding.txtvwdosetime2.visibility = View.GONE
                         binding.txtvwdosetime3.visibility = View.GONE
                         binding.txtvwdosetime4.visibility = View.GONE
@@ -305,6 +313,7 @@ class AddDose : AppCompatActivity() {
                     1 -> {
                         binding.txtvwdosetime1.visibility = View.VISIBLE
                         binding.txtvwdosetime2.visibility = View.VISIBLE
+                        binding.linLayoutdosedate.visibility = View.VISIBLE
                         binding.txtvwdosetime3.visibility = View.GONE
                         binding.txtvwdosetime4.visibility = View.GONE
                         binding.txtvwdosetime5.visibility = View.GONE
@@ -316,6 +325,7 @@ class AddDose : AppCompatActivity() {
                         binding.txtvwdosetime1.visibility = View.VISIBLE
                         binding.txtvwdosetime2.visibility = View.VISIBLE
                         binding.txtvwdosetime3.visibility = View.VISIBLE
+                        binding.linLayoutdosedate.visibility = View.VISIBLE
                         binding.txtvwdosetime4.visibility = View.GONE
                         binding.txtvwdosetime5.visibility = View.GONE
                         binding.txtvwdosetime6.visibility = View.GONE
@@ -326,6 +336,7 @@ class AddDose : AppCompatActivity() {
                         binding.txtvwdosetime2.visibility = View.VISIBLE
                         binding.txtvwdosetime3.visibility = View.VISIBLE
                         binding.txtvwdosetime4.visibility = View.VISIBLE
+                        binding.linLayoutdosedate.visibility = View.VISIBLE
                         binding.txtvwdosetime5.visibility = View.GONE
                         binding.txtvwdosetime6.visibility = View.GONE
                         binding.txtvwdosetime7.visibility = View.GONE
@@ -336,6 +347,7 @@ class AddDose : AppCompatActivity() {
                         binding.txtvwdosetime3.visibility = View.VISIBLE
                         binding.txtvwdosetime4.visibility = View.VISIBLE
                         binding.txtvwdosetime5.visibility = View.VISIBLE
+                        binding.linLayoutdosedate.visibility = View.VISIBLE
                         binding.txtvwdosetime6.visibility = View.GONE
                         binding.txtvwdosetime7.visibility = View.GONE
                     }
@@ -346,6 +358,7 @@ class AddDose : AppCompatActivity() {
                         binding.txtvwdosetime4.visibility = VISIBLE
                         binding.txtvwdosetime5.visibility = VISIBLE
                         binding.txtvwdosetime6.visibility = VISIBLE
+                        binding.linLayoutdosedate.visibility = View.VISIBLE
                         binding.txtvwdosetime7.visibility = View.GONE
 
                     }
@@ -357,6 +370,7 @@ class AddDose : AppCompatActivity() {
                         binding.txtvwdosetime5.visibility = VISIBLE
                         binding.txtvwdosetime6.visibility = VISIBLE
                         binding.txtvwdosetime7.visibility = VISIBLE
+                        binding.linLayoutdosedate.visibility = View.VISIBLE
 
                     }
                     else -> {
@@ -366,6 +380,7 @@ class AddDose : AppCompatActivity() {
                         binding.txtvwdosetime5.visibility = View.GONE
                         binding.txtvwdosetime6.visibility = View.GONE
                         binding.txtvwdosetime7.visibility = View.GONE
+                        binding.linLayoutdosedate.visibility = View.GONE
                     }
                 }
 

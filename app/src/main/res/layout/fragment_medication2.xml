@@ -67,7 +67,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/clickable_btn_bg"
-            android:text="Add Med"
+            android:text="Add Medicine"
             android:textColor="@color/whiteText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

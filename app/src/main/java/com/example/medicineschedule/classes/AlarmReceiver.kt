@@ -19,7 +19,7 @@ class AlarmReceiver(): BroadcastReceiver() {
         val builder = NotificationCompat.Builder(context!!, "AlarmId")
             .setSmallIcon(R.drawable.pills)
             .setContentTitle("Your Daily Medication")
-            .setContentText("Marked reminder that are labeled Missed.")
+            .setContentText("You have prescriptions to take!")
             .setAutoCancel(true)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
             .setPriority(NotificationCompat.PRIORITY_HIGH)

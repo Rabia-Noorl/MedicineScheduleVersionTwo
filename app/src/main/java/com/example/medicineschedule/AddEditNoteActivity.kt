@@ -44,7 +44,7 @@ class AddEditNoteActivity : AppCompatActivity() {
             val noteTitle=noteTitleEdt.text.toString()
             val noteDescription=noteDescriptionEdt.text.toString()
             if(noteType.equals("Edit")){
-                if(noteTitle.isNotEmpty() && noteDescription.isNotEmpty()){
+                if(noteTitle.isNotEmpty() || noteDescription.isNotEmpty()){
                     val sdf=SimpleDateFormat("dd MM,yyyy -HH:mm")
                     val curretDate:String=sdf.format(Date())
                     val updatedNote= Note(noteTitle,noteDescription,curretDate)
@@ -54,7 +54,7 @@ class AddEditNoteActivity : AppCompatActivity() {
                 }
             }
             else{
-                if(noteTitle.isNotEmpty() && noteDescription.isNotEmpty()){
+                if(noteTitle.isNotEmpty() || noteDescription.isNotEmpty()){
                     val sdf=SimpleDateFormat("dd MM,yyyy /HH:mm")
                     val curretDate:String=sdf.format(Date())
                     nviewModel.insertNote(Note(noteTitle,noteDescription,curretDate))

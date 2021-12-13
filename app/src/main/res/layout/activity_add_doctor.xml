@@ -25,27 +25,11 @@
             android:textStyle="bold"
             android:textCursorDrawable="@drawable/cursor"/>
 
-        <EditText
-            android:id="@+id/medicationName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/saveTextView"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/design_default_color_primary_variant"
-            android:cursorVisible="true"
-            android:hint="Dr.Name"
-            android:textAlignment="center"
-            android:textColor="@color/textColor"
-            android:textColorHint="@color/purple_700"
-            android:textCursorDrawable="@drawable/cursor"
-            android:textSize="16sp" />
-
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/doseimgView"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_below="@+id/medicationName"
+            android:layout_below="@+id/saveTextView"
             android:layout_centerInParent="true"
             android:layout_marginBottom="10dp"
             app:lottie_autoPlay="true"
@@ -59,41 +43,6 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
-
-        <AutoCompleteTextView
-            android:id="@+id/docTypeTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/doseimgView"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="#E22A61"
-            android:cursorVisible="false"
-            android:drawableRight="@drawable/ic_dropdown_pink"
-            android:focusableInTouchMode="false"
-            android:hint="Speciality"
-            android:textAlignment="center"
-            android:textColor="@color/textColor"
-            android:textColorHint="#E22A61"
-            android:textSize="20sp" />
-        <EditText
-            android:id="@+id/customDocType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/docTypeTV"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center_horizontal"
-            android:backgroundTint="#E22A61"
-            android:cursorVisible="true"
-            android:hint="Enter Speciality"
-            android:textAlignment="center"
-            android:textColor="@color/textColor"
-            android:textColorHint="#E22A61"
-            android:textColorLink="#E22A61"
-            android:textSize="20sp"
-            android:textCursorDrawable="@drawable/cursor"
-            android:visibility="gone"/>
 
 <!--        <EditText-->
 <!--            android:id="@+id/medTypeTV"-->
@@ -138,7 +87,6 @@
             android:layout_below="@+id/imgView"
             android:layout_marginBottom="10dp"
             android:orientation="vertical">
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout1"
                 android:layout_width="match_parent"
@@ -186,18 +134,165 @@
                             android:textSize="20dp"
                             android:textStyle="bold" />
 
-                        <LinearLayout
-                            android:id="@+id/linLayoutadddose"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/tvDose"
-                            android:gravity="center|center_horizontal|center_vertical"
-                            android:orientation="horizontal"/>
                     </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="5dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:strokeColor="@color/backGroundColour"
+                    app:strokeWidth="1dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvdoctor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:text="Doctor Name"
+                            android:textColor="@color/textColor"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        <EditText
+                            android:id="@+id/medicationName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tvdoctor"
+                            android:layout_centerInParent="true"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/design_default_color_primary_variant"
+                            android:cursorVisible="true"
+                            android:hint="Dr.Name"
+                            android:textAlignment="center"
+                            android:textColor="@color/textColor"
+                            android:textColorHint="@color/purple_700"
+                            android:textCursorDrawable="@drawable/cursor"
+                            android:textSize="18sp" />
+
+
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayoutspec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardViewspec"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="5dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:strokeColor="@color/backGroundColour"
+                    app:strokeWidth="1dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvspeciality"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:text="Speciality"
+                            android:textColor="@color/textColor"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        <AutoCompleteTextView
+                            android:id="@+id/docTypeTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/design_default_color_primary_variant"
+                            android:cursorVisible="false"
+                            android:drawableRight="@drawable/ic_dropdown_blue"
+                            android:focusableInTouchMode="false"
+                            android:hint="Speciality"
+                            android:layout_below="@+id/tvspeciality"
+                            android:textAlignment="center"
+                            android:textColor="@color/textColor"
+                            android:textColorHint="@color/design_default_color_primary_variant"
+                            android:textSize="18sp" />
+                        <EditText
+                            android:id="@+id/customDocType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/docTypeTV"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="center_horizontal"
+                            android:backgroundTint="@color/design_default_color_primary_variant"
+                            android:cursorVisible="true"
+                            android:hint="Enter Speciality"
+                            android:textAlignment="center"
+                            android:textColor="@color/textColor"
+                            android:textColorHint="@color/design_default_color_primary_variant"
+                            android:textColorLink="@color/design_default_color_primary_variant"
+                            android:textSize="18sp"
+                            android:textCursorDrawable="@drawable/cursor"
+                            android:visibility="gone"/>
+
+
+
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout3"
                 android:layout_width="match_parent"
@@ -242,7 +337,7 @@
                             android:layout_marginTop="10dp"
                             android:text="Appointment Reminder"
                             android:textColor="@color/textColor"
-                            android:textSize="20sp"
+                            android:textSize="20dp"
                             android:textStyle="bold" />
 
                         <LinearLayout
@@ -250,22 +345,21 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/tvdoseReminder"
-                            android:layout_marginTop="10dp"
                             android:gravity="center|center_horizontal|center_vertical"
                             android:orientation="vertical">
 
-                            <Switch
-                                android:id="@+id/btndoctorReminder"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginLeft="2dp"
-                                android:layout_marginRight="2dp"
-                                android:minHeight="48dp"
-                                android:text="Set Alert"
-                                android:textColor="@color/design_default_color_primary_variant"
-                                android:textSize="16sp"
-                                android:theme="@style/switchColor"/>
+<!--                            <Switch-->
+<!--                                android:id="@+id/btndoctorReminder"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_gravity="center_horizontal"-->
+<!--                                android:layout_marginLeft="2dp"-->
+<!--                                android:layout_marginRight="2dp"-->
+<!--                                android:minHeight="48dp"-->
+<!--                                android:text="Set Alert"-->
+<!--                                android:textColor="@color/design_default_color_primary_variant"-->
+<!--                                android:textSize="18sp"-->
+<!--                                android:theme="@style/switchColor"/>-->
 
                             <EditText
                                 android:id="@+id/appointmentTime"
@@ -281,8 +375,8 @@
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
                                 android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="20dp"
-                                android:visibility="gone"></EditText>
+                                android:textSize="18sp"
+                                android:visibility="visible"></EditText>
                         </LinearLayout>
 
                     </RelativeLayout>

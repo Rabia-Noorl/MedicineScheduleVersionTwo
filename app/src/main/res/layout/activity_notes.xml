@@ -35,7 +35,7 @@
         android:paddingTop="10dp"
         android:paddingRight="40dp"
         android:layout_centerInParent="true"
-        android:text="Check and track your all notes here. To add new notes click on ADD NOTE button."
+        android:text="Check and track your all notes here. To add new note click on ADD NOTE button."
         android:textAlignment="center"
         android:visibility="visible"
 

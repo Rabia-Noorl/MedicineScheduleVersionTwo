@@ -51,7 +51,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/lato"
-            android:text="Welcome Back!"
+            android:text="Welcome!"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@id/userNametextView"
             app:layout_constraintStart_toStartOf="@+id/view8"
@@ -172,51 +172,63 @@
             app:layout_constraintTop_toBottomOf="@+id/textToday"
             tools:itemCount="3"
             tools:listitem="@layout/view_of_dashboard_rv" />
-
-        <com.getbase.floatingactionbutton.FloatingActionsMenu
-            android:id="@+id/floatingActionsMenu"
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addMedicine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="18dp"
-            android:elevation="5dp"
-            app:fab_addButtonColorNormal="#1a6b5f"
-            app:fab_addButtonColorPressed="@color/white"
-            app:fab_expandDirection="up"
-            app:fab_labelStyle="@style/Floatstyle"
-            app:fab_labelsPosition="left"
+            app:fab_colorNormal="#1a6b5f"
+            app:fab_icon="@drawable/ic_add"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            app:fab_colorPressed="#1a6b5f"
+            ></com.getbase.floatingactionbutton.FloatingActionButton>
 
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/addDose"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:fabSize="mini"
-                app:fab_colorNormal="@color/bgColor"
-                app:fab_colorPressed="@color/themeColor"
-                app:fab_icon="@drawable/ic_adddrug"
-                app:fab_title="Add Medicine"></com.getbase.floatingactionbutton.FloatingActionButton>
+<!--        <com.getbase.floatingactionbutton.FloatingActionsMenu-->
+<!--            android:id="@+id/floatingActionsMenu"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="18dp"-->
+<!--            android:elevation="5dp"-->
+<!--            app:fab_addButtonColorNormal="#1a6b5f"-->
+<!--            app:fab_addButtonColorPressed="@color/white"-->
+<!--            app:fab_expandDirection="up"-->
+<!--            app:fab_labelStyle="@style/Floatstyle"-->
+<!--            app:fab_labelsPosition="left"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent">-->
 
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/addDoctor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:fabSize="mini"
-                app:fab_colorNormal="@color/bgColor"
-                app:fab_colorPressed="@color/themeColor"
-                app:fab_icon="@drawable/ic_doctorappointment"
-                app:fab_title="Add Doctor's Appointment"></com.getbase.floatingactionbutton.FloatingActionButton>
+<!--            <com.getbase.floatingactionbutton.FloatingActionButton-->
+<!--                android:id="@+id/addDose"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:fabSize="mini"-->
+<!--                app:fab_colorNormal="@color/bgColor"-->
+<!--                app:fab_colorPressed="@color/themeColor"-->
+<!--                app:fab_icon="@drawable/ic_adddrug"-->
+<!--                app:fab_title="Add Medicine"></com.getbase.floatingactionbutton.FloatingActionButton>-->
 
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/addMeasurement"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:fabSize="mini"
-                app:fab_colorNormal="@color/bgColor"
-                app:fab_colorPressed="@color/themeColor"
-                app:fab_icon="@drawable/ic_addmeasurement"
-                app:fab_title="Add Measurement"></com.getbase.floatingactionbutton.FloatingActionButton>
-        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+<!--            <com.getbase.floatingactionbutton.FloatingActionButton-->
+<!--                android:id="@+id/addDoctor"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:fabSize="mini"-->
+<!--                app:fab_colorNormal="@color/bgColor"-->
+<!--                app:fab_colorPressed="@color/themeColor"-->
+<!--                app:fab_icon="@drawable/ic_doctorappointment"-->
+<!--                app:fab_title="Add Doctor's Appointment"></com.getbase.floatingactionbutton.FloatingActionButton>-->
+
+<!--            <com.getbase.floatingactionbutton.FloatingActionButton-->
+<!--                android:id="@+id/addMeasurement"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:fabSize="mini"-->
+<!--                app:fab_colorNormal="@color/bgColor"-->
+<!--                app:fab_colorPressed="@color/themeColor"-->
+<!--                app:fab_icon="@drawable/ic_addmeasurement"-->
+<!--                app:fab_title="Add Measurement"></com.getbase.floatingactionbutton.FloatingActionButton>-->
+<!--        </com.getbase.floatingactionbutton.FloatingActionsMenu>-->
 
         <LinearLayout
             android:id="@+id/blureLayout"

@@ -8,15 +8,15 @@
             name="measurmentViewModel"
             type="com.example.medicineschedule.viewModels.MeasurmentViewModel" />
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MeasurmentsMainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/appointment_RecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_margin="10dp"
         app:items="@{measurmentViewModel.recyclerItems}"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -35,14 +35,13 @@
         android:layout_height="200dp"
         android:layout_marginTop="150dp"
         android:alpha="0.5"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+       android:layout_centerVertical="true"
+       android:layout_centerHorizontal="true"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/mesanim" />
+        app:lottie_rawRes="@raw/mesanim"/>
 
     <TextView
         android:id="@+id/initialTV"
@@ -51,26 +50,24 @@
         android:paddingLeft="40dp"
         android:paddingTop="10dp"
         android:paddingRight="40dp"
-        android:text="Check and track your all measurement here. To add new measurement click on ADD MEASUREMENT button."
+        android:text="Check and track your all measurements here. To add new measurement click on ADD MEASUREMENT button."
         android:textAlignment="center"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="visible"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/measurmentLottieanim"
         app:layout_constraintTop_toBottomOf="@+id/measurmentLottieanim" />
 
     <Button
         android:id="@+id/addMesButton"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/clickable_btn_bg"
-        android:text="Add Measurment"
+        android:text="Add Measurement"
         android:textColor="@color/whiteText"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+       android:layout_alignParentBottom="true" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
 </layout>

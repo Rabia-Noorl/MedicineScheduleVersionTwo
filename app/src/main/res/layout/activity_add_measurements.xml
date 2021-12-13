@@ -35,48 +35,14 @@
             android:textSize="20dp"
             android:textStyle="bold"></TextView>
 
-        <AutoCompleteTextView
-            android:id="@+id/measurement"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/saveMeasurement"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center_horizontal"
-            android:backgroundTint="@color/design_default_color_primary_variant"
-            android:cursorVisible="false"
-            android:drawableRight="@drawable/ic_dropdown_blue"
-            android:focusableInTouchMode="false"
-            android:hint="Enter Measurement Name"
-            android:minHeight="48dp"
-            android:textAlignment="center"
-            android:textColor="@color/textColor"
-            android:textColorHint="@color/design_default_color_primary_variant"
-            android:textColorLink="@color/design_default_color_primary_variant"
-            android:textCursorDrawable="@drawable/cursor"
-            android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/measurementName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/measurement"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/design_default_color_primary_variant"
-            android:cursorVisible="true"
-            android:hint="Enter Measurement Name"
-            android:textAlignment="center"
-            android:textColor="@color/textColor"
-            android:textColorHint="@color/design_default_color_primary_variant"
-            android:textCursorDrawable="@drawable/cursor"
-            android:textSize="16sp"
-            android:visibility="gone"></EditText>
+
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/imageView"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_below="@+id/measurementName"
+            android:layout_below="@+id/saveMeasurement"
             android:layout_centerInParent="true"
             android:layout_marginBottom="10dp"
             app:lottie_autoPlay="true"
@@ -104,6 +70,101 @@
             android:layout_below="@+id/imageView"
             android:layout_marginBottom="10dp"
             android:orientation="vertical">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayoutM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardViewMeasurementName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="5dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:strokeColor="@color/backGroundColour"
+                    app:strokeWidth="1dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvMeasureName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:text="Measurement Name"
+                            android:textColor="@color/textColor"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/linLayoutMeasurementName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvMeasureName"
+                            android:gravity="center|center_horizontal|center_vertical"
+                            android:orientation="vertical">
+                            <AutoCompleteTextView
+                                android:id="@+id/measurement"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/saveMeasurement"
+                                android:layout_centerInParent="true"
+                                android:layout_gravity="center_horizontal"
+                                android:backgroundTint="@color/design_default_color_primary_variant"
+                                android:cursorVisible="false"
+                                android:drawableRight="@drawable/ic_dropdown_blue"
+                                android:focusableInTouchMode="false"
+                                android:hint="Enter Measurement Name"
+                                android:minHeight="48dp"
+                                android:textAlignment="center"
+                                android:textColor="@color/textColor"
+                                android:textColorHint="@color/design_default_color_primary_variant"
+                                android:textColorLink="@color/design_default_color_primary_variant"
+                                android:textCursorDrawable="@drawable/cursor"
+                                android:textSize="18sp" />
+
+                            <EditText
+                                android:id="@+id/measurementName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/measurement"
+                                android:layout_centerInParent="true"
+                                android:layout_marginBottom="10dp"
+                                android:backgroundTint="@color/design_default_color_primary_variant"
+                                android:cursorVisible="true"
+                                android:hint="Enter Measurement Name"
+                                android:textAlignment="center"
+                                android:textColor="@color/textColor"
+                                android:textColorHint="@color/design_default_color_primary_variant"
+                                android:textCursorDrawable="@drawable/cursor"
+                                android:textSize="18sp"
+                                android:visibility="gone"></EditText>
+                        </LinearLayout>
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayoutM1"
@@ -175,7 +236,7 @@
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
                                 android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="16sp"></EditText>
+                                android:textSize="18sp"></EditText>
                             <FrameLayout
                                 android:id="@+id/measureUnitTV"
                                 android:layout_width="wrap_content"
@@ -267,7 +328,7 @@
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
                                 android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="16dp" />
+                                android:textSize="18sp" />
                         </LinearLayout>
 
                         <EditText
@@ -340,35 +401,13 @@
                             android:textStyle="bold" />
 
                         <LinearLayout
-                            android:id="@+id/linLayoutMReminder"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/tvMReminder"
-                            android:layout_marginTop="10dp"
-                            android:gravity="center|center_horizontal|center_vertical"
-                            android:orientation="horizontal">
-
-                            <Switch
-                                android:id="@+id/btnMReminder"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginLeft="2dp"
-                                android:layout_marginRight="2dp"
-                                android:text="Reminder and Schedule"
-                                android:textColor="@color/design_default_color_primary_variant"
-                                android:textSize="16dp"
-                                android:theme="@style/switchColor"></Switch>
-                        </LinearLayout>
-
-                        <LinearLayout
                             android:id="@+id/linLayoutMTime"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/linLayoutMReminder"
                             android:gravity="center|center_horizontal|center_vertical"
+                            android:layout_below="@id/tvMReminder"
                             android:orientation="horizontal"
-                            android:visibility="gone">
+                            android:visibility="visible">
 
                             <AutoCompleteTextView
                                 android:id="@+id/txtvwMtime"
@@ -379,13 +418,13 @@
                                 android:cursorVisible="true"
                                 android:drawableRight="@drawable/ic_dropdown_blue"
                                 android:focusableInTouchMode="false"
-                                android:hint="Once a day"
+                                android:hint="Times per day"
                                 android:textAlignment="center"
                                 android:textColor="@color/textColor"
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
                                 android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="20dp" />
+                                android:textSize="18sp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -423,7 +462,7 @@
                                         android:textColorHint="@color/design_default_color_primary_variant"
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
-                                        android:textSize="20dp"
+                                        android:textSize="18sp"
                                         android:visibility="gone"></EditText>
 
                                     <EditText
@@ -440,7 +479,7 @@
                                         android:textColorHint="@color/design_default_color_primary_variant"
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
-                                        android:textSize="20dp"
+                                        android:textSize="18sp"
                                         android:visibility="gone"></EditText>
 
                                     <EditText
@@ -457,7 +496,7 @@
                                         android:textColorHint="@color/design_default_color_primary_variant"
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
-                                        android:textSize="20dp"
+                                        android:textSize="18sp"
                                         android:visibility="gone"></EditText>
 
                                     <EditText
@@ -474,7 +513,7 @@
                                         android:textColorHint="@color/design_default_color_primary_variant"
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
-                                        android:textSize="20dp"
+                                        android:textSize="18sp"
                                         android:visibility="gone"></EditText>
 
                                     <EditText
@@ -491,7 +530,7 @@
                                         android:textColorHint="@color/design_default_color_primary_variant"
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
-                                        android:textSize="20dp"
+                                        android:textSize="18sp"
                                         android:visibility="gone"></EditText>
 
                                     <EditText
@@ -508,7 +547,7 @@
                                         android:textColorHint="@color/design_default_color_primary_variant"
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
-                                        android:textSize="20dp"
+                                        android:textSize="18sp"
                                         android:visibility="gone"></EditText>
 
                                     <EditText
@@ -525,7 +564,7 @@
                                         android:textColorHint="@color/design_default_color_primary_variant"
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
-                                        android:textSize="20dp"
+                                        android:textSize="18sp"
                                         android:visibility="gone"></EditText>
                                 </LinearLayout>
                             </HorizontalScrollView>
@@ -556,7 +595,7 @@
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
                                 android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="20dp"></EditText>
+                                android:textSize="18sp"></EditText>
 
                             <EditText
                                 android:id="@+id/mendDate"
@@ -573,7 +612,7 @@
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
                                 android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="20dp" />
+                                android:textSize="18sp" />
                         </LinearLayout>
 
                     </RelativeLayout>
