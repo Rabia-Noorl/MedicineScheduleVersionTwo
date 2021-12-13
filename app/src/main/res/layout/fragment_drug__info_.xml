@@ -5,6 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
+            name="model"
+            type="com.example.medicineschedule.viewModels.DrugItemViewModel" />
+        <variable
             name="formViewModel"
             type="com.example.medicineschedule.viewModels.Forms_ViewModel" />
     </data>
@@ -20,7 +23,6 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:text="Maple Pharmaceuticals Pvt. Ltd"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
