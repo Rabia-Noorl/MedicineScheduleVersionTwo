@@ -26,7 +26,6 @@ class AlarmReceiver(): BroadcastReceiver() {
             .setContentIntent(pendingIntent)
         val notificationManager = NotificationManagerCompat.from(context)
         notificationManager.notify(123,builder.build())
-
     }
     fun alarmOnly(context: Context?){
         var alarmUri =  RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
