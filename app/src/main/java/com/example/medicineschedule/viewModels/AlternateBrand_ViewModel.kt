@@ -33,11 +33,21 @@ class AlternateBrand_ViewModel(application: Application) : AndroidViewModel(appl
                )
            }
            if (drug != null) {
-               list.add(drug.ab1)
-               list.add(drug.ab2)
-               list.add(drug.ab3)
-               list.add(drug.ab4)
-               list.add(drug.ab5)
+               if(drug.ab1.length > 1) {
+                   list.add(drug.ab1)
+               }
+               if(drug.ab2.length > 1){
+                   list.add(drug.ab2)
+               }
+               if(drug.ab3.length > 1){
+                   list.add(drug.ab3)
+               }
+               if(drug.ab4.length > 1){
+                   list.add(drug.ab4)
+               }
+               if(drug.ab5.length > 1){
+                   list.add(drug.ab5)
+               }
                _drugRecode.postValue(list)
            }
        }

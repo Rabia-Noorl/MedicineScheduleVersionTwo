@@ -12,12 +12,13 @@ import androidx.navigation.fragment.findNavController
 import com.example.medicineschedule.R
 import com.example.medicineschedule.databinding.FragmentIncludedDrugsBinding
 import com.example.medicineschedule.viewModels.AlternateBrand_ViewModel
+import com.example.medicineschedule.viewModels.DetailInfoViewModel
 import com.example.medicineschedule.viewModels.Forms_ViewModel
 import com.example.medicineschedule.viewModels.IncludedDrugView_Model
 
 class Included_Drugs_Fragment : Fragment(R.layout.fragment_included__drugs_) {
 
-    lateinit var viewModel: IncludedDrugView_Model
+    lateinit var viewModel: DetailInfoViewModel
 
     private lateinit var binding: FragmentIncludedDrugsBinding
     var naController: NavController? =null
@@ -26,7 +27,7 @@ class Included_Drugs_Fragment : Fragment(R.layout.fragment_included__drugs_) {
         super.onViewCreated(view, savedInstanceState)
         naController =  findNavController()
         viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)).get(
-            IncludedDrugView_Model::class.java)
+            DetailInfoViewModel::class.java)
         binding.includeDrigViewmodel = viewModel
         binding.let {
             it.lifecycleOwner = this
@@ -34,7 +35,6 @@ class Included_Drugs_Fragment : Fragment(R.layout.fragment_included__drugs_) {
         }
         viewModel.drugRecord.observe(viewLifecycleOwner){
             it?.let {
-                Toast.makeText(context, "${it.size} are total records", Toast.LENGTH_SHORT).show()
                 viewModel.ResValue(it)
             }
         }

@@ -21,7 +21,6 @@ class MedicationSearchFragment : Fragment(R.layout.fragment_medication_search) {
 
     val db = FirebaseFirestore.getInstance()
     val brandsHints: MutableList<String> = mutableListOf()
-    val hints: List<String> = listOf("KANOX 10mg|ml Injection 1s","BITOL SODIUM 500mg Injection 2 Vials","Brufen Plus tablet 200/20 mg 2x10's","NAPA 125mg Suppositories 1x5s","QONZA 10mg Tablet 30s")
 
     private lateinit var binding: FragmentMedicationSearchBinding
 
@@ -31,12 +30,6 @@ class MedicationSearchFragment : Fragment(R.layout.fragment_medication_search) {
         super.onViewCreated(view, savedInstanceState)
         naController = findNavController()
 
-        radioButtonBrand.setOnClickListener {
-            onRadioButtonClicked(it)
-        }
-        radioButtonGeneric.setOnClickListener{
-            onRadioButtonClicked(it)
-        }
 
         db.collection("Medicines").get().addOnSuccessListener {
             it.forEach{
@@ -53,6 +46,7 @@ class MedicationSearchFragment : Fragment(R.layout.fragment_medication_search) {
             // Display the clicked item using toast
             DictionaryActivity.drugName = selectedItem
             binding.actv.setText("")
+            naController?.navigate(R.id.action_medicationSearchFragment_to_drug_Info_Fragment2)
         }
     }
 
@@ -65,22 +59,22 @@ class MedicationSearchFragment : Fragment(R.layout.fragment_medication_search) {
         val view = binding.root
         return view
     }
-
-    fun onRadioButtonClicked(view: View) {
-        if (view is RadioButton) {
-            val checked = view.isChecked
-
-            when (view.getId()) {
-                R.id.radioButtonGeneric ->
-                    if (checked) {
-                        naController?.navigate(R.id.action_medicationSearchFragment_to_detailed_Info_Fragment)
-                    }
-                R.id.radioButtonBrand ->
-                    if (checked) {
-                        naController?.navigate(R.id.action_medicationSearchFragment_to_drug_Info_Fragment2)
-                    }
-            }
-        }
-    }
+//
+//    fun onRadioButtonClicked(view: View) {
+//        if (view is RadioButton) {
+//            val checked = view.isChecked
+//
+//            when (view.getId()) {
+//                R.id.radioButtonGeneric ->
+//                    if (checked) {
+//                        naController?.navigate(R.id.action_medicationSearchFragment_to_detailed_Info_Fragment)
+//                    }
+//                R.id.radioButtonBrand ->
+//                    if (checked) {
+//
+//                    }
+//            }
+//        }
+//    }
 
 }

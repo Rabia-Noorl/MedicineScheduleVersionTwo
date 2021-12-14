@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
@@ -43,8 +44,9 @@ class Alternate_Brands_Fragment : Fragment(R.layout.fragment_alternate__brands_)
         }
         viewModel.drugRecord.observe(viewLifecycleOwner){
             it?.let {
-                Toast.makeText(context, "${it.size} are total records", Toast.LENGTH_SHORT).show()
                 viewModel.ResValue(it)
+                val initialText  = binding.notAvailableText
+                initialText.isVisible = it.isEmpty()
             }
         }
 

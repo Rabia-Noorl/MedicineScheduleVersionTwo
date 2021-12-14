@@ -165,7 +165,7 @@
 
         <TextView
             android:id="@+id/takeBtn"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="7dp"
             android:layout_weight="1"
@@ -177,22 +177,24 @@
 
         <TextView
             android:id="@+id/unTakeBtn"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="7dp"
             android:layout_weight="1"
             android:elevation="5dp"
-            android:text="UN-TAKE"
+            android:gravity="center"
+            android:text="TAKE"
             android:textColor="@color/white"
             android:textSize="14sp" />
 
         <TextView
             android:id="@+id/reschedualBtn"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="7dp"
             android:layout_weight="1"
             android:elevation="5dp"
+            android:gravity="center"
             android:text="RESCHEDULE"
             android:textColor="@color/white"
             android:textSize="14sp" />
