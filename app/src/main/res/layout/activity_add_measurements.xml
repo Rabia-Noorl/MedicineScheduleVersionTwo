@@ -434,18 +434,18 @@
                             android:orientation="vertical"
                             android:layout_centerInParent="true">
 
-                            <HorizontalScrollView
+                            <ScrollView
                                 android:id="@+id/mscrollView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/txtvwMTime"
                                 android:layout_gravity="center_horizontal"
-                                android:fillViewport="true">
+                                android:fillViewport="false">
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
+                                    android:orientation="vertical">
 
                                     <EditText
                                         android:id="@+id/txtvwMtime1"
@@ -566,7 +566,7 @@
                                         android:textSize="18sp"
                                         android:visibility="gone"></EditText>
                                 </LinearLayout>
-                            </HorizontalScrollView>
+                            </ScrollView>
                         </LinearLayout>
 
                         <LinearLayout
