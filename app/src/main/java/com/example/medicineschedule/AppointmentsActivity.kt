@@ -17,6 +17,7 @@ import java.io.Serializable
 
 class AppointmentsActivity : AppCompatActivity(){
 
+
     lateinit var viewModel: AppointmentViewModel
     private lateinit var binding: ActivityAppointmentsBinding
     lateinit var alertdialogbuilder: AlertDialog.Builder

@@ -40,31 +40,31 @@ class PharmacyFragment : Fragment() {
     ): View? {
         binding = FragmentPharmacyBinding.inflate(inflater, container, false)
         val view = binding.root
-        var filterChoice = arrayOf("All Medications","Active Medications")
+//        var filterChoice = arrayOf("All Medications","Active Medications")
         var trackChoice = arrayOf( "Clear log","All","Yesterday","Last 7 days","Last 30 days","Last 60 days","Last 90 days","Last 180 days")
         mrepdays.postValue(listOf(0))
         reportFilters.postValue(listOf(0))
 
+//        binding.mdlogTrack.setOnClickListener(View.OnClickListener {
+//            var alertfilterDialog = getActivity()?.let { it1 -> AlertDialog.Builder(it1) }
+//            alertfilterDialog?.setTitle("Select Track Filter")
+//            alertfilterDialog?.setSingleChoiceItems(
+//                filterChoice,
+//                0
+//            ) { dialogInterface: DialogInterface, position: Int ->
+//                binding.mdlogTrack.setText(filterChoice[position])
+//                if (position == 0){
+//                    PharmacyFragment.reportFilters.postValue(listOf(0))
+//                }
+//                else if(position == 1)
+//                {
+//                    PharmacyFragment.reportFilters.postValue(listOf(1))
+//                }
+//                dialogInterface.dismiss()
+//            }
+//            alertfilterDialog?.show()
+//        })
         binding.mdlogTrack.setOnClickListener(View.OnClickListener {
-            var alertfilterDialog = getActivity()?.let { it1 -> AlertDialog.Builder(it1) }
-            alertfilterDialog?.setTitle("Select Track Filter")
-            alertfilterDialog?.setSingleChoiceItems(
-                filterChoice,
-                0
-            ) { dialogInterface: DialogInterface, position: Int ->
-                binding.mdlogTrack.setText(filterChoice[position])
-                if (position == 0){
-                    PharmacyFragment.reportFilters.postValue(listOf(0))
-                }
-                else if(position == 1)
-                {
-                    PharmacyFragment.reportFilters.postValue(listOf(1))
-                }
-                dialogInterface.dismiss()
-            }
-            alertfilterDialog?.show()
-        })
-        binding.imglog.setOnClickListener(View.OnClickListener {
             var alerttrackDialog = getActivity()?.let { it1 -> AlertDialog.Builder(it1) }
             alerttrackDialog?.setTitle("Select Filter Options")
             alerttrackDialog?.setSingleChoiceItems(

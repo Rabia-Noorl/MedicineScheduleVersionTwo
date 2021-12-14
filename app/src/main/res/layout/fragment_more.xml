@@ -1,220 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="appointmentViewModel"
+            type="com.example.medicineschedule.viewModels.AppointmentViewModel" />
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-      android:layout_gravity="center_horizontal"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".fragments.more.MoreFragment">
+        tools:context=".AppointmentsActivity">
 
-    <LinearLayout
-        android:id="@+id/linLayoutDrugs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/appointment_RecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            app:items="@{appointmentViewModel.recyclerItems}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/view_of_appointments">
 
-        <ImageView
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/appoimtmentLottieanim"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="150dp"
+            android:alpha="0.5"
+            android:visibility="invisible"
+            android:layout_centerInParent="true"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/meddocanim" />
+
+        <TextView
+            android:id="@+id/initialTV"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/pills"></ImageView>
-
-        <TextView
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Drugs"
-            android:textColor="@color/textColor"
-            android:textSize="18sp"
-            android:textStyle="bold"></TextView>
+            android:paddingLeft="40dp"
+            android:paddingTop="10dp"
+            android:paddingRight="40dp"
+            android:text="Check and track your all appointments here. To add new Appointment click on ADD APPOINTMENT button."
+            android:textAlignment="center"
+            android:visibility="invisible"
+            android:layout_centerInParent="true"
+            android:layout_below="@+id/appoimtmentLottieanim"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appoimtmentLottieanim" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linLayoutMeasurements"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linLayoutDrugs"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <ImageView
-            android:layout_width="64dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_measurementwhite"></ImageView>
-
-        <TextView
-            android:layout_width="match_parent"
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Measurements"
-            android:textColor="@color/textColor"
-            android:textSize="18sp"
-            android:textStyle="bold"></TextView>
+            app:fab_colorNormal="#1a6b5f"
+            app:fab_icon="@drawable/ic_add"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            app:fab_colorPressed="#1a6b5f"
+            ></com.getbase.floatingactionbutton.FloatingActionButton>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linLayoutLRefill"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linLayoutMeasurements"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <ImageView
-            android:layout_width="64dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_refill"></ImageView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Refills"
-            android:textColor="@color/textColor"
-            android:textSize="18sp"
-            android:textStyle="bold"></TextView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linLayoutAppointments"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linLayoutLRefill"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <ImageView
-            android:layout_width="64dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/doctor"></ImageView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Appointments"
-            android:textColor="@color/textColor"
-            android:textSize="18sp"
-            android:textStyle="bold"></TextView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linLayoutNotes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linLayoutAppointments"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <ImageView
-            android:layout_width="64dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_notes"></ImageView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Notes"
-            android:textColor="@color/textColor"
-            android:textSize="18sp"
-            android:textStyle="bold"></TextView>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linLayoutReport"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linLayoutNotes"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <ImageView
-            android:layout_width="64dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_medicalreports"></ImageView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Report"
-            android:textColor="@color/textColor"
-            android:textSize="18sp"
-            android:textStyle="bold"></TextView>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_below="@+id/linLayoutReport"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp"
-        android:background="#D5DDE1"></LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linLayoutSettings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linLayoutReport"
-        android:layout_marginTop="40dp"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <ImageView
-            android:layout_width="64dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_baseline_settings_24"></ImageView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Settings"
-            android:textColor="@color/textColor"
-            android:textSize="18sp"
-            android:textStyle="bold"></TextView>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linLayoutHelp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linLayoutSettings"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <ImageView
-            android:layout_width="64dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_help"></ImageView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Help"
-            android:textColor="@color/textColor"
-            android:textSize="18sp"
-            android:textStyle="bold"></TextView>
-
-    </LinearLayout>
-
-
-
-</RelativeLayout>
+    </RelativeLayout>
+</layout>

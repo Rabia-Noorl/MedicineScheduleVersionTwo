@@ -150,7 +150,7 @@
             android:paddingLeft="40dp"
             android:paddingTop="10dp"
             android:paddingRight="40dp"
-            android:text="Receive reminders about medications, measurments, activities and more. Click on + button to add first reminder."
+            android:text="Receive reminders about medications, measurements, activities and more. Click on + button to add first reminder."
             android:textAlignment="center"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"

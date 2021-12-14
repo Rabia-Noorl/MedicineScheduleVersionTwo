@@ -10,14 +10,16 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.example.medicineschedule.AddDose
+import com.example.medicineschedule.AddMeasurements
 import com.example.medicineschedule.R
 import com.example.medicineschedule.database.ReminderTracker
 import com.example.medicineschedule.databinding.FragmentMedication2Binding
+import com.example.medicineschedule.viewModels.MeasurmentViewModel
 import com.example.medicineschedule.viewModels.MedicineRecViewModel
 
 class MedicationFragment : Fragment(R.layout.fragment_medication2) {
 
-    lateinit var viewModel: MedicineRecViewModel
+    lateinit var viewModel: MeasurmentViewModel
 
     private lateinit var binding: FragmentMedication2Binding
 
@@ -34,14 +36,13 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
         binding = FragmentMedication2Binding.inflate(inflater, container, false)
         val view = binding.root
         // Inflate the layout for this fragment
-        binding.addMedBtn.setOnClickListener{
-            val measurementIntent = Intent(getActivity(), AddDose::class.java)
+        binding.addMesButton.setOnClickListener{
+            val measurementIntent = Intent(getActivity(), AddMeasurements::class.java)
             startActivity(measurementIntent)
         }
 
         viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)).get(
-            MedicineRecViewModel::class.java)
-
+           MeasurmentViewModel::class.java)
 
         binding.measurmentViewModel = viewModel
         binding.let {
@@ -51,13 +52,13 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
                 it?.let {
                     var recViewList = ArrayList<ReminderTracker>()
                     it.forEach{
-                        if(it.reminderType == "med" && !it.deleteFlage)
+                        if(it.reminderType == "mes" && !it.deleteFlage)
                         {
                             recViewList.add(it)
                         }
                     }
                     viewModel.addFun(recViewList)
-                    var anim  = binding.medLottieanim
+                    var anim  = binding.measurmentLottieanim
                     var initialText  = binding.initialTV
                     anim.isVisible = recViewList.isEmpty()
                     initialText.isVisible = recViewList.isEmpty()

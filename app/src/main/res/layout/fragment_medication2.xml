@@ -6,28 +6,42 @@
     <data>
         <variable
             name="measurmentViewModel"
-            type="com.example.medicineschedule.viewModels.MedicineRecViewModel" />
+            type="com.example.medicineschedule.viewModels.MeasurmentViewModel" />
     </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.medication.MedicationFragment">
+        tools:context=".MeasurmentsMainActivity">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/appointment_RecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            app:items="@{measurmentViewModel.recyclerItems}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/addMesButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/view_of_mesurments_rv">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/medLottieanim"
+            android:id="@+id/measurmentLottieanim"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_marginTop="150dp"
             android:alpha="0.5"
             android:visibility="visible"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/medanim" />
+            app:lottie_rawRes="@raw/mesanim"/>
 
         <TextView
             android:id="@+id/initialTV"
@@ -36,42 +50,26 @@
             android:paddingLeft="40dp"
             android:paddingTop="10dp"
             android:paddingRight="40dp"
-            android:text="Check and track your all medicines here. To add new medicines click on ADD MED button."
+            android:text="Check and track your all measurements here. To add new measurement click on ADD MEASUREMENT button."
             android:textAlignment="center"
             android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/medLottieanim" />
+            android:layout_centerInParent="true"
+            android:layout_below="@+id/measurmentLottieanim"
+            app:layout_constraintTop_toBottomOf="@+id/measurmentLottieanim" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/medicines_RecyclerView"
-            android:layout_width="0dp"
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addMesButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            app:items="@{measurmentViewModel.recyclerItems}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.705"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/view_of_medicines_rv">
-        </androidx.recyclerview.widget.RecyclerView>
+            app:fab_colorNormal="#1a6b5f"
+            app:fab_icon="@drawable/ic_add"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            app:fab_colorPressed="#1a6b5f"
+            ></com.getbase.floatingactionbutton.FloatingActionButton>
 
-        <Button
-            android:id="@+id/addMedBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/clickable_btn_bg"
-            android:text="Add Medicine"
-            android:textColor="@color/whiteText"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 </layout>
