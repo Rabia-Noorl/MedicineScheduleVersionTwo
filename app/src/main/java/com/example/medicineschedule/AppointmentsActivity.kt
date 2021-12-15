@@ -17,11 +17,9 @@ import java.io.Serializable
 
 class AppointmentsActivity : AppCompatActivity(){
 
-
     lateinit var viewModel: AppointmentViewModel
     private lateinit var binding: ActivityAppointmentsBinding
     lateinit var alertdialogbuilder: AlertDialog.Builder
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +32,6 @@ class AppointmentsActivity : AppCompatActivity(){
             startActivity(intent)
             finish()
         }
-
         viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(
             AppointmentViewModel::class.java)
         binding.appointmentViewModel = viewModel
@@ -63,9 +60,6 @@ class AppointmentsActivity : AppCompatActivity(){
                 initialText.isVisible = recViewList.isEmpty()
             }
         }
-
-
-
     }
     private fun dialogueHandler(reminderTracker: ReminderTracker){
         val width = (resources.displayMetrics.widthPixels * 0.85).toInt()

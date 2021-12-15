@@ -39,7 +39,6 @@ class Drug_Info_Fragment : Fragment(R.layout.fragment_drug__info_) {
         }
         viewModel.drugRecord.observe(viewLifecycleOwner){
             it?.let {
-                Toast.makeText(context, "${it.size} are total records", Toast.LENGTH_SHORT).show()
                 viewModel.ResValue(it)
             }
         }

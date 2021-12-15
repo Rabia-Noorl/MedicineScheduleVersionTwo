@@ -32,7 +32,7 @@ class Forms_ViewModel(application: Application) : AndroidViewModel(application) 
                     it
                 )
             }
-            if (drug != null) {
+            if (drug != null && drug.pharmaIngr.length > 1) {
                 _drugRecode.postValue(listOf(drug))
             }
         }

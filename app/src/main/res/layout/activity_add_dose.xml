@@ -147,6 +147,7 @@
                             android:textColor="@color/textColor"
                             android:textSize="20dp"
                             android:textStyle="bold" />
+
                         <EditText
                             android:id="@+id/medicationName"
                             android:layout_width="wrap_content"
@@ -157,11 +158,11 @@
                             android:backgroundTint="@color/design_default_color_primary_variant"
                             android:cursorVisible="true"
                             android:hint="Medication Name"
-                            android:textCursorDrawable="@drawable/cursor"
                             android:textAlignment="center"
                             android:textColor="@color/textColor"
                             android:textColorHint="@color/purple_700"
-                            android:textSize="18sp"/>
+                            android:textCursorDrawable="@drawable/cursor"
+                            android:textSize="18sp" />
                     </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView></androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -210,21 +211,22 @@
                             android:textColor="@color/textColor"
                             android:textSize="20dp"
                             android:textStyle="bold" />
+
                         <AutoCompleteTextView
                             android:id="@+id/medTypeTV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvmedType"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="5dp"
                             android:layout_marginBottom="10dp"
-                            android:textAlignment="center"
-                            android:focusableInTouchMode="false"
+                            android:backgroundTint="@color/design_default_color_primary_variant"
                             android:cursorVisible="false"
                             android:drawableRight="@drawable/ic_dropdown_blue"
+                            android:focusableInTouchMode="false"
                             android:hint="Medication Type"
+                            android:textAlignment="center"
                             android:textColor="@color/textColor"
-                            android:layout_below="@+id/tvmedType"
-                            android:backgroundTint="@color/design_default_color_primary_variant"
                             android:textColorHint="@color/design_default_color_primary_variant"
                             android:textSize="18sp" />
 
@@ -288,12 +290,10 @@
                                 android:id="@+id/adddosequantity"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="bottom"
                                 android:backgroundTint="@color/design_default_color_primary_variant"
                                 android:cursorVisible="true"
                                 android:hint="Enter Quantity"
                                 android:inputType="number"
-                                android:textAlignment="center"
                                 android:paddingBottom="25dp"
                                 android:textColor="@color/textColor"
                                 android:textColorHint="@color/design_default_color_primary_variant"

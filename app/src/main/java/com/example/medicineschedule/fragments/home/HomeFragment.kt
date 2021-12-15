@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -39,7 +40,6 @@ class HomeFragment : Fragment(){
     lateinit var calendar: Calendar
     lateinit var pendingIntent: PendingIntent
     lateinit var alertdialogbuilder: AlertDialog.Builder
-
 
     companion object{
         var statusFlag: Boolean = false
@@ -304,6 +304,7 @@ private fun dialogeBuild(reminderTracker: ReminderTracker) {
     var sdayTV = d?.findViewById<TextView>(R.id.sdayTV)
     var strenghtTV = d?.findViewById<TextView>(R.id.strenghtTV)
     var infoTimeTV = d?.findViewById<TextView>(R.id.infoTimeTV)
+    var editImg = d?.findViewById<ImageView>(R.id.editImg)
 
     nameTv.setText(reminderTracker.names)
     sTimeTV.setText(reminderTracker.dateTimes)
@@ -365,7 +366,6 @@ private fun dialogeBuild(reminderTracker: ReminderTracker) {
             )
             //statusTV.setTextColor(R.color.doneColor)
             statusTV.setTextColor(getResources().getColor(R.color.doneColor, null))
-
 
             rem.id = reminderTracker.id
             viewModel.onEditClick(rem)
@@ -430,8 +430,6 @@ private fun dialogeBuild(reminderTracker: ReminderTracker) {
         unTakeBtn.setTextColor(Color.parseColor("#FFFFFF"))
         takeBtn.setTextColor(Color.parseColor("#FFFFFF"))
         reschedualBtn.setTextColor(Color.parseColor("#f98365"))
-
-
 
         var calendar = Calendar.getInstance()
         try {
@@ -503,5 +501,10 @@ private fun dialogeBuild(reminderTracker: ReminderTracker) {
             val medicineIntent = Intent(getActivity(), AddDose::class.java)
             startActivity(medicineIntent)
         }
+    }
+    editImg.setOnClickListener {
+        val intent = Intent(context, AddDose::class.java)
+        intent.putExtra("rem", reminderTracker)
+        startActivity(intent)
     }
 }}

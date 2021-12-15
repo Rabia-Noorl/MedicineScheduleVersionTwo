@@ -77,10 +77,7 @@ class AddMeasurements : AppCompatActivity() {
 
         binding.saveMeasurement.setOnClickListener{
             if(record == null){
-
-
                 addMeasrementReminder()
-
             }else{
                 var Name = binding.measurement.text.toString()
                 var time = binding.txtvwMtime1.text
@@ -92,9 +89,7 @@ class AddMeasurements : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 }else{
-                    Toast.makeText(this, "Mandatory fields are missing", Toast.LENGTH_SHORT).show()
                 }
-
             }
         }
         binding.backArrowMeasurment.setOnClickListener{
@@ -107,7 +102,6 @@ class AddMeasurements : AppCompatActivity() {
                 .setNegativeButton("No"){dialogInterface,it->
                     dialogInterface.cancel()
                 }.show()
-
         }
 
         binding.measurement.setOnClickListener(View.OnClickListener {

@@ -49,8 +49,5 @@ class Alternate_Brands_Fragment : Fragment(R.layout.fragment_alternate__brands_)
                 initialText.isVisible = it.isEmpty()
             }
         }
-
-
     }
-
 }

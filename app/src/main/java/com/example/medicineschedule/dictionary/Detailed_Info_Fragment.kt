@@ -41,7 +41,6 @@ class Detailed_Info_Fragment : Fragment() {
         }
         viewModel.drugRecord.observe(viewLifecycleOwner){
             it?.let {
-                Toast.makeText(context, "${it.size} are total records", Toast.LENGTH_SHORT).show()
                 viewModel.ResValue(it)
             }
         }
