@@ -1,15 +1,22 @@
 
 package com.example.medicineschedule
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.app.Dialog
+import android.app.PendingIntent.getActivity
 import android.app.TimePickerDialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.View.VISIBLE
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.accessibility.AccessibilityViewCommand
@@ -17,6 +24,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.medicineschedule.database.ReminderTracker
 import com.example.medicineschedule.databinding.ActivityAddMeasurementsBinding
 import com.example.medicineschedule.databinding.ActivityAddMedicationBinding
+import com.example.medicineschedule.fragments.home.HomeFragment
+import com.example.medicineschedule.fragments.medication.MedicationFragment
 import com.example.medicineschedule.viewModels.HomeRecViewModel
 import java.text.SimpleDateFormat
 import java.util.*
@@ -25,6 +34,7 @@ class AddMeasurements : AppCompatActivity() {
     lateinit var viewModel: HomeRecViewModel
     lateinit var binding: ActivityAddMeasurementsBinding
     lateinit var alertdialogbuilder:AlertDialog.Builder
+    var timeFormat= SimpleDateFormat("hh:mm a", Locale.US)
 
     companion object{
         val timeListMeasurement = ArrayList<String>()
@@ -37,7 +47,7 @@ class AddMeasurements : AppCompatActivity() {
         setContentView(binding.root)
 
         val intent = getIntent()
-        val record: ReminderTracker? = intent.getSerializableExtra("rem") as ReminderTracker?
+        val record: ReminderTracker? = intent.getSerializableExtra("mes") as ReminderTracker?
         binding.measurement.setText(record?.names)
         binding.measureQuantity.setText(record?.quantity)
         binding.txtvwMtime1.setText(record?.dateTimes)
@@ -74,7 +84,6 @@ class AddMeasurements : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(
             HomeRecViewModel::class.java)
-
         binding.saveMeasurement.setOnClickListener{
             if(record == null){
                 addMeasrementReminder()
@@ -85,8 +94,8 @@ class AddMeasurements : AppCompatActivity() {
                     var reminder = ReminderTracker("mes","${record.types}", "$Name", "$time","${record.status}", "${record.quantity}","${record.instructions}","${record.strenght}","${record.startDate}","${record.endDate}", "${record.recodeCreationDate}", record.deleteFlage)
                     reminder.id = record.id
                     viewModel.onEditClick(reminder)
-                    val intent = Intent(this, HomeScreen::class.java)
-                    startActivity(intent)
+//                    val intent = Intent(this, MedicationFragment::class.java)
+//                    startActivity(intent)
                     finish()
                 }else{
                 }
@@ -512,7 +521,6 @@ private fun addMeasrementReminder() {
 
     timeListMeasurement.forEach {
         if ( name.length >  0 && quantity.length > 0 && it.length > 0 ){
-
             var remider = ReminderTracker("mes","",
                 "$name" ,"$it" ,
                 "", "$quantity $measurmentUnit",
@@ -524,8 +532,8 @@ private fun addMeasrementReminder() {
             Toast.makeText(this, "Mandatory fields are missing" , Toast.LENGTH_SHORT).show()
         }
     }
-    val intent = Intent(this, HomeScreen::class.java)
-    startActivity(intent)
+//    val intent = Intent(this, HomeScreen::class.java)
+//    startActivity(intent)
     finish()
 }
 }

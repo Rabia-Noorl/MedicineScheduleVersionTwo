@@ -3,6 +3,7 @@ package com.example.medicineschedule.fragments.home
 import android.annotation.SuppressLint
 import android.app.*
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
@@ -30,6 +31,10 @@ import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.dialog_frag_layout.*
 import java.text.SimpleDateFormat
 import java.util.*
+
+import android.widget.TimePicker
+import android.widget.TimePicker.OnTimeChangedListener
+
 
 @Suppress("DEPRECATION")
 class HomeFragment : Fragment(){
@@ -110,21 +115,22 @@ class HomeFragment : Fragment(){
             it?.let {
                 val recViewList = ArrayList<ReminderTracker>()
                 it.forEach{
-                    if(it.deleteFlage == false)
+                    if(it.reminderType == "med" && !it.deleteFlage)
                     {
                         recViewList.add(it)
                     }
+                    viewModel.addFun(recViewList)
+                    val anim  = binding.homeLottieanim
+                    val getStarted  = binding.textView9
+                    val initialText  = binding.initialTV
+                    anim.isVisible = recViewList.isEmpty()
+                    getStarted.isVisible = recViewList.isEmpty()
+                    initialText.isVisible = recViewList.isEmpty()
+                    setAlarm(recViewList)
+                    cancelAlarm(recViewList)
                 }
-                viewModel.addFun(recViewList)
-                val anim  = binding.homeLottieanim
-                val getStarted  = binding.textView9
-                val initialText  = binding.initialTV
-                anim.isVisible = recViewList.isEmpty()
-                getStarted.isVisible = recViewList.isEmpty()
-                initialText.isVisible = recViewList.isEmpty()
-                setAlarm(recViewList)
-                cancelAlarm(recViewList)
             }
+
         }
 
         binding.searchView2.setOnClickListener {
@@ -247,7 +253,6 @@ class HomeFragment : Fragment(){
                         )
                         reminder.id = it.id
                         viewModel.onEditClick(reminder)
-                        Toast.makeText(context, "Alarm will not ring", Toast.LENGTH_LONG).show()
                     }
                 }
 
@@ -309,6 +314,8 @@ private fun dialogeBuild(reminderTracker: ReminderTracker) {
     nameTv.setText(reminderTracker.names)
     sTimeTV.setText(reminderTracker.dateTimes)
     statusTV.setText(reminderTracker.status)
+    strenghtTV.setText("${reminderTracker.quantity} ${reminderTracker.types}${reminderTracker.strenght}")
+    tyeQuantityV.setText("at ${reminderTracker.dateTimes} ")
 
     val calendar = Calendar.getInstance()
     val date = calendar.time
@@ -316,8 +323,8 @@ private fun dialogeBuild(reminderTracker: ReminderTracker) {
     sdayTV.setText(day)
 
     if (reminderTracker.reminderType.toString() == "med") {
-        strenghtTV.setText("${reminderTracker.quantity} ${reminderTracker.types}${reminderTracker.strenght}")
-        tyeQuantityV.setText("at ${reminderTracker.dateTimes} ")
+       // strenghtTV.setText("${reminderTracker.quantity} ${reminderTracker.types}${reminderTracker.strenght}")
+        //tyeQuantityV.setText("at ${reminderTracker.dateTimes} ")
     } else if (reminderTracker.reminderType == "mes") {
         tyeQuantityV.setText("Measurement at ${reminderTracker.dateTimes}")
     } else if (reminderTracker.reminderType == "doc") {
@@ -440,34 +447,35 @@ private fun dialogeBuild(reminderTracker: ReminderTracker) {
         }
         var timePicker =
             TimePickerDialog(
-                context, TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
+                context, { view, hourOfDay, minute ->
                     var selectedTime = Calendar.getInstance()
                     selectedTime.set(Calendar.HOUR_OF_DAY, hourOfDay)
                     selectedTime.set(Calendar.MINUTE, minute)
                     var time = timeFormat.format(selectedTime.time)
                     var rem = ReminderTracker(
                         reminderTracker.reminderType,
-                        "${reminderTracker.types}",
-                        "${reminderTracker.names}",
-                        "$time",
+                        reminderTracker.types,
+                        reminderTracker.names,
+                        time,
                         "",
-                        "${reminderTracker.quantity}",
-                        "${reminderTracker.instructions}",
-                        "${reminderTracker.strenght}",
-                        "${reminderTracker.startDate}",
-                        "${reminderTracker.endDate}",
+                        reminderTracker.quantity,
+                        reminderTracker.instructions,
+                        reminderTracker.strenght,
+                        reminderTracker.startDate,
+                        reminderTracker.endDate,
                         reminderTracker.recodeCreationDate,
                         reminderTracker.deleteFlage
                     )
                     rem.id = reminderTracker.id
                     viewModel.onEditClick(rem)
+                    sTimeTV.setText(time)
+                    tyeQuantityV.setText("at $time")
                 },
                 calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false
             )
         timePicker.show()
 
     }
-
 
     deletBtn.setOnClickListener {
         alertdialogbuilder = AlertDialog.Builder(requireActivity())
@@ -504,7 +512,8 @@ private fun dialogeBuild(reminderTracker: ReminderTracker) {
     }
     editImg.setOnClickListener {
         val intent = Intent(context, AddDose::class.java)
-        intent.putExtra("rem", reminderTracker)
+        intent.putExtra("med", reminderTracker)
         startActivity(intent)
     }
-}}
+}
+}

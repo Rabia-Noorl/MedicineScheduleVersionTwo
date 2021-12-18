@@ -72,7 +72,6 @@ class AddDoctorActivity : AppCompatActivity(){
 
         binding.saveTextView.setOnClickListener{
             if(record == null){
-
                 addDocReminder()
 
         }else{
@@ -89,7 +88,6 @@ class AddDoctorActivity : AppCompatActivity(){
                 }else{
                     Toast.makeText(this, "Mandatory fields are missing", Toast.LENGTH_SHORT).show()
                 }
-
         }
         }
         binding.backArrow.setOnClickListener{

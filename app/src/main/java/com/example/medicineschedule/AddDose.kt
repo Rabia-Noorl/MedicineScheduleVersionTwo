@@ -38,6 +38,19 @@ class AddDose : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddDoseBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val intent = getIntent()
+        val record: ReminderTracker? = intent.getSerializableExtra("med") as ReminderTracker?
+        binding.medicationName.setText(record?.names)
+        binding.Instructions.setText(record?.instructions)
+        binding.medTypeTV.setText(record?.types)
+        val parts = record?.quantity?.split(" ")
+        val firstPart= parts?.get(0)
+        binding.adddosequantity.setText(firstPart.toString())
+        binding.customDoseinstruction.setText(record?.instructions)
+        binding.txtvwdosetime1.setText(record?.dateTimes)
+
+
         var instructionChoice =
             arrayOf("Before Eating", "After Eating", "While Eating", "Doesn't Matter", "Other")
         var timeChoice= arrayOf("Once a day", "2 times a day", "3 times a day", "4 times a day", "5 times a day", "6 times a day", "7 times a day")
@@ -232,7 +245,21 @@ class AddDose : AppCompatActivity() {
         })
 
         binding.doseSave.setOnClickListener {
-            addDoseReminder()
+            if(record == null){
+                addDoseReminder()
+            }else{
+                var Name = binding.medicationName.text.toString()
+                var time = binding.txtvwdosetime1.text
+                if ( Name.isNotEmpty() && time.isNotEmpty()){
+                    var reminder = ReminderTracker("med","${record.types}", "$Name", "$time","${record.status}", "${record.quantity}","${record.instructions}","${record.strenght}","${record.startDate}","${record.endDate}", "${record.recodeCreationDate}", record.deleteFlage)
+                    reminder.id = record.id
+                    viewModel.onEditClick(reminder)
+                    val intent = Intent(this, HomeScreen::class.java)
+                    startActivity(intent)
+                    finish()
+                }else{
+                }
+            }
         }
         binding.backArrowAddDose.setOnClickListener{
             alertdialogbuilder=AlertDialog.Builder(this)
@@ -639,6 +666,7 @@ private fun addDoseReminder() {
             viewModel.onAddClick(remider)
         }else{
 
+            Toast.makeText(this, "Mandatory fields are missing" , Toast.LENGTH_SHORT).show()
         }
     }
     val intent = Intent(this, HomeScreen::class.java)

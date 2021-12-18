@@ -27,9 +27,8 @@ class MeasurmentViewModel (application: Application) : AndroidViewModel(applicat
 
     // Real-world apps should use SingleLiveData instead. RxJava / Coroutines could also work
     // better for one-time event streams.
-    private val _recodeCliked = MutableLiveData<ReminderTracker>()
-    val recodeCliked: LiveData<ReminderTracker> = _recodeCliked
-
+    val _reminder = MutableLiveData<ReminderTracker>()
+    val reminder: LiveData<ReminderTracker> = _reminder
 
     init {
         repository = Repository(dao)
@@ -42,20 +41,20 @@ class MeasurmentViewModel (application: Application) : AndroidViewModel(applicat
 
     fun creatReminderItemViewModel(remineder: ReminderTracker): ReminderItemViewModel {
         return ReminderItemViewModel(remineder).apply {
-            itemClickHandler = { remineder -> showClickMessage(remineder) }
+            itemClickHandler = { remineder -> getReminderRecord(remineder) }
             deleteBtnClickHandler = { remineder -> deletDrug(remineder) }
             addDrugClickHandler = { remineder -> onAddClick(remineder)}
         }
     }
-    private fun showClickMessage(remineder: ReminderTracker) {
-        _recodeCliked.postValue(
+    private fun getReminderRecord(remineder: ReminderTracker) {
+        _reminder.postValue(
             remineder
         )
     }
     fun onEditClick(remineder: ReminderTracker) = viewModelScope.launch(Dispatchers.IO) {
         repository.update(remineder)
     }
-    private fun deletDrug(remineder: ReminderTracker) {
+    fun deletDrug(remineder: ReminderTracker) {
         val items = recyclerItems.value.orEmpty()
         val index = items.map { it.data }
             .filterIsInstance<ReminderItemViewModel>()

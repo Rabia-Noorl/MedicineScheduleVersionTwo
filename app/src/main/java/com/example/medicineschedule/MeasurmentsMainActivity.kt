@@ -42,9 +42,6 @@ class MeasurmentsMainActivity : AppCompatActivity() {
             it.lifecycleOwner = this
             it.measurmentViewModel = viewModel
         }
-        viewModel.recodeCliked.observe(this){
-            dialogueHandler(it)
-        }
 
 
         viewModel.allRemiders.observe(this){

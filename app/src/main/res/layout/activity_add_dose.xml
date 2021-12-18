@@ -305,8 +305,7 @@
                                 android:id="@+id/unitTV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="bottom"
-                                >
+                                android:layout_gravity="bottom">
                                 <Spinner
                                     android:id="@+id/spinner"
                                     android:layout_width="match_parent"
@@ -314,7 +313,8 @@
                                     android:textAlignment="center"
                                     style="@style/Widget.AppCompat.Spinner.Underlined"
                                     android:backgroundTint="@color/design_default_color_primary_variant"
-                                    ></Spinner></FrameLayout>
+                                    />
+                            </FrameLayout>
 
 
                         </LinearLayout>
