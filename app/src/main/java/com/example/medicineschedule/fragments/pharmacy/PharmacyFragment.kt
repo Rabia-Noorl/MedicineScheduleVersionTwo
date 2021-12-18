@@ -256,4 +256,6 @@ class PharmacyFragment : Fragment() {
         }
         return allRemiders
     }
+
+
 }

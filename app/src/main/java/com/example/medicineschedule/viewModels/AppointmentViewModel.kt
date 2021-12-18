@@ -52,7 +52,7 @@ class AppointmentViewModel (application: Application) : AndroidViewModel(applica
             remineder
         )
     }
-    private fun deletDrug(remineder: ReminderTracker) {
+    fun deletDrug(remineder: ReminderTracker) {
         val items = recyclerItems.value.orEmpty()
         val index = items.map { it.data }
             .filterIsInstance<ReminderItemViewModel>()

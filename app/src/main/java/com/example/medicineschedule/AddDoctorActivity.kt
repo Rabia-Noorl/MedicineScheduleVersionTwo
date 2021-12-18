@@ -34,7 +34,7 @@ class AddDoctorActivity : AppCompatActivity(){
         setContentView(binding.root)
 
         val intent = getIntent()
-        val record: ReminderTracker? = intent.getSerializableExtra("rem") as ReminderTracker?
+        val record: ReminderTracker? = intent.getSerializableExtra("doc") as ReminderTracker?
         binding.medicationName.setText(record?.names)
         binding.docTypeTV.setText(record?.instructions)
         binding.appointmentTime.setText(record?.dateTimes)
@@ -82,8 +82,6 @@ class AddDoctorActivity : AppCompatActivity(){
                     var reminder = ReminderTracker("doc","Appointment:", "$docName", "$time","", "","$type","","","", "${Calendar.getInstance().time}",false)
                    reminder.id = record.id
                     viewModel.onEditClick(reminder)
-                    val intent = Intent(this, HomeScreen::class.java)
-                    startActivity(intent)
                     finish()
                 }else{
                     Toast.makeText(this, "Mandatory fields are missing", Toast.LENGTH_SHORT).show()
