@@ -148,7 +148,7 @@
                             android:textSize="20dp"
                             android:textStyle="bold" />
 
-                        <EditText
+                        <AutoCompleteTextView
                             android:id="@+id/medicationName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -156,8 +156,10 @@
                             android:layout_centerInParent="true"
                             android:layout_marginBottom="10dp"
                             android:backgroundTint="@color/design_default_color_primary_variant"
+                            android:completionThreshold="1"
                             android:cursorVisible="true"
                             android:hint="Medication Name"
+                            android:maxLines="1"
                             android:textAlignment="center"
                             android:textColor="@color/textColor"
                             android:textColorHint="@color/purple_700"

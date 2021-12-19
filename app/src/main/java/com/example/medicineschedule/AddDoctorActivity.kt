@@ -154,7 +154,7 @@ private fun addDocReminder() {
         startActivity(intent)
         finish()
     }else{
-        Toast.makeText(this, "Mandatory fields are missing", Toast.LENGTH_SHORT).show()
+
     }
 
 }

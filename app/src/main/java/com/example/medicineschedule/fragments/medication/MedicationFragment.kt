@@ -116,22 +116,12 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
         sTimeTV.setText(reminderTracker.dateTimes)
         statusTV.setText(reminderTracker.status)
         strenghtTV.setText("${reminderTracker.quantity} ${reminderTracker.types}${reminderTracker.strenght}")
-        tyeQuantityV.setText("at ${reminderTracker.dateTimes} ")
+        tyeQuantityV.setText("Measurement at ${reminderTracker.dateTimes}")
         medImg.setImageResource(R.drawable.ic_measurementwhite)
-
         val calendar = Calendar.getInstance()
         val date = calendar.time
         val day = SimpleDateFormat("EEEE", Locale.ENGLISH).format(date.time)
         sdayTV.setText(day)
-
-        if (reminderTracker.reminderType.toString() == "med") {
-            // strenghtTV.setText("${reminderTracker.quantity} ${reminderTracker.types}${reminderTracker.strenght}")
-            //tyeQuantityV.setText("at ${reminderTracker.dateTimes} ")
-        } else if (reminderTracker.reminderType == "mes") {
-            tyeQuantityV.setText("Measurement at ${reminderTracker.dateTimes}")
-        } else if (reminderTracker.reminderType == "doc") {
-            tyeQuantityV.setText("Apointment at ${reminderTracker.dateTimes} ${reminderTracker.status} ")
-        }
 
         unTakeBtn.setOnClickListener {
             unTakeBtn.setTextColor(Color.parseColor("#f98365"))
@@ -173,9 +163,7 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
                     reminderTracker.recodeCreationDate,
                     reminderTracker.deleteFlage
                 )
-                //statusTV.setTextColor(R.color.doneColor)
                 statusTV.setTextColor(getResources().getColor(R.color.doneColor, null))
-
                 rem.id = reminderTracker.id
                 viewModel.onEditClick(rem)
                 HomeFragment.statusFlag = false

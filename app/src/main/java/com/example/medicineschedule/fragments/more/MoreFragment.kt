@@ -134,13 +134,7 @@ class MoreFragment : Fragment() {
         val date = calendar.time
         val day = SimpleDateFormat("EEEE", Locale.ENGLISH).format(date.time)
         sdayTV.setText(day)
-
-        if (reminderTracker.reminderType.toString() == "med") {
-            // strenghtTV.setText("${reminderTracker.quantity} ${reminderTracker.types}${reminderTracker.strenght}")
-            //tyeQuantityV.setText("at ${reminderTracker.dateTimes} ")
-        } else if (reminderTracker.reminderType == "mes") {
-            tyeQuantityV.setText("Measurement at ${reminderTracker.dateTimes}")
-        } else if (reminderTracker.reminderType == "doc") {
+        if (reminderTracker.reminderType == "doc") {
             tyeQuantityV.setText("Apointment at ${reminderTracker.dateTimes} ${reminderTracker.status} ")
         }
 
@@ -184,9 +178,7 @@ class MoreFragment : Fragment() {
                     reminderTracker.recodeCreationDate,
                     reminderTracker.deleteFlage
                 )
-                //statusTV.setTextColor(R.color.doneColor)
                 statusTV.setTextColor(getResources().getColor(R.color.doneColor, null))
-
                 rem.id = reminderTracker.id
                 viewModel.onEditClick(rem)
                 HomeFragment.statusFlag = false

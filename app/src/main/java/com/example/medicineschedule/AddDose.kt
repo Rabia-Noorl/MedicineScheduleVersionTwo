@@ -5,8 +5,10 @@ import android.app.TimePickerDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.View.VISIBLE
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -16,6 +18,7 @@ import com.example.medicineschedule.database.ReminderTracker
 import com.example.medicineschedule.databinding.ActivityAddDoseBinding
 import com.example.medicineschedule.viewModels.HomeRecViewModel
 import com.example.medicineschedule.viewModels.MedicineRecViewModel
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_add_doctor.*
 import kotlinx.android.synthetic.main.activity_add_dose.*
 import java.text.SimpleDateFormat
@@ -29,6 +32,9 @@ class AddDose : AppCompatActivity() {
 
     lateinit var binding: ActivityAddDoseBinding
     lateinit var alertdialogbuilder:AlertDialog.Builder
+
+    val db = FirebaseFirestore.getInstance()
+    val brandsHints: MutableList<String> = mutableListOf()
 
     companion object{
         val timeList = ArrayList<String>()
@@ -49,6 +55,24 @@ class AddDose : AppCompatActivity() {
         binding.adddosequantity.setText(firstPart.toString())
         binding.customDoseinstruction.setText(record?.instructions)
         binding.txtvwdosetime1.setText(record?.dateTimes)
+
+
+        db.collection("Medicines").get().addOnSuccessListener {
+            it.forEach{
+                brandsHints.add(it.id)
+            }
+            val hintAdaper =
+                this?.let { ArrayAdapter<String>(it, R.layout.custom_list_item, R.id.text_view_list_item, brandsHints) }
+            binding.medicationName.setAdapter(hintAdaper)
+        }
+
+        binding.medicationName.onItemClickListener = AdapterView.OnItemClickListener{
+                parent,view,position,id->
+            val selectedItem = parent.getItemAtPosition(position).toString()
+            // Display the clicked item using toast
+            DictionaryActivity.drugName = selectedItem
+        }
+        
 
 
         var instructionChoice =
@@ -628,6 +652,10 @@ class AddDose : AppCompatActivity() {
     }
 private fun addDoseReminder() {
 
+    val date = Calendar.getInstance().time
+    val dateInString = date.toString()
+    Log.d("date", "$dateInString ")
+
     var time = binding.txtvwdosetime1.text.toString()
     var time1 = binding.txtvwdosetime2.text.toString()
     var time2 = binding.txtvwdosetime3.text.toString()
@@ -659,14 +687,13 @@ private fun addDoseReminder() {
                 "$quantity $measurmentUnits",
                 "$instructions",
                 "",
-                "",
+                "$dateInString",
                 "",
                 "${Calendar.getInstance().time}",
                 false)
             viewModel.onAddClick(remider)
+            Toast.makeText(this, "$dateInString" , Toast.LENGTH_SHORT).show()
         }else{
-
-            Toast.makeText(this, "Mandatory fields are missing" , Toast.LENGTH_SHORT).show()
         }
     }
     val intent = Intent(this, HomeScreen::class.java)
