@@ -118,6 +118,7 @@ class HomeFragment : Fragment(){
                     if(it.reminderType == "med" && !it.deleteFlage)
                     {
                         recViewList.add(it)
+                       // Toast.makeText(context,"${it.types} , ${it.recodeCreationDate} " , Toast.LENGTH_LONG).show()
                     }
                     viewModel.addFun(recViewList)
                     val anim  = binding.homeLottieanim
@@ -211,7 +212,6 @@ class HomeFragment : Fragment(){
     }
 
     private fun setAlarm(list: List<ReminderTracker>) {
-
         list.forEach(){
             var str = it.dateTimes.toString()
             val sdf = SimpleDateFormat("hh:mm a", Locale.ENGLISH)
@@ -229,9 +229,9 @@ class HomeFragment : Fragment(){
                     alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
                     val intent = Intent(context, AlarmReceiver::class.java)
                     pendingIntent = PendingIntent.getBroadcast(context, it.id, intent, 0)
-                    alarmManager.setExact(
+                    alarmManager.setRepeating(
                         AlarmManager.RTC_WAKEUP,
-                        calendar.timeInMillis,
+                        calendar.timeInMillis,AlarmManager.INTERVAL_DAY,
                         pendingIntent
                     )
 
@@ -243,7 +243,7 @@ class HomeFragment : Fragment(){
                             "${it.types}",
                             "${it.names}",
                             "${it.dateTimes}",
-                            "Missed", "${it.quantity}",
+                            "Taken", "${it.quantity}",
                             "${it.instructions}",
                             "${it.strenght}",
                             "${it.startDate}",
@@ -255,7 +255,6 @@ class HomeFragment : Fragment(){
                         viewModel.onEditClick(reminder)
                     }
                 }
-
         }
     }
     private fun cancelAlarm(list: List<ReminderTracker>) {

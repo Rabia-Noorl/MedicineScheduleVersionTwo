@@ -135,7 +135,7 @@ class MoreFragment : Fragment() {
         val day = SimpleDateFormat("EEEE", Locale.ENGLISH).format(date.time)
         sdayTV.setText(day)
         if (reminderTracker.reminderType == "doc") {
-            tyeQuantityV.setText("Apointment at ${reminderTracker.dateTimes} ${reminderTracker.status} ")
+            tyeQuantityV.setText("${reminderTracker.dateTimes} ${reminderTracker.status} ")
         }
 
         unTakeBtn.setOnClickListener {

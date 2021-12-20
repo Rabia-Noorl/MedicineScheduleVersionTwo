@@ -34,9 +34,7 @@
             android:textColor="@color/textColor"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:textCursorDrawable="@drawable/cursor"></TextView>
-
-
+            android:textCursorDrawable="@drawable/cursor"/>
 
         <ImageView
             android:id="@+id/doseimgView"
@@ -164,7 +162,7 @@
                             android:textColor="@color/textColor"
                             android:textColorHint="@color/purple_700"
                             android:textCursorDrawable="@drawable/cursor"
-                            android:textSize="18sp" />
+                            android:textSize="16sp" />
                     </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView></androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -230,7 +228,7 @@
                             android:textAlignment="center"
                             android:textColor="@color/textColor"
                             android:textColorHint="@color/design_default_color_primary_variant"
-                            android:textSize="18sp" />
+                            android:textSize="16sp" />
 
                     </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView></androidx.constraintlayout.widget.ConstraintLayout>
@@ -308,14 +306,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="bottom">
+
                                 <Spinner
                                     android:id="@+id/spinner"
+                                    style="@style/Widget.AppCompat.Spinner.Underlined"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:textAlignment="center"
-                                    style="@style/Widget.AppCompat.Spinner.Underlined"
                                     android:backgroundTint="@color/design_default_color_primary_variant"
-                                    />
+                                    android:textAlignment="center" />
                             </FrameLayout>
 
 
@@ -384,16 +382,16 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:backgroundTint="@color/design_default_color_primary_variant"
+                                android:cursorVisible="false"
                                 android:drawableRight="@drawable/ic_dropdown_blue"
                                 android:focusableInTouchMode="false"
-                                android:textAlignment="center"
                                 android:hint="Instructions"
-                                android:cursorVisible="false"
+                                android:textAlignment="center"
                                 android:textColor="@color/textColor"
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
                                 android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="18sp" />
+                                android:textSize="16sp" />
                         </LinearLayout>
 
                         <EditText
@@ -551,7 +549,7 @@
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
                                         android:textSize="18sp"
-                                        android:visibility="gone"></EditText>
+                                        android:visibility="gone"/>
 
                                     <EditText
                                         android:id="@+id/txtvwdosetime2"
@@ -568,7 +566,7 @@
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
                                         android:textSize="18sp"
-                                        android:visibility="gone"></EditText>
+                                        android:visibility="gone"/>
 
                                     <EditText
                                         android:id="@+id/txtvwdosetime3"
@@ -585,7 +583,7 @@
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
                                         android:textSize="18sp"
-                                        android:visibility="gone"></EditText>
+                                        android:visibility="gone"/>
 
                                     <EditText
                                         android:id="@+id/txtvwdosetime4"
@@ -619,7 +617,7 @@
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
                                         android:textSize="18sp"
-                                        android:visibility="gone"></EditText>
+                                        android:visibility="gone"/>
 
                                     <EditText
                                         android:id="@+id/txtvwdosetime6"
@@ -683,7 +681,7 @@
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
                                 android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="18sp"></EditText>
+                                android:textSize="18sp"/>
 
                             <EditText
                                 android:id="@+id/doseendDate"
@@ -773,7 +771,7 @@
                                 android:text="Refill"
                                 android:textColor="@color/design_default_color_primary_variant"
                                 android:textSize="18sp"
-                                android:theme="@style/switchColor"></Switch>
+                                android:theme="@style/switchColor"/>
 
 
                         </LinearLayout>
@@ -809,7 +807,7 @@
                                     android:textColorHint="@color/design_default_color_primary_variant"
                                     android:textColorLink="@color/design_default_color_primary_variant"
                                     android:textCursorDrawable="@drawable/cursor"
-                                    android:textSize="18sp"></EditText>
+                                    android:textSize="18sp"/>
                             </LinearLayout>
 
                         </LinearLayout>
@@ -842,7 +840,7 @@
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
                                 android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="18sp"></EditText>
+                                android:textSize="18sp"/>
                         </LinearLayout>
                     </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>

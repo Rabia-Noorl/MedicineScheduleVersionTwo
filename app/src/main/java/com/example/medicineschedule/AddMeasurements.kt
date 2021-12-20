@@ -498,6 +498,7 @@ override fun onBackPressed() {
 }
 private fun addMeasrementReminder() {
 
+    timeListMeasurement.clear()
     var time = binding.txtvwMtime1.text.toString()
     var time1 = binding.txtvwMtime2.text.toString()
     var time2 = binding.txtvwMtime3.text.toString()

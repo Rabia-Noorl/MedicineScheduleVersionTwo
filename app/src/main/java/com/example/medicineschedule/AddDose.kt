@@ -72,8 +72,6 @@ class AddDose : AppCompatActivity() {
             // Display the clicked item using toast
             DictionaryActivity.drugName = selectedItem
         }
-        
-
 
         var instructionChoice =
             arrayOf("Before Eating", "After Eating", "While Eating", "Doesn't Matter", "Other")
@@ -272,16 +270,31 @@ class AddDose : AppCompatActivity() {
             if(record == null){
                 addDoseReminder()
             }else{
-                var Name = binding.medicationName.text.toString()
-                var time = binding.txtvwdosetime1.text
-                if ( Name.isNotEmpty() && time.isNotEmpty()){
-                    var reminder = ReminderTracker("med","${record.types}", "$Name", "$time","${record.status}", "${record.quantity}","${record.instructions}","${record.strenght}","${record.startDate}","${record.endDate}", "${record.recodeCreationDate}", record.deleteFlage)
+                var name = binding.medicationName.text.toString()
+                var type = binding.medTypeTV.text.toString()
+                var quantity = binding.adddosequantity.text.toString()
+                var instructions = binding.Instructions.text.toString()
+                var measurmentUnits = binding.spinner.selectedItem.toString()
+                var time = binding.txtvwdosetime1.text.toString()
+
+                if ( name.isNotEmpty() && time.isNotEmpty()){
+                    var reminder = ReminderTracker("med","$type",
+                        "$name",
+                        "$time",
+                        "${record.status}",
+                        "$quantity $measurmentUnits ",
+                        "$instructions",
+                        "${record.strenght}",
+                        "${record.startDate}",
+                        "${record.endDate}",
+                        "${record.recodeCreationDate}",
+                        record.deleteFlage)
                     reminder.id = record.id
                     viewModel.onEditClick(reminder)
-                    val intent = Intent(this, HomeScreen::class.java)
-                    startActivity(intent)
+
                     finish()
                 }else{
+                    Toast.makeText(this, "Mandatory fields are missing", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -651,11 +664,10 @@ class AddDose : AppCompatActivity() {
             }.show()
     }
 private fun addDoseReminder() {
-
     val date = Calendar.getInstance().time
     val dateInString = date.toString()
     Log.d("date", "$dateInString ")
-
+    timeList.clear()
     var time = binding.txtvwdosetime1.text.toString()
     var time1 = binding.txtvwdosetime2.text.toString()
     var time2 = binding.txtvwdosetime3.text.toString()
@@ -678,7 +690,9 @@ private fun addDoseReminder() {
     var instructions = binding.Instructions.text.toString()
     var measurmentUnits = binding.spinner.selectedItem.toString()
     timeList.forEach {
-        if ( name.length > 0 && type.length > 0 && quantity.length > 0 && it.length > 0){
+        if (name.length > 0 && type.length > 0 && quantity.length > 0 && it.length > 0){
+            var i = 0
+            Toast.makeText(this,"$it $i++",Toast.LENGTH_SHORT).show()
             var remider = ReminderTracker("med",
                 " $type",
                 "$name" ,
@@ -692,14 +706,13 @@ private fun addDoseReminder() {
                 "${Calendar.getInstance().time}",
                 false)
             viewModel.onAddClick(remider)
-            Toast.makeText(this, "$dateInString" , Toast.LENGTH_SHORT).show()
         }else{
+//            Toast.makeText(this, "$dateInString" , Toast.LENGTH_SHORT).show()
         }
     }
     val intent = Intent(this, HomeScreen::class.java)
     startActivity(intent)
     finish()
-
     }
 }
 

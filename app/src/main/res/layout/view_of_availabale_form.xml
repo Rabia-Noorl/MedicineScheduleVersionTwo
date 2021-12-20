@@ -34,33 +34,18 @@
         </TextView>
 
         <TextView
-            android:id="@+id/textViewPacking"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="7dp"
-            android:text="Price : "
-            android:textColor="@color/doneColor"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/textViewPack"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view9" />
-
-        <TextView
             android:id="@+id/textViewPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:text="Brand :"
             android:textColor="@color/greyColr"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/textViewDrug"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPacking" />
+            app:layout_constraintTop_toBottomOf="@+id/view9" />
 
         <TextView
             android:id="@+id/textView11"
@@ -90,32 +75,18 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewFormsName" />
 
         <TextView
-            android:id="@+id/textViewPack"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginEnd="5dp"
-            android:text="@{formModel.drug.price}"
-            android:textColor="@color/doneColor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/textViewPacking"
-            app:layout_constraintTop_toBottomOf="@+id/view9" />
-
-        <TextView
             android:id="@+id/textViewDrug"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
             android:text="@{formModel.drug.brands}"
             android:textColor="@color/greyColr"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/textViewPrice"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPack" />
+            app:layout_constraintTop_toBottomOf="@+id/view9" />
 
         <TextView
             android:id="@+id/textViewCost"

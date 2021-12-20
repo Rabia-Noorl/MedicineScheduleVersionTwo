@@ -62,7 +62,6 @@ class AddDoctorActivity : AppCompatActivity(){
             alertDialogDocType.show()
         })
 
-
         viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(
             HomeRecViewModel::class.java)
 
@@ -73,7 +72,6 @@ class AddDoctorActivity : AppCompatActivity(){
         binding.saveTextView.setOnClickListener{
             if(record == null){
                 addDocReminder()
-
         }else{
                 var docName = binding.medicationName.text.toString()
                 var time = binding.appointmentTime.text
@@ -150,8 +148,6 @@ private fun addDocReminder() {
     if ( docName.isNotEmpty() && time.isNotEmpty()){
         var reminder = ReminderTracker("doc","Appointment:", "$docName", "$time","", "","$type","","","", "${Calendar.getInstance().time}",false)
         viewModel.onAddClick(reminder)
-        val intent = Intent(this, HomeScreen::class.java)
-        startActivity(intent)
         finish()
     }else{
 
