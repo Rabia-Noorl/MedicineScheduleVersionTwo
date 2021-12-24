@@ -112,7 +112,7 @@ class MoreFragment : Fragment() {
                     requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
                 val intent = Intent(context, AlarmReceiver::class.java)
                 intent.putExtra("type", "doc")
-                intent.putExtra("name", "${it.names} ${it.types}")
+                intent.putExtra("name", "You have appointment for ${it.names}!")
                 pendingIntent = PendingIntent.getBroadcast(context, it.id, intent, 0)
                 alarmManager.setExact(
                     AlarmManager.RTC_WAKEUP,
@@ -170,7 +170,6 @@ class MoreFragment : Fragment() {
             notificationManager.createNotificationChannel(channel)
         }
     }
-
 
     @SuppressLint("ResourceAsColor")
     private fun dialogeBuild(reminderTracker: ReminderTracker) {

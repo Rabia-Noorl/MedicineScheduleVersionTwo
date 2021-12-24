@@ -11,8 +11,10 @@ import androidx.core.app.NotificationManagerCompat
 import com.example.medicineschedule.HomeScreen
 import com.example.medicineschedule.R
 import android.app.Notification
-
-
+import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
+import androidx.core.content.getSystemService
 
 
 class AlarmReceiver(): BroadcastReceiver() {
@@ -28,7 +30,7 @@ class AlarmReceiver(): BroadcastReceiver() {
                     val builder = NotificationCompat.Builder(context!!, "AlarmId")
                     .setSmallIcon(R.drawable.pills)
                     .setContentTitle("Your Daily Medication")
-                    .setContentText("You have $name to take!")
+                    .setContentText("$name")
                     .setAutoCancel(true)
                     .setDefaults(NotificationCompat.DEFAULT_ALL)
                     .setPriority(NotificationCompat.PRIORITY_HIGH)
@@ -43,7 +45,7 @@ class AlarmReceiver(): BroadcastReceiver() {
                     val builder = NotificationCompat.Builder(context!!, "AlarmId")
                         .setSmallIcon(R.drawable.doctor)
                         .setContentTitle("Your Daily Medication")
-                        .setContentText("You have $name to take!")
+                        .setContentText("$name")
                         .setAutoCancel(true)
                         .setDefaults(NotificationCompat.DEFAULT_ALL)
                         .setPriority(NotificationCompat.PRIORITY_HIGH)
@@ -55,9 +57,9 @@ class AlarmReceiver(): BroadcastReceiver() {
                     intent!!.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     var pendingIntent = PendingIntent.getActivity(context,0,i,0)
                     val builder = NotificationCompat.Builder(context!!, "AlarmId")
-                        .setSmallIcon(R.drawable.ic_measurementwhite)
+                        .setSmallIcon(R.drawable.ic_addmeasurement)
                         .setContentTitle("Your Daily Medication")
-                        .setContentText("You have $name to take!")
+                        .setContentText("$name")
                         .setAutoCancel(true)
                         .setDefaults(NotificationCompat.DEFAULT_ALL)
                         .setPriority(NotificationCompat.PRIORITY_HIGH)
@@ -69,16 +71,32 @@ class AlarmReceiver(): BroadcastReceiver() {
                 }
 
         alarmOnly(context)
+        vibrateFuc(context)
     }
     fun alarmOnly(context: Context?){
+
 //        var alarmUri =  RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
 //        if (alarmUri == null){
 //            alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 //        }
 //        var ringtone = RingtoneManager.getRingtone(context, alarmUri)
 //        ringtone.play()
-        var mediaPlayer = MediaPlayer.create(context, R.raw.shakesound)
+        var mediaPlayer = MediaPlayer.create(context, com.example.medicineschedule.R.raw.shakesound)
         mediaPlayer.start()
     }
 
+    fun vibrateFuc(context:Context)
+    {
+        val vibrator = context.getSystemService<Vibrator>()
+        vibrator?.let {
+            if (vibrator.hasVibrator()) { // Vibrator availability checking
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE)) // New vibrate method for API Level 26 or higher
+                } else {
+                    vibrator.vibrate(500) // Vibrate method for below API Level 26
+                }
+
+            }
+        }
+    }
 }

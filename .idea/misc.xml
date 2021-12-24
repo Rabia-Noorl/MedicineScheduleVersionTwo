@@ -103,11 +103,16 @@
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVOne/app/src/main/res/layout/view_of_mesurments_rv.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVOne/app/src/main/res/layout/view_of_report.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/drawable/ic_baseline_fiber_manual_record_24.xml" value="0.2074074074074074" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/activity_add_doctor.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/activity_add_dose.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/activity_add_measurements.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/activity_appointments.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/activity_dictionary.xml" value="0.15520833333333334" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/activity_home_screen.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/activity_measurments_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/activity_sign_in_with_google.xml" value="0.15520833333333334" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/activity_sign_up.xml" value="0.15520833333333334" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/activity_splash_screen.xml" value="0.15520833333333334" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/detail_info_recyclerview_view.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/dialog_frag_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/edit_record_dialoge.xml" value="0.20416666666666666" />
@@ -117,8 +122,10 @@
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/fragment_drug__info_.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/fragment_included__drugs_.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/fragment_medication2.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/fragment_medication_search.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/fragment_pharmacy.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/fragment_pharmacy.xml" value="0.2351313969571231" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/fragment_search.xml" value="0.15520833333333334" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/view_included_drugs.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/view_of_alternat_brands.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleVTwo/app/src/main/res/layout/view_of_appointments.xml" value="0.20416666666666666" />

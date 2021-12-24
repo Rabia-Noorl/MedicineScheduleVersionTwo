@@ -9,7 +9,6 @@
             type="com.example.medicineschedule.viewModels.ReportViewModel" />
     </data>
 
-
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -42,6 +41,18 @@
         app:layout_constraintStart_toStartOf="@+id/takeCircularProgressBar"
         app:layout_constraintTop_toTopOf="@+id/takeCircularProgressBar" />
 
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Taken"
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/takeCircularProgressBar"
+        app:layout_constraintStart_toStartOf="@+id/takeCircularProgressBar"
+        app:layout_constraintTop_toBottomOf="@+id/takeCircularProgressBar" />
+
     <com.mikhaellopez.circularprogressbar.CircularProgressBar
         android:id="@+id/missedCircularProgressBar"
         android:layout_width="120dp"
@@ -67,6 +78,18 @@
         app:layout_constraintEnd_toEndOf="@+id/missedCircularProgressBar"
         app:layout_constraintStart_toStartOf="@+id/missedCircularProgressBar"
         app:layout_constraintTop_toTopOf="@+id/missedCircularProgressBar" />
+
+    <TextView
+        android:id="@+id/MissedTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Missed"
+        android:textColor="@color/errorColor"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/consLayout"
+        app:layout_constraintEnd_toEndOf="@+id/missedCircularProgressBar"
+        app:layout_constraintStart_toStartOf="@+id/missedCircularProgressBar" />
 
     <com.mikhaellopez.circularprogressbar.CircularProgressBar
         android:id="@+id/skippedCircularProgressBar"
@@ -95,6 +118,17 @@
         app:layout_constraintStart_toStartOf="@+id/skippedCircularProgressBar"
         app:layout_constraintTop_toTopOf="@+id/skippedCircularProgressBar" />
 
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Skipped"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/consLayout"
+        app:layout_constraintEnd_toEndOf="@+id/skippedCircularProgressBar"
+        app:layout_constraintStart_toStartOf="@+id/skippedCircularProgressBar" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/consLayout"
         android:layout_width="match_parent"
@@ -108,7 +142,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/takeCircularProgressBar">
+        app:layout_constraintTop_toBottomOf="@+id/textView10">
 
         <LinearLayout
             android:id="@+id/linearLayout5"

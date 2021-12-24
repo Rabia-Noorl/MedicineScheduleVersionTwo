@@ -140,13 +140,26 @@ class AddDoctorActivity : AppCompatActivity(){
             }.show()
     }
 private fun addDocReminder() {
+    val sdf = SimpleDateFormat("EE MMM dd yyyy 'at:' hh:mm a ")
+    val currentDate = sdf.format(Date())
+
     var docName = binding.medicationName.text.toString()
     var time = binding.appointmentTime.text
     var type = binding.docTypeTV.text
 
     //  var docName = binding..text.toString()
     if ( docName.isNotEmpty() && time.isNotEmpty()){
-        var reminder = ReminderTracker("doc","Appointment:", "$docName", "$time","", "","$type","","","", "${Calendar.getInstance().time}",false)
+        var reminder = ReminderTracker("doc",
+            "Appointment:",
+            "$docName",
+            "$time","",
+            "",
+            "$type",
+            "",
+            "$currentDate",
+            "",
+            "$currentDate",
+            false)
         viewModel.onAddClick(reminder)
         finish()
     }else{

@@ -419,6 +419,8 @@ override fun onBackPressed() {
         }.show()
 }
 private fun addMeasrementReminder() {
+    val sdf = SimpleDateFormat("EE MMM dd yyyy 'at:' hh:mm a ")
+    val currentDate = sdf.format(Date())
 
     timeListMeasurement.clear()
     var time = binding.txtvwMtime1.text.toString()
@@ -448,14 +450,14 @@ private fun addMeasrementReminder() {
                 "$name" ,"$it" ,
                 "", "$quantity $measurmentUnit",
                 "Instruction: $instructions",
-                "","","", "${Calendar.getInstance().time}",false)
+                "","$currentDate","",
+                "$currentDate",
+                false)
             viewModel.onAddClick(remider)
         }
         else{
         }
     }
-//    val intent = Intent(this, HomeScreen::class.java)
-//    startActivity(intent)
     finish()
 }
 }

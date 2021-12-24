@@ -166,9 +166,9 @@ class PharmacyFragment : Fragment() {
                                 var percentSkipped =
                                     ((skippedList.size / it.size.toFloat()) * 100).toInt()
 
-                                binding.takenPercentTv.setText("${takenList.size}/${it.size} Taken")
-                                binding.missedPercentTV.setText("${missedList.size}/${it.size} Missed")
-                                binding.skippedPercentTV.setText("${skippedList.size}/${it.size} Skipped")
+                                binding.takenPercentTv.setText("${takenList.size}/${it.size}")
+                                binding.missedPercentTV.setText("${missedList.size}/${it.size}")
+                                binding.skippedPercentTV.setText("${skippedList.size}/${it.size}")
 
                                 binding.takeCircularProgressBar.apply {
                                     this.progressMax = it.size.toFloat()
@@ -255,6 +255,4 @@ class PharmacyFragment : Fragment() {
         }
         return allRemiders
     }
-
-
 }

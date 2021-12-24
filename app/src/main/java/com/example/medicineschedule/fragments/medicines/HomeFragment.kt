@@ -55,7 +55,7 @@ class HomeFragment : Fragment(){
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
-            setUpWorker()
+          //  setUpWorker()
         }
 
         private fun setUpWorker() {
@@ -137,7 +137,6 @@ class HomeFragment : Fragment(){
                     cancelAlarm(recViewList)
                 }
             }
-
             binding.searchView2.setOnClickListener {
                 val intent = Intent(context, DictionaryActivity::class.java)
                 startActivity(intent)
@@ -220,7 +219,7 @@ class HomeFragment : Fragment(){
                         requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
                     val intent = Intent(context, AlarmReceiver::class.java)
                     intent.putExtra("type", "med")
-                    intent.putExtra("name", "${it.names} ${it.types}")
+                    intent.putExtra("name", "You have ${it.names} ${it.types} to take!")
                     pendingIntent = PendingIntent.getBroadcast(context, it.id, intent, 0)
                     alarmManager.setExact(
                         AlarmManager.RTC_WAKEUP,

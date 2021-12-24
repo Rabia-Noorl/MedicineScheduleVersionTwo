@@ -110,7 +110,7 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
                     requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
                 val intent = Intent(context, AlarmReceiver::class.java)
                 intent.putExtra("type", "mes")
-                intent.putExtra("name", "${it.names} ${it.types}")
+                intent.putExtra("name", "You have measurement reminder for ${it.names}!")
                 pendingIntent = PendingIntent.getBroadcast(context, it.id, intent, 0)
                 alarmManager.setExact(
                     AlarmManager.RTC_WAKEUP,

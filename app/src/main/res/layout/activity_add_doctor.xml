@@ -87,57 +87,6 @@
             android:layout_below="@+id/imgView"
             android:layout_marginBottom="10dp"
             android:orientation="vertical">
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardViewdose"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp"
-                    app:cardPreventCornerOverlap="false"
-                    app:cardUseCompatPadding="true"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:strokeColor="@color/backGroundColour"
-                    app:strokeWidth="1dp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/tvDose"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="10dp"
-                            android:text="Add to Team"
-                            android:textColor="@color/textColor"
-                            android:textSize="20dp"
-                            android:textStyle="bold" />
-
-                    </RelativeLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
@@ -185,6 +134,7 @@
                             android:textColor="@color/textColor"
                             android:textSize="20dp"
                             android:textStyle="bold" />
+
                         <EditText
                             android:id="@+id/medicationName"
                             android:layout_width="wrap_content"
@@ -199,7 +149,7 @@
                             android:textColor="@color/textColor"
                             android:textColorHint="@color/purple_700"
                             android:textCursorDrawable="@drawable/cursor"
-                            android:textSize="18sp" />
+                            android:textSize="16sp" />
 
 
                     </RelativeLayout>
@@ -252,10 +202,12 @@
                             android:textColor="@color/textColor"
                             android:textSize="20dp"
                             android:textStyle="bold" />
+
                         <AutoCompleteTextView
                             android:id="@+id/docTypeTV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvspeciality"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="5dp"
                             android:layout_marginBottom="10dp"
@@ -264,11 +216,10 @@
                             android:drawableRight="@drawable/ic_dropdown_blue"
                             android:focusableInTouchMode="false"
                             android:hint="Speciality"
-                            android:layout_below="@+id/tvspeciality"
                             android:textAlignment="center"
                             android:textColor="@color/textColor"
                             android:textColorHint="@color/design_default_color_primary_variant"
-                            android:textSize="18sp" />
+                            android:textSize="16sp" />
                         <EditText
                             android:id="@+id/customDocType"
                             android:layout_width="wrap_content"
@@ -375,7 +326,7 @@
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
                                 android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="18sp"
+                                android:textSize="16sp"
                                 android:visibility="visible"></EditText>
                         </LinearLayout>
 

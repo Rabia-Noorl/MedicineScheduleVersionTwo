@@ -4,12 +4,14 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.View.VISIBLE
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -21,8 +23,13 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_add_doctor.*
 import kotlinx.android.synthetic.main.activity_add_dose.*
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
+import android.util.Log
+import java.text.ParseException
 
 
 class AddDose : AppCompatActivity() {
@@ -562,11 +569,15 @@ class AddDose : AppCompatActivity() {
                 }
                 .setNegativeButton("No"){dialogInterface,it->
                     dialogInterface.cancel()
+
+
                 }.show()
         }
+
         private fun addDoseReminder() {
-            val date = Calendar.getInstance().time
-            val dateInString = date.toString()
+            val sdf = SimpleDateFormat("EE MMM dd yyyy 'at:' hh:mm a ")
+            val currentDate = sdf.format(Date())
+
             timeList.clear()
             var time = binding.txtvwdosetime1.text.toString()
             var time1 = binding.txtvwdosetime2.text.toString()
@@ -599,12 +610,11 @@ class AddDose : AppCompatActivity() {
                         "$quantity $measurmentUnits",
                         "$instructions",
                         "",
-                        "$dateInString",
+                        "$currentDate",
                         "",
-                        "${Calendar.getInstance().time}",
+                        "$currentDate",
                         false)
                     viewModel.onAddClick(remider)
-                    Toast.makeText(this, "$dateInString" , Toast.LENGTH_SHORT).show()
                 }else{
                 }
             }
@@ -613,4 +623,14 @@ class AddDose : AppCompatActivity() {
             finish()
 
         }
+    fun convertToCustomFormat(dateStr: String?){
+        var date: Date? = null
+        val formatter = SimpleDateFormat("EEE MMM dd HH:mm:ss zzzz yyyy")
+        val temp = "Thu Dec 17 15:37:43 GMT+05:30 2015"
+            date = formatter.parse(temp)
+        Toast.makeText( this, "$date", Toast.LENGTH_LONG).show()
+            Log.e("formated date ", date.toString() + "")
+
     }
+
+}
