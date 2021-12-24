@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/Settings"
-        android:title="Settings"
-        android:icon="@drawable/ic_baseline_settings_24"/>
     <item android:id="@+id/help"
         android:title="Help"
-        android:icon="@drawable/ic_help" />
+        android:icon="@drawable/ic_help"/>
+    <item android:id="@+id/rate"
+        android:title="Rate Us"
+        android:icon="@drawable/ic_baseline_star_rate_24" />
     <item android:id="@+id/share"
         android:title="Share"
         android:icon="@drawable/ic_share" />

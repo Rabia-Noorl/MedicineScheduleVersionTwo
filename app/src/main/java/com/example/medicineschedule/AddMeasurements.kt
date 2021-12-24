@@ -21,6 +21,7 @@ class AddMeasurements : AppCompatActivity() {
     lateinit var binding: ActivityAddMeasurementsBinding
     lateinit var alertdialogbuilder:AlertDialog.Builder
     var timeFormat= SimpleDateFormat("hh:mm a", Locale.US)
+    var index=0
 
     companion object{
         val timeListMeasurement = ArrayList<String>()
@@ -39,20 +40,28 @@ class AddMeasurements : AppCompatActivity() {
         binding.txtvwMtime1.setText(record?.dateTimes)
 
         var measurementsChoice= arrayOf("Blood Pressure", "Blood Sugar", "Weight","Temperature","Heart Rate", "Other")
+        var selectedMeasurement=measurementsChoice[index]
+        binding.measurement.setText(selectedMeasurement)
         var instructionChoice =
             arrayOf("Before Eating", "After Eating", "While Eating", "Doesn't Matter", "Other")
+        var selectedIns=instructionChoice[index]
+        binding.MInstructions.setText(selectedIns)
         var mtimeChoice= arrayOf("Once a day","2 times a day","3 times a day","4 times a day","5 times a day","6 times a day","7 times a day")
+        var selectedTime=instructionChoice[index]
+        binding.txtvwMtime.setText(selectedIns)
+        binding.txtvwMtime1.visibility= VISIBLE
         var mtimeFormat= SimpleDateFormat("hh:mm a", Locale.US)
         var dateFormat=SimpleDateFormat("dd MMM yyyy",Locale.US)
        //set spinners
         var units=arrayOf("units")
         val adap=ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, units)
         adap.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.mspinner.adapter=adap
+
 
         var unitsChoice = arrayOf("sys/dia/pulse")
         val adapter=ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, unitsChoice)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.mspinner.adapter=adapter
 
         var unitsChoice1=arrayOf("mg/dL","mmol/L")
         val adapter1=ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, unitsChoice1)
@@ -104,8 +113,9 @@ class AddMeasurements : AppCompatActivity() {
             alertDialogDose.setTitle("Select Measurement")
             alertDialogDose.setSingleChoiceItems(
                 measurementsChoice,
-                0
+                index
             ) { dialogInterface: DialogInterface, position: Int ->
+                index=position
                 binding.measurement.setText(measurementsChoice[position])
                 if(position==0)
                 {

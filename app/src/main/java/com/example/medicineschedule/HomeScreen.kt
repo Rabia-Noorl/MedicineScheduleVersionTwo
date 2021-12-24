@@ -94,9 +94,26 @@ class HomeScreen : AppCompatActivity() {
     private fun setupDrawerContent(navigationView: NavigationView) {
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when(menuItem.itemId){
+                R.id.help ->{
+
+
+                }
+                R.id.share ->{
+                    val shareBody="Download Medica360 on Playstore: https://play.google.com&hl=en"
+                    val shareSub="Medica 360"
+                    val shareIntent=Intent(Intent.ACTION_SEND)
+                    shareIntent.type="text/plain"
+                    shareIntent.putExtra(Intent.EXTRA_SUBJECT,shareSub)
+                    shareIntent.putExtra(Intent.EXTRA_TEXT,shareBody)
+                    startActivity(shareIntent)
+                }
+                R.id.rate ->{
+
+                }
                 R.id.signOut -> {
                     singOutUser()
-                } }
+                }
+            }
             true
         }
     }
