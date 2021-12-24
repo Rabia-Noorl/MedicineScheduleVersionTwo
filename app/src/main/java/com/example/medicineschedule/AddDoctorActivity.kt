@@ -27,6 +27,7 @@ class AddDoctorActivity : AppCompatActivity(){
     lateinit var binding: ActivityAddDoctorBinding
     lateinit  var viewModel: HomeRecViewModel
     lateinit var alertdialogbuilder:AlertDialog.Builder
+    var index=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,13 +42,16 @@ class AddDoctorActivity : AppCompatActivity(){
 
         //create speciality dropdown
         var speciality=arrayOf("Anesthesiologist","Child Specialist","Dermatologist","ENT Specialist","Gynecologist","Neurologist","Ophthalmologist","Pathologist","Psychiatrist","Radiation Oncologist","Urologist","Other")
+       val selectedType=speciality[index]
+        binding.docTypeTV.setText(selectedType)
         binding.docTypeTV.setOnClickListener(View.OnClickListener {
             var alertDialogDocType = AlertDialog.Builder(this)
             alertDialogDocType.setTitle("Select Speciality")
             alertDialogDocType.setSingleChoiceItems(
                 speciality,
-                0
+                index
             ) { dialogInterface: DialogInterface, position: Int ->
+                index=position
                 binding.docTypeTV.setText(speciality[position])
                 if(position==11)
                 {
