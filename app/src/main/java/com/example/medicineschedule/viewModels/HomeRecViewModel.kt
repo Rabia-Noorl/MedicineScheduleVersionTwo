@@ -88,7 +88,6 @@ class HomeRecViewModel(application: Application) : AndroidViewModel(application)
     fun onDeletClick(remineder: ReminderTracker) = viewModelScope.launch(Dispatchers.IO){
         repository.delete(remineder)
     }
-
     private fun ReminderItemViewModel.toRecyclerItem() = RecyclerItem(
         data = this,
         layoutId = R.layout.view_of_dashboard_rv,

@@ -11,18 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bottom_rounder">
-        <!--    <androidx.appcompat.widget.Toolbar-->
-        <!--        android:id="@+id/my_toolbar"-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="?attr/actionBarSize"-->
-        <!--        app:title="ADD MEDICINE REMINDER"-->
-        <!--        android:layout_marginBottom="0dp"-->
-        <!--        android:background="@drawable/bg_gradient"-->
-        <!--        android:elevation="4dp"-->
-        <!--        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"-->
-        <!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
-        <!--        app:titleTextColor="@color/textColor"-->
-        <!--        android:textAlignment="center"></androidx.appcompat.widget.Toolbar>-->
         <TextView
             android:id="@+id/doseSave"
             android:layout_width="wrap_content"
@@ -34,13 +22,12 @@
             android:textColor="@color/textColor"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:textCursorDrawable="@drawable/cursor"/>
-
+            android:textCursorDrawable="@drawable/cursor"></TextView>
         <ImageView
             android:id="@+id/doseimgView"
             android:layout_width="100dp"
             android:layout_height="100dp"
-           android:layout_below="@id/doseSave"
+            android:layout_below="@id/doseSave"
             android:layout_centerInParent="true"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
@@ -57,34 +44,34 @@
             android:layout_marginTop="10dp"
             app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/medTypeTV"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@id/doseimgView"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:layout_marginTop="5dp"-->
-<!--            android:layout_marginBottom="10dp"-->
-<!--            android:text="Caps"-->
-<!--            android:textSize="20sp"-->
-<!--            android:textStyle="bold" />-->
-<!--        <ImageView-->
-<!--            android:id="@+id/leftScroll"-->
-<!--            android:layout_width="50dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_below="@id/doseimgView"-->
-<!--            android:layout_marginRight="60dp"-->
-<!--            android:layout_toLeftOf="@+id/medTypeTV"-->
-<!--            app:srcCompat="@drawable/ic_baseline_keyboard_arrow_left_24" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/medTypeTV"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_below="@id/doseimgView"-->
+        <!--            android:layout_centerHorizontal="true"-->
+        <!--            android:layout_marginTop="5dp"-->
+        <!--            android:layout_marginBottom="10dp"-->
+        <!--            android:text="Caps"-->
+        <!--            android:textSize="20sp"-->
+        <!--            android:textStyle="bold" />-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/leftScroll"-->
+        <!--            android:layout_width="50dp"-->
+        <!--            android:layout_height="50dp"-->
+        <!--            android:layout_below="@id/doseimgView"-->
+        <!--            android:layout_marginRight="60dp"-->
+        <!--            android:layout_toLeftOf="@+id/medTypeTV"-->
+        <!--            app:srcCompat="@drawable/ic_baseline_keyboard_arrow_left_24" />-->
 
-<!--        <ImageView-->
-<!--            android:id="@+id/rightScroll"-->
-<!--            android:layout_width="50dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_below="@id/doseimgView"-->
-<!--            android:layout_marginLeft="60dp"-->
-<!--            android:layout_toRightOf="@+id/medTypeTV"-->
-<!--            app:srcCompat="@drawable/ic_baseline_chevron_right_24" />-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/rightScroll"-->
+        <!--            android:layout_width="50dp"-->
+        <!--            android:layout_height="50dp"-->
+        <!--            android:layout_below="@id/doseimgView"-->
+        <!--            android:layout_marginLeft="60dp"-->
+        <!--            android:layout_toRightOf="@+id/medTypeTV"-->
+        <!--            app:srcCompat="@drawable/ic_baseline_chevron_right_24" />-->
     </RelativeLayout>
 
     <ScrollView
@@ -162,7 +149,7 @@
                             android:textColor="@color/textColor"
                             android:textColorHint="@color/purple_700"
                             android:textCursorDrawable="@drawable/cursor"
-                            android:textSize="16sp" />
+                            android:textSize="18sp" />
                     </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView></androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -228,7 +215,7 @@
                             android:textAlignment="center"
                             android:textColor="@color/textColor"
                             android:textColorHint="@color/design_default_color_primary_variant"
-                            android:textSize="16sp" />
+                            android:textSize="18sp" />
 
                     </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView></androidx.constraintlayout.widget.ConstraintLayout>
@@ -290,30 +277,33 @@
                                 android:id="@+id/adddosequantity"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
                                 android:backgroundTint="@color/design_default_color_primary_variant"
                                 android:cursorVisible="true"
                                 android:hint="Enter Quantity"
-                                android:inputType="number"
+                                android:inputType="datetime"
+                                android:textAlignment="center"
                                 android:paddingBottom="25dp"
                                 android:textColor="@color/textColor"
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
                                 android:textCursorDrawable="@drawable/cursor"
                                 android:textSize="18sp"
-                                />
+                                tools:ignore="RtlCompat" />
                             <FrameLayout
                                 android:id="@+id/unitTV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="bottom">
-
                                 <Spinner
                                     android:id="@+id/spinner"
-                                    style="@style/Widget.AppCompat.Spinner.Underlined"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
+                                    android:autofillHints="units"
+                                    android:textAlignment="center"
+                                    style="@style/Widget.AppCompat.Spinner.Underlined"
                                     android:backgroundTint="@color/design_default_color_primary_variant"
-                                    android:textAlignment="center" />
+                                    />
                             </FrameLayout>
 
 
@@ -382,16 +372,16 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:backgroundTint="@color/design_default_color_primary_variant"
-                                android:cursorVisible="false"
                                 android:drawableRight="@drawable/ic_dropdown_blue"
                                 android:focusableInTouchMode="false"
-                                android:hint="Instructions"
                                 android:textAlignment="center"
+                                android:hint="Instructions"
+                                android:cursorVisible="false"
                                 android:textColor="@color/textColor"
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
                                 android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="16sp" />
+                                android:textSize="18sp" />
                         </LinearLayout>
 
                         <EditText
@@ -463,27 +453,27 @@
                             android:textSize="20dp"
                             android:textStyle="bold" />
 
-<!--                        <LinearLayout-->
-<!--                            android:id="@+id/linLayoutReminder"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_below="@id/tvdoseReminder"-->
-<!--                            android:layout_marginTop="10dp"-->
-<!--                            android:gravity="center|center_horizontal|center_vertical"-->
-<!--                            android:orientation="horizontal">-->
+                        <!--                        <LinearLayout-->
+                        <!--                            android:id="@+id/linLayoutReminder"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_below="@id/tvdoseReminder"-->
+                        <!--                            android:layout_marginTop="10dp"-->
+                        <!--                            android:gravity="center|center_horizontal|center_vertical"-->
+                        <!--                            android:orientation="horizontal">-->
 
-<!--                            <Switch-->
-<!--                                android:id="@+id/btndoseReminder"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_gravity="center_horizontal"-->
-<!--                                android:layout_marginLeft="2dp"-->
-<!--                                android:layout_marginRight="2dp"-->
-<!--                                android:text="Reminder and Schedule"-->
-<!--                                android:textColor="@color/design_default_color_primary_variant"-->
-<!--                                android:textSize="18sp"-->
-<!--                                android:theme="@style/switchColor"></Switch>-->
-<!--                        </LinearLayout>-->
+                        <!--                            <Switch-->
+                        <!--                                android:id="@+id/btndoseReminder"-->
+                        <!--                                android:layout_width="wrap_content"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:layout_gravity="center_horizontal"-->
+                        <!--                                android:layout_marginLeft="2dp"-->
+                        <!--                                android:layout_marginRight="2dp"-->
+                        <!--                                android:text="Reminder and Schedule"-->
+                        <!--                                android:textColor="@color/design_default_color_primary_variant"-->
+                        <!--                                android:textSize="18sp"-->
+                        <!--                                android:theme="@style/switchColor"></Switch>-->
+                        <!--                        </LinearLayout>-->
 
                         <LinearLayout
                             android:id="@+id/linLayoutTime"
@@ -542,14 +532,14 @@
                                         android:cursorVisible="true"
                                         android:focusableInTouchMode="false"
                                         android:gravity="center_horizontal"
-                                        android:hint="Set Time"
+                                        android:hint="First Time"
                                         android:textAlignment="center"
                                         android:textColor="@color/textColor"
                                         android:textColorHint="@color/design_default_color_primary_variant"
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
                                         android:textSize="18sp"
-                                        android:visibility="gone"/>
+                                        android:visibility="gone"></EditText>
 
                                     <EditText
                                         android:id="@+id/txtvwdosetime2"
@@ -559,14 +549,14 @@
                                         android:backgroundTint="@color/design_default_color_primary_variant"
                                         android:cursorVisible="true"
                                         android:focusableInTouchMode="false"
-                                        android:hint="Set Time"
+                                        android:hint="Second Time"
                                         android:textAlignment="center"
                                         android:textColor="@color/textColor"
                                         android:textColorHint="@color/design_default_color_primary_variant"
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
                                         android:textSize="18sp"
-                                        android:visibility="gone"/>
+                                        android:visibility="gone"></EditText>
 
                                     <EditText
                                         android:id="@+id/txtvwdosetime3"
@@ -576,14 +566,14 @@
                                         android:backgroundTint="@color/design_default_color_primary_variant"
                                         android:cursorVisible="true"
                                         android:focusableInTouchMode="false"
-                                        android:hint="Set Time"
+                                        android:hint="Third Time"
                                         android:textAlignment="center"
                                         android:textColor="@color/textColor"
                                         android:textColorHint="@color/design_default_color_primary_variant"
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
                                         android:textSize="18sp"
-                                        android:visibility="gone"/>
+                                        android:visibility="gone"></EditText>
 
                                     <EditText
                                         android:id="@+id/txtvwdosetime4"
@@ -593,7 +583,7 @@
                                         android:backgroundTint="@color/design_default_color_primary_variant"
                                         android:cursorVisible="true"
                                         android:focusableInTouchMode="false"
-                                        android:hint="Set Time"
+                                        android:hint="Fourth Time"
                                         android:textAlignment="center"
                                         android:textColor="@color/textColor"
                                         android:textColorHint="@color/design_default_color_primary_variant"
@@ -610,14 +600,14 @@
                                         android:backgroundTint="@color/design_default_color_primary_variant"
                                         android:cursorVisible="true"
                                         android:focusableInTouchMode="false"
-                                        android:hint="Set Time"
+                                        android:hint="Fifth Time"
                                         android:textAlignment="center"
                                         android:textColor="@color/textColor"
                                         android:textColorHint="@color/design_default_color_primary_variant"
                                         android:textColorLink="@color/design_default_color_primary_variant"
                                         android:textCursorDrawable="@drawable/cursor"
                                         android:textSize="18sp"
-                                        android:visibility="gone"/>
+                                        android:visibility="gone"></EditText>
 
                                     <EditText
                                         android:id="@+id/txtvwdosetime6"
@@ -627,7 +617,7 @@
                                         android:backgroundTint="@color/design_default_color_primary_variant"
                                         android:cursorVisible="true"
                                         android:focusableInTouchMode="false"
-                                        android:hint="Set Time"
+                                        android:hint="Sixth Time"
                                         android:textAlignment="center"
                                         android:textColor="@color/textColor"
                                         android:textColorHint="@color/design_default_color_primary_variant"
@@ -644,7 +634,7 @@
                                         android:backgroundTint="@color/design_default_color_primary_variant"
                                         android:cursorVisible="true"
                                         android:focusableInTouchMode="false"
-                                        android:hint="Set Time"
+                                        android:hint="Seventh Time"
                                         android:textAlignment="center"
                                         android:textColor="@color/textColor"
                                         android:textColorHint="@color/design_default_color_primary_variant"
@@ -655,199 +645,10 @@
                                 </LinearLayout>
                             </ScrollView>
                         </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/linLayoutdosedate"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/linLayoutscroll"
-                            android:layout_marginTop="0dp"
-                            android:gravity="center|center_horizontal|center_vertical"
-                            android:orientation="horizontal"
-                            android:visibility="gone">
-
-                            <EditText
-                                android:id="@+id/dosestDate"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:backgroundTint="@color/design_default_color_primary_variant"
-                                android:cursorVisible="true"
-                                android:focusableInTouchMode="false"
-                                android:hint="Start Date"
-                                android:inputType="date"
-                                android:textAlignment="center"
-                                android:textColor="@color/textColor"
-                                android:textColorHint="@color/design_default_color_primary_variant"
-                                android:textColorLink="@color/design_default_color_primary_variant"
-                                android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="18sp"/>
-
-                            <EditText
-                                android:id="@+id/doseendDate"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:backgroundTint="@color/design_default_color_primary_variant"
-                                android:cursorVisible="true"
-                                android:focusableInTouchMode="false"
-                                android:hint="End Date"
-                                android:inputType="date"
-                                android:textAlignment="center"
-                                android:textColor="@color/textColor"
-                                android:textColorHint="@color/design_default_color_primary_variant"
-                                android:textColorLink="@color/design_default_color_primary_variant"
-                                android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="18sp" />
-                        </LinearLayout>
-
                     </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardViewRefill"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp"
-                    app:cardPreventCornerOverlap="true"
-                    app:cardUseCompatPadding="true"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:strokeColor="@color/bgColor"
-                    app:strokeWidth="1dp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/tvdoseRefill"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="10dp"
-                            android:text="Refill Reminder"
-                            android:textColor="@color/textColor"
-                            android:textSize="20dp"
-                            android:textStyle="bold" />
-                        <LinearLayout
-                            android:id="@+id/linLayoutRefillReminder"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/tvdoseRefill"
-                            android:gravity="center|center_horizontal|center_vertical"
-                            android:orientation="vertical">
-
-                            <Switch
-                                android:id="@+id/btndoseRefill"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginLeft="2dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginRight="2dp"
-                                android:text="Refill"
-                                android:textColor="@color/design_default_color_primary_variant"
-                                android:textSize="18sp"
-                                android:theme="@style/switchColor"/>
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/linLayoutdoseRefill"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/linLayoutRefillReminder"
-                            android:gravity="center|center_horizontal|center_vertical"
-                            android:orientation="horizontal"
-                            android:visibility="gone">
-
-                            <LinearLayout
-                                android:id="@+id/linLayoutCurrentStock"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/linLayoutRefillReminder"
-                                android:gravity="center|center_horizontal|center_vertical"
-                                android:orientation="horizontal">
-
-                                <EditText
-                                    android:id="@+id/tvdoseCurrentStock"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal"
-                                    android:backgroundTint="@color/design_default_color_primary_variant"
-                                    android:cursorVisible="true"
-                                    android:hint="Currently In Stock"
-                                    android:inputType="number"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/textColor"
-                                    android:textColorHint="@color/design_default_color_primary_variant"
-                                    android:textColorLink="@color/design_default_color_primary_variant"
-                                    android:textCursorDrawable="@drawable/cursor"
-                                    android:textSize="18sp"/>
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-
-
-                        <LinearLayout
-                            android:id="@+id/linLayoutsetRefill"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/linLayoutdoseRefill"
-                            android:gravity="center|center_horizontal|center_vertical"
-                            android:orientation="horizontal"
-                            android:visibility="gone">
-
-                            <EditText
-                                android:id="@+id/setdoserefill"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/linLayoutRefill"
-                                android:layout_centerInParent="true"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="10dp"
-                                android:backgroundTint="@color/design_default_color_primary_variant"
-                                android:cursorVisible="true"
-                                android:hint="Remind When Stock Decreases To"
-                                android:inputType="number"
-                                android:textAlignment="center"
-                                android:textColor="@color/textColor"
-                                android:textColorHint="@color/design_default_color_primary_variant"
-                                android:textColorLink="@color/design_default_color_primary_variant"
-                                android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="18sp"/>
-                        </LinearLayout>
-                    </RelativeLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
         </LinearLayout>
     </ScrollView>
 

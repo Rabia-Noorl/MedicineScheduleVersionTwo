@@ -230,12 +230,14 @@
                                 android:cursorVisible="true"
                                 android:hint="Enter Value"
                                 android:inputType="datetime"
+                                android:textAlignment="center"
                                 android:paddingBottom="25dp"
                                 android:textColor="@color/textColor"
                                 android:textColorHint="@color/design_default_color_primary_variant"
                                 android:textColorLink="@color/design_default_color_primary_variant"
                                 android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="18sp"></EditText>
+                                android:textSize="18sp"
+                                tools:ignore="RtlCompat" />
                             <FrameLayout
                                 android:id="@+id/measureUnitTV"
                                 android:layout_width="wrap_content"
@@ -299,7 +301,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="10dp"
-                            android:text="Instructions"
+                            android:text="Next Reading"
                             android:textColor="@color/textColor"
                             android:textSize="20dp"
                             android:textStyle="bold" />
@@ -455,7 +457,7 @@
                                         android:backgroundTint="@color/design_default_color_primary_variant"
                                         android:cursorVisible="true"
                                         android:focusableInTouchMode="false"
-                                        android:hint="Set Time"
+                                        android:hint="First Time"
                                         android:textAlignment="center"
                                         android:textColor="@color/textColor"
                                         android:textColorHint="@color/design_default_color_primary_variant"
@@ -472,7 +474,7 @@
                                         android:backgroundTint="@color/design_default_color_primary_variant"
                                         android:cursorVisible="true"
                                         android:focusableInTouchMode="false"
-                                        android:hint="Set Time"
+                                        android:hint="Second Time"
                                         android:textAlignment="center"
                                         android:textColor="@color/textColor"
                                         android:textColorHint="@color/design_default_color_primary_variant"
@@ -489,7 +491,7 @@
                                         android:backgroundTint="@color/design_default_color_primary_variant"
                                         android:cursorVisible="true"
                                         android:focusableInTouchMode="false"
-                                        android:hint="Set Time"
+                                        android:hint="Third Time"
                                         android:textAlignment="center"
                                         android:textColor="@color/textColor"
                                         android:textColorHint="@color/design_default_color_primary_variant"
@@ -506,7 +508,7 @@
                                         android:backgroundTint="@color/design_default_color_primary_variant"
                                         android:cursorVisible="true"
                                         android:focusableInTouchMode="false"
-                                        android:hint="Set Time"
+                                        android:hint="Fourth Time"
                                         android:textAlignment="center"
                                         android:textColor="@color/textColor"
                                         android:textColorHint="@color/design_default_color_primary_variant"
@@ -523,7 +525,7 @@
                                         android:backgroundTint="@color/design_default_color_primary_variant"
                                         android:cursorVisible="true"
                                         android:focusableInTouchMode="false"
-                                        android:hint="Set Time"
+                                        android:hint="Fifth Time"
                                         android:textAlignment="center"
                                         android:textColor="@color/textColor"
                                         android:textColorHint="@color/design_default_color_primary_variant"
@@ -540,7 +542,7 @@
                                         android:backgroundTint="@color/design_default_color_primary_variant"
                                         android:cursorVisible="true"
                                         android:focusableInTouchMode="false"
-                                        android:hint="Set Time"
+                                        android:hint="Sixth Time"
                                         android:textAlignment="center"
                                         android:textColor="@color/textColor"
                                         android:textColorHint="@color/design_default_color_primary_variant"
@@ -557,7 +559,7 @@
                                         android:backgroundTint="@color/design_default_color_primary_variant"
                                         android:cursorVisible="true"
                                         android:focusableInTouchMode="false"
-                                        android:hint="Set Time"
+                                        android:hint="Seventh Time"
                                         android:textAlignment="center"
                                         android:textColor="@color/textColor"
                                         android:textColorHint="@color/design_default_color_primary_variant"
@@ -568,58 +570,10 @@
                                 </LinearLayout>
                             </ScrollView>
                         </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/linLayoutMdate"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/linLayoutMscroll"
-                            android:layout_marginTop="0dp"
-                            android:gravity="center|center_horizontal|center_vertical"
-                            android:orientation="horizontal"
-                            android:visibility="gone">
-
-                            <EditText
-                                android:id="@+id/mstDate"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:backgroundTint="@color/design_default_color_primary_variant"
-                                android:cursorVisible="true"
-                                android:focusableInTouchMode="false"
-                                android:hint="Start Date"
-                                android:inputType="date"
-                                android:textAlignment="center"
-                                android:textColor="@color/textColor"
-                                android:textColorHint="@color/design_default_color_primary_variant"
-                                android:textColorLink="@color/design_default_color_primary_variant"
-                                android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="18sp"></EditText>
-
-                            <EditText
-                                android:id="@+id/mendDate"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:backgroundTint="@color/design_default_color_primary_variant"
-                                android:cursorVisible="true"
-                                android:focusableInTouchMode="false"
-                                android:hint="End Date"
-                                android:inputType="date"
-                                android:textAlignment="center"
-                                android:textColor="@color/textColor"
-                                android:textColorHint="@color/design_default_color_primary_variant"
-                                android:textColorLink="@color/design_default_color_primary_variant"
-                                android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="18sp" />
-                        </LinearLayout>
-
                     </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-
         </LinearLayout>
     </ScrollView>
 

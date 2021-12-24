@@ -1,31 +1,17 @@
 
 package com.example.medicineschedule
 
-import android.annotation.SuppressLint
-import android.app.DatePickerDialog
-import android.app.Dialog
-import android.app.PendingIntent.getActivity
 import android.app.TimePickerDialog
 import android.content.DialogInterface
-import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.View.VISIBLE
-import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.accessibility.AccessibilityViewCommand
 import androidx.lifecycle.ViewModelProvider
 import com.example.medicineschedule.database.ReminderTracker
 import com.example.medicineschedule.databinding.ActivityAddMeasurementsBinding
-import com.example.medicineschedule.databinding.ActivityAddMedicationBinding
-import com.example.medicineschedule.fragments.home.HomeFragment
-import com.example.medicineschedule.fragments.medication.MedicationFragment
 import com.example.medicineschedule.viewModels.HomeRecViewModel
 import java.text.SimpleDateFormat
 import java.util.*
@@ -197,7 +183,6 @@ class AddMeasurements : AppCompatActivity() {
 
                 when(position){
                     0 -> { binding.txtvwMtime1.visibility= View.VISIBLE
-                        binding.linLayoutMdate.visibility=View.VISIBLE
                         binding.txtvwMtime2.visibility = View.GONE
                         binding.txtvwMtime3.visibility = View.GONE
                         binding.txtvwMtime4.visibility = View.GONE
@@ -207,7 +192,6 @@ class AddMeasurements : AppCompatActivity() {
                     }
                     1 -> {binding.txtvwMtime1.visibility= View.VISIBLE
                         binding.txtvwMtime2.visibility=View.VISIBLE
-                        binding.linLayoutMdate.visibility=View.VISIBLE
                         binding.txtvwMtime3.visibility = View.GONE
                         binding.txtvwMtime4.visibility = View.GONE
                         binding.txtvwMtime5.visibility=View.GONE
@@ -217,7 +201,6 @@ class AddMeasurements : AppCompatActivity() {
                         binding.txtvwMtime1.visibility = View.VISIBLE
                         binding.txtvwMtime2.visibility=View.VISIBLE
                         binding.txtvwMtime3.visibility=View.VISIBLE
-                        binding.linLayoutMdate.visibility=View.VISIBLE
                         binding.txtvwMtime4.visibility = View.GONE
                         binding.txtvwMtime5.visibility=View.GONE
                         binding.txtvwMtime6.visibility=View.GONE
@@ -228,7 +211,6 @@ class AddMeasurements : AppCompatActivity() {
                         binding.txtvwMtime2.visibility=View.VISIBLE
                         binding.txtvwMtime3.visibility=View.VISIBLE
                         binding.txtvwMtime4.visibility=View.VISIBLE
-                        binding.linLayoutMdate.visibility=View.VISIBLE
                         binding.txtvwMtime5.visibility=View.GONE
                         binding.txtvwMtime6.visibility=View.GONE
                         binding.txtvwMtime7.visibility=View.GONE
@@ -239,7 +221,6 @@ class AddMeasurements : AppCompatActivity() {
                         binding.txtvwMtime3.visibility=View.VISIBLE
                         binding.txtvwMtime4.visibility=View.VISIBLE
                         binding.txtvwMtime5.visibility=View.VISIBLE
-                        binding.linLayoutMdate.visibility=View.VISIBLE
                         binding.txtvwMtime6.visibility=View.GONE
                         binding.txtvwMtime7.visibility=View.GONE
 
@@ -251,7 +232,6 @@ class AddMeasurements : AppCompatActivity() {
                         binding.txtvwMtime4.visibility=VISIBLE
                         binding.txtvwMtime5.visibility=VISIBLE
                         binding.txtvwMtime6.visibility= VISIBLE
-                        binding.linLayoutMdate.visibility=View.VISIBLE
                         binding.txtvwMtime7.visibility=View.GONE
                     }
                     6->{
@@ -262,7 +242,6 @@ class AddMeasurements : AppCompatActivity() {
                         binding.txtvwMtime5.visibility=VISIBLE
                         binding.txtvwMtime6.visibility= VISIBLE
                         binding.txtvwMtime7.visibility= VISIBLE
-                        binding.linLayoutMdate.visibility=View.VISIBLE
 
                     }
                     else -> {
@@ -272,7 +251,6 @@ class AddMeasurements : AppCompatActivity() {
                         binding.txtvwMtime5.visibility=View.GONE
                         binding.txtvwMtime6.visibility=View.GONE
                         binding.txtvwMtime7.visibility=View.GONE
-                        binding.linLayoutMdate.visibility=View.GONE
 
                     }
                 }
@@ -397,62 +375,6 @@ class AddMeasurements : AppCompatActivity() {
             timePicker.show()
 
         })
-        binding.txtvwMtime7.setOnClickListener(View.OnClickListener {
-            var calendar= Calendar.getInstance()
-            try{
-                var date=mtimeFormat.parse(binding.txtvwMtime7.text.toString())
-                calendar.time=date}
-            catch (e:Exception){
-                e.printStackTrace()
-            }
-            var timePicker=TimePickerDialog(this,TimePickerDialog.OnTimeSetListener{ view, hourOfDay, minute ->
-                var selectedTime=Calendar.getInstance()
-                selectedTime.set(Calendar.HOUR_OF_DAY,hourOfDay)
-                selectedTime.set(Calendar.MINUTE,minute)
-                binding.txtvwMtime7.setText(mtimeFormat.format(selectedTime.time))
-            },
-                calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),false)
-
-            timePicker.show()
-
-        })
-        binding.mstDate.setOnClickListener(View.OnClickListener {
-            val now=Calendar.getInstance()
-            try{
-                var date=dateFormat.parse(binding.mstDate.text.toString())
-                now.time=date}
-            catch (e:Exception){
-                e.printStackTrace()
-            }
-            val datePicker=
-                DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-                    var selectedDate=Calendar.getInstance()
-                    selectedDate.set(Calendar.YEAR,year)
-                    selectedDate.set(Calendar.MONTH,month)
-                    selectedDate.set(Calendar.DAY_OF_MONTH,dayOfMonth)
-                    binding.mstDate.setText(dateFormat.format(selectedDate.time))
-                },
-                    now.get(Calendar.YEAR),now.get(Calendar.MONTH),now.get(Calendar.DAY_OF_MONTH))
-            datePicker.show()
-        })
-        binding.mendDate.setOnClickListener(View.OnClickListener {
-            val now=Calendar.getInstance()
-            try{
-                var date=dateFormat.parse(binding.mendDate.text.toString())
-                now.time=date}
-            catch (e:Exception){
-                e.printStackTrace()
-            }
-            val datePicker=DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-                var selectedDate=Calendar.getInstance()
-                selectedDate.set(Calendar.YEAR,year)
-                selectedDate.set(Calendar.MONTH,month)
-                selectedDate.set(Calendar.DAY_OF_MONTH,dayOfMonth)
-                binding.mendDate.setText(dateFormat.format(selectedDate.time))
-            },
-                now.get(Calendar.YEAR),now.get(Calendar.MONTH),now.get(Calendar.DAY_OF_MONTH))
-            datePicker.show()
-        })
 //        var adapter=ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,doseChoice)
 //        binding.dosequantityunit.setAdapter(adapter)
 //        binding.dosequantityunit.setThreshold(2)
@@ -530,7 +452,6 @@ private fun addMeasrementReminder() {
             viewModel.onAddClick(remider)
         }
         else{
-            Toast.makeText(this, "Mandatory fields are missing" , Toast.LENGTH_SHORT).show()
         }
     }
 //    val intent = Intent(this, HomeScreen::class.java)

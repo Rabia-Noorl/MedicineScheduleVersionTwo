@@ -1,37 +1,28 @@
-package com.example.medicineschedule.fragments.more
+package com.example.medicineschedule.fragments.appointments
 
 import android.annotation.SuppressLint
-import android.app.Dialog
-import android.app.TimePickerDialog
+import android.app.*
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
-import com.bumptech.glide.Glide
 import com.example.medicineschedule.*
+import com.example.medicineschedule.classes.AlarmReceiver
 import com.example.medicineschedule.database.ReminderTracker
-import com.example.medicineschedule.databinding.FragmentHomeBinding
 import com.example.medicineschedule.databinding.FragmentMoreBinding
-import com.example.medicineschedule.fragments.home.HomeFragment
-import com.example.medicineschedule.fragments.medication.MedicationFragment
-import com.example.medicineschedule.fragments.pharmacy.PharmacyFragment
+import com.example.medicineschedule.fragments.medicines.HomeFragment
 import com.example.medicineschedule.viewModels.AppointmentViewModel
-import com.example.medicineschedule.viewModels.HomeRecViewModel
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_dictionary.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -43,6 +34,9 @@ class MoreFragment : Fragment() {
     private lateinit var binding: FragmentMoreBinding
     lateinit var viewModel: AppointmentViewModel
     lateinit var alertdialogbuilder: AlertDialog.Builder
+    lateinit var alarmManager: AlarmManager
+    lateinit var calendar: Calendar
+    lateinit var pendingIntent: PendingIntent
     var timeFormat= SimpleDateFormat("hh:mm a", Locale.US)
 
 
@@ -92,10 +86,92 @@ class MoreFragment : Fragment() {
                 var initialText  = binding.initialTV
                 anim.isVisible = recViewList.isEmpty()
                 initialText.isVisible = recViewList.isEmpty()
+                setAlarm(recViewList)
+                cancelAlarm(recViewList)
             }
         }
 
     }
+
+    private fun setAlarm(list: List<ReminderTracker>) {
+        list.forEach() {
+            var str = it.dateTimes.toString()
+            val sdf = SimpleDateFormat("hh:mm a", Locale.ENGLISH)
+            calendar = Calendar.getInstance()
+            calendar.time = sdf.parse(str)
+            calendar[Calendar.YEAR] = Calendar.getInstance().get(Calendar.YEAR)
+            calendar[Calendar.MONTH] = Calendar.getInstance().get(Calendar.MONTH)
+            calendar[Calendar.DAY_OF_MONTH] = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+            calendar[Calendar.HOUR_OF_DAY] = calendar.time.hours
+            calendar[Calendar.MINUTE] = calendar.time.minutes
+            calendar[Calendar.SECOND] = 0
+            calendar[Calendar.MILLISECOND] = 0
+            val date = Date()
+            if (calendar.time.after(date)) {
+                alarmManager =
+                    requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                val intent = Intent(context, AlarmReceiver::class.java)
+                intent.putExtra("type", "doc")
+                intent.putExtra("name", "${it.names} ${it.types}")
+                pendingIntent = PendingIntent.getBroadcast(context, it.id, intent, 0)
+                alarmManager.setExact(
+                    AlarmManager.RTC_WAKEUP,
+                    calendar.timeInMillis,
+                    pendingIntent
+                )
+
+            } else if (calendar.time.before(date)) {
+                if (it.status == "") {
+
+                    var reminder = ReminderTracker(
+                        "${it.reminderType}",
+                        "${it.types}",
+                        "${it.names}",
+                        "${it.dateTimes}",
+                        "Taken", "${it.quantity}",
+                        "${it.instructions}",
+                        "${it.strenght}",
+                        "${it.startDate}",
+                        "${it.endDate}",
+                        "${it.recodeCreationDate}",
+                        it.deleteFlage
+                    )
+                    reminder.id = it.id
+                    viewModel.onEditClick(reminder)
+                }
+            }
+
+        }
+    }
+
+    private fun cancelAlarm(list: List<ReminderTracker>) {
+        list.forEach() {
+            if (it.deleteFlage == true) {
+                alarmManager =
+                    requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                val intent = Intent(context, AlarmReceiver::class.java)
+                pendingIntent = PendingIntent.getBroadcast(context, it.id, intent, 0)
+                alarmManager.cancel(pendingIntent)
+                Toast.makeText(context, "Alarm remove successfully", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun creatNotificationChannel() {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
+            val name = "ReminderChannel"
+            val description = "Channel for Alarm Manager"
+            val importance = NotificationManager.IMPORTANCE_HIGH
+            val channel = NotificationChannel("AlarmId", name, importance)
+            channel.description = description
+            val notificationManager = requireContext().getSystemService(
+                NotificationManager::class.java
+            )
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
+
     @SuppressLint("ResourceAsColor")
     private fun dialogeBuild(reminderTracker: ReminderTracker) {
         val width = (resources.displayMetrics.widthPixels * 0.85).toInt()

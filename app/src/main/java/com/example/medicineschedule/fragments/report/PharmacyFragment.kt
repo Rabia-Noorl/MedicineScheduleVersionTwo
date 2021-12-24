@@ -1,4 +1,4 @@
-package com.example.medicineschedule.fragments.pharmacy
+package com.example.medicineschedule.fragments.report
 
 import android.annotation.SuppressLint
 import android.content.DialogInterface
@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -167,9 +166,9 @@ class PharmacyFragment : Fragment() {
                                 var percentSkipped =
                                     ((skippedList.size / it.size.toFloat()) * 100).toInt()
 
-                                binding.takenPercentTv.setText(percentTaken.toString() + "% Taken")
-                                binding.missedPercentTV.setText(percentMissed.toString() + "% Missed")
-                                binding.skippedPercentTV.setText(percentSkipped.toString() + "% Skipped")
+                                binding.takenPercentTv.setText("${takenList.size}/${it.size} Taken")
+                                binding.missedPercentTV.setText("${missedList.size}/${it.size} Missed")
+                                binding.skippedPercentTV.setText("${skippedList.size}/${it.size} Skipped")
 
                                 binding.takeCircularProgressBar.apply {
                                     this.progressMax = it.size.toFloat()

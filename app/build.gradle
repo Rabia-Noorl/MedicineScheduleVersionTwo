@@ -49,6 +49,9 @@ android {
 }
 
 dependencies {
+
+
+    def work_version = "2.7.1"
     //firestore dependency
 
     //glide library
@@ -150,6 +153,9 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.4.1"
 
     implementation "com.google.firebase:firebase-database:20.0.3"
+
+    //work manager
+    implementation("androidx.work:work-runtime-ktx:$work_version")
 
 }
 

@@ -5,20 +5,20 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@id/navigation_home">
     <fragment android:id="@+id/navigation_home"
-        android:name="com.example.medicineschedule.fragments.home.HomeFragment"
+        android:name="com.example.medicineschedule.fragments.medicines.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home"/>
     <fragment android:id="@+id/navigation_pharmacy"
-        android:name="com.example.medicineschedule.fragments.pharmacy.PharmacyFragment"
+        android:name="com.example.medicineschedule.fragments.report.PharmacyFragment"
         android:label="Pharmacy"
         tools:layout="@layout/fragment_pharmacy"/>
     <fragment android:id="@+id/navigation_more"
-        android:name="com.example.medicineschedule.fragments.more.MoreFragment"
+        android:name="com.example.medicineschedule.fragments.appointments.MoreFragment"
         android:label="More"
         tools:layout="@layout/fragment_more"/>
     <fragment
         android:id="@+id/navigation_medication"
-        android:name="com.example.medicineschedule.fragments.medication.MedicationFragment"
+        android:name="com.example.medicineschedule.fragments.measurement.MedicationFragment"
         android:label="Medication"
         tools:layout="@layout/fragment_medication2"/>
 </navigation>

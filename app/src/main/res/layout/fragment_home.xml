@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutDescription="@xml/fragment_home_scene"
-        tools:context=".fragments.home.HomeFragment">
+        tools:context=".fragments.medicines.HomeFragment">
 
 
         <androidx.appcompat.widget.LinearLayoutCompat
