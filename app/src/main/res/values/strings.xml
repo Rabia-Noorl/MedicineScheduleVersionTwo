@@ -74,6 +74,7 @@
     </string-array>
 
 
+    <string name="Datanotfound">Data is not available!</string>
     <string name="prompt">Select Mode</string>
     <string name="report_initiale_text">No Medications Log\n Try changing the log period from above</string>
 

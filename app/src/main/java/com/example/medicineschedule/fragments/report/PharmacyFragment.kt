@@ -166,9 +166,9 @@ class PharmacyFragment : Fragment() {
                                 var percentSkipped =
                                     ((skippedList.size / it.size.toFloat()) * 100).toInt()
 
-                                binding.takenPercentTv.setText("${takenList.size}/${it.size}")
-                                binding.missedPercentTV.setText("${missedList.size}/${it.size}")
-                                binding.skippedPercentTV.setText("${skippedList.size}/${it.size}")
+                                binding.takenPercentTv.setText("${takenList.size} OUT OF ${it.size}")
+                                binding.missedPercentTV.setText("${missedList.size} OUT OF ${it.size}")
+                                binding.skippedPercentTV.setText("${skippedList.size} OUT OF ${it.size}")
 
                                 binding.takeCircularProgressBar.apply {
                                     this.progressMax = it.size.toFloat()
@@ -207,9 +207,9 @@ class PharmacyFragment : Fragment() {
                                 var percentSkipped =
                                     ((skippedList.size / it2.size.toFloat()) * 100).toInt()
 
-                                binding.takenPercentTv.setText(percentTaken.toString() + "% Taken")
-                                binding.missedPercentTV.setText(percentMissed.toString() + "% Missed")
-                                binding.skippedPercentTV.setText(percentSkipped.toString() + "% Skipped")
+                                binding.takenPercentTv.setText("${takenList.size} OUT OF ${it.size}")
+                                binding.missedPercentTV.setText("${missedList.size} OUT OF ${it.size}")
+                                binding.skippedPercentTV.setText("${skippedList.size} OUT OF ${it.size}")
 
                                 binding.takeCircularProgressBar.apply {
                                     this.progressMax = it2.size.toFloat()
