@@ -47,8 +47,8 @@ class AddMeasurements : AppCompatActivity() {
         var selectedIns=instructionChoice[index]
         binding.MInstructions.setText(selectedIns)
         var mtimeChoice= arrayOf("Once a day","2 times a day","3 times a day","4 times a day","5 times a day","6 times a day","7 times a day")
-        var selectedTime=instructionChoice[index]
-        binding.txtvwMtime.setText(selectedIns)
+        var selectedTime=mtimeChoice[index]
+        binding.txtvwMtime.setText(selectedTime)
         binding.txtvwMtime1.visibility= VISIBLE
         var mtimeFormat= SimpleDateFormat("hh:mm a", Locale.US)
         var dateFormat=SimpleDateFormat("dd MMM yyyy",Locale.US)

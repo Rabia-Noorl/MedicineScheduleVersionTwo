@@ -99,7 +99,7 @@ class HomeScreen : AppCompatActivity() {
 
                 }
                 R.id.share ->{
-                    val shareBody="Download Medica360 on Playstore: https://play.google.com&hl=en"
+                    val shareBody="Download Medica360 on Playstore: https://play.google.com"
                     val shareSub="Medica 360"
                     val shareIntent=Intent(Intent.ACTION_SEND)
                     shareIntent.type="text/plain"

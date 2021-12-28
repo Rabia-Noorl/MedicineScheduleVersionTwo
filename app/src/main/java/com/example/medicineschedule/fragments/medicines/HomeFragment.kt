@@ -7,7 +7,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,12 +23,14 @@ import com.bumptech.glide.Glide
 import com.example.medicineschedule.*
 import com.example.medicineschedule.classes.AlarmReceiver
 import com.example.medicineschedule.classes.WorkerUpdateRV
+import com.example.medicineschedule.classes.updatRVreceiver
 import com.example.medicineschedule.database.ReminderTracker
 import com.example.medicineschedule.databinding.FragmentHomeBinding
 import com.example.medicineschedule.viewModels.HomeRecViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.dialog_frag_layout.*
+import java.io.Serializable
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -55,7 +56,6 @@ class HomeFragment : Fragment(){
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
-          //  setUpWorker()
         }
 
         private fun setUpWorker() {
@@ -73,27 +73,12 @@ class HomeFragment : Fragment(){
             val view = binding.root
             mAuth = FirebaseAuth.getInstance()
             creatNotificationChannel()
-            setUpWorker()
-
             currentUser = mAuth.currentUser!!
             val parts = currentUser.displayName?.split(" ")
             val firstName = parts?.get(0)
             binding.userNametextView.setText(firstName)
             Glide.with(this).load(currentUser?.photoUrl).into(binding.imageProfile)
 
-
-//        val db=FirebaseFirestore.getInstance()
-//        db.collection("users").get().addOnCompleteListener{
-//            val result=StringBuffer()
-//            if(it.isSuccessful){
-//                for(document in it.result!!)
-//                {nav
-//                    result.append(document.data.getValue("Username"))
-//                }
-//                binding.userNametextView.setText(result)
-//            }
-//        }
-//        checkUser()
             return view
 
         }
@@ -118,12 +103,12 @@ class HomeFragment : Fragment(){
                 dialogeBuild(reminder)
             }
             viewModel.allRemiders.observe(viewLifecycleOwner) {
-
                 it?.let {
                     val recViewList = ArrayList<ReminderTracker>()
                     it.forEach {
                         if (it.reminderType == "med" && !it.deleteFlage) {
                             recViewList.add(it)
+
                         }
                     }
                     viewModel.addFun(recViewList)
@@ -134,6 +119,7 @@ class HomeFragment : Fragment(){
                     getStarted.isVisible = recViewList.isEmpty()
                     initialText.isVisible = recViewList.isEmpty()
                     setAlarm(recViewList)
+                    setAlarm(recViewList, "update")
                     cancelAlarm(recViewList)
                 }
             }
@@ -200,6 +186,7 @@ class HomeFragment : Fragment(){
             }
 
         }
+
         private fun setAlarm(list: List<ReminderTracker>) {
             list.forEach() {
                 var str = it.dateTimes.toString()
@@ -227,26 +214,27 @@ class HomeFragment : Fragment(){
                         pendingIntent
                     )
 
-                } else if (calendar.time.before(date)) {
-                    if (it.status == "") {
-
-                        var reminder = ReminderTracker(
-                            "${it.reminderType}",
-                            "${it.types}",
-                            "${it.names}",
-                            "${it.dateTimes}",
-                            "Taken", "${it.quantity}",
-                            "${it.instructions}",
-                            "${it.strenght}",
-                            "${it.startDate}",
-                            "${it.endDate}",
-                            "${it.recodeCreationDate}",
-                            it.deleteFlage
-                        )
-                        reminder.id = it.id
-                        viewModel.onEditClick(reminder)
-                    }
                 }
+//                else if (calendar.time.before(date)) {
+//                    if (it.status == "") {
+//
+//                        var reminder = ReminderTracker(
+//                            "${it.reminderType}",
+//                            "${it.types}",
+//                            "${it.names}",
+//                            "${it.dateTimes}",
+//                            "Taken", "${it.quantity}",
+//                            "${it.instructions}",
+//                            "${it.strenght}",
+//                            "${it.startDate}",
+//                            "${it.endDate}",
+//                            "${it.recodeCreationDate}",
+//                            it.deleteFlage
+//                        )
+//                        reminder.id = it.id
+//                        viewModel.onEditClick(reminder)
+//                    }
+//                }
 
             }
         }
@@ -511,12 +499,28 @@ class HomeFragment : Fragment(){
                 startActivity(intent)
             }
         }
-    public fun upDateRV(){
-        val list =  viewModel.allRemiders.value
-        var i  = list?.get(1)
 
-        if (i != null) {
-            Log.d("worker" ,"from home fragment now ${i.id}")
+    private fun setAlarm(list: List<ReminderTracker>, update:String) {
+        val calendar = Calendar.getInstance()
+            calendar[
+                    calendar[Calendar.YEAR],
+                    calendar[Calendar.MONTH],
+                    calendar[Calendar.DAY_OF_MONTH],
+                    calendar[Calendar.HOUR_OF_DAY],
+                    calendar[Calendar.MINUTE]
+            ] = 0
+        calendar[Calendar.SECOND] = 2
+                alarmManager =
+                    requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                val intent = Intent(context, updatRVreceiver::class.java)
+        var bundle = Bundle()
+        bundle.putSerializable("reminder", list as Serializable)
+        intent.putExtra("bundle" , bundle)
+                pendingIntent = PendingIntent.getBroadcast(context, 100, intent, 0)
+                alarmManager.setRepeating(
+                    AlarmManager.RTC_WAKEUP,
+                    calendar.timeInMillis,
+                    AlarmManager.INTERVAL_DAY,
+                    pendingIntent)
         }
-    }
     }
