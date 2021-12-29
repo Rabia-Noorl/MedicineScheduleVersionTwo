@@ -59,10 +59,10 @@ class updatRVreceiver : BroadcastReceiver() {
                     ReminderDatabase.getDatabase(context).getReminderDao().update(reminderTwo)
                 }
             }
-            alarmOnly(context)
-            if (context != null) {
-                vibrateFuc(context)
-            }
+//            alarmOnly(context)
+//            if (context != null) {
+//                vibrateFuc(context)
+//            }
         }
     }
 
