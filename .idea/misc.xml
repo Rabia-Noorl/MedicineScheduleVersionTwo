@@ -68,6 +68,8 @@
         <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineSchedulVOne/app/src/main/res/layout/view_of_measurment_rv.xml" value="0.1" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineSchedulVOne/app/src/main/res/layout/view_of_medicines_rv.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineSchedulVOne/app/src/main/res/layout/view_of_report.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineScheduleVersionTwoFour/app/src/main/res/layout/dialog_frag_layout.xml" value="0.67" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineScheduleVersionTwoFour/app/src/main/res/layout/edit_record_dialoge.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleFour/app/src/main/res/layout/activity_add_doctor.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleFour/app/src/main/res/layout/activity_add_dose.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/PillsScheduleFour/app/src/main/res/layout/activity_add_measurements.xml" value="0.20416666666666666" />
@@ -146,7 +148,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

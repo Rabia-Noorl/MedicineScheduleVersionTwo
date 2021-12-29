@@ -127,10 +127,6 @@ class HomeScreen : AppCompatActivity() {
         navUserEmail.setText(currentUser?.email)
         navUsername.setText(currentUser?.displayName)
         Glide.with(this).load(currentUser?.photoUrl).into(navUserphoto)
-
-
-
-
     }
 
     private fun singOutUser() {
