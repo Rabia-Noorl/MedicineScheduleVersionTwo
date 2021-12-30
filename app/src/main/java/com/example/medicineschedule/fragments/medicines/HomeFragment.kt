@@ -530,10 +530,10 @@ class HomeFragment : Fragment(){
         calendar[
                 calendar[Calendar.YEAR],
                 calendar[Calendar.MONTH],
-                calendar[Calendar.DAY_OF_MONTH] + 1,
-                calendar[Calendar.HOUR_OF_DAY],
-                calendar[Calendar.MINUTE],
+                calendar[Calendar.DAY_OF_MONTH],
+                calendar[Calendar.HOUR_OF_DAY]
         ] = 0
+        calendar[Calendar.MINUTE] = 1
         alarmManager =
             requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, updatRVreceiver::class.java)

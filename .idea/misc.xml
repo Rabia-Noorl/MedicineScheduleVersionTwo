@@ -69,11 +69,16 @@
         <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineSchedulVOne/app/src/main/res/layout/view_of_medicines_rv.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineSchedulVOne/app/src/main/res/layout/view_of_report.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineScheduleVersionTwoFour/app/src/main/res/layout/activity_add_doctor.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineScheduleVersionTwoFour/app/src/main/res/layout/detail_info_recyclerview_view.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineScheduleVersionTwoFour/app/src/main/res/layout/detail_info_recyclerview_view.xml" value="0.1" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineScheduleVersionTwoFour/app/src/main/res/layout/dialog_frag_layout.xml" value="0.33" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineScheduleVersionTwoFour/app/src/main/res/layout/edit_record_dialoge.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineScheduleVersionTwoFour/app/src/main/res/layout/fragment_aavailable__form_.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineScheduleVersionTwoFour/app/src/main/res/layout/fragment_alternate__brands_.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineScheduleVersionTwoFour/app/src/main/res/layout/fragment_detailed__info_.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineScheduleVersionTwoFour/app/src/main/res/layout/fragment_dosage_.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineScheduleVersionTwoFour/app/src/main/res/layout/fragment_drug__info_.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineScheduleVersionTwoFour/app/src/main/res/layout/fragment_included__drugs_.xml" value="0.25" />
+        <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineScheduleVersionTwoFour/app/src/main/res/layout/view_included_drugs.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineScheduleVersionTwoFour/app/src/main/res/layout/view_of_dashboard_rv.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineScheduleVersionTwoFour/app/src/main/res/layout/view_of_medicines_rv.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rabia/AndroidStudioProjects/MedicineScheduleVersionTwoFour/app/src/main/res/layout/view_of_report.xml" value="0.20416666666666666" />
