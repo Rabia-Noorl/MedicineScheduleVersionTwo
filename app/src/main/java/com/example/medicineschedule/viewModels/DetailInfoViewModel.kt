@@ -58,7 +58,7 @@ open class DetailInfoViewModel(application: Application) : AndroidViewModel(appl
 
     private fun showClickMessage(drug: Drug) {
         _toastMessage.postValue(
-            "${drug.name}  is clicked"
+            "$drug is clicked"
         )
     }
     private fun DrugItemViewModel.toRecyclerItem() = RecyclerItem(

@@ -17,20 +17,25 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/cancelBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_baseline_cancel_24" />
+
+        <ImageView
             android:id="@+id/editImg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_gravity="start"
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/deleteImg"
+            app:srcCompat="@drawable/ic_baseline_edit_24_new" />
 
         <ImageView
             android:id="@+id/deleteImg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="384dp"
-            app:srcCompat="@drawable/ic_delete" />
+            app:srcCompat="@drawable/ic_baseline_delete_24" />
 
     </RelativeLayout>
 

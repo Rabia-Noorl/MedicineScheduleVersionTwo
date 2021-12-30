@@ -631,7 +631,6 @@ class AddDose : AppCompatActivity() {
             .setNegativeButton("No") { dialogInterface, it ->
                 dialogInterface.cancel()
 
-
             }.show()
     }
 
@@ -678,7 +677,6 @@ class AddDose : AppCompatActivity() {
                 )
                // setAlarm(remider)
                 viewModel.onAddClick(remider)
-                Toast.makeText(this,"${remider.id} ${remider.dateTimes}", Toast.LENGTH_LONG).show()
             } else {
             }
         }
@@ -687,34 +685,4 @@ class AddDose : AppCompatActivity() {
         finish()
 
     }
-
-   // private fun setAlarm(reminderTracker: ReminderTracker) {
-//        var str = reminderTracker.dateTimes.toString()
-//        val sdf = SimpleDateFormat("hh:mm a", Locale.ENGLISH)
-//        calendar = Calendar.getInstance()
-//        calendar.time = sdf.parse(str)
-//        calendar[Calendar.YEAR] = Calendar.getInstance().get(Calendar.YEAR)
-//        calendar[Calendar.MONTH] = Calendar.getInstance().get(Calendar.MONTH)
-//        calendar[Calendar.DAY_OF_MONTH] = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
-//        calendar[Calendar.HOUR_OF_DAY] = calendar.time.hours
-//        calendar[Calendar.MINUTE] = calendar.time.minutes
-//        calendar[Calendar.SECOND] = 0
-//        calendar[Calendar.MILLISECOND] = 0
-//        val date = Date()
-//        if (calendar.time.after(date)) {
-//            alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-//            val intent = Intent(this, AlarmReceiver::class.java)
-//            intent.putExtra("type", "med")
-//            intent.putExtra(
-//                "name",
-//                "You have ${reminderTracker.names} ${reminderTracker.types} to take!"
-//            )
-//            pendingIntent = PendingIntent.getBroadcast(this, reminderTracker.id, intent, 0)
-//            alarmManager.setExact(
-//                AlarmManager.RTC_WAKEUP,
-//                calendar.timeInMillis,
-//                pendingIntent
-//            )
-//        }
-//    }
 }

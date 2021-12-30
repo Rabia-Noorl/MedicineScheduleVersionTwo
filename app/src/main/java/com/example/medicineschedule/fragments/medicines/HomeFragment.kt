@@ -227,7 +227,6 @@ class HomeFragment : Fragment(){
                     calendar.timeInMillis,AlarmManager.INTERVAL_DAY,
                     pendingIntent
                 )
-
             }
             else if (calendar.time.before(date)) {
                 if (it.status == "") {
@@ -297,7 +296,7 @@ class HomeFragment : Fragment(){
 
         var deletBtn = d?.findViewById<ImageView>(R.id.deleteImg)
         var editBtn = d?.findViewById<ImageView>(R.id.editImg)
-        var medImg = d?.findViewById<ImageView>(R.id.medImg)
+        var cancelBtn = d?.findViewById<ImageView>(R.id.cancelBtn)
 
         var nameTv = d?.findViewById<TextView>(R.id.nameTV)
         var statusTV = d?.findViewById<TextView>(R.id.statusTV)
@@ -471,7 +470,6 @@ class HomeFragment : Fragment(){
                     calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false
                 )
             timePicker.show()
-
         }
 
         deletBtn.setOnClickListener {
@@ -508,39 +506,44 @@ class HomeFragment : Fragment(){
             }
         }
         editImg.setOnClickListener {
+            d?.cancel()
             val intent = Intent(context, AddDose::class.java)
             intent.putExtra("med", reminderTracker)
             startActivity(intent)
         }
+        cancelBtn.setOnClickListener{
+            d?.cancel()
+        }
+
     }
 
     private fun setAlarm(list: List<ReminderTracker>, update:String) {
-        val c = Calendar.getInstance()
-        c[Calendar.HOUR_OF_DAY] = 1 //then set the other fields to 0
-        c[Calendar.MINUTE] = 0
-        c[Calendar.SECOND] = 0
-        c[Calendar.MILLISECOND] = 0
-        c.timeInMillis - System.currentTimeMillis()
-        Log.d("timefromfragmnet", "$c")
+//        val c = Calendar.getInstance()
+//        c[Calendar.HOUR_OF_DAY] = 1 //then set the other fields to 0
+//        c[Calendar.MINUTE] = 0
+//        c[Calendar.SECOND] = 0
+//        c[Calendar.MILLISECOND] = 0
+//        c.timeInMillis - System.currentTimeMillis()
+//        Log.d("timefromfragmnet", "$c")
 
         val calendar = Calendar.getInstance()
         calendar[
                 calendar[Calendar.YEAR],
                 calendar[Calendar.MONTH],
-                calendar[Calendar.DAY_OF_MONTH],
-                calendar[Calendar.HOUR_OF_DAY]
+                calendar[Calendar.DAY_OF_MONTH] + 1,
+                calendar[Calendar.HOUR_OF_DAY],
+                calendar[Calendar.MINUTE],
         ] = 0
-        calendar[Calendar.MINUTE] = 59
         alarmManager =
             requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, updatRVreceiver::class.java)
         var bundle = Bundle()
         bundle.putSerializable("reminder", list as Serializable)
         intent.putExtra("bundle" , bundle)
-        pendingIntent = PendingIntent.getBroadcast(context, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        pendingIntent = PendingIntent.getBroadcast(context, 98765432, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         alarmManager.setRepeating(
             AlarmManager.RTC_WAKEUP,
-            c.timeInMillis,AlarmManager.INTERVAL_DAY,
+            calendar.timeInMillis,AlarmManager.INTERVAL_DAY,
             pendingIntent)
     }
 }

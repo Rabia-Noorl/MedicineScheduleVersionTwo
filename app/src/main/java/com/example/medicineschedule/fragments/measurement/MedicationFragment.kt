@@ -7,6 +7,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,10 +22,12 @@ import com.example.medicineschedule.AddDose
 import com.example.medicineschedule.AddMeasurements
 import com.example.medicineschedule.R
 import com.example.medicineschedule.classes.AlarmReceiver
+import com.example.medicineschedule.classes.updatRVreceiver
 import com.example.medicineschedule.database.ReminderTracker
 import com.example.medicineschedule.databinding.FragmentMedication2Binding
 import com.example.medicineschedule.fragments.medicines.HomeFragment
 import com.example.medicineschedule.viewModels.MeasurmentViewModel
+import java.io.Serializable
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -84,6 +87,7 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
                     anim.isVisible = recViewList.isEmpty()
                     initialText.isVisible = recViewList.isEmpty()
                     setAlarm(recViewList)
+                    setAlarm(recViewList, "update")
                     cancelAlarm(recViewList)
                 }
             }
@@ -391,5 +395,35 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
             intent.putExtra("mes", reminderTracker)
             startActivity(intent)
         }
+    }
+
+    private fun setAlarm(list: List<ReminderTracker>, update:String) {
+        val c = Calendar.getInstance()
+        c[Calendar.HOUR_OF_DAY] = 1 //then set the other fields to 0
+        c[Calendar.MINUTE] = 0
+        c[Calendar.SECOND] = 0
+        c[Calendar.MILLISECOND] = 0
+        c.timeInMillis - System.currentTimeMillis()
+        Log.d("timefromfragmnet", "$c")
+
+        val calendar = Calendar.getInstance()
+        calendar[
+                calendar[Calendar.YEAR],
+                calendar[Calendar.MONTH] + 1,
+                calendar[Calendar.DAY_OF_MONTH],
+                calendar[Calendar.HOUR_OF_DAY]
+        ] = 0
+        calendar[Calendar.MINUTE] = 2
+        alarmManager =
+            requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(context, updatRVreceiver::class.java)
+        var bundle = Bundle()
+        bundle.putSerializable("reminder", list as Serializable)
+        intent.putExtra("bundle" , bundle)
+        pendingIntent = PendingIntent.getBroadcast(context, 987654321, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        alarmManager.setRepeating(
+            AlarmManager.RTC_WAKEUP,
+            calendar.timeInMillis,AlarmManager.INTERVAL_DAY,
+            pendingIntent)
     }
 }

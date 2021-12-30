@@ -45,6 +45,10 @@ class Detailed_Info_Fragment : Fragment() {
             }
         }
 
+        viewModel.toastMessage.observe(viewLifecycleOwner){
+            Toast.makeText(context,"$it",Toast.LENGTH_SHORT).show()
+        }
+
     }
 
 }

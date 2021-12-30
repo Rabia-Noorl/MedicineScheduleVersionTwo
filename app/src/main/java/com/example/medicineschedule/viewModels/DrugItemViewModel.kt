@@ -9,4 +9,5 @@ class DrugItemViewModel(var drug:Drug) {
     fun onItemClick() {
         itemClickHandler(drug)
     }
+
 }
