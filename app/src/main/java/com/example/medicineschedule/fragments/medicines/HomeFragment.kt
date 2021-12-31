@@ -86,12 +86,12 @@ class HomeFragment : Fragment(){
         val view = binding.root
 
         creatNotificationChannel()
-//            mAuth = FirebaseAuth.getInstance()
-//            currentUser = mAuth.currentUser!!
-//            val parts = currentUser.displayName?.split(" ")
-//            val firstName = parts?.get(0)
-//            binding.userNametextView.setText(firstName)
-//            Glide.with(this).load(currentUser?.photoUrl).into(binding.imageProfile)
+            mAuth = FirebaseAuth.getInstance()
+            currentUser = mAuth.currentUser!!
+            val parts = currentUser.displayName?.split(" ")
+            val firstName = parts?.get(0)
+            binding.userNametextView.setText(firstName)
+            Glide.with(this).load(currentUser?.photoUrl).into(binding.imageProfile)
 
         return view
 
