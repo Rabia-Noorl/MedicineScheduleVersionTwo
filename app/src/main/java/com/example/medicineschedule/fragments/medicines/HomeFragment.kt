@@ -524,16 +524,25 @@ class HomeFragment : Fragment(){
 //        c[Calendar.SECOND] = 0
 //        c[Calendar.MILLISECOND] = 0
 //        c.timeInMillis - System.currentTimeMillis()
+//        Toast.makeText(context,"$c",Toast.LENGTH_SHORT).show()
 //        Log.d("timefromfragmnet", "$c")
 
+        var str = "12:00 am"
+        val s = SimpleDateFormat("hh:mm a", Locale.ENGLISH)
+        calendar = Calendar.getInstance()
         val calendar = Calendar.getInstance()
-        calendar[
-                calendar[Calendar.YEAR],
-                calendar[Calendar.MONTH],
-                calendar[Calendar.DAY_OF_MONTH],
-                calendar[Calendar.HOUR_OF_DAY]
-        ] = 0
-        calendar[Calendar.MINUTE] = 1
+        calendar.time = s.parse(str)
+
+     //   Toast.makeText(context,"$calendar.time", Toast.LENGTH_SHORT).show()
+        calendar[Calendar.YEAR] = Calendar.getInstance().get(Calendar.YEAR)
+        calendar[Calendar.MONTH] = Calendar.getInstance().get(Calendar.MONTH)
+        calendar[Calendar.DAY_OF_MONTH] = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+        calendar[Calendar.HOUR_OF_DAY] = calendar.time.hours
+        calendar[Calendar.MINUTE] = calendar.time.minutes
+        calendar[Calendar.SECOND] = 0
+        calendar[Calendar.MILLISECOND] = 0
+//      val sdf = SimpleDateFormat("EE MMM dd yyyy 'at:' hh:mm a ")
+//      val currentDate = sdf.format(Calendar.DATE)
         alarmManager =
             requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, updatRVreceiver::class.java)
