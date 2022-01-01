@@ -23,6 +23,7 @@ import android.os.Bundle
 
 
 class AlarmReceiver(): BroadcastReceiver() {
+
     override fun onReceive(context: Context?, intent: Intent?) {
         val type = intent?.getStringExtra("type")
         val name = intent?.getStringExtra("name")

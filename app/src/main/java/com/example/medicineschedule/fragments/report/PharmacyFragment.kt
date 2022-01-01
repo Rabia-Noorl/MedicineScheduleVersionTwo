@@ -138,7 +138,6 @@ class PharmacyFragment : Fragment() {
                         int?.let { it1 ->
                             getFillters(it, it1) }?.let { it2 ->
                             viewModel.addFun(it2)
-                            Toast.makeText(context,"${it.size} ${it2.size}" , Toast.LENGTH_SHORT).show()
                             if (int == 0) {
                                 anim.isVisible = true
                                 initialText.isVisible = true

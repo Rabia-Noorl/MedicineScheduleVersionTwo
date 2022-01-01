@@ -398,22 +398,22 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
     }
 
     private fun setAlarm(list: List<ReminderTracker>, update:String) {
-        val c = Calendar.getInstance()
-        c[Calendar.HOUR_OF_DAY] = 1 //then set the other fields to 0
-        c[Calendar.MINUTE] = 0
-        c[Calendar.SECOND] = 0
-        c[Calendar.MILLISECOND] = 0
-        c.timeInMillis - System.currentTimeMillis()
-        Log.d("timefromfragmnet", "$c")
+//        val c = Calendar.getInstance()
+//        c[Calendar.HOUR_OF_DAY] = 1 //then set the other fields to 0
+//        c[Calendar.MINUTE] = 0
+//        c[Calendar.SECOND] = 0
+//        c[Calendar.MILLISECOND] = 0
+//        c.timeInMillis - System.currentTimeMillis()
+//        Log.d("timefromfragmnet", "$c")
 
         val calendar = Calendar.getInstance()
         calendar[
                 calendar[Calendar.YEAR],
-                calendar[Calendar.MONTH] + 1,
-                calendar[Calendar.DAY_OF_MONTH],
-                calendar[Calendar.HOUR_OF_DAY]
+                calendar[Calendar.MONTH] ,
+                calendar[Calendar.DAY_OF_MONTH] + 1,
+                calendar[Calendar.HOUR_OF_DAY],
+                calendar[Calendar.MINUTE]
         ] = 0
-        calendar[Calendar.MINUTE] = 2
         alarmManager =
             requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, updatRVreceiver::class.java)

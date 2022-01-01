@@ -1,42 +1,29 @@
 package com.example.medicineschedule.dictionary
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.Z
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.medicineschedule.R
 import com.example.medicineschedule.databinding.FragmentIncludedDrugsBinding
-import com.example.medicineschedule.viewModels.AlternateBrand_ViewModel
 import com.example.medicineschedule.viewModels.DetailInfoViewModel
-import com.example.medicineschedule.viewModels.Forms_ViewModel
-import com.example.medicineschedule.viewModels.IncludedDrugView_Model
 import kotlinx.android.synthetic.main.fragment_included__drugs_.*
-import java.lang.reflect.Array
-import java.util.*
-import java.util.Arrays
-import android.view.animation.LinearInterpolator
 
 class Included_Drugs_Fragment : Fragment(R.layout.fragment_included__drugs_) {
 
     lateinit var viewModel: DetailInfoViewModel
-
-    companion object{
-        var isRotateone:Boolean = false
-        var isRotatetwo:Boolean = false
-        var isRotatethree:Boolean = false
-        var isRotatefour:Boolean = false
-        var isRotatefive:Boolean = false
-        var isRotatesix:Boolean = false
-    }
+    var isRotateone:Boolean = false
+    var isRotatetwo:Boolean = false
+    var isRotatethree:Boolean = false
+    var isRotatefour:Boolean = false
+    var isRotatefive:Boolean = false
+    var isRotatesix:Boolean = false
 
     private lateinit var binding: FragmentIncludedDrugsBinding
     var naController: NavController? =null

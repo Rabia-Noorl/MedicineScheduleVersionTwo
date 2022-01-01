@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import com.example.medicineschedule.classes.MedicineSchedudle
 import com.example.medicineschedule.databinding.ActivitySignInWithGoogleBinding
 import com.google.android.gms.auth.api.signin.*
 import com.google.android.gms.common.api.ApiException
@@ -20,7 +21,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlinx.android.synthetic.main.activity_sign_in_with_google.*
 
-class SignInWithGoogle : AppCompatActivity() {
+class SignInWithGoogle :AppCompatActivity() {
     private lateinit var binding:ActivitySignInWithGoogleBinding
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var firebaseAuth: FirebaseAuth
