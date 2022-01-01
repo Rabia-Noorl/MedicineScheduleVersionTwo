@@ -22,11 +22,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_adapter_.*
 import kotlinx.android.synthetic.main.activity_home_screen.*
+import java.util.*
 
 
 class HomeScreen : AppCompatActivity() {
+
 
     private var searchBtn: Button? = null
     private var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -45,6 +48,8 @@ class HomeScreen : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true)
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)

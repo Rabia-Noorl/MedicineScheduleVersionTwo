@@ -63,12 +63,11 @@ class AddDose : AppCompatActivity() {
         binding.medicationName.setText(record?.names)
         binding.Instructions.setText(record?.instructions)
         binding.medTypeTV.setText(record?.types)
-        val parts = record?.quantity?.split(" ")
-        val firstPart = parts?.get(0)
-        binding.adddosequantity.setText(firstPart.toString())
+//        val parts = record?.quantity?.split(" ")
+//        val firstPart = parts?.get(0)
+//        binding.adddosequantity.setText(firstPart.toString())
         binding.customDoseinstruction.setText(record?.instructions)
         binding.txtvwdosetime1.setText(record?.dateTimes)
-
 
         db.collection("Medicines").get().addOnSuccessListener {
             it.forEach {

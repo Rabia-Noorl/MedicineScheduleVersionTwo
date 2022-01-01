@@ -14,7 +14,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.medicineschedule.DictionaryActivity
 import com.example.medicineschedule.R
 import com.example.medicineschedule.databinding.FragmentMedicationSearchBinding
+import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_medication_search.*
 
 class MedicationSearchFragment : Fragment(R.layout.fragment_medication_search) {
@@ -29,7 +31,6 @@ class MedicationSearchFragment : Fragment(R.layout.fragment_medication_search) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         naController = findNavController()
-
 
         db.collection("Medicines").get().addOnSuccessListener {
             it.forEach{
