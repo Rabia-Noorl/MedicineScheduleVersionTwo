@@ -364,7 +364,8 @@ class AddDose : AppCompatActivity() {
             var alertDialogIns = AlertDialog.Builder(this)
             alertDialogIns.setTitle("Select Instruction")
             alertDialogIns.setSingleChoiceItems(
-                instructionChoice, selectedIndex
+                instructionChoice,
+                selectedIndex
             ) { dialogInterface: DialogInterface, position: Int ->
                 selectedIndex = position
                 binding.Instructions.setText(instructionChoice[position])

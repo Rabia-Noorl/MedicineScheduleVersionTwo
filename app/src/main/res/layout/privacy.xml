@@ -85,15 +85,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:gravity="left"
-                        android:layout_marginTop="4dp"
                         android:layout_marginStart="12dp"
+                        android:layout_marginTop="4dp"
                         android:layout_marginEnd="12dp"
+                        android:gravity="left"
                         android:text="While using Our Service, We may ask You to provide Us with certain personally identifiable information
 that can be used to contact or identify You. Personally identifiable information may include:
 \na) Google account /Email address\nb) First name and last name\n"
 
-   android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@color/greyColr"></TextView>
                     <TextView
                         android:layout_width="wrap_content"

@@ -126,4 +126,23 @@ else
                 binding.view6.visibility= VISIBLE
             }
         }
+        binding.dictionary.setOnClickListener{
+            if(binding.dict.visibility==VISIBLE) { binding.dict.visibility=GONE
+                binding.view7.visibility= GONE
+            }
+            else
+            { binding.dict.visibility= VISIBLE
+                binding.view7.visibility= VISIBLE
+            }
+        }
+        binding.imageView7.setOnClickListener{
+            if(binding.dict.visibility==VISIBLE) {
+                binding.dict.visibility=GONE
+                binding.view7.visibility= GONE
+            }
+            else
+            { binding.dict.visibility= VISIBLE
+                binding.view7.visibility= VISIBLE
+            }
+        }
 }}

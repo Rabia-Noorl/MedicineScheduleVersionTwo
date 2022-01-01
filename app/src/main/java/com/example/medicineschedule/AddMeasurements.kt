@@ -154,8 +154,9 @@ class AddMeasurements : AppCompatActivity() {
             alertDialogIns.setTitle("Select Instructions")
             alertDialogIns.setSingleChoiceItems(
                 instructionChoice,
-                0
+                index
             ) { dialogInterface: DialogInterface, position: Int ->
+                index=position
                 binding.MInstructions.setText(instructionChoice[position])
                 if (position == 4) {
                     binding.customMinstruction.visibility = View.VISIBLE
@@ -188,7 +189,8 @@ class AddMeasurements : AppCompatActivity() {
         binding.txtvwMtime.setOnClickListener(View.OnClickListener {
             var alertDialogtime=AlertDialog.Builder(this)
             alertDialogtime.setTitle("How many times per day?")
-            alertDialogtime.setSingleChoiceItems(mtimeChoice,0){dialogInterface:DialogInterface,position:Int->
+            alertDialogtime.setSingleChoiceItems(mtimeChoice,index){dialogInterface:DialogInterface,position:Int->
+                index=position
                 binding.txtvwMtime.setText(mtimeChoice[position])
 
                 when(position){

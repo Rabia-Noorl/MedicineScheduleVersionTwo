@@ -18,7 +18,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="20dp">
-
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/medicalogo"></ImageView>
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
@@ -41,9 +45,9 @@
                     android:padding="5dp"
                     android:textSize="16sp"
                     android:visibility="gone"
-                    android:text="Three types of Reminders are avalialble:\n1. To add medication reminder, Click on + button under the medication tab. Under the medication reminder you can enter medication name, medication type, dose quantity and instructions. Scroll down to schedule the medicine and enter the frequency e.g. Once a day etc and then enter the time you would like to receive the reminder. Then click on Save button to save medication reminder.
-            \n2. To add measurement reminder, Click on + button under the measurement tab. Under the measurement reminder you can enter measurement name, current measurement value and next reading instructions. Scroll down to schedule the measurement and enter the frequency e.g. Once a day etc and then enter the time you would like to receive the reminder. Then click on Save button to save measurement reminder.
-\n3. To add doctor appointment reminder, Click on + button under the appointment tab. Under the appointment reminder you can enter doctor name, speciality and to schedule the reminder enter the time you would like to receive the reminder. Then click on Save button to save appointment reminder."
+                    android:text="You can add three types of Reminders :\n1. To add medication reminder, click on + button under the medication tab. Here you can add medication reminder by filling the following fields i.e. medication name, medication type, dose quantity and instructions. Scroll down to schedule the medicine and enter the frequency e.g. Once a day etc and then set the alarm time to receive scheduled reminder . Then click on Save button to save medication reminder.
+            \n2. To add measurement reminder, click on + button under the measurement tab. Here you can add measurement reminder by filling the following fields i.e. Measurement name, current measurement value and next reading instructions. Scroll down to schedule the measurement and enter the frequency e.g. Once a day etc and then set the alarm time to receive scheduled reminder. Then click on Save button to save measurement reminder.
+\n3. To add doctor appointment reminder, click on + button under the appointment tab. Here you can schedule your appointment reminder by filling the following fields i.e. doctor name, speciality and to schedule the reminder set the alarm time to receive scheduled reminder. Then click on Save button to save appointment reminder."
                     android:inputType="textMultiLine"
                     android:textColor="@color/greyColr"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -65,6 +69,7 @@
                     android:textColor="@color/greyColr"
                     android:textSize="18sp"
                     android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView1"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -114,9 +119,10 @@
                     android:padding="5dp"
                     android:textSize="16sp"
                     android:visibility="gone"
-                    android:text="1. To make changes in your medication reminder schedule, click on medication that you would like to make changes under the medication tab. Then a dialogue box will appear. Click on edit icon to change your reminder schedule information. If you only want to change you medication reminder time, then click on reschedule button to reschedule medicine time.
+                    android:text="1. To make changes or edit in your medication reminder schedule, click on medication that you would like to make changes under the medication tab. Then a dialogue box will appear. Click on edit icon to change your reminder schedule information. If you only want to change your medication reminder time, then click on reschedule button to reschedule medicine time and then save it.
                 \n2. To make changes in your measurement reminder schedule, click on measurement that you would like to make changes under the measurement tab. Then a dialogue box will appear. Click on edit icon to change your reminder schedule information. If you only want to change you measurement reminder time, then click on reschedule button to reschedule measurement time.
-\n3. To make changes in your doctor appointment reminder schedule, click on appointment that you would like to make changes under the appointment tab. Then a dialogue box will appear. Click on edit icon to change your reminder schedule information. If you only want to change you appointment reminder time, then click on reschedule button to reschedule appointment time."
+\n3. To make changes in your doctor appointment reminder schedule, click on appointment that you would like to make changes under the appointment tab. Then a dialogue box will appear. Click on edit icon to change your reminder schedule information. If you only want to change you appointment reminder time, then click on reschedule button to reschedule appointment time.
+"
                     android:inputType="textMultiLine"
                     android:textColor="@color/greyColr"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -129,7 +135,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:text="How do I change reminder schedule?"
+                    android:text="How do I edit or reschedule my reminder?"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
@@ -138,6 +144,7 @@
                     android:textColor="@color/greyColr"
                     android:textSize="18sp"
                     android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView2"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -187,9 +194,12 @@
                     android:padding="5dp"
                     android:textSize="16sp"
                     android:visibility="gone"
-                    android:text="1. To delete medication reminder, click on medication that you would like to delete under the medication tab. Then a dialogue box will appear. Click on delete icon to delete your medication reminder.
-                \n2. To delete measurement reminder, click on measurement that you would like to delete under the measurement tab. Then a dialogue box will appear. Click on delete icon to delete measurement reminder.
-\n3. To delete appointment reminder, click on appointment that you would like to delete under the appointment tab. Then a dialogue box will appear. Click on delete icon to delete your appointment reminder."
+                    android:text="1. To delete medication reminder select your medicine from list shown under medication tab then a dialogue box will appear. Here you will see a delete icon. Simply click on this icon to remove it from your record.
+                \n2. To delete measurement reminder, To delete measurement reminder select your measurement from list shown under measurement tab and then a dialogue box will appear. Here you will see a delete icon. Simply click on this icon to remove it from your record.
+\n3. To delete appointment reminder, select your appointment from list shown under appointment tab then a dialogue box will appear. Click on delete icon to delete your appointment reminder.
+
+How do I track or view history of my medicines, appointments or measurements reminder?
+To track your activity , click on the track filters option under the track tab and choose any filter you would like to view track or report accordingly."
                     android:inputType="textMultiLine"
                     android:textColor="@color/greyColr"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -210,6 +220,7 @@
                     android:padding="5dp"
                     android:textColor="@color/greyColr"
                     android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/imageView3"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -281,6 +292,7 @@
                     android:layout_marginBottom="5dp"
                     android:textColor="@color/greyColr"
                     android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/imageView4"
                     />
@@ -349,13 +361,13 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:scrollbars="vertical"
-                android:layout_marginEnd="12dp"
                 android:layout_marginBottom="5dp"
                 android:padding="5dp"
                 android:inputType="textMultiLine"
                 android:textColor="@color/greyColr"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView5"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -428,6 +440,7 @@
                     android:padding="5dp"
                     android:inputType="textMultiLine"
                     android:textColor="@color/greyColr"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/imageView6"
@@ -454,6 +467,79 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/upcomeReminders"
+                    android:visibility="gone"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/searchbardesign"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:id="@+id/dict"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:padding="5dp"
+                    android:visibility="gone"
+                    android:textSize="16sp"
+                    android:text="To search medicine's information, click on search bar under the medication tab and write a name of medicine to see its information. You will be able to see the manufacturer name, its formula, its usage, alternate brands of each medicine and so on."
+                    android:textColor="@color/greyColr"
+                    android:inputType="textMultiLine"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view7" />
+
+                <TextView
+                    android:id="@+id/dictionary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="How to search about medicines?"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:scrollbars="vertical"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:padding="5dp"
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/greyColr"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/imageView7"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    app:layout_constraintBottom_toTopOf="@+id/view7"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+                <View
+                    android:id="@+id/view7"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/darkPeach"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dictionary"
                     android:visibility="gone"/>
             </androidx.constraintlayout.widget.ConstraintLayout></androidx.appcompat.widget.LinearLayoutCompat></androidx.core.widget.NestedScrollView>
 

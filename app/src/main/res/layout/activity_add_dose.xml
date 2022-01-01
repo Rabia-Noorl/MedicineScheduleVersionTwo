@@ -133,7 +133,7 @@
                             android:textSize="20dp"
                             android:textStyle="bold" />
 
-                        <AutoCompleteTextView
+                        <EditText
                             android:id="@+id/medicationName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -199,7 +199,7 @@
                             android:textSize="20dp"
                             android:textStyle="bold" />
 
-                        <AutoCompleteTextView
+                        <EditText
                             android:id="@+id/medTypeTV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -272,24 +272,24 @@
                             android:layout_below="@id/tvDose"
                             android:gravity="center|center_horizontal|center_vertical"
                             android:orientation="horizontal">
+                           <EditText
+                               android:id="@+id/adddosequantity"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:hint="Enter Quantity"
+                               android:layout_gravity="bottom"
+                               android:backgroundTint="@color/design_default_color_primary_variant"
+                               android:cursorVisible="true"
+                               android:inputType="datetime"
+                               android:textAlignment="center"
+                               android:paddingBottom="25dp"
+                               android:textColor="@color/textColor"
+                               android:textColorHint="@color/design_default_color_primary_variant"
+                               android:textColorLink="@color/design_default_color_primary_variant"
+                               android:textCursorDrawable="@drawable/cursor"
+                               android:textSize="18sp"
 
-                            <EditText
-                                android:id="@+id/adddosequantity"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="bottom"
-                                android:backgroundTint="@color/design_default_color_primary_variant"
-                                android:cursorVisible="true"
-                                android:hint="Enter Quantity"
-                                android:inputType="datetime"
-                                android:textAlignment="center"
-                                android:paddingBottom="25dp"
-                                android:textColor="@color/textColor"
-                                android:textColorHint="@color/design_default_color_primary_variant"
-                                android:textColorLink="@color/design_default_color_primary_variant"
-                                android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="18sp"
-                                tools:ignore="RtlCompat" />
+                               ></EditText>
                             <FrameLayout
                                 android:id="@+id/unitTV"
                                 android:layout_width="wrap_content"
@@ -366,7 +366,7 @@
                             android:gravity="center|center_horizontal|center_vertical"
                             android:orientation="horizontal">
 
-                            <AutoCompleteTextView
+                            <EditText
                                 android:id="@+id/Instructions"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -484,7 +484,7 @@
                             android:layout_below="@+id/tvdoseReminder"
                             android:visibility="visible">
 
-                            <AutoCompleteTextView
+                            <EditText
                                 android:id="@+id/txtvwdosetime"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"

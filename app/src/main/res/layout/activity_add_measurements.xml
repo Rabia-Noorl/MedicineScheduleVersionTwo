@@ -124,7 +124,7 @@
                             android:layout_below="@+id/tvMeasureName"
                             android:gravity="center|center_horizontal|center_vertical"
                             android:orientation="vertical">
-                            <AutoCompleteTextView
+                            <EditText
                                 android:id="@+id/measurement"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -314,7 +314,7 @@
                             android:gravity="center|center_horizontal|center_vertical"
                             android:orientation="horizontal">
 
-                            <AutoCompleteTextView
+                            <EditText
                                 android:id="@+id/MInstructions"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -410,13 +410,13 @@
                             android:orientation="horizontal"
                             android:visibility="visible">
 
-                            <AutoCompleteTextView
+                            <EditText
                                 android:id="@+id/txtvwMtime"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:backgroundTint="@color/design_default_color_primary_variant"
-                                android:cursorVisible="true"
+                                android:cursorVisible="false"
                                 android:drawableRight="@drawable/ic_dropdown_blue"
                                 android:focusableInTouchMode="false"
                                 android:hint="Times per day"

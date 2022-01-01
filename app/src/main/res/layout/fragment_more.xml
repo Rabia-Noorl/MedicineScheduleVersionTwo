@@ -55,7 +55,7 @@
             android:paddingLeft="40dp"
             android:paddingTop="10dp"
             android:paddingRight="40dp"
-            android:text="Check and track your all appointments here. To add new Appointment click on + button."
+            android:text="Check and track your all appointments here. To add new appointment click on + button."
             android:textAlignment="center"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"

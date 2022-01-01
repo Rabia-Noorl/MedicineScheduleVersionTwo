@@ -150,7 +150,7 @@
             android:paddingLeft="40dp"
             android:paddingTop="10dp"
             android:paddingRight="40dp"
-            android:text="Receive reminders about medications, measurements, activities and more. Click on + button to add first reminder."
+            android:text="Receive reminders about medications, measurements and appointments. Click on + button to add first medication reminder."
             android:textAlignment="center"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
@@ -240,8 +240,10 @@
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></LinearLayout>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"></LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
