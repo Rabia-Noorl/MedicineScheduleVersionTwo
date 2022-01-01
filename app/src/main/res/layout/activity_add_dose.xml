@@ -133,7 +133,7 @@
                             android:textSize="20dp"
                             android:textStyle="bold" />
 
-                        <EditText
+                        <AutoCompleteTextView
                             android:id="@+id/medicationName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -199,7 +199,7 @@
                             android:textSize="20dp"
                             android:textStyle="bold" />
 
-                        <EditText
+                        <AutoCompleteTextView
                             android:id="@+id/medTypeTV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -366,7 +366,7 @@
                             android:gravity="center|center_horizontal|center_vertical"
                             android:orientation="horizontal">
 
-                            <EditText
+                            <AutoCompleteTextView
                                 android:id="@+id/Instructions"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -484,7 +484,7 @@
                             android:layout_below="@+id/tvdoseReminder"
                             android:visibility="visible">
 
-                            <EditText
+                            <AutoCompleteTextView
                                 android:id="@+id/txtvwdosetime"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
