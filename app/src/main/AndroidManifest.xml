@@ -69,6 +69,9 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".HelpActivity"
+            android:screenOrientation="portrait" />
 
         <receiver
             android:name=".classes.AlarmReceiver"

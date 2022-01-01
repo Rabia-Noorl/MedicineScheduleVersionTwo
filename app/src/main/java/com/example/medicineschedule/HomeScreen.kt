@@ -1,6 +1,8 @@
 package com.example.medicineschedule
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -100,6 +102,8 @@ class HomeScreen : AppCompatActivity() {
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when(menuItem.itemId){
                 R.id.help ->{
+                    startActivity(Intent(this,HelpActivity::class.java))
+
 
 
                 }
@@ -113,6 +117,17 @@ class HomeScreen : AppCompatActivity() {
                     startActivity(shareIntent)
                 }
                 R.id.rate ->{
+                    try {
+                        val marketUri = Uri.parse("market://details?id=com.gamingpine.maingame")
+                        val marketIntent = Intent(Intent.ACTION_VIEW, marketUri)
+                        startActivity(marketIntent)
+                    } catch (e: ActivityNotFoundException) {
+                        val marketUri =
+                            Uri.parse("https://play.google.com/store/apps/details?id=com.gamingpine.maingame")
+                        val marketIntent = Intent(Intent.ACTION_VIEW, marketUri)
+                        startActivity(marketIntent)
+                    }
+
 
                 }
                 R.id.signOut -> {

@@ -1,6 +1,7 @@
 package com.example.medicineschedule
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -30,6 +31,7 @@ class SignInWithGoogle :AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivitySignInWithGoogleBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        onFirst()
         //configure google sign in
         var googleSignInOptions= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(
             getString(R.string.default_web_client_id)
@@ -106,6 +108,29 @@ class SignInWithGoogle :AppCompatActivity() {
             //user is already logged in
             startActivity(Intent(this,HomeScreen::class.java))
             finish()
+        }
+
+    }
+    public fun onFirst()
+    {
+        val isFirstRun=getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstRun", true)
+        if(isFirstRun)
+        {
+            val alertDialog= AlertDialog.Builder(this)
+                .setView(R.layout.privacy)
+                .setNegativeButton("Decline"){dialogInterface,it->
+                    finish()
+                    System.exit(0)
+                }
+                .setPositiveButton("Accept") {dialogInterface,it->
+                    getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                        .edit().putBoolean("isFirstRun",false)
+                        .apply()
+                }.show()
+            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.teal_700));
+            alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.errorColor));
+
+
         }
 
     }
