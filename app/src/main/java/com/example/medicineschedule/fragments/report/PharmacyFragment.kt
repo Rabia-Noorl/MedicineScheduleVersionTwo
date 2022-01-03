@@ -36,6 +36,7 @@ class PharmacyFragment : Fragment() {
     lateinit var alertdialogbuilder: AlertDialog.Builder
     private lateinit var binding: FragmentPharmacyBinding
     var timeFormat = SimpleDateFormat("hh:mm a", Locale.US)
+    var index=0
 
     companion object{
         var mrepdays: MutableLiveData<List<Int>> = MutableLiveData<List<Int>>()
@@ -82,8 +83,9 @@ class PharmacyFragment : Fragment() {
             alerttrackDialog?.setTitle("Select Filter Options")
             alerttrackDialog?.setSingleChoiceItems(
                 trackChoice,
-                0
+               index
             ) { dialogInterface: DialogInterface, position: Int ->
+                index=position
                 if (position == 0){
                     PharmacyFragment.mrepdays.postValue(listOf(0))
                 }else if(position ==1)
