@@ -12,6 +12,7 @@
         android:label="Medica 360"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name=".classes.MedicineSchedudle"
         android:theme="@style/Theme.MedicineSchedule">
         <activity
             android:name=".MeasurmentsMainActivity"
@@ -42,7 +43,7 @@
         <activity
             android:name=".SplashScreen"
             android:screenOrientation="portrait" >
-       </activity>
+        </activity>
         <activity
             android:name=".AddMeasurements"
             android:screenOrientation="portrait" />
@@ -89,7 +90,22 @@
                 </action>
             </intent-filter>
         </receiver>
-
+        <receiver
+            android:name=".classes.updateAppointment"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.medicineschedule.classes.updateAppointment" >
+                </action>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".classes.updateMeasurement"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.medicineschedule.classes.updateMeasurement" >
+                </action>
+            </intent-filter>
+        </receiver>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

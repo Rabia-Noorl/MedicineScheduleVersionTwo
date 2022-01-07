@@ -36,8 +36,6 @@
             android:textStyle="bold"></TextView>
 
 
-
-
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/imageView"
             android:layout_width="150dp"

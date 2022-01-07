@@ -23,10 +23,16 @@ import com.example.medicineschedule.AddMeasurements
 import com.example.medicineschedule.R
 import com.example.medicineschedule.classes.AlarmReceiver
 import com.example.medicineschedule.classes.updatRVreceiver
+import com.example.medicineschedule.classes.updateMeasurement
+import com.example.medicineschedule.database.ReminderDatabase
 import com.example.medicineschedule.database.ReminderTracker
 import com.example.medicineschedule.databinding.FragmentMedication2Binding
+import com.example.medicineschedule.fragments.appointments.MoreFragment
 import com.example.medicineschedule.fragments.medicines.HomeFragment
 import com.example.medicineschedule.viewModels.MeasurmentViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.io.Serializable
 import java.text.SimpleDateFormat
 import java.util.*
@@ -42,11 +48,129 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
     lateinit var alertdialogbuilder: AlertDialog.Builder
     var timeFormat= SimpleDateFormat("hh:mm a", Locale.US)
 
+    companion object {
+        var statusFlag: Boolean = false
+        val recViewListMeasrement = ArrayList<ReminderTracker>()
+        lateinit var am: AlarmManager
+        lateinit var pi: PendingIntent
+        lateinit var amTwo: AlarmManager
+        lateinit var pnTwo: PendingIntent
+
+        fun setAlarm( id:Int, context:Context, int:Int) {
+            am =
+                context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val intent = Intent(context, updateMeasurement::class.java)
+            var bundle = Bundle()
+            bundle.putSerializable("reminder", recViewListMeasrement as Serializable)
+            intent.putExtra("bundle" , bundle)
+            // every day at 12 am
+            val calendar = Calendar.getInstance()
+            calendar[Calendar.YEAR] = Calendar.getInstance().get(Calendar.YEAR)
+            calendar[Calendar.MONTH] = Calendar.getInstance().get(Calendar.MONTH)
+            calendar[Calendar.DAY_OF_MONTH] = Calendar.getInstance().get(Calendar.DAY_OF_MONTH) +1
+            calendar[Calendar.HOUR_OF_DAY] = 0
+            calendar[Calendar.MINUTE] = 0
+            calendar[Calendar.SECOND] = 0
+            calendar[Calendar.MILLISECOND] = 0
+            val date = Date()
+            if (calendar.time.after(date)) {
+                Log.d("elsepart", "from alarm manager")
+                Toast.makeText(context,"from alarm manager ${calendar.time.year} ${calendar.time.month} ${calendar[Calendar.DAY_OF_MONTH]} ${calendar.time.hours} ${calendar.time.minutes}", Toast.LENGTH_SHORT).show()
+                pi = PendingIntent.getBroadcast(
+                    context,
+                    800,
+                    intent,
+                    PendingIntent.FLAG_UPDATE_CURRENT
+                )
+                am.setExact(
+                    AlarmManager.RTC_WAKEUP,
+                    calendar.timeInMillis,
+                    pi)
+            }
+            else if (calendar.time.before(date)){
+                calendar[Calendar.MINUTE] = Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + 1
+                Toast.makeText(context,"from alarm manager ${calendar.time.year} ${calendar.time.month} ${calendar[Calendar.DAY_OF_MONTH]} ${calendar.time.hours} ${calendar.time.minutes}", Toast.LENGTH_SHORT).show()
+                pi = PendingIntent.getBroadcast(
+                    context,
+                    800,
+                    intent,
+                    PendingIntent.FLAG_UPDATE_CURRENT
+                )
+                am.setExact(
+                    AlarmManager.RTC_WAKEUP,
+                    calendar.timeInMillis,
+                    pi)
+            }
+        }
+        fun setAlarm(list: List<ReminderTracker>, context: Context) {
+            lateinit var calendar: Calendar
+            list.forEach() {
+                var str = it.dateTimes.toString()
+                val sdf = SimpleDateFormat("hh:mm a", Locale.ENGLISH)
+                calendar = Calendar.getInstance()
+                calendar.time = sdf.parse(str)
+                calendar[Calendar.YEAR] = Calendar.getInstance().get(Calendar.YEAR)
+                calendar[Calendar.MONTH] = Calendar.getInstance().get(Calendar.MONTH)
+                calendar[Calendar.DAY_OF_MONTH] = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+                calendar[Calendar.HOUR_OF_DAY] = calendar.time.hours
+                calendar[Calendar.MINUTE] = calendar.time.minutes
+                calendar[Calendar.SECOND] = 0
+                calendar[Calendar.MILLISECOND] = 0
+                val date = Date()
+                if (calendar.time.after(date)) {
+                    MedicationFragment.amTwo =
+                        context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                    val intent = Intent(context, AlarmReceiver::class.java)
+                    intent.putExtra("type", "doc")
+                    intent.putExtra("name", "You have appointment for ${it.names}!")
+                    MedicationFragment.pnTwo = PendingIntent.getBroadcast(context, it.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+                    MedicationFragment.amTwo.setExact(
+                        AlarmManager.RTC_WAKEUP,
+                        calendar.timeInMillis,
+                        MedicationFragment.pnTwo
+                    )
+                }
+                else if (calendar.time.before(date)) {
+                    if (it.status == "") {
+                        var reminder = ReminderTracker(
+                            "${it.reminderType}",
+                            "${it.types}",
+                            "${it.names}",
+                            "${it.dateTimes}",
+                            "Taken", "${it.quantity}",
+                            "${it.instructions}",
+                            "${it.strenght}",
+                            "${it.startDate}",
+                            "${it.endDate}",
+                            "${it.recodeCreationDate}",
+                            it.deleteFlage
+                        )
+                        reminder.id = it.id
+                        CoroutineScope(Dispatchers.IO).launch {
+                            ReminderDatabase.getDatabase(context).getReminderDao().update(reminder)
+                        }
+                    }
+                    calendar[Calendar.DAY_OF_MONTH] = Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + 1
+                    MedicationFragment.amTwo =
+                        context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                    val intent = Intent(context, AlarmReceiver::class.java)
+                    intent.putExtra("type", "mes")
+                    intent.putExtra("name", "You have measurement reminder for ${it.names}!")
+                    Log.d("alarmTime", "${calendar.time.year} ${calendar.time.month} ${calendar[Calendar.DAY_OF_MONTH]} ${calendar.time.hours} ${calendar.time.minutes}")
+                    MedicationFragment.pnTwo = PendingIntent.getBroadcast(context, it.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+                    MedicationFragment.amTwo.setExact(
+                        AlarmManager.RTC_WAKEUP,
+                        calendar.timeInMillis,
+                        MedicationFragment.pnTwo
+                    )
+                }
+
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        creatNotificationChannel()
-
     }
 
     override fun onCreateView(
@@ -62,7 +186,7 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
         }
 
         viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)).get(
-           MeasurmentViewModel::class.java)
+            MeasurmentViewModel::class.java)
 
         viewModel.reminder.observe(viewLifecycleOwner) { reminder ->
             dialogeBuild(reminder)
@@ -73,12 +197,14 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
             it.lifecycleOwner = this
             it.measurmentViewModel= viewModel
             viewModel.allRemiders.observe(viewLifecycleOwner){
+                recViewListMeasrement.clear()
                 it?.let {
                     var recViewList = ArrayList<ReminderTracker>()
                     it.forEach{
                         if(it.reminderType == "mes" && !it.deleteFlage)
                         {
                             recViewList.add(it)
+                            recViewListMeasrement.add(it)
                         }
                     }
                     viewModel.addFun(recViewList)
@@ -86,9 +212,12 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
                     var initialText  = binding.initialTV
                     anim.isVisible = recViewList.isEmpty()
                     initialText.isVisible = recViewList.isEmpty()
-                    setAlarm(recViewList)
-                    setAlarm(recViewList, "update")
-                    cancelAlarm(recViewList)
+//                    setAlarm(recViewList)
+//                    setAlarm(recViewList, "update")
+//                    cancelAlarm(recViewList)
+                }
+                context?.let { MedicationFragment.setAlarm( 800, it, 0)
+                    MedicationFragment.setAlarm(recViewListMeasrement, it)
                 }
             }
         }

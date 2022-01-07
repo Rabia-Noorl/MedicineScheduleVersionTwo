@@ -263,10 +263,10 @@ class PharmacyFragment : Fragment() {
                 if(date.after(cal.time))
                 {
                     allRemiders.add(it)
-                     Toast.makeText(context,"$int  $date is after ${cal.time}  ", Toast.LENGTH_LONG).show()
+                   //  Toast.makeText(context,"$int  $date is after ${cal.time}  ", Toast.LENGTH_LONG).show()
                 }else if(date.before(cal.time))
                 {
-                     Toast.makeText(context,"$int $date is befor  ${cal.time}  ", Toast.LENGTH_LONG).show()
+                   //  Toast.makeText(context,"$int $date is befor  ${cal.time}  ", Toast.LENGTH_LONG).show()
                 }
             } catch (e: ParseException) {
                 e.printStackTrace()
