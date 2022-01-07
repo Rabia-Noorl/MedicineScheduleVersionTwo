@@ -105,6 +105,10 @@ class MoreFragment : Fragment() {
             list.forEach() {
                 var str = it.dateTimes.toString()
                 val sdf = SimpleDateFormat("hh:mm a", Locale.ENGLISH)
+                val bundle = Bundle()
+                bundle.putSerializable("item" ,  it as Serializable)
+                bundle.putString("type", "doc")
+                bundle.putString("name", "You have appointment for ${it.names}!")
                 calendar = Calendar.getInstance()
                 calendar.time = sdf.parse(str)
                 calendar[Calendar.YEAR] = Calendar.getInstance().get(Calendar.YEAR)
@@ -119,8 +123,7 @@ class MoreFragment : Fragment() {
                     amTwo =
                         context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
                     val intent = Intent(context, AlarmReceiver::class.java)
-                    intent.putExtra("type", "doc")
-                    intent.putExtra("name", "You have appointment for ${it.names}!")
+                    intent.putExtra( "bundle" , bundle)
                     pnTwo = PendingIntent.getBroadcast(context, it.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
                     amTwo.setExact(
                         AlarmManager.RTC_WAKEUP,
@@ -129,26 +132,6 @@ class MoreFragment : Fragment() {
                     )
                 }
                 else if (calendar.time.before(date)) {
-                    if (it.status == "") {
-
-                        var reminder = ReminderTracker(
-                            "${it.reminderType}",
-                            "${it.types}",
-                            "${it.names}",
-                            "${it.dateTimes}",
-                            "Taken", "${it.quantity}",
-                            "${it.instructions}",
-                            "${it.strenght}",
-                            "${it.startDate}",
-                            "${it.endDate}",
-                            "${it.recodeCreationDate}",
-                            it.deleteFlage
-                        )
-                        reminder.id = it.id
-                        CoroutineScope(Dispatchers.IO).launch {
-                            ReminderDatabase.getDatabase(context).getReminderDao().insert(reminder)
-                        }
-                    }
                     calendar[Calendar.DAY_OF_MONTH] = Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + 1
                     amTwo =
                         context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -295,7 +278,7 @@ class MoreFragment : Fragment() {
 
         var deletBtn = d?.findViewById<ImageView>(R.id.deleteImg)
         var editBtn = d?.findViewById<ImageView>(R.id.editImg)
-        var medImg = d?.findViewById<ImageView>(R.id.medImg)
+        var cancelBtn = d?.findViewById<ImageView>(R.id.cancelBtn)
 
         var nameTv = d?.findViewById<TextView>(R.id.nameTV)
         var statusTV = d?.findViewById<TextView>(R.id.statusTV)
@@ -501,6 +484,9 @@ class MoreFragment : Fragment() {
             val intent = Intent(context, AddDoctorActivity::class.java)
             intent.putExtra("doc", reminderTracker)
             startActivity(intent)
+        }
+        cancelBtn.setOnClickListener{
+            d?.cancel()
         }
     }
     private fun setAlarm(list: List<ReminderTracker>, update:String) {
