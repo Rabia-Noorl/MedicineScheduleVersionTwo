@@ -58,7 +58,7 @@ class updateAppointment: BroadcastReceiver() {
                 }
             }
             if (context != null) {
-                MoreFragment.setAlarm(700, context, 1)
+                MoreFragment.setAlarm( context)
                 MoreFragment.setAlarm(reminderTracker, context)
             }
         }

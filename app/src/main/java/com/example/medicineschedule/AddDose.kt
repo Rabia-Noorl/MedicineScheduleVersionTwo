@@ -670,7 +670,7 @@ class AddDose : AppCompatActivity() {
                     "$quantity $measurmentUnits",
                     "$instructions",
                     "",
-                    "$currentDate",
+                    "${Calendar.getInstance()}",
                     "",
                     "$currentDate",
                     false

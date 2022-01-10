@@ -43,7 +43,6 @@ class PharmacyFragment : Fragment() {
         var reportFilters: MutableLiveData<List<Int>> = MutableLiveData<List<Int>>()
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -135,6 +134,7 @@ class PharmacyFragment : Fragment() {
             it.reportViewModek= viewModel
             mrepdays.observe(viewLifecycleOwner) {
                 var int = it?.get(0)
+               // Toast.makeText(context, "$int", Toast.LENGTH_SHORT).show()
                 viewModel.allRemiders.observe(viewLifecycleOwner) {
                     it?.let {
                         int?.let { it1 ->
@@ -255,15 +255,15 @@ class PharmacyFragment : Fragment() {
         val allRemiders: MutableList<ReminderTracker> = ArrayList<ReminderTracker>()
         val formatter = SimpleDateFormat("EEE MMM dd HH:mm:ss zzzz yyyy")
         var cal = Calendar.getInstance()
-        cal.add(Calendar.DATE, -int)
+        cal.add(Calendar.DAY_OF_YEAR, -int)
         list.forEach{
-            val temp = it.recodeCreationDate
+            val temp = it.startDate
             try {
                 var date = formatter.parse(temp)
                 if(date.after(cal.time))
                 {
                     allRemiders.add(it)
-                   //  Toast.makeText(context,"$int  $date is after ${cal.time}  ", Toast.LENGTH_LONG).show()
+                   // Toast.makeText(context,"$int  $date is after ${cal.time}  ", Toast.LENGTH_LONG).show()
                 }else if(date.before(cal.time))
                 {
                    //  Toast.makeText(context,"$int $date is befor  ${cal.time}  ", Toast.LENGTH_LONG).show()

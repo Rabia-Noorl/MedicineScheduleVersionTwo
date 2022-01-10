@@ -160,7 +160,7 @@ private fun addDocReminder() {
             "",
             "$type",
             "",
-            "$currentDate",
+            "${Calendar.getInstance().time}",
             "",
             "$currentDate",
             false)

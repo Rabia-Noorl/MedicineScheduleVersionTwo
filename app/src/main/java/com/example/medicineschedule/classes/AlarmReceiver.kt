@@ -26,9 +26,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import android.net.Uri
-
-
-
+import com.example.medicineschedule.fragments.appointments.MoreFragment
+import com.example.medicineschedule.fragments.measurement.MedicationFragment
+import com.example.medicineschedule.fragments.medicines.HomeFragment
 
 
 class AlarmReceiver(): BroadcastReceiver() {
@@ -81,6 +81,7 @@ class AlarmReceiver(): BroadcastReceiver() {
 //                    if (context != null) {
 //                        vibrateFuc(context)
 //                    }
+                    HomeFragment.setAlarm(item, context)
                 }
 
             } else if (type.equals("doc")) {
@@ -123,6 +124,7 @@ class AlarmReceiver(): BroadcastReceiver() {
 //                if (context != null) {
 //                    vibrateFuc(context)
 //                }
+                MoreFragment.setAlarm(item, context)
             } else if (type == "mes"){
                 intent!!.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 var pendingIntent = PendingIntent.getActivity(context, 0, i, 0)
@@ -163,6 +165,7 @@ class AlarmReceiver(): BroadcastReceiver() {
 //                if (context != null) {
 //                    vibrateFuc(context)
 //                }
+                MedicationFragment.setAlarm(item, context)
             }
         }
     }

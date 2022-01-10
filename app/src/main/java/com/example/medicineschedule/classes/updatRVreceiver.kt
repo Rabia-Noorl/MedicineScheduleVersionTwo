@@ -68,7 +68,7 @@ class updatRVreceiver : BroadcastReceiver() {
                 }
             }
             if (context != null) {
-                HomeFragment.setAlarm(700, context, 1)
+                HomeFragment.setAlarm(context)
                 HomeFragment.setAlarm(reminderTracker, context)
             }
         }

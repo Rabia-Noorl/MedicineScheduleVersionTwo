@@ -54,7 +54,7 @@ class MoreFragment : Fragment() {
         lateinit var amTwo: AlarmManager
         lateinit var pnTwo: PendingIntent
 
-        fun setAlarm( id:Int, context:Context, int:Int) {
+        fun setAlarm(context:Context) {
             am =
                 context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val intent = Intent(context, updateAppointment::class.java)
@@ -149,6 +149,52 @@ class MoreFragment : Fragment() {
 
             }
         }
+        fun setAlarm(reminderTracker: ReminderTracker, context: Context) {
+            lateinit var calendar: Calendar
+                var str = reminderTracker.dateTimes.toString()
+                val sdf = SimpleDateFormat("hh:mm a", Locale.ENGLISH)
+                val bundle = Bundle()
+                bundle.putSerializable("item" ,  reminderTracker as Serializable)
+                bundle.putString("type", "doc")
+                bundle.putString("name", "You have appointment for ${reminderTracker.names}!")
+                calendar = Calendar.getInstance()
+                calendar.time = sdf.parse(str)
+                calendar[Calendar.YEAR] = Calendar.getInstance().get(Calendar.YEAR)
+                calendar[Calendar.MONTH] = Calendar.getInstance().get(Calendar.MONTH)
+                calendar[Calendar.DAY_OF_MONTH] = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+                calendar[Calendar.HOUR_OF_DAY] = calendar.time.hours
+                calendar[Calendar.MINUTE] = calendar.time.minutes
+                calendar[Calendar.SECOND] = 0
+                calendar[Calendar.MILLISECOND] = 0
+                val date = Date()
+                if (calendar.time.after(date)) {
+                    amTwo =
+                        context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                    val intent = Intent(context, AlarmReceiver::class.java)
+                    intent.putExtra( "bundle" , bundle)
+                    pnTwo = PendingIntent.getBroadcast(context, reminderTracker.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+                    amTwo.setExact(
+                        AlarmManager.RTC_WAKEUP,
+                        calendar.timeInMillis,
+                        pnTwo
+                    )
+                }
+                else if (calendar.time.before(date)) {
+                    calendar[Calendar.DAY_OF_MONTH] = Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + 1
+                    amTwo =
+                        context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                    val intent = Intent(context, AlarmReceiver::class.java)
+                    intent.putExtra("type", "doc")
+                    intent.putExtra("name", "You have ${reminderTracker.names} ${reminderTracker.types} to take!")
+                    Log.d("alarmTime", "${calendar.time.year} ${calendar.time.month} ${calendar[Calendar.DAY_OF_MONTH]} ${calendar.time.hours} ${calendar.time.minutes}")
+                    pnTwo = PendingIntent.getBroadcast(context, reminderTracker.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+                    amTwo.setExact(
+                        AlarmManager.RTC_WAKEUP,
+                        calendar.timeInMillis,
+                        pnTwo
+                    )
+                }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -201,10 +247,10 @@ class MoreFragment : Fragment() {
                 initialText.isVisible = recViewList.isEmpty()
 //                setAlarm(recViewList)
 //                setAlarm(recViewList, "update")
-////                cancelAlarm(recViewList)
+            //              cancelAlarm(recViewList)
             }
             context?.let {
-                MoreFragment.setAlarm( 700, it, 0)
+                MoreFragment.setAlarm(it)
                 MoreFragment.setAlarm(MoreFragment.recViewListAppointment, it)
             }
         }
@@ -470,6 +516,7 @@ class MoreFragment : Fragment() {
                     rem.id = reminderTracker.id
                     viewModel.onEditClick(rem)
                     viewModel.deletDrug(rem)
+                    cancelAlarm(rem)
                     d?.cancel()
                 }
                 .setNegativeButton("No") { dialogInterface, it ->
@@ -517,5 +564,14 @@ class MoreFragment : Fragment() {
             AlarmManager.RTC_WAKEUP,
             calendar.timeInMillis,AlarmManager.INTERVAL_DAY,
             pendingIntent)
+    }
+    private fun cancelAlarm(reminderTracker: ReminderTracker) {
+        if (reminderTracker.deleteFlage == true) {
+            amTwo =
+                requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val intent = Intent(context, AlarmReceiver::class.java)
+            pnTwo = PendingIntent.getBroadcast(context, reminderTracker.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+            amTwo.cancel(pnTwo)
+        }
     }
 }

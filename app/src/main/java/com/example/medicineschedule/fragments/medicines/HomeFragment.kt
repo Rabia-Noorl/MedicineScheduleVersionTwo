@@ -63,8 +63,8 @@ class HomeFragment : Fragment(){
         lateinit var pi: PendingIntent
         lateinit var amTwo: AlarmManager
         lateinit var pnTwo: PendingIntent
-
-        fun setAlarm( id:Int, context:Context, int:Int) {
+        // update recodes at 12am daily
+        fun setAlarm(context:Context) {
             am =
                 context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val intent = Intent(context, updatRVreceiver::class.java)
@@ -110,6 +110,7 @@ class HomeFragment : Fragment(){
                     pi)
             }
         }
+        //alarm on list of times
         fun setAlarm(list: List<ReminderTracker>, context: Context) {
             lateinit var calendar: Calendar
             list.forEach() {
@@ -160,12 +161,59 @@ class HomeFragment : Fragment(){
 
             }
         }
+        // single alarm on time
+        fun setAlarm(reminderTracker: ReminderTracker, context: Context) {
+            lateinit var calendar: Calendar
+                var str = reminderTracker.dateTimes.toString()
+                val sdf = SimpleDateFormat("hh:mm a", Locale.ENGLISH)
+
+                val bundle = Bundle()
+                bundle.putSerializable("item" ,  reminderTracker as Serializable)
+                bundle.putString("type", "med")
+                bundle.putString("name", "You have ${reminderTracker.names} ${reminderTracker.types} to take!")
+
+                calendar = Calendar.getInstance()
+                calendar.time = sdf.parse(str)
+                calendar[Calendar.YEAR] = Calendar.getInstance().get(Calendar.YEAR)
+                calendar[Calendar.MONTH] = Calendar.getInstance().get(Calendar.MONTH)
+                calendar[Calendar.DAY_OF_MONTH] = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+                calendar[Calendar.HOUR_OF_DAY] = calendar.time.hours
+                calendar[Calendar.MINUTE] = calendar.time.minutes
+                calendar[Calendar.SECOND] = 0
+                calendar[Calendar.MILLISECOND] = 0
+                val date = Date()
+                if (calendar.time.after(date)) {
+                    amTwo =
+                        context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                    val intent = Intent(context, AlarmReceiver::class.java)
+                    intent.putExtra( "bundle" , bundle)
+                    pnTwo = PendingIntent.getBroadcast(context, reminderTracker.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+                    amTwo.setExact(
+                        AlarmManager.RTC_WAKEUP,
+                        calendar.timeInMillis,
+                        pnTwo
+                    )
+                }
+                else if (calendar.time.before(date)) {
+                    calendar[Calendar.DAY_OF_MONTH] = Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + 1
+                    amTwo =
+                        context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                    val intent = Intent(context, AlarmReceiver::class.java)
+                    intent.putExtra( "bundle" , bundle)
+                    Log.d("alarmTime", "${calendar.time.year} ${calendar.time.month} ${calendar[Calendar.DAY_OF_MONTH]} ${calendar.time.hours} ${calendar.time.minutes}")
+                    pnTwo = PendingIntent.getBroadcast(context, reminderTracker.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+                    amTwo.setExact(
+                        AlarmManager.RTC_WAKEUP,
+                        calendar.timeInMillis,
+                        pnTwo
+                    )
+                }
+        }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        context?.let { setUpWorker(it) }
-        // setUpWorker()
     }
 
     override fun onCreateView(
@@ -224,27 +272,14 @@ class HomeFragment : Fragment(){
                 getStarted.isVisible = recViewListTwo.isEmpty()
                 initialText.isVisible = recViewListTwo.isEmpty()
             }
-            context?.let { HomeFragment.setAlarm( 600, it, 0)
+            context?.let { HomeFragment.setAlarm(it)
                 setAlarm(recViewList, it)}
-
         }
 
         binding.searchView2.setOnClickListener {
             val intent = Intent(context, DictionaryActivity::class.java)
             startActivity(intent)
         }
-
-//        binding.floatingActionsMenu.setOnFloatingActionsMenuUpdateListener(object :
-//            FloatingActionsMenu.OnFloatingActionsMenuUpdateListener {
-//            override fun onMenuExpanded() {
-//                binding.blureLayout.isVisible = true
-//            }
-
-//            override fun onMenuCollapsed() {
-//                binding.blureLayout.isVisible = false
-//            }
-//        })
-
     }
 
     private fun uiViews() {
@@ -252,16 +287,6 @@ class HomeFragment : Fragment(){
         binding.addMedicine.setOnClickListener {
             onClick(it)
         }
-//        binding.addMeasurement.setOnClickListener{
-//            onClick(it)
-//        }
-////        binding.addReminder.setOnClickListener{
-////            onClick(it)
-////        }
-//        binding.addDoctor.setOnClickListener{
-//            onClick(it)
-//        }
-
     }
 
     fun onClick(v: View?) {
@@ -292,15 +317,6 @@ class HomeFragment : Fragment(){
         }
 
     }
-
-
-//    fun cancelAlarm(id: Int) {
-//            alarmManager =
-//                requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
-//            val intent = Intent(context, AlarmReceiver::class.java)
-//            pendingIntent = PendingIntent.getBroadcast(context, id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-//            alarmManager.cancel(pendingIntent)
-//    }
 
     private fun creatNotificationChannel() {
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
@@ -582,39 +598,6 @@ class HomeFragment : Fragment(){
             pendingIntent)
     }
 
-    fun Set12nnAlarm(context: Context, list: List<ReminderTracker>) {
-        val am = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val intent = Intent(context, updatRVreceiver::class.java)
-        val pi = PendingIntent.getBroadcast(context, 0, intent, 0)
-        var bundle = Bundle()
-        bundle.putSerializable("reminder", list as Serializable)
-        intent.putExtra("bundle" , bundle)
-
-        // every day at 9 am
-        val calendar = Calendar.getInstance()
-        calendar.timeInMillis = System.currentTimeMillis()
-
-        // if it's after or equal 9 am schedule for next day
-        if (Calendar.getInstance()[Calendar.HOUR_OF_DAY] >= 20) {
-            Toast.makeText(context, "Alarm will schedule for next day from homeFrag", Toast.LENGTH_SHORT).show()
-            Log.e(TAG, "Alarm will schedule for next day!")
-            calendar.add(Calendar.DAY_OF_YEAR, 1) // add, not set!
-        } else {
-            Toast.makeText(context, "Alarm will schedule for today!", Toast.LENGTH_SHORT).show()
-            Log.e(TAG, "Alarm will schedule for today!")
-        }
-        calendar[Calendar.HOUR_OF_DAY] = 14
-        calendar[Calendar.MINUTE] = 18
-        calendar[Calendar.SECOND] = 0
-        am.setRepeating(
-            AlarmManager.RTC_WAKEUP, calendar.timeInMillis, Calendar.getInstance().getTimeInMillis()+(24*60*60*1000), pi
-        )
-    }
-    private fun setUpWorker(context: Context) {
-        val workRequest =
-            OneTimeWorkRequest.Builder(WorkerUpdateRV::class.java).build()
-        WorkManager.getInstance(context).enqueue(workRequest)
-    }
     private fun cancelAlarm(list: List<ReminderTracker>) {
         list.forEach() {
             if (it.deleteFlage == true) {
@@ -626,6 +609,7 @@ class HomeFragment : Fragment(){
             }
         }
     }
+
     private fun cancelAlarm(reminderTracker: ReminderTracker) {
         if (reminderTracker.deleteFlage == true) {
             Companion.amTwo =
@@ -634,13 +618,5 @@ class HomeFragment : Fragment(){
             Companion.pnTwo = PendingIntent.getBroadcast(context, reminderTracker.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
             Companion.amTwo.cancel(Companion.pnTwo)
         }
-    }
-
-    fun cancelAlarm(id: Int , context: Context) {
-        am =
-            context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val intent = Intent(context, updatRVreceiver::class.java)
-        pi = PendingIntent.getBroadcast(context, id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-        am.cancel(pi)
     }
 }

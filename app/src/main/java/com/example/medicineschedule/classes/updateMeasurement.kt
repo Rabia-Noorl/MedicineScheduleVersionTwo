@@ -58,7 +58,7 @@ class updateMeasurement : BroadcastReceiver() {
                 }
             }
             if (context != null) {
-                MedicationFragment.setAlarm(800, context, 1)
+                MedicationFragment.setAlarm(context)
                 MedicationFragment.setAlarm(reminderTracker, context)
             }
         }

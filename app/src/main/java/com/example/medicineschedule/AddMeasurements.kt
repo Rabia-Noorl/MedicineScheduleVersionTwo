@@ -458,11 +458,15 @@ private fun addMeasrementReminder() {
 
     timeListMeasurement.forEach {
         if ( name.length >  0 && quantity.length > 0 && it.length > 0 ){
-            var remider = ReminderTracker("mes","",
-                "$name" ,"$it" ,
-                "", "$quantity $measurmentUnit",
+            var remider = ReminderTracker("mes",
+                "",
+                "$name" ,
+                "$it" ,
+                "",
+                "$quantity $measurmentUnit",
                 "Instruction: $instructions",
-                "","$currentDate","",
+                "","${Calendar.getInstance().time}",
+                "",
                 "$currentDate",
                 false)
             viewModel.onAddClick(remider)

@@ -56,7 +56,7 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
         lateinit var amTwo: AlarmManager
         lateinit var pnTwo: PendingIntent
 
-        fun setAlarm( id:Int, context:Context, int:Int) {
+        fun setAlarm(context:Context) {
             am =
                 context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val intent = Intent(context, updateMeasurement::class.java)
@@ -152,6 +152,53 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
 
             }
         }
+        fun setAlarm(reminderTracker: ReminderTracker, context: Context) {
+            lateinit var calendar: Calendar
+                var str = reminderTracker.dateTimes.toString()
+                val sdf = SimpleDateFormat("hh:mm a", Locale.ENGLISH)
+                val bundle = Bundle()
+                bundle.putSerializable("item" ,  reminderTracker as Serializable)
+                bundle.putString("type", "mes")
+                bundle.putString("name", "You have measurement reminder for ${reminderTracker.names}!")
+
+                calendar = Calendar.getInstance()
+                calendar.time = sdf.parse(str)
+                calendar[Calendar.YEAR] = Calendar.getInstance().get(Calendar.YEAR)
+                calendar[Calendar.MONTH] = Calendar.getInstance().get(Calendar.MONTH)
+                calendar[Calendar.DAY_OF_MONTH] = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+                calendar[Calendar.HOUR_OF_DAY] = calendar.time.hours
+                calendar[Calendar.MINUTE] = calendar.time.minutes
+                calendar[Calendar.SECOND] = 0
+                calendar[Calendar.MILLISECOND] = 0
+                val date = Date()
+                if (calendar.time.after(date)) {
+                    MedicationFragment.amTwo =
+                        context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                    val intent = Intent(context, AlarmReceiver::class.java)
+                    intent.putExtra( "bundle" , bundle)
+                    MedicationFragment.pnTwo = PendingIntent.getBroadcast(context, reminderTracker.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+                    MedicationFragment.amTwo.setExact(
+                        AlarmManager.RTC_WAKEUP,
+                        calendar.timeInMillis,
+                        MedicationFragment.pnTwo
+                    )
+                }
+                else if (calendar.time.before(date)) {
+                    calendar[Calendar.DAY_OF_MONTH] = Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + 1
+                    MedicationFragment.amTwo =
+                        context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                    val intent = Intent(context, AlarmReceiver::class.java)
+                    intent.putExtra("type", "mes")
+                    intent.putExtra("name", "You have measurement reminder for ${reminderTracker.names}!")
+                    Log.d("alarmTime", "${calendar.time.year} ${calendar.time.month} ${calendar[Calendar.DAY_OF_MONTH]} ${calendar.time.hours} ${calendar.time.minutes}")
+                    MedicationFragment.pnTwo = PendingIntent.getBroadcast(context, reminderTracker.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+                    MedicationFragment.amTwo.setExact(
+                        AlarmManager.RTC_WAKEUP,
+                        calendar.timeInMillis,
+                        MedicationFragment.pnTwo
+                    )
+                }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -201,7 +248,7 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
 //                    setAlarm(recViewList, "update")
 //                    cancelAlarm(recViewList)
                 }
-                context?.let { MedicationFragment.setAlarm( 800, it, 0)
+                context?.let { MedicationFragment.setAlarm(it)
                     MedicationFragment.setAlarm(recViewListMeasrement, it)
                 }
             }
@@ -495,6 +542,7 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
                     rem.id = reminderTracker.id
                     viewModel.onEditClick(rem)
                     viewModel.deletDrug(rem)
+                    cancelAlarm(rem)
                     d?.cancel()
                 }
                 .setNegativeButton("No") { dialogInterface, it ->
@@ -516,14 +564,6 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
     }
 
     private fun setAlarm(list: List<ReminderTracker>, update:String) {
-//        val c = Calendar.getInstance()
-//        c[Calendar.HOUR_OF_DAY] = 1 //then set the other fields to 0
-//        c[Calendar.MINUTE] = 0
-//        c[Calendar.SECOND] = 0
-//        c[Calendar.MILLISECOND] = 0
-//        c.timeInMillis - System.currentTimeMillis()
-//        Log.d("timefromfragmnet", "$c")
-
         val calendar = Calendar.getInstance()
         calendar[
                 calendar[Calendar.YEAR],
@@ -543,5 +583,14 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
             AlarmManager.RTC_WAKEUP,
             calendar.timeInMillis,AlarmManager.INTERVAL_DAY,
             pendingIntent)
+    }
+    private fun cancelAlarm(reminderTracker: ReminderTracker) {
+        if (reminderTracker.deleteFlage == true) {
+            amTwo =
+                requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val intent = Intent(context, AlarmReceiver::class.java)
+            pnTwo = PendingIntent.getBroadcast(context, reminderTracker.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+            amTwo.cancel(pnTwo)
+        }
     }
 }
