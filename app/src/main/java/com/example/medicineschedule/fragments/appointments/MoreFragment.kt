@@ -73,7 +73,7 @@ class MoreFragment : Fragment() {
             val date = Date()
             if (calendar.time.after(date)) {
                 Log.d("elsepart", "from alarm manager")
-                Toast.makeText(context,"from alarm manager ${calendar.time.year} ${calendar.time.month} ${calendar[Calendar.DAY_OF_MONTH]} ${calendar.time.hours} ${calendar.time.minutes}", Toast.LENGTH_SHORT).show()
+             //   Toast.makeText(context,"from alarm manager ${calendar.time.year} ${calendar.time.month} ${calendar[Calendar.DAY_OF_MONTH]} ${calendar.time.hours} ${calendar.time.minutes}", Toast.LENGTH_SHORT).show()
                 pi = PendingIntent.getBroadcast(
                     context,
                     700,
@@ -87,7 +87,7 @@ class MoreFragment : Fragment() {
             }
             else if (calendar.time.before(date)){
                 calendar[Calendar.MINUTE] = Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + 1
-                Toast.makeText(context,"from else ${calendar.time.year} ${calendar.time.month} ${calendar[Calendar.DAY_OF_MONTH]} ${calendar.time.hours} ${calendar.time.minutes}", Toast.LENGTH_SHORT).show()
+              //  Toast.makeText(context,"from else ${calendar.time.year} ${calendar.time.month} ${calendar[Calendar.DAY_OF_MONTH]} ${calendar.time.hours} ${calendar.time.minutes}", Toast.LENGTH_SHORT).show()
                 pi = PendingIntent.getBroadcast(
                     context,
                     700,

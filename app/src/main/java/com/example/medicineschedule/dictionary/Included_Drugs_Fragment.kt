@@ -3,8 +3,10 @@ package com.example.medicineschedule.dictionary
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.Z
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.medicineschedule.R
 import com.example.medicineschedule.databinding.FragmentIncludedDrugsBinding
 import com.example.medicineschedule.viewModels.DetailInfoViewModel
+import com.google.errorprone.annotations.Var
 import kotlinx.android.synthetic.main.fragment_included__drugs_.*
 
 class Included_Drugs_Fragment : Fragment(R.layout.fragment_included__drugs_) {
@@ -171,6 +174,7 @@ class Included_Drugs_Fragment : Fragment(R.layout.fragment_included__drugs_) {
         viewModel.drugRecord.observe(viewLifecycleOwner){
             it?.let {
                // viewModel.ResValue(it)
+
                 it.forEach{
                     if (it.HowItsWork.equals("-") || it.HowItsWork.equals("----") || it.HowItsWork.equals("-----")){
                         binding.constraintLayout.isVisible = false
@@ -180,12 +184,14 @@ class Included_Drugs_Fragment : Fragment(R.layout.fragment_included__drugs_) {
                     if (it.prescribedFor.equals("-") || it.prescribedFor.equals("----") || it.prescribedFor.equals("-----")){
                         binding.constraintLayout8.isVisible = false
                     }else{
-                        binding.medInterectionsTV.setText(it.prescribedFor)
+                        val str = AddSpacesToSentence(it.prescribedFor.toString())
+                        binding.medInterectionsTV.setText(str)
                     }
                     if (it.sideEffects.equals("-") || it.sideEffects.equals("----") || it.sideEffects.equals("-----")){
                         binding.constraintLayout6.isVisible = false
                     }else{
-                        binding.sideEffectTV.setText(it.sideEffects)
+                        val str = AddSpacesToSentence(it.sideEffects.toString())
+                        binding.sideEffectTV.setText(str)
                     }
                     if (it.warrnings.equals("-") || it.warrnings.equals("----") || it.warrnings.equals("-----")){
                         binding.constraintLayout7.isVisible = false
@@ -232,4 +238,12 @@ class Included_Drugs_Fragment : Fragment(R.layout.fragment_included__drugs_) {
             it.startAnimation(animationRotate)
         }
     }
+
+    fun AddSpacesToSentence(string: String):String
+    {
+        val text = string
+        val cleanText = text.replace("\\d+".toRegex(), "").replace("(.)([A-Z])".toRegex(), "$1 \r\n$2")
+        return cleanText
+    }
+
 }

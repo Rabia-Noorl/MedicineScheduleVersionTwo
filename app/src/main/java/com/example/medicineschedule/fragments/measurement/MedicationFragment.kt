@@ -68,14 +68,14 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
             calendar[Calendar.YEAR] = Calendar.getInstance().get(Calendar.YEAR)
             calendar[Calendar.MONTH] = Calendar.getInstance().get(Calendar.MONTH)
             calendar[Calendar.DAY_OF_MONTH] = Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + 1
-            calendar[Calendar.HOUR_OF_DAY] =0
-            calendar[Calendar.MINUTE] = 0
+            calendar[Calendar.HOUR_OF_DAY] = 0
+            calendar[Calendar.MINUTE] =  0
             calendar[Calendar.SECOND] = 0
             calendar[Calendar.MILLISECOND] = 0
             val date = Date()
             if (calendar.time.after(date)) {
                 Log.d("elsepart", "from alarm manager")
-                Toast.makeText(context,"from alarm manager ${calendar.time.year} ${calendar.time.month} ${calendar[Calendar.DAY_OF_MONTH]} ${calendar.time.hours} ${calendar.time.minutes}", Toast.LENGTH_SHORT).show()
+               // Toast.makeText(context,"from alarm manager ${calendar.time.year} ${calendar.time.month} ${calendar[Calendar.DAY_OF_MONTH]} ${calendar.time.hours} ${calendar.time.minutes}", Toast.LENGTH_SHORT).show()
                 pi = PendingIntent.getBroadcast(
                     context,
                     800,
@@ -89,7 +89,7 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
             }
             else if (calendar.time.before(date)){
                 calendar[Calendar.MINUTE] = Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + 1
-                Toast.makeText(context,"from alarm manager ${calendar.time.year} ${calendar.time.month} ${calendar[Calendar.DAY_OF_MONTH]} ${calendar.time.hours} ${calendar.time.minutes}", Toast.LENGTH_SHORT).show()
+              //  Toast.makeText(context,"from alarm manager ${calendar.time.year} ${calendar.time.month} ${calendar[Calendar.DAY_OF_MONTH]} ${calendar.time.hours} ${calendar.time.minutes}", Toast.LENGTH_SHORT).show()
                 pi = PendingIntent.getBroadcast(
                     context,
                     800,
@@ -109,8 +109,8 @@ class MedicationFragment : Fragment(R.layout.fragment_medication2) {
                 val sdf = SimpleDateFormat("hh:mm a", Locale.ENGLISH)
                 val bundle = Bundle()
                 bundle.putSerializable("item" ,  it as Serializable)
-                bundle.putString("type", "doc")
-                bundle.putString("name", "You have appointment for ${it.names}!")
+                bundle.putString("type", "mes")
+                bundle.putString("name", "You have measurement reminder for ${it.names}!")
 
                 calendar = Calendar.getInstance()
                 calendar.time = sdf.parse(str)
