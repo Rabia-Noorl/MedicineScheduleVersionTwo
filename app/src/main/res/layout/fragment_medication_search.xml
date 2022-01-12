@@ -32,9 +32,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:drawable/screen_background_light_transparent"
-            android:completionThreshold="1"
+            android:completionThreshold="2"
+            android:singleLine="true"
             android:hint="Search Drug here"
-            android:maxLines="1"
             android:minHeight="48dp"
             android:padding="10dp" />
     </LinearLayout>

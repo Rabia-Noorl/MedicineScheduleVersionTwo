@@ -1,34 +1,35 @@
 package com.example.medicineschedule.classes
 
-import android.app.Application
 import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
 import android.media.RingtoneManager
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import com.example.medicineschedule.HomeScreen
-import com.example.medicineschedule.R
-import android.app.Notification
-import android.content.Intent.getIntent
 import android.os.Build
+import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
-import androidx.core.content.getSystemService
-import com.example.medicineschedule.database.ReminderTracker
-import com.example.medicineschedule.viewModels.HomeRecViewModel
-import android.os.Bundle
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.getSystemService
+import com.example.medicineschedule.HomeScreen
+import com.example.medicineschedule.R
 import com.example.medicineschedule.database.ReminderDatabase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import android.net.Uri
+import com.example.medicineschedule.database.ReminderTracker
 import com.example.medicineschedule.fragments.appointments.MoreFragment
 import com.example.medicineschedule.fragments.measurement.MedicationFragment
 import com.example.medicineschedule.fragments.medicines.HomeFragment
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.util.*
+
+import android.app.Notification
+
+
+
 
 
 class AlarmReceiver(): BroadcastReceiver() {
@@ -36,6 +37,7 @@ class AlarmReceiver(): BroadcastReceiver() {
     var soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
     val longArray  = longArrayOf(1000L, 2000L, 3000L)
     override fun onReceive(context: Context?, intent: Intent?) {
+        val GROUP_KEY_WORK_EMAIL = "com.example.medicineschedule"
         val bundle: Bundle? = intent!!.getParcelableExtra("bundle")
         val item = bundle!!.getSerializable("item") as ReminderTracker
         val type = bundle!!.getString("type")
@@ -46,19 +48,23 @@ class AlarmReceiver(): BroadcastReceiver() {
                 Toast.makeText(context, "${item.names}", Toast.LENGTH_SHORT).show()
                 intent!!.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 var pendingIntent = PendingIntent.getActivity(context, 0, i, 0)
-                val builder = NotificationCompat.Builder(context!!, "AlarmId")
-                    .setSmallIcon(R.drawable.pills)
+
+                val builder:Notification = NotificationCompat.Builder(context!!, "AlarmId")
+                    .setSmallIcon(com.example.medicineschedule.R.drawable.pills)
                     .setContentTitle("Your Daily Medication")
                     .setContentText("$name")
                     .setAutoCancel(true)
                     .setDefaults(NotificationCompat.DEFAULT_ALL)
-                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setPriority(NotificationCompat.PRIORITY_LOW)
                     .setVibrate(longArray)
+                    .setGroup(GROUP_KEY_WORK_EMAIL)
+                    .setGroupSummary(true)
                     // .setSilent(true)
                     .setSound(soundUri)
                     .setContentIntent(pendingIntent)
+                    .build()
                 val notificationManager = NotificationManagerCompat.from(context)
-                notificationManager.notify(123, builder.build())
+                notificationManager.notify(Random().nextInt(), builder)
                 if (item.status == "") {
                     var reminder = ReminderTracker(
                         "${item.reminderType}",
