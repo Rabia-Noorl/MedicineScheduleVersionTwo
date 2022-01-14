@@ -17,5 +17,4 @@ class NoteRepository(private val notesDao: NotesDao) {
 
         notesDao.update(note)
     }
-
 }

@@ -176,41 +176,41 @@ class Included_Drugs_Fragment : Fragment(R.layout.fragment_included__drugs_) {
                // viewModel.ResValue(it)
 
                 it.forEach{
-                    if (it.HowItsWork.equals("-") || it.HowItsWork.equals("----") || it.HowItsWork.equals("-----") || it.HowItsWork.equals("")){
+                    if (it.HowItsWork.equals("-") || it.HowItsWork.equals("----") || it.HowItsWork.equals("-----") || it.HowItsWork.equals("") || it.HowItsWork.equals(" ")){
                         binding.constraintLayout.isVisible = false
                     }else{
                         binding.howItsWorkTV.setText(it.HowItsWork)
                     }
-                    if (it.prescribedFor.equals("-") || it.prescribedFor.equals("----") || it.prescribedFor.equals("-----") || it.prescribedFor.equals("")){
+                    if (it.prescribedFor.equals("-") || it.prescribedFor.equals("----") || it.prescribedFor.equals("-----") || it.prescribedFor.equals("") || it.prescribedFor.equals(" ")){
                         binding.constraintLayout8.isVisible = false
                     }else{
                         val str = AddSpacesToSentence(it.prescribedFor.toString())
                         binding.medInterectionsTV.setText(str)
                     }
-                    if (it.sideEffects.equals("-") || it.sideEffects.equals("----") || it.sideEffects.equals("-----") || it.sideEffects.equals("")){
+                    if (it.sideEffects.equals("-") || it.sideEffects.equals("----") || it.sideEffects.equals("-----") || it.sideEffects.equals("") || it.sideEffects.equals(" ")){
                         binding.constraintLayout6.isVisible = false
                     }else{
                         val str = AddSpacesToSentence(it.sideEffects.toString())
                         binding.sideEffectTV.setText(str)
                     }
-                    if (it.warrnings.equals("-") || it.warrnings.equals("----") || it.warrnings.equals("-----") || it.warrnings.equals("")){
+                    if (it.warrnings.equals("-") || it.warrnings.equals("----") || it.warrnings.equals("-----") || it.warrnings.equals("") || it.warrnings.equals(" ")){
                         binding.constraintLayout7.isVisible = false
                     }else{
                         binding.prescribedForTV.setText(it.warrnings)
                     }
 
-                    if (it.medIntrerection.equals("-") || it.medIntrerection.equals("----") || it.medIntrerection.equals("-----") || it.medIntrerection.equals("")){
+                    if (it.medIntrerection.equals("-") || it.medIntrerection.equals("----") || it.medIntrerection.equals("-----") || it.medIntrerection.equals("") || it.medIntrerection.equals(" ")){
                         binding.constraintLayout5.isVisible = false
                     }else{
                         binding.warningsTV.setText(it.medIntrerection)
                     }
 
-                    if (it.missedDose.equals("-") || it.missedDose.equals("----") || it.missedDose.equals("-----") || it.missedDose.equals("")){
+                    if (it.missedDose.equals("-") || it.missedDose.equals("----") || it.missedDose.equals("-----") || it.missedDose.equals("") || it.missedDose.equals(" ")){
                         binding.doseLyout.isVisible = false
                     }else{
                         binding.missedDoseTV.setText(it.missedDose)
                     }
-                    if (it.overdose.equals("-") || it.overdose.equals("----") || it.overdose.equals("-----") || it.overdose.equals("")){
+                    if (it.overdose.equals("-") || it.overdose.equals("----") || it.overdose.equals("-----") || it.overdose.equals("") || it.overdose.equals(" ")){
                         binding.doseLyout.isVisible = false
                     }else{
                         binding.overDoseTV.setText(it.overdose)

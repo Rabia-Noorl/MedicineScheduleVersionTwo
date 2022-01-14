@@ -27,15 +27,17 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 import android.app.Notification
-
-
-
+import java.text.SimpleDateFormat
 
 
 class AlarmReceiver(): BroadcastReceiver() {
 
+    val sdf = SimpleDateFormat("EE MMM dd yyyy")
+    val currentDate = sdf.format(Date())
+
     var soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
     val longArray  = longArrayOf(1000L, 2000L, 3000L)
+
     override fun onReceive(context: Context?, intent: Intent?) {
         val GROUP_KEY_WORK_EMAIL = "com.example.medicineschedule"
         val bundle: Bundle? = intent!!.getParcelableExtra("bundle")
@@ -45,7 +47,6 @@ class AlarmReceiver(): BroadcastReceiver() {
         var i = Intent(context, HomeScreen::class.java)
         if (intent != null) {
             if (type.equals("med")) {
-                Toast.makeText(context, "${item.names}", Toast.LENGTH_SHORT).show()
                 intent!!.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 var pendingIntent = PendingIntent.getActivity(context, 0, i, 0)
 
@@ -74,9 +75,9 @@ class AlarmReceiver(): BroadcastReceiver() {
                         "Taken", "${item.quantity}",
                         "${item.instructions}",
                         "${item.strenght}",
-                        "${item.startDate}",
-                        "${item.endDate}",
-                        "${item.recodeCreationDate}",
+                        "${Calendar.getInstance().time}",
+                        "",
+                        "$currentDate at: ${item.dateTimes}",
                         item.deleteFlage
                     )
                     reminder.id = item.id
@@ -115,9 +116,9 @@ class AlarmReceiver(): BroadcastReceiver() {
                         "Taken", "${item.quantity}",
                         "${item.instructions}",
                         "${item.strenght}",
-                        "${item.startDate}",
-                        "${item.endDate}",
-                        "${item.recodeCreationDate}",
+                        "${Calendar.getInstance().time}",
+                        "",
+                        "$currentDate at: ${item.dateTimes}",
                         item.deleteFlage
                     )
                     reminder.id = item.id
@@ -157,9 +158,9 @@ class AlarmReceiver(): BroadcastReceiver() {
                         "Taken", "${item.quantity}",
                         "${item.instructions}",
                         "${item.strenght}",
-                        "${item.startDate}",
-                        "${item.endDate}",
-                        "${item.recodeCreationDate}",
+                        "${Calendar.getInstance().time}",
+                        "",
+                        "$currentDate at: ${item.dateTimes}",
                         item.deleteFlage
                     )
                     reminder.id = item.id

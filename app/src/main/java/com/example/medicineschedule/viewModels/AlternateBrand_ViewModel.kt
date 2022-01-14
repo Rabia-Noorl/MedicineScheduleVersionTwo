@@ -13,6 +13,7 @@ import java.util.ArrayList
 
 class AlternateBrand_ViewModel(application: Application) : AndroidViewModel(application)  {
 
+
     var list = ArrayList<String>()
         private var _drugRecode = MutableLiveData<List<String>?>()
         val drugRecord: MutableLiveData<List<String>?> = _drugRecode

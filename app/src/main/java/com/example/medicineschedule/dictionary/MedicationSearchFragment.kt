@@ -1,44 +1,46 @@
 package com.example.medicineschedule.dictionary
 
+import android.R.id
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.RadioButton
 import android.widget.Toast
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.medicineschedule.DictionaryActivity
 import com.example.medicineschedule.R
 import com.example.medicineschedule.databinding.FragmentMedicationSearchBinding
-import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.fragment_medication_search.*
+import java.io.File
+import java.io.InputStream
+import android.R.id.input
+import com.example.medicineschedule.HomeScreen
+
 
 class MedicationSearchFragment : Fragment(R.layout.fragment_medication_search) {
 
-    val db = FirebaseFirestore.getInstance()
-    val brandsHints: MutableList<String> = mutableListOf()
-
+    val list =ArrayList<String>()
     private lateinit var binding: FragmentMedicationSearchBinding
+
+    companion object{
+        val brandsHints: MutableList<String> = mutableListOf()
+    }
 
 
     var naController: NavController? =null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         naController = findNavController()
+        main(list)
+        val hintAdaper = context?.let { ArrayAdapter<String>(it, R.layout.custom_list_item, R.id.text_view_list_item, HomeScreen.brandsHints) }
+        binding.actv.setAdapter(hintAdaper)
+        binding.actv.doOnTextChanged { text, start, before, count ->
 
-        db.collection("Medicines").get().addOnSuccessListener {
-            it.forEach{
-                brandsHints.add(it.id)
-            }
-            val hintAdaper =
-                context?.let { ArrayAdapter<String>(it, R.layout.custom_list_item, R.id.text_view_list_item, brandsHints) }
-            binding.actv.setAdapter(hintAdaper)
         }
 
         binding.actv.onItemClickListener = AdapterView.OnItemClickListener{
@@ -60,22 +62,13 @@ class MedicationSearchFragment : Fragment(R.layout.fragment_medication_search) {
         val view = binding.root
         return view
     }
-//
-//    fun onRadioButtonClicked(view: View) {
-//        if (view is RadioButton) {
-//            val checked = view.isChecked
-//
-//            when (view.getId()) {
-//                R.id.radioButtonGeneric ->
-//                    if (checked) {
-//                        naController?.navigate(R.id.action_medicationSearchFragment_to_detailed_Info_Fragment)
-//                    }
-//                R.id.radioButtonBrand ->
-//                    if (checked) {
-//
-//                    }
-//            }
-//        }
-//    }
 
+    fun main(args: ArrayList<String>) {
+        val inputStream: InputStream = getResources().openRawResource(R.raw.names)
+        val inputString = inputStream.bufferedReader().useLines {lines ->
+            lines.forEach {
+                brandsHints.add(it)
+            }
+        }
+    }
 }

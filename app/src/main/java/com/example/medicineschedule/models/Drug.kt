@@ -35,7 +35,7 @@ data class Drug(val drugId: String, //Document ID is actually the Drug id
                 val brands = getString("brands")!!
                 val price = getString("price")!!
                 val manufacBy= getString("manufacBy")!!
-                val howItsWork = getString("howItsWork")!!
+                val howItsWork = getString("HowItsWork")!!
                 val pharmaIngr = getString("pharmaIngr")!!
                 val sideEffects = getString("sideEffects")!!
                 val ab1 = getString("ab1")!!
@@ -44,11 +44,11 @@ data class Drug(val drugId: String, //Document ID is actually the Drug id
                 val ab4 = getString("ab4")!!
                 val ab5= getString("ab5")!!
                 val medIntrerection= getString("medIntrerection")!!
-                val whenNotUse = getString("whenNotUse")!!
+                val whenNotUse = getString("WhenNotUse")!!
                 val warrnings= getString("warrnings")!!
                 val prescribedFor = getString("prescribedFor")!!
                 val missedDose = getString("missedDose")!!
-                val overdose = getString("overdose")!!
+                val overdose = getString("Overdose")!!
 
                 return Drug(id,
                     name,

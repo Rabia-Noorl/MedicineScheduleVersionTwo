@@ -17,6 +17,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.bumptech.glide.Glide
+import com.example.medicineschedule.dictionary.MedicationSearchFragment
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -27,6 +28,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_adapter_.*
 import kotlinx.android.synthetic.main.activity_home_screen.*
+import java.io.InputStream
 import java.util.*
 
 
@@ -48,13 +50,16 @@ class HomeScreen : AppCompatActivity() {
     val authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
         // updateUI()
     }
+    companion object{
+        val brandsHints: MutableList<String> = mutableListOf()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         FirebaseDatabase.getInstance().setPersistenceEnabled(true)
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
+        main()
 
 
 //        searcBtn = findViewById<Button>(R.id.searcBtn) as Button
@@ -181,5 +186,12 @@ class HomeScreen : AppCompatActivity() {
             }
         }
     }
-
+    fun main() {
+        val inputStream: InputStream = getResources().openRawResource(R.raw.names)
+        val inputString = inputStream.bufferedReader().useLines {lines ->
+            lines.forEach {
+               brandsHints.add(it)
+            }
+        }
+    }
 }

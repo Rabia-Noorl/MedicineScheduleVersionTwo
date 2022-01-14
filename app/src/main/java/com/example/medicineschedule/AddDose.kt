@@ -47,9 +47,6 @@ class AddDose : AppCompatActivity() {
 
     var selectedIndex = 0
 
-    val db = FirebaseFirestore.getInstance()
-    val brandsHints: MutableList<String> = mutableListOf()
-
     companion object {
         val timeList = ArrayList<String>()
     }
@@ -68,31 +65,22 @@ class AddDose : AppCompatActivity() {
 //        binding.adddosequantity.setText(firstPart.toString())
         binding.customDoseinstruction.setText(record?.instructions)
         binding.txtvwdosetime1.setText(record?.dateTimes)
-
-        db.collection("Medicines").get().addOnSuccessListener {
-            it.forEach {
-                brandsHints.add(it.id)
-            }
             val hintAdaper =
                 this?.let {
                     ArrayAdapter<String>(
                         it,
                         R.layout.custom_list_item,
                         R.id.text_view_list_item,
-                        brandsHints
+                        HomeScreen.brandsHints
                     )
                 }
-            binding.medicationName.setAdapter(hintAdaper)
-        }
-
+        binding.medicationName.setAdapter(hintAdaper)
         binding.medicationName.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
                 val selectedItem = parent.getItemAtPosition(position).toString()
                 // Display the clicked item using toast
                 DictionaryActivity.drugName = selectedItem
             }
-
-
         var instructionChoice =
             arrayOf("Before Eating", "After Eating", "While Eating", "Doesn't Matter", "Other")
         var timeChoice = arrayOf(
@@ -635,7 +623,7 @@ class AddDose : AppCompatActivity() {
     }
 
     private fun addDoseReminder() {
-        val sdf = SimpleDateFormat("EE MMM dd yyyy 'at:' hh:mm a ")
+        val sdf = SimpleDateFormat("EE MMM dd yyyy")
         val currentDate = sdf.format(Date())
         timeList.clear()
         var time = binding.txtvwdosetime1.text.toString()
@@ -672,7 +660,7 @@ class AddDose : AppCompatActivity() {
                     "",
                     "${Calendar.getInstance().time}",
                     "",
-                    "$currentDate",
+                    "$currentDate at: $it",
                     false
                 )
                // setAlarm(remider)

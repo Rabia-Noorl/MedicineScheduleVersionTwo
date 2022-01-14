@@ -75,7 +75,7 @@ class NotesActivity : AppCompatActivity(), NoteClickDeleteInterface, NoteClickIn
         val nIntent= Intent(this@NotesActivity,AddEditNoteActivity::class.java)
         nIntent.putExtra("noteType","Edit")
         nIntent.putExtra("noteTitle",note.noteTitle)
-        nIntent.putExtra("noteDescription",note.noteDescription)
+       // nIntent.putExtra("noteDescription",note.noteDescription)
         nIntent.putExtra("noteID",note.id)
         startActivity(nIntent)
         this.finish()
