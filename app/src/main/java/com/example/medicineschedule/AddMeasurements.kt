@@ -21,7 +21,9 @@ class AddMeasurements : AppCompatActivity() {
     lateinit var binding: ActivityAddMeasurementsBinding
     lateinit var alertdialogbuilder:AlertDialog.Builder
     var timeFormat= SimpleDateFormat("hh:mm a", Locale.US)
-    var index=0
+    var mNameindex=0
+    var mInsindex=0
+    var mTimeindex=0
 
     companion object{
         val timeListMeasurement = ArrayList<String>()
@@ -40,14 +42,14 @@ class AddMeasurements : AppCompatActivity() {
         binding.txtvwMtime1.setText(record?.dateTimes)
 
         var measurementsChoice= arrayOf("Blood Pressure", "Blood Sugar", "Weight","Temperature","Heart Rate", "Other")
-        var selectedMeasurement=measurementsChoice[index]
+        var selectedMeasurement=measurementsChoice[mNameindex]
         binding.measurement.setText(selectedMeasurement)
         var instructionChoice =
             arrayOf("Before Eating", "After Eating", "While Eating", "Doesn't Matter", "Other")
-        var selectedIns=instructionChoice[index]
+        var selectedIns=instructionChoice[mInsindex]
         binding.MInstructions.setText(selectedIns)
         var mtimeChoice= arrayOf("Once a day","2 times a day","3 times a day","4 times a day","5 times a day","6 times a day","7 times a day")
-        var selectedTime=mtimeChoice[index]
+        var selectedTime=mtimeChoice[mTimeindex]
         binding.txtvwMtime.setText(selectedTime)
         binding.txtvwMtime1.visibility= VISIBLE
         var mtimeFormat= SimpleDateFormat("hh:mm a", Locale.US)
@@ -113,9 +115,9 @@ class AddMeasurements : AppCompatActivity() {
             alertDialogDose.setTitle("Select Measurement")
             alertDialogDose.setSingleChoiceItems(
                 measurementsChoice,
-                index
+               mNameindex
             ) { dialogInterface: DialogInterface, position: Int ->
-                index=position
+                mNameindex=position
                 binding.measurement.setText(measurementsChoice[position])
                 if(position==0)
                 {
@@ -154,9 +156,9 @@ class AddMeasurements : AppCompatActivity() {
             alertDialogIns.setTitle("Select Instructions")
             alertDialogIns.setSingleChoiceItems(
                 instructionChoice,
-                index
+                mInsindex
             ) { dialogInterface: DialogInterface, position: Int ->
-                index=position
+                mInsindex=position
                 binding.MInstructions.setText(instructionChoice[position])
                 if (position == 4) {
                     binding.customMinstruction.visibility = View.VISIBLE
@@ -168,29 +170,12 @@ class AddMeasurements : AppCompatActivity() {
             }
             alertDialogIns.show()
         })
-//        binding.btnMReminder.setOnClickListener(View.OnClickListener {
-//            if(binding.btnMReminder.isChecked)
-//            {binding.linLayoutMTime.visibility=View.VISIBLE
-//                binding.txtvwMtime1.visibility=View.VISIBLE
-//                binding.linLayoutMdate.visibility=View.VISIBLE
-//            }
-//            else{
-//                binding.linLayoutMTime.visibility=View.GONE
-//                binding.txtvwMtime1.visibility=View.GONE
-//                binding.linLayoutMdate.visibility=View.GONE
-//                binding.txtvwMtime2.visibility = View.GONE
-//                binding.txtvwMtime3.visibility = View.GONE
-//                binding.txtvwMtime4.visibility = View.GONE
-//                binding.txtvwMtime5.visibility=View.GONE
-//                binding.txtvwMtime6.visibility=View.GONE
-//                binding.txtvwMtime7.visibility=View.GONE
-//            }})
 
         binding.txtvwMtime.setOnClickListener(View.OnClickListener {
             var alertDialogtime=AlertDialog.Builder(this)
             alertDialogtime.setTitle("How many times per day?")
-            alertDialogtime.setSingleChoiceItems(mtimeChoice,index){dialogInterface:DialogInterface,position:Int->
-                index=position
+            alertDialogtime.setSingleChoiceItems(mtimeChoice,mTimeindex){dialogInterface:DialogInterface,position:Int->
+                mTimeindex=position
                 binding.txtvwMtime.setText(mtimeChoice[position])
 
                 when(position){

@@ -45,7 +45,10 @@ class AddDose : AppCompatActivity() {
     lateinit var calendar: Calendar
     lateinit var pendingIntent: PendingIntent
 
-    var selectedIndex = 0
+    var selectedMTypeIndex = 0
+    var selectedMInsIndex = 0
+    var selectedMTimeIndex = 0
+
 
     companion object {
         val timeList = ArrayList<String>()
@@ -111,15 +114,15 @@ class AddDose : AppCompatActivity() {
             "Other"
         )
         arrayOf("Before Eating", "After Eating", "While Eating", "Doesn't Matter", "Other")
-        var selectedDoseType = tabChoice[selectedIndex]
+        var selectedDoseType = tabChoice[selectedMTypeIndex]
         binding.medTypeTV.setText(selectedDoseType)
         val uri = "@drawable/pill"
         val res = resources.getIdentifier(uri, "drawable", this.packageName)
         binding.doseimgView.setImageResource(res)
         binding.cardViewdose.visibility = View.VISIBLE
-        var selectedIns = instructionChoice[selectedIndex]
+        var selectedIns = instructionChoice[selectedMInsIndex]
         binding.Instructions.setText(selectedIns)
-        var selectedTime = timeChoice[selectedIndex]
+        var selectedTime = timeChoice[selectedMTimeIndex]
         binding.txtvwdosetime.setText(selectedTime)
         binding.txtvwdosetime1.visibility = VISIBLE
         var timeFormat = SimpleDateFormat("hh:mm a", Locale.US)
@@ -182,9 +185,9 @@ class AddDose : AppCompatActivity() {
             alertDialogmedType.setTitle("Select Medication Type")
             alertDialogmedType.setSingleChoiceItems(
                 tabChoice,
-                selectedIndex
+               selectedMTypeIndex
             ) { dialogInterface: DialogInterface, position: Int ->
-                selectedIndex = position
+                selectedMTypeIndex = position
                 binding.medTypeTV.setText(tabChoice[position])
                 if (position == 0) {
                     val uri = "@drawable/pill"
@@ -352,9 +355,9 @@ class AddDose : AppCompatActivity() {
             alertDialogIns.setTitle("Select Instruction")
             alertDialogIns.setSingleChoiceItems(
                 instructionChoice,
-                selectedIndex
+                selectedMInsIndex
             ) { dialogInterface: DialogInterface, position: Int ->
-                selectedIndex = position
+                selectedMInsIndex = position
                 binding.Instructions.setText(instructionChoice[position])
                 if (position == 4) {
                     binding.customDoseinstruction.visibility = View.VISIBLE
@@ -371,9 +374,9 @@ class AddDose : AppCompatActivity() {
             alertDialogtime.setTitle("How many times per day?")
             alertDialogtime.setSingleChoiceItems(
                 timeChoice,
-                selectedIndex
+                selectedMTimeIndex
             ) { dialogInterface: DialogInterface, position: Int ->
-                selectedIndex = position
+                selectedMTimeIndex = position
                 binding.txtvwdosetime.setText(timeChoice[position])
 
                 when (position) {

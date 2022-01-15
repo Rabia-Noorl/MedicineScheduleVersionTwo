@@ -304,7 +304,7 @@ class HomeFragment : Fragment(){
         val firebaseUser = mAuth.currentUser
         if (firebaseUser == null) {
             //user not logged in
-            startActivity(Intent(getActivity(), SignIn::class.java))
+            startActivity(Intent(getActivity(),SignInWithGoogle::class.java))
         } else {
             //user logged in.. Get user Info
             val email = firebaseUser.email
